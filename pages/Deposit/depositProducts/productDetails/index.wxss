@@ -1,0 +1,105 @@
+/* pages/Deposit/depositProducts/productDetails/index.wxss */
+
+.van-step__circle-container .van-icon {
+  font-size: 35rpx !important;
+}
+
+.ruls {
+  border-bottom: solid 4rpx #fff;
+}
+
+.flex1 {
+  flex: 1;
+  text-align: center;
+}
+
+.title {
+  padding: 20rpx 60rpx;
+  border: solid 2rpx #eee;
+}
+
+.tit {
+  padding: 0 0 20rpx 30rpx;
+  text-align: center;
+}
+
+.flex1 {
+  flex: 1;
+  text-align: center;
+}
+
+.bor {
+  border-left: solid 2rpx #eee;
+  border-right: solid 2rpx #eee;
+}
+
+/*  */
+.bg {
+  padding: 20rpx;
+  font-size: 24rpx;
+}
+
+.icon {
+  margin: 8rpx;
+}
+
+.labitem1 {
+  background: #f8f8f8;
+  padding: 10rpx;
+}
+
+.number {
+  background: orange;
+  color: #fff;
+  border-radius: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.fenx {
+  position: fixed;
+  right: 10rpx;
+  top: 28%;
+}
+
+.active {
+  border-bottom: solid 4rpx orangered;
+}
+
+.item {
+  margin: 20rpx;
+  padding: 5rpx;
+}
+
+.bg {
+  background: #f8f8f8;
+}
+
+/*  */
+.determine .tag {
+  text-align: center;
+}
+
+.determine .dialog {
+  background: #fff;
+  width: 80vw;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.determine .input {
+  border-bottom: solid 1rpx #eee;
+}
+
+.determine .btn {
+  width: 60rpx;
+  margin: 10rpx;
+}
+
+.determine .flex1 {
+  flex: 1;
+  padding: 15rpx 0;
+  text-align: left;
+}

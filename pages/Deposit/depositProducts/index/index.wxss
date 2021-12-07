@@ -1,0 +1,20 @@
+/* pages/Deposit/depositProducts/index.wxss */
+.depositProducts {
+  position: relative;
+  color: white;
+  border-radius: 16rpx;
+}
+
+.products {
+  position: absolute;
+  right: 0;
+  top: 25rpx;
+  border-radius: 20rpx 0 0 20rpx;
+  background: rgba(255, 255, 255, .5);
+  color: white;
+  padding: 10rpx;
+}
+
+.btn {
+  padding: 60rpx;
+}

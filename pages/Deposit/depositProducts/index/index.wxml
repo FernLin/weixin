@@ -1,0 +1,60 @@
+<!--pages/Deposit/depositProducts/index.wxml-->
+<view class="flex-c ai-c depositProducts m-20 p-20 bg-o">
+	<view class="flex mt-20">
+		<view bindtap="goNext" class="products tag">我的产品</view>
+		<view>总持仓</view>
+		<van-icon name="eye" style="margin-left:30rpx" bindtap="eyeclick" />
+	</view>
+	<view class=" mt-20 fw-b txt-30">{{totalPosition}}</view>
+	<view class="flex tag txt-w mt-20 ">
+		<view class="mt-20 p-lr-10">总收益(元)</view>
+		<view class="mt-20 p-lr-10">+{{totalRevenue}}</view>
+	</view>
+</view>
+<view class="mt-50">
+	<van-tabs type="card" color="orange" active="{{ active }}" bind:change="onChange">
+		<van-tab custom-class="tabclass" title="银行定期">
+			<view class="flex jc-sa mt-20 pt-20">
+				<view bindtap="sortClick">
+					收益率
+					<van-icon wx:if="{{des==0}}" name="descending" />
+					<van-icon wx:if="{{des==1}}" name="ascending" />
+				</view>
+				<view bindtap="sortClick1">
+					期限
+					<van-icon wx:if="{{des1==0}}" name="descending" />
+					<van-icon wx:if="{{des1==1}}" name="ascending" />
+				</view>
+				<view bindtap="sortClick2">
+					起购金额
+					<van-icon wx:if="{{des2==0}}" name="descending" />
+					<van-icon wx:if="{{des2==1}}" name="ascending" />
+				</view>
+			</view>
+			<list active="{{active}}" listData="{{productList}}"></list>
+		</van-tab>
+		<van-tab title="大额存单">
+			<view class="flex jc-sa mt-20 pt-20">
+				<view bindtap="sortClick">
+					收益率
+					<van-icon wx:if="{{des==0}}" name="descending" />
+					<van-icon wx:if="{{des==1}}" name="ascending" />
+				</view>
+				<view bindtap="sortClick1">
+					期限
+					<van-icon wx:if="{{des1==0}}" name="descending" />
+					<van-icon wx:if="{{des1==1}}" name="ascending" />
+				</view>
+				<view bindtap="sortClick2">
+					起购金额
+					<van-icon wx:if="{{des2==0}}" name="descending" />
+					<van-icon wx:if="{{des2==1}}" name="ascending" />
+				</view>
+			</view>
+			<list active="{{active}}" listData="{{productList}}"></list>
+			<!-- <view class="btn">
+				<van-button block plain type="warning" bindtap="goNext1">查看转让产品</van-button>
+			</view> -->
+		</van-tab>
+	</van-tabs>
+</view>

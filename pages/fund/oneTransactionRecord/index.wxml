@@ -1,0 +1,19 @@
+<view>
+    <view></view>
+    <view class="record_list">
+        <block wx:for="{{recordList}}" wx:key='key'>
+            <view class="record_item">
+                <view class="line">
+                    <view class="line_text">{{item.tradeType}}</view>
+                    <view class="line_text">{{item.confirmAmount}}</view>
+                </view>
+                <view class="line line2">
+                    <view>{{item.tradeData}}</view>
+                    <view class="{{item.status==0?'failure':''}}">
+                        {{item.tradeResult}}
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

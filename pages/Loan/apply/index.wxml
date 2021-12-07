@@ -1,0 +1,71 @@
+<!--pages/loan/index.wxml-->
+<!--index.wxml-->
+<view class="container">
+<view class="input-panel">
+  <van-cell-group>
+    <van-field
+      value="{{ peopleName }}"
+      placeholder="请输入"
+      label="姓名"
+      input-align="right"
+      name="peopleName"
+      border="{{ false }}"
+      bind:change="handlePeopleNameChange"
+    />
+    <van-cell title="证件类型" value="{{ certTypeName }}" bind:click="toggleCertTypePicker" />
+    <van-field
+      value="{{ certNo }}"
+      placeholder="请输入"
+      label="证件号"
+      type="idcard"
+      date-field="certNo"
+      border="{{ false }}"
+      input-align="right"
+      bind:change="handleCertNoChange"
+    />
+  </van-cell-group>
+</view>
+<view class="input-panel">
+  <van-cell-group class="input-panel">
+    <van-field
+      value="{{ mobilePhone }}"
+      placeholder="请输入"
+      label="手机号"
+      type="number"
+      date-field="mobilePhone"
+      border="{{ false }}"
+      input-align="right"
+      maxlength="11"
+      bind:change="handleMobilePhoneChange"
+    />
+    <van-field
+      value="{{ smsCode }}"
+      placeholder="请输入短信验证码"
+      label="验证码"
+      type="number"
+      date-field="smsCode"
+      border="{{ false }}"
+      input-align="right"
+      maxlength="6"
+      bind:change="handleSmsCodeChange"
+    >
+      <view wx:if="{{isCanSend}}" class="send-btn" slot="button" bindtap="handleGetSms">获取验证码</view>
+      <view wx:else class="send-btn-disabled" slot="button">重新获取({{waitSec}})</view>
+    </van-field>
+  </van-cell-group>
+</view>
+
+<view class="primary-btn" bindtap="confirmSms">下一步</view>
+	<van-popup position="bottom" show="{{ isShowCertPiker }}" bind:close="() => setData({ isShowCertPiker: false })">
+    <van-picker
+      show-toolbar
+      title="证件类型"
+      columns="{{ certTypeList }}"
+      bind:confirm="handleCertTypeConfirm"
+    />
+	</van-popup>
+</view>
+
+<van-overlay show="{{ loading }}" class="loading">
+  <van-loading type="spinner" color="#1989fa"  />
+</van-overlay>

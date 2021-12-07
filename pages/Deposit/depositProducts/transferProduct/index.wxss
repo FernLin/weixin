@@ -1,0 +1,23 @@
+/* pages/Deposit/depositProducts/transferProduct/index.wxss */
+.title {
+  padding: 20rpx 60rpx;
+  border: solid 2rpx #eee;
+}
+.tit{
+  padding:0 0 20rpx 30rpx;
+}
+.flex1{
+  flex: 1;
+  text-align: center;
+}
+.bor{
+  border-left: solid 2rpx #eee;
+  border-right: solid 2rpx #eee;
+  flex: 1;
+}
+.list{
+    padding: 20rpx 0;
+}
+.btn {
+  padding: 60rpx;
+}

@@ -1,0 +1,60 @@
+<!-- <view class="ta-c">
+    <image class="bank-icon" src="/assets/bankicon.png" />
+</view> -->
+<view class="card-info">
+    <view class="flex input1 p-30 jc-sb">
+        客户姓名
+        <view class="flex ta-r w-80">
+            <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" model:value="{{cifName}}"/>
+        </view>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        证件类型
+        <view class="flex ta-r w-80">
+            <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" value="居民身份证" />
+        </view>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        证件号码
+        <view class="flex ta-r w-80">
+            <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" model:value="{{certificateNo}}" />
+        </view>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        手机号码
+        <view class="flex ta-r w-80">
+            <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" model:value="{{mobileNo}}" />
+        </view>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        通讯地址
+        <view class="flex ta-r w-80">
+            <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" model:value="{{mailAddr}}" />
+        </view>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        邮政编码
+        <view class="flex ta-r w-80">
+            <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" model:value="{{postNo}}"/>
+        </view>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        电子邮箱
+        <input bindinput="bindUserName" placeholder="请输入电子邮箱" gesturetype="text" class="ta-r input-c333" model:value="{{email}}"/>
+    </view>
+</view>
+<view class="card-info manager-text">
+<view class="flex input1 p-30 jc-sb">
+        客户经理
+        <input bindinput="bindUserName" placeholder="请输入客户经理工号(选填)" gesturetype="text" class="ta-r input-c333" model:value="{{manager}}"/>
+    </view>
+</view>
+<view class="confirm-radio ">
+    <van-radio-group value="{{ isConfirm }}" bind:change="handleConfirm">
+      <van-radio class="van-radio" name="1"  icon-size="30rpx" checked-color="#e43234">
+        阅读并同意<text class="link-text">《赣州银行证券投资基金投资人权益须知》</text>
+      </van-radio> 
+    </van-radio-group>
+  </view>
+
+<view class="next-step" bindtap="goNext">下一步</view>

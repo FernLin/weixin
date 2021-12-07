@@ -1,0 +1,10 @@
+<!--pages/login/passwordSet/Success/index.wxml-->
+<view class="cardTiedSuccessfully flex-c mt-50">
+	<van-icon name="passed" color="#00b300" size="80" />
+	<view class="mt-50">
+		修改成功!
+	</view>
+	<view class="btn mt-50">
+		<van-button bindtap="goLogin"  block type="default">返回登录</van-button>
+	</view>
+</view>

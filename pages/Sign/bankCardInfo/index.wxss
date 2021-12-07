@@ -1,0 +1,14 @@
+/* pages/Sign/bankCardInfo/index.wxss */
+
+.btn {
+  width: 60%;
+  margin: 100rpx auto;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 30rpx;
+  padding-bottom: 10rpx;
+}

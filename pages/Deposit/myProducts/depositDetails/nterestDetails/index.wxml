@@ -1,0 +1,16 @@
+<!--pages/Deposit/myProducts/depositDetails/nterestDetails/index.wxml-->
+<view class="flex-c ai-c  m-20 bg-o txt-w border-r p-20">
+  <view class="fw-b txt-30">{{distributedInterest}}</view>
+  <view class="tag txt-w mt-20">累计派发利息(元)</view>
+</view>
+<view wx:for="{{paidInterestList}}" wx:key="index" class="flex jc-sb  m-20 tag txt-b box-s p-20 mt-50 border-r">
+  <view>
+    <view class="tag">
+      {{item.bankTradeTime}}
+    </view>
+    <view class="mt-20 fw-b">
+      利息派发
+    </view>
+  </view>
+  <view class="txt-30 txt-o fw-b">+ {{item.interest}}</view>
+</view>

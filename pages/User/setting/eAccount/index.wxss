@@ -1,0 +1,108 @@
+/* pages/User/setting/eAccount/index.wxss */
+page{
+  height:100%;
+  background-color: #fff;
+}
+
+.b{
+  border: #000 solid 2rpx
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line{
+  margin: 0 auto;
+  width: 95%;
+  height: 2rpx;
+  background-color: #e5e5e5;
+}
+
+.eAccount{
+  height: 100%;
+}
+
+.payerAcBox{
+  height: 200rpx;
+}
+
+.payerAc{
+  height: 100rpx;
+  width: 100%;
+  border: rgb(229, 229, 229) solid 4rpx
+}
+
+.payerText{
+  width: 30%;
+  font-size: 35rpx;
+  align-items: center;
+}
+
+.payerInfo{
+  width: 70%;
+  font-size: 32rpx;
+  justify-content: center;
+}
+
+.payeeAcBox{
+  height: 400rpx;
+  width: 100%;
+  border-top: rgb(229, 229, 229) solid 4rpx;
+  border-bottom: rgb(229, 229, 229) solid 4rpx
+}
+
+.payeeAc{
+  height: 380rpx;
+  width: 100%;
+}
+
+.payeeInfoBox{
+  width: 100%;
+  height: 180rpx;
+}
+
+.payeeText{
+  width: 30%;
+  font-size: 35rpx;
+  align-items: center;
+}
+.payeeInfo{
+  width: 70%;
+  justify-content: center;
+}
+
+
+.amount{
+  width: 100%;
+  height: 180rpx;
+}
+
+.amountText{
+  height: 80rpx;
+  width: 30%;
+  font-size: 35rpx;
+}
+
+.amountInput{
+  height: 100rpx;
+}
+
+.tipsBox{
+  width:100%;
+  height: 50rpx
+}
+
+.tips{
+  width:95%;
+  height: 50rpx;
+  font-size:25rpx;
+  align-items: center;
+}
+
+.buttonBox{
+  height: 400rpx;
+  width: 100%;
+}

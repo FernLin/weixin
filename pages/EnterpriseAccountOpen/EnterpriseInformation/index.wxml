@@ -1,0 +1,58 @@
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="card-title">企业信息</view>
+    <view class="flex input1 p-30 jc-sb">
+        企业名称
+        <input bindinput="bindModel" placeholder="请输入企业名称" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        营业执照号码
+        <input bindinput="bindModel" type="number" placeholder="请输入" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        账户类型
+        <radio-group bindchange="radioChange" class="flex">
+            <label class="flex" wx:for="{{items}}" wx:key="{{item.value}}">
+                <radio value="{{item.value}}" color="#f4333c" checked="true"/>
+                <view class="weui-cell__bd">{{item.name}}</view>
+            </label>
+        </radio-group>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        办公地址
+        <input bindinput="bindModel" placeholder="请输入" gesturetype="text" class="flex1 ta-r" />
+    </view>
+</view>
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="card-title">法人/负责人</view>
+    <view class="flex input1 p-30 jc-sb">
+        姓名
+        <input bindinput="bindModel" placeholder="请输入" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        手机号
+        <input bindinput="bindModel" maxlength="11" type="number" placeholder="请输入" gesturetype="text" class="flex1 ta-r" />
+    </view>
+</view>
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="card-title flex jc-sb">
+        财务负责人
+        <label class="flex mr-30">
+            <checkbox value="cb" />同法人/负责人
+        </label>
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        姓名
+        <input bindinput="bindModel" placeholder="请输入" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        手机号
+        <input bindinput="bindModel" maxlength="11" type="number" placeholder="请输入" gesturetype="text" class="flex1 ta-r" />
+    </view>
+</view>
+
+<view class="next-step-btn" bindtap="goLoginRegister">
+    下一步
+</view>

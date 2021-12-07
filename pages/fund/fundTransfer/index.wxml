@@ -1,0 +1,55 @@
+<!--pages/foud/fundTransfer/index.wxml-->
+<view class="title">转出基金</view>
+<view class="card-info height-170">
+  <view class="flex jc-sb f-info">
+    <view class="fund-name">{{prdInfo.prdName}}</view>
+  </view>
+  <view class="flex jc-sb f-info">
+    <view class="fund-info">
+      <view class="fund-code-n">基金代码</view>
+      <view>{{prdInfo.prdCodeSeq}}</view>
+    </view>
+    <view class="fund-info">
+      <view class="fund-code-n">最新净值</view>
+      <view>{{prdInfo.newNetWorth}}元</view>
+    </view>
+  </view>
+</view>
+<view class="title">转入基金</view>
+<view class="card-info" wx:if="{{!isSelectFund}}">
+  <view class="flex jc-sb ta-p">
+    <view class="l-t">转入基金</view>
+    <view class="flex w-70" bindtap="selectShiftFund">
+      <!-- <text>{{cardInfo.acNoHidden}}</text> -->
+      <text class="select">请选择</text>
+      <van-icon name="arrow" class="arrow" />
+    </view>
+  </view>
+</view>
+<view class="card-info height-170" wx:else>
+  <view class="flex jc-sb f-info">
+    <view class="fund-name">{{shiftToFund.prdName}}</view>
+  </view>
+  <view class="flex jc-sb f-info">
+    <view class="fund-info">
+      <view class="fund-code-n">基金代码</view>
+      <view>{{shiftToFund.prdCode}}</view>
+    </view>
+    <view class="fund-info">
+      <view class="fund-code-n">最新净值</view>
+      <view>{{shiftToFund.newNetWorth}}元</view>
+    </view>
+  </view>
+</view>
+<view class="card-info height-179">
+  <view class="flex jc-sb part-p">
+    <view class="f-part">转换份额</view>
+    <view class="f-all">全部转换</view>
+  </view>
+  <view class="f-info">
+    <input class="in-c" bindinput="bindUserName" placeholder="最多可转1份" gesturetype="text" placeholder-class="p-c" model:value="{{convertShare}}"/>
+    <view class="rate">费率：{{rate}}</view>
+  </view>
+</view>
+<view class="next-step" bindtap="exchange">确定</view>
+<van-action-sheet show="{{ showFundList }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />

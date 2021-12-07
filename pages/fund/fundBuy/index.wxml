@@ -1,0 +1,67 @@
+<view class="card-info height-170">
+  <view class="fund-name">{{prdInfo.prdName}}</view>
+  <view class="fund-info">
+    <view class="fund-code-n">基金代码</view>
+    <view>{{prdInfo.prdCode}}</view>
+  </view>
+</view>
+<view class="card-info h-317">
+  <view class="buy-at">购买金额</view>
+  <view class="flex jc-sb">
+    <view class="flex">
+      <view class="at-l1">¥</view>
+      <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" model:value="{{perchasingAmount}}" />
+    </view>
+    <view class="at-r">手续费率：0.120%</view>
+  </view>
+  <view class="line"></view>
+  <view class="flex jc-sb" bindtap="changeBankCard">
+    <view class="l-t">交易账户</view>
+    <view class="flex w-70" >
+      <!-- <text>{{cardInfo.acNoHidden}}</text> -->
+      <text class="card">{{showAccount}}</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view class="balance">可用余额{{acDetail.acctBalance}}元</view>
+</view>
+<view class="confirm-radio ">
+  <van-radio-group value="{{ isConfirm }}" bind:change="handleConfirm">
+    <van-radio class="van-radio" name="1" icon-size="30rpx" checked-color="#e43234">
+      协议阅读
+      <text class="link-text">《购买协议》</text>
+    </van-radio>
+  </van-radio-group>
+</view>
+<view class="next-step" bindtap="showInputLayer">购买</view>
+<!-- 密码输入框 -->
+<view wx:if='{{showPayPwdInput}}'>
+  <view class='bg_layer'></view>
+  <view class='input_main'>
+    <view class='input_title'>
+      <view class='input_back' catchtap='hidePayLayer'>×</view>
+      <!-- <view class="close">×</view> -->
+      <text class="title">请输入交易密码</text>
+    </view>
+    <view class="v-n">{{prdInfo.prdName}}</view>
+    <view class="v-amount">¥{{perchasingAmount}}</view>
+    <view class="pwd-hint">
+      请输入
+      <text>{{showAccount}}</text>
+      6位交易密码
+    </view>
+    <view class='input_row'>
+      <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+        <text wx:if='{{passwordKeyboard.password.length>i}}'></text>
+      </view>
+    </view>
+    <!-- <view class='forget_pwd' catchtap='hidePayLayer'>忘记密码</view> -->
+    <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd' maxlength='6' />
+    <view class="confirm-btn" bindtap="sureBuy">确定</view>
+  </view>
+</view>
+<van-action-sheet show="{{ showAccList }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
+     <van-dialog id="van-dialog" />
+    
+<import src="../../../tiny/passwordKeyboard/passwordKeyboard.wxml" />
+<template is="passwordKeyboard" data='{{...passwordKeyboard}}' />

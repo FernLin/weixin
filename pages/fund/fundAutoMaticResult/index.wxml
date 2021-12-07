@@ -1,0 +1,37 @@
+<!--pages/foud/fundBuyResult/index.wxml-->
+<view class="result-info">
+  <view class="info">
+    <image src="../../../assets/LoanApplyResult/success.png" class="png-icon"></image>
+    <view class="accept">申请基金定投成功！</view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">基金名称</view>
+    <view class="v-r">{{prdInfo.prdName}}</view>
+  </view>
+   <view class="flex jc-sb p-49">
+    <view class="v-l">交易账户</view>
+    <view class="v-r">{{prdInfo.showAccount}}</view>
+  </view>
+ 
+    
+  <view class="flex jc-sb p-49">
+    <view class="v-l">定投间隔</view>
+    <view class="v-r">{{prdInfo.gap}}</view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">定投金额</view>
+    <view class="v-r">￥{{prdInfo.amount}}元</view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">终止日期/次数</view>
+    <view class="v-r">{{prdInfo.stopNum}}</view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">定投描述</view>
+    <view class="v-r">{{prdInfo.maticDesc?prdInfo.maticDesc:'无'}}</view>
+  </view>
+</view>
+<view class="flex">
+  <view class="cc-btn" bindtap="handleBack">我的持仓</view>
+  <view class="back-btn" bindtap="handleBack">完成</view>
+</view>

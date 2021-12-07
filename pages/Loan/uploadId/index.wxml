@@ -1,0 +1,12 @@
+<!--pages/Loan/uploadId/index.wxml-->
+<!--pages/Loan/faceAuth/index.wxml-->
+<view class="container">
+  <view class="upload-panel">
+    <text class="upload-text">借款人身份证件</text>
+    <view class="idcard-uploader">
+      <image src="{{ faceUrl }}" class="id-icon" bindtap="handleUploadFace" />
+      <image src="{{ backUrl }}" class="id-icon" bindtap="handleUploadBack" />
+    </view>
+  </view>
+  <view class="primary-btn" bindtap="handleNext">下一步</view>
+</view>

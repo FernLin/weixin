@@ -1,0 +1,49 @@
+.fund_list {
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.fund_list .header {
+  display: flex;
+  padding: 20rpx;
+  align-items: center;
+}
+.fund_list .header .item {
+  flex: 1;
+  font-size: 26rpx;
+  color: #999999;
+  text-align: center;
+  white-space: nowrap;
+}
+.fund_list .content .view {
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #e6e6e6;
+}
+.fund_list .content .view .item {
+  flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  padding: 30rpx 0;
+}
+.fund_list .content .view .info .name {
+  font-weight: bold;
+  color: #323232;
+}
+.fund_list .content .view .info .code {
+  color: #999999;
+  font-size: 26rpx;
+  margin-top: 5rpx;
+}
+.fund_list .content .view .rate {
+  color: #d70b30;
+}
+.fund_list .content .view .type {
+  font-size: 22rpx;
+  color: #e43234;
+  background-color: #ffdfdf;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  width: 100rpx;
+  margin: auto;
+}

@@ -1,0 +1,101 @@
+/* pages/foud/fundTransfer/index.wxss */
+.title{
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 25rpx;
+  margin-left: 30rpx;
+}
+.card-info {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  background: #FFF;
+  font-family:PingFang SC;
+  color:#646464;
+  font-size:30rpx;
+  line-height:42rpx;
+  margin-top: 19rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.height-170{
+  height: 170rpx;
+}
+.f-info{
+  display: flex;
+  margin-bottom: 20rpx;
+  width: 100%;
+}
+.fund-info{
+  display: flex;
+}
+.fund-name{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.fund-code-n{
+  color: #969696;
+  margin-right: 30rpx;
+}
+.f-r{
+  color: #017aff;
+  font-size: 28rpx;
+}
+.part-p{
+  padding-bottom: 23rpx;
+  padding-top: 30rpx;
+}
+.f-part{
+  color: #646464;
+  font-size: 30rpx;
+}
+.f-all{
+  color: #017aff;
+  font-size: 24rpx;
+}
+.p-c{
+  font-size: 42rpx;
+  color: #c4c4c4;
+}
+.in-c{
+  flex: 2;
+  font-size: 42rpx;
+}
+.rate{
+  flex: 1;
+  text-align: right;
+  color: #969696;
+  font-size: 24rpx;
+}
+.ta-p{
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.arrow{
+  color: #c4c4c4;
+}
+.select{
+  color: #c8c8c8;
+  font-size: 30rpx;
+  margin-right: 30rpx;
+}
+.l-t{
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.next-step {
+  margin: 64rpx 30rpx;
+  height:90rpx;
+  background-color:#e43234;
+  border-radius:45rpx;
+  
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#ffffff;
+  font-size:32rpx;
+  line-height:90rpx;
+  text-align: center;
+}

@@ -1,0 +1,41 @@
+<!--pages/Deposit/myCertificatesDeposit/index.wxml-->
+<view class="flex-c myCertificatesDeposit m-20">
+  <view class="flex panelitem">
+    <view>大额存单WX001(12个月)</view>
+    <van-tag color="red" text-color="#fff" type="danger">转让中</van-tag>
+  </view>
+  <view class="flex panelitem border-b tag">
+    <view class="flex-c list">
+      <view>持有本金(元)</view>
+      <view class="txt-b">50,000.00</view>
+    </view>
+    <view class="flex-c list">
+      <view class="tag">持有收益(元)</view>
+      <view class="txt-r">0.00</view>
+    </view>
+  </view>
+  <view class="flex panelitem  bottom tag">
+    <view>尾号(4322)</view>
+    <view>2020/10/10到期</view>
+  </view>
+</view>
+<view class="flex-c myCertificatesDeposit m-20">
+  <view class="flex panelitem">
+    <view>大额存单WX001(12个月)</view>
+    <van-tag color="orange" text-color="#fff" type="warning">保本保息</van-tag>
+  </view>
+  <view class="flex panelitem border-b tag">
+    <view class="flex-c list">
+      <view>持有本金(元)</view>
+      <view class="txt-b">50,000.00</view>
+    </view>
+    <view class="flex-c list">
+      <view class="tag">持有收益(元)</view>
+      <view class="txt-r">0.00</view>
+    </view>
+  </view>
+  <view class="flex panelitem  bottom tag">
+    <view>尾号(4322)</view>
+    <view>2020/10/10到期</view>
+  </view>
+</view>

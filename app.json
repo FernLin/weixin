@@ -1,0 +1,174 @@
+{
+  "pages": [
+    "pages/financeSupermarket/index",
+    "pages/Loan/productApply/productDetail/index",
+    "pages/Loan/productApply/index",
+    "pages/Loan/index",
+
+    "pages/Loan/uploadId/index",
+    "pages/Loan/submit/index",
+    "pages/Loan/faceAuth/index",
+    "pages/Loan/branch/branchList/index",
+    "pages/Loan/branch/index",
+    "pages/Loan/applyResult/index",
+    "pages/Loan/apply/index",
+    "pages/User/index",
+    "pages/EnterpriseAccountOpen/ApplyResult/index",
+    "pages/EnterpriseAccountOpen/index",
+    "pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index",
+    "pages/EnterpriseAccountOpen/AppointmentInquiry/index",
+
+    "pages/EnterpriseAccountOpen/DocumentUpload/index",
+    "pages/EnterpriseAccountOpen/EnterpriseInformation/index",
+
+    "pages/accountManager/index",
+    "pages/accMan/index",
+    "pages/accMan/bindCard/index",
+    "pages/accMan/accNotice/index",
+    "pages/accMan/openAccount/index",
+
+    "pages/tranDetail/index",
+    "pages/login/index",
+    "pages/login/register/index",
+    "pages/login/register/passwordSet/index",
+    "pages/login/register/passwordSet/Success/index",
+    "pages/login/forgetPassword/index",
+    "pages/login/forgetPassword/passwordSet/index",
+    "pages/login/forgetPassword/passwordSet/Success/index",
+
+    "pages/User/notLogin/index",
+    "pages/User/setting/index",
+    "pages/User/setting/originalpwd/index",
+    "pages/User/setting/newpwd/index",
+    "pages/User/setting/newpwdConfirm/index",
+    "pages/User/setting/updateResult/index",
+    "pages/User/setting/logout/index",
+    "pages/User/setting/eAccount/index",
+    "pages/User/setting/eAccount/large/index",
+    "pages/User/finance/index",
+
+    "pages/fund/index/index",
+    "pages/fund/fundMarket/index",
+    "pages/fund/productDetail/index",
+    "pages/fund/transactionRecord/index",
+    "pages/fund/myFundDetail/index",
+    "pages/fund/oneTransactionRecord/index",
+    "pages/fund/myFocus/index",
+    "pages/fund/transactionDetail/index",
+    "pages/fund/fundSign/index",
+    "pages/fund/riskAssessment/index",
+    "pages/fund/fundBuy/index",
+    "pages/fund/fundAutoMatic/index",
+    "pages/fund/fundBuyResult/index",
+    "pages/fund/fundRedemption/index",
+    "pages/fund/fundTransfer/index",
+    "pages/fund/shareBonusSet/index",
+    "pages/fund/updateShareBonus/index",
+    "pages/fund/riskTest/index",
+    "pages/fund/riskResult/index",
+    "pages/fund/myFixedPlan/index",
+    "pages/fund/fundAutoMaticResult/index",
+    "pages/fund/fundTransferResult/index",
+    "pages/fund/fundRedemptionResult/index",
+
+    "pages/Deposit/depositProducts/index/index",
+    "pages/Deposit/depositProducts/productDetails/index",
+    "pages/Deposit/depositProducts/transferProduct/index",
+    "pages/Deposit/depositProducts/transferProduct/Manual/index",
+
+    "pages/Deposit/depositProducts/buyProduct/index",
+    "pages/Deposit/depositProducts/buyProduct/determine/index",
+    "pages/Deposit/depositProducts/buyProduct/Success/index",
+    "pages/Deposit/depositProducts/buyProduct/Failure/index",
+    "pages/Deposit/depositProducts/buyProduct/Timeout/index",
+
+    "pages/Deposit/myProducts/index",
+    "pages/Deposit/myProducts/depositDetails/index",
+    "pages/Deposit/myProducts/depositDetails/nterestDetails/index",
+    "pages/Deposit/myProducts/withdrawalConfirmed/index",
+    "pages/Deposit/myProducts/withdrawalConfirmed/determine/index",
+    "pages/Deposit/myProducts/withdrawalConfirmed/Result/index",
+    "pages/Deposit/myProducts/tradingHistory/index",
+    "pages/Deposit/myProducts/tradingHistory/Details/index",
+    "pages/Deposit/myCertificatesDeposit/index",
+
+    "pages/Sign/Verified/index",
+    "pages/Sign/Verified/bankCardSupport/index",
+    "pages/Sign/Verified/bankCardSupport/Support/index",
+    "pages/Sign/Verified/faceRecognition/index",
+    "pages/Sign/Verified/cardTiedSuccessfully/index"
+
+  ],
+  "usingComponents": {
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-steps": "@vant/weapp/steps/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "ocr-navigator": "plugin://ocr-plugin/ocr-navigator",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#ffa600",
+    "backgroundColor": "",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/financeSupermarket/index",
+        "text": "首页",
+        "iconPath": "./assets/Tab1.png",
+        "selectedIconPath": "./assets/Tab1Action.png"
+      },
+      {
+        "pagePath": "pages/User/index",
+        "text": "我的",
+        "iconPath": "./assets/Tab2.png",
+        "selectedIconPath": "./assets/Tab2Action.png"
+      }
+    ]
+  },
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.6",
+      "provider": "wx4418e3e031e551be"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取位置，用于定位网点"
+    }
+  }
+}

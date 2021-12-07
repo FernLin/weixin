@@ -1,0 +1,22 @@
+<!--pages/foud/updateShareBonus/index.wxml-->
+<view class="hint">分红方式修改佳能在下一个交易日生效，每日仅可修改一次</view>
+<view class="flex jc-sb set-info">
+  <van-radio-group value="{{ dividendMode }}" bind:change="changeRadio">
+    <van-radio class="van-radio" name="现金分红" icon-size="30rpx" checked-color="#e43234">
+      <view class="v-info">
+        <view class="v-n">现金分红</view>
+        <view class="flex">
+          <view class="v-l">现金分红说明文字XXXXXXXXXXXXXXX</view>
+        </view>
+      </view>
+    </van-radio>
+    <van-radio class="van-radio" name="红利再投资" icon-size="30rpx" checked-color="#e43234">
+      <view class="v-info">
+        <view class="v-n">红利再投资</view>
+        <view class="flex">
+          <view class="v-l">红利再投资说明文字XXXXXXXXXXXXXXX</view>
+        </view>
+      </view>
+    </van-radio>
+  </van-radio-group>
+</view>

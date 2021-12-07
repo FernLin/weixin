@@ -1,0 +1,11 @@
+<!--pages/Sign/gesturePasswordForgot/faceRecognition/index.wxml-->
+<view class="flex-c faceRecognition">
+	<view>为了您的账户安全</view>
+	<view class="tag mt-20">请确保事账户本人操作</view>
+	<image class="img" src="../../../../assets/tabbar3.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+
+	<view class="tag">请您面部正对手机摄像头录制1-3秒,用于视频人脸识别身份核对</view>
+	<view class="btn ">
+		<van-button block type="info"bindtap="goNext">开始识别</van-button>
+	</view>
+</view>

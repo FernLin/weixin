@@ -1,0 +1,77 @@
+.my-notice-t {
+    font-weight:700;
+    color:#323232;
+    font-size:32rpx;
+    line-height:46rpx;
+}
+
+.my-notice-m {
+    color:#3378f6;
+    font-size:26rpx;
+    line-height:37rpx;
+}
+
+.my-notice-info {
+    background-color:#ffffff;
+    border-radius:20rpx;
+    margin-top: 30rpx;
+    padding: 30rpx;
+}
+.card-l-t {
+    font-weight:500;
+    color:#323232;
+    font-size:32rpx;
+    line-height:46rpx;
+}
+
+.card-r-t {
+    color:#323232;
+    font-size:26rpx;
+    line-height:37rpx;
+    text-align:right;
+}
+
+.card-r-t-b {
+    color:#3378f6;
+}
+
+.card-r-t-r {
+    color:#e43234;
+}
+
+.card-l {
+    color:#646464;
+    font-size:26rpx;
+    line-height:37rpx;
+    margin: 0 0 13rpx 0;
+}
+
+.card-r {
+    color:#323232;
+    font-size:26rpx;
+    line-height:37rpx;
+    text-align:right;
+    margin: 0 0 13rpx 0;
+}
+
+.fen-ge {
+    height: 1rpx;
+    border-bottom: 1rpx dashed #d8d8d8;
+    margin: 25rpx 0 30rpx 0;
+}
+
+.unbind-btn {
+    height: 90rpx;
+    line-height: 90rpx;
+    color:#3378f6;
+    font-size:30rpx;
+    text-align: center;
+}
+
+.mb-13 {
+    margin-bottom: 13rpx;
+}
+
+.mb-30 {
+    margin-bottom: 30rpx;
+}

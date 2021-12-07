@@ -1,0 +1,52 @@
+<!--pages/User/setting/eAccount/index.wxml-->
+<view class="eAccount flex-c">
+  <view class="payerAcBox flex-center">
+    <view class="payerAc flex-center flex-r">
+      <view class="payerText flex-center">
+        付款账户
+      </view>
+      <view class="payerInfo flex-c">
+        <text space="ensp">6217 *** **** 7109</text>
+        <view>农业银行</view>
+      </view>
+    </view>
+  </view>
+  <view class="payeeAcBox flex-center flex-c">
+    <view class="payeeAc flex-center flex-c">
+      <view class="payeeInfoBox flex-r">
+        <view class="payeeText flex-center">
+          收款账户
+        </view>
+        <view class="payeeInfo flex-c">
+          <text space="ensp" style="font-size:32rpx">6217 *** **** 7109</text>
+          <text space="ensp" style="font-size:25rpx">可用余额： 0.00 元</text>
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="amount flex-c">
+        <view class="amountText flex-center">
+          充值金额
+        </view>
+        <view class="amountInput flex-r">
+          <text space="ensp" class="payeeText flex-center">￥</text>
+          <van-cell-group>
+            <van-field v-model="value" autosize placeholder="请输入充值金额" />
+          </van-cell-group>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="tipsBox flex-center">
+   <view class="tips flex-r panel">
+    <view>大写金额</view>
+    <navigator url="/pages/User/setting/eAccount/large/index" hover-class="none">
+      <view style="color:green">如何大额充值</view>
+    </navigator>
+   </view>
+  </view>
+  <view class="buttonBox flex-center">
+    <navigator url="/111111" hover-class="none"><!--到验证码页面-->
+      <van-button type="default" size="normal"><text space="ensp">        确认        </text></van-button>
+    </navigator>
+  </view>
+</view>

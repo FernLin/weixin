@@ -1,0 +1,351 @@
+.foud-view {
+    padding: 0 30rpx;
+    box-sizing: border-box;
+
+    .foud-menu {
+        display: flex;
+        background-color: #fff;
+        margin: 20rpx 0;
+        box-sizing: border-box;
+        padding: 43rpx 0 36rpx 0;
+
+        .foud-menu-item {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            image {
+                width: 50rpx;
+                height: 50rpx;
+            }
+
+            .item-content {
+                font-size: 24rpx;
+                margin-top: 19rpx;
+            }
+        }
+    }
+
+    .notice {
+        font-size: 26rpx;
+        margin: 20rpx 0;
+        background-color: #fff;
+        padding: 15rpx;
+    }
+
+    .ad-swipe {
+        margin-top: 20rpx;
+        padding: 20rpx;
+        height: 200rpx;
+        swiper{
+            height: 100%;
+        }
+
+        .swiper-item {
+            height: 100%;
+            width: 100%;
+            background-color: #FEF1E5;
+            .ad_banner{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+
+    }
+
+    .foud-swipe {
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 45rpx 0;
+
+            .text {
+                font-size: 32rpx;
+                font-weight: bold;
+            }
+
+            .more {
+                image{
+                    width: 32rpx;
+                    height: 8rpx;
+                }
+            }
+        }
+
+        .content {
+            height: 357rpx;
+
+            swiper {
+                height: 100%;
+            }
+
+            .swiper-item {
+                height: 100%;
+                position: relative;
+                box-sizing: border-box;
+                background-color: #FEF1E5;
+
+                .foud-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .name {
+                        padding: 32.5rpx 0;
+                        font-size: 32rpx;
+                        color: rgba(99, 62, 17, 1);
+
+                    }
+
+                    .earning {
+                        display: flex;
+
+                        .money {
+                            margin: 0 50rpx;
+                            text-align: center;
+
+                            .num {
+                                color: rgba(215, 11, 48, 1);
+                                font-size: 42rpx;
+                                white-space: nowrap;
+                            }
+
+                            .text {
+                                color: rgba(150, 117, 77, 1);
+                                font-size: 24rpx;
+                                margin-top: 10rpx;
+                            }
+                        }
+                    }
+
+                    .btn {
+                        width: 480rpx;
+                        height: 68rpx;
+                        line-height: 68rpx;
+                        color: #fff;
+                        background: linear-gradient(to left, rgba(209, 47, 55, 1) 0%, rgba(242, 82, 65, 1) 100%);
+                        font-size: 30rpx;
+                        border-radius: 34rpx;
+                        text-align: center;
+                        margin-top: 40rpx;
+                    }
+                }
+
+                .bac {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .foud-select {
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 45rpx 0;
+
+            .text {
+                font-size: 32rpx;
+                font-weight: bold;
+            }
+
+            .more {
+                image{
+                    width: 32rpx;
+                    height: 8rpx;
+                }
+            }
+        }
+
+        .foud-select-list {
+            background: #fff;
+            border-radius: 20rpx;
+
+            .foud-select-view {
+                display: flex;
+
+                padding: 30rpx;
+
+                .rate {
+                    margin-right: 59rpx;
+
+                    .num {
+                        font-size: 40rpx;
+                        color: rgba(215, 11, 48, 1)
+                    }
+
+                    .text {
+                        margin-top: 10rpx;
+                        color: rgba(150, 150, 150, 1);
+                        font-size: 26rpx;
+                    }
+                }
+
+                .info {
+                    margin-right: 15rpx;
+
+                    .name {
+                        color: rgba(50, 50, 50, 1);
+                        font-size: 30rpx;
+                    }
+
+                    .code {
+                        margin-top: 10rpx;
+                        font-size: 26rpx;
+                        color: rgba(100, 100, 100, 1);
+                    }
+                }
+
+                .type {
+                    height: 38rpx;
+                    text-align: center;
+                    line-height: 38rpx;
+                    padding: 0 17rpx;
+                    color: rgba(250, 97, 40, 1);
+                    background: rgba(255, 236, 223, 1);
+                    font-size: 22rpx;
+                    border-radius: 5rpx;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
+
+.foud-postion {
+    padding: 0 30rpx;
+    box-sizing: border-box;
+
+    .card {
+        width: 100%;
+        height: 262rpx;
+        background: linear-gradient(to left, rgba(209, 47, 55, 1) 0%, rgba(242, 82, 65, 1) 100%);
+        position: relative;
+        color: rgba(255, 255, 255, 1);
+        border-radius: 20rpx;
+        box-sizing: border-box;
+        padding: 23rpx 0 0 30rpx;
+        margin-top: 22rpx;
+
+        .all_money {
+            margin-bottom: 20rpx;
+
+            .text {
+                font-size: 26rpx;
+            }
+
+            .num {
+                font-size: 42rpx;
+                font-weight: 600;
+                margin-top: 10rpx;
+            }
+        }
+
+        .incomes {
+            display: flex;
+
+            .icome_view {
+                margin-right: 70rpx;
+
+                .text {
+                    font-size: 26rpx;
+                    white-space: nowrap;
+                }
+
+                .num {
+                    font-weight: 600;
+                    font-size: 32rpx;
+                    margin-top: 5rpx;
+                }
+            }
+        }
+    }
+
+    .foud-menu {
+        display: flex;
+        background-color: #fff;
+        margin: 20rpx 0;
+        box-sizing: border-box;
+        padding: 43rpx 0 36rpx 0;
+
+        .foud-menu-item {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            image {
+                width: 50rpx;
+                height: 50rpx;
+            }
+
+            .item-content {
+                font-size: 24rpx;
+                margin-top: 19rpx;
+            }
+        }
+    }
+
+    .cell {
+        margin: 20rpx 0;
+        padding: 0 30rpx;
+        height: 68rpx;
+        line-height: 68rpx;
+        display: flex;
+        font-size: 26rpx;
+        background: #fff;
+        border-radius: 10rpx;
+        justify-content: space-between;
+    }
+
+    .postion_list {
+        background: #fff;
+        border-radius: 10rpx;
+
+        .postion_list_view {
+            padding: 30rpx;
+
+            .name {
+                color: rgba(51, 51, 51, 1);
+                font-size: 28rpx;
+            }
+
+            .money {
+                margin-top: 24rpx;
+                display: flex;
+
+                .money_item {
+                    margin-right: 79rpx;
+
+                    .num {
+                        font-weight: bold;
+                        font-size: 36rpx;
+                        color: rgba(50, 50, 50, 1);
+                    }
+
+                    .text {
+                        color: rgba(150, 150, 150, 1);
+                        font-size: 24rpx;
+                        white-space: nowrap;
+                    }
+
+                    .up {
+                        color: rgba(199, 22, 30, 1);
+                    }
+
+                    .down {
+                        color: rgba(106, 191, 71, 1);
+                    }
+                }
+            }
+        }
+    }
+}

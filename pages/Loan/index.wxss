@@ -1,0 +1,142 @@
+/* pages/loan/index.wxss */
+.top-png{
+    width: 100%;
+    height:200rpx;
+}
+
+.loan-title {
+    font-weight:700;
+    color:#323232;
+    font-size:32rpx;
+    line-height:46rpx;
+    margin-right: 26rpx;
+}
+.loan-t-r {
+    color:#969696;
+    font-size:26rpx;
+    line-height:37rpx;
+}
+
+.loan-item {
+    background-color:#ffffff;
+    border-radius:12rpx;
+}
+
+.loan-icon {
+    opacity:1;
+    width:200rpx;
+    height:180rpx;
+    bottom: 0;
+    right: 18rpx;
+}
+
+.loan-name {
+    font-weight:500;
+    color:#323232;
+    font-size:30rpx;
+    line-height:44rpx;
+    margin-right: 25rpx;
+}
+
+.loan-type {
+    margin-right: 12rpx;
+    height:40rpx;
+    border:1px solid;
+    border-color:#eb5f00;
+    color: #eb5f00;
+    border-radius:8rpx;
+    line-height: 40rpx;
+    padding: 0 10rpx;
+    font-size: 26rpx;
+}
+
+.loan-quota {
+    font-weight:900;
+    color:#d70b30;
+    font-size:52rpx;
+    line-height:64rpx;
+}
+
+.loan-quota-t {
+    color:#969696;
+    font-size:26rpx;
+    line-height:36rpx;
+    margin-top: 6rpx;
+}
+
+.loan-rate {
+    font-weight:700;
+    color:#323232;
+    font-size:42rpx;
+    line-height:64rpx;
+}
+  
+.bottom-card {
+    background-color: #FFF;
+    border-radius: 20rpx;
+}
+
+.mt-18 {
+    margin-top: 18rpx;
+}
+
+.card-l {
+    width:300rpx;
+    height:195rpx;
+    background-image:linear-gradient(180deg,#fff4f0 0%,#ffffff 100%);
+    border-radius:8rpx;
+    color:#f45555;
+}
+
+.card-r {
+    width:300rpx;
+    height:195rpx;
+    background-image:linear-gradient(180deg,#eff7ff 0%,#ffffff 100%);
+    border-radius:8rpx;
+    color:#4186f5;
+}
+
+.card-title {
+    font-weight:500;
+    font-size:26rpx;
+    line-height:37rpx;
+    margin-top: 25rpx;
+}
+
+.card-type {
+    font-size:22rpx;
+    line-height:32rpx;
+}
+
+.card-btn-l {
+    width:140rpx;
+    height:40rpx;
+    border:1rpx solid;
+    border-color:#f45555;
+    border-radius:25rpx;
+    margin-left: 80rpx;
+
+    font-weight:500;
+    font-size:22rpx;
+    line-height:40rpx;
+    margin-top: 27rpx;
+}
+
+.card-btn-r {
+    width:140rpx;
+    height:40rpx;
+    border:1rpx solid;
+    border-color:#4186f5;
+    border-radius:25rpx;
+    margin-left: 80rpx;
+
+    font-weight:500;
+    font-size:22rpx;
+    line-height:40rpx;
+    margin-top: 27rpx;
+}
+
+.ml-175 {
+    margin-left: 175rpx;
+  }
+  

@@ -1,0 +1,49 @@
+.select_view {
+  margin: 20rpx 0;
+}
+.history_record .history_record_item {
+  background-color: #fff;
+  padding: 30rpx;
+}
+.history_record .history_record_item .line {
+  display: flex;
+  align-items: center;
+}
+.history_record .history_record_item .line .trade_type {
+  font-size: 26rpx;
+  color: #fff;
+  background-color: #e43234;
+  margin-right: 16rpx;
+  height: 38rpx;
+  width: 86rpx;
+  line-height: 38rpx;
+  text-align: center;
+  border-radius: 19rpx;
+}
+.history_record .history_record_item .line .name {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.history_record .history_record_item .line .card {
+  margin-left: auto;
+  color: #646464;
+  font-size: 26rpx;
+}
+.history_record .history_record_item .line .num {
+  font-size: 36rpx;
+  color: #323232;
+}
+.history_record .history_record_item .line .time {
+  margin-left: auto;
+  font-size: 30rpx;
+}
+.history_record .history_record_item .line .status {
+  font-size: 22rpx;
+  margin-left: auto;
+  padding: 8rpx 10rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 5rpx;
+}
+.history_record .history_record_item .line2 {
+  margin: 25rpx 0 15rpx ;
+}

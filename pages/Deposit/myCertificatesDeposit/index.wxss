@@ -1,0 +1,20 @@
+/* pages/Deposit/myCertificatesDeposit/index.wxss */
+.myCertificatesDeposit {
+  border: solid 2rpx #eee;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.list {
+  align-items: center;
+  padding: 20rpx;
+}
+
+.bottom {
+  padding: 0 20rpx;
+}
+
+.lab {
+  background: red;
+  font-size: 24rpx;
+}

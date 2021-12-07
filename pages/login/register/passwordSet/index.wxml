@@ -1,0 +1,20 @@
+<!--pages/login/passwordSet/index.wxml-->
+<view class="p-20 flex-c login">
+  <view class="p-20 mt-20 tag" bindtap="toRegister">
+    注：登录密码为8-16位数
+  </view>
+  <view class="flex input1 p-20">
+    <van-icon class="icon" name="bag-o" />
+    <input maxlength="16" type="text" password placeholder="请输入登录密码" class="flex1" bindinput="bindPassword" />
+  </view>
+  <view class="flex input1 p-20">
+    <van-icon class="icon" name="bag-o" />
+    <input maxlength="16" type="text" password placeholder="请重复输入登录密码" class="flex1" bindinput="bindPasswords" />
+  </view>
+
+  <view class="btn ">
+    <van-button round block color="linear-gradient(to left , orange, orangered)" bindtap="goSuccess">确认</van-button>
+  </view>
+
+
+</view>

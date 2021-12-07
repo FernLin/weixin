@@ -1,0 +1,25 @@
+.record_list {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+.record_list .record_item {
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ccc;
+}
+.record_list .record_item .line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+  font-size: 30rpx;
+}
+.record_list .record_item .line2 {
+  color: #333333;
+  font-size: 26rpx;
+  margin-top: 7rpx;
+}
+.record_list .record_item .failure {
+  color: #e43234;
+}

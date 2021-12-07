@@ -1,0 +1,23 @@
+/* pages/Sign/Verified/index.wxss */
+.btn {
+  width: 60%;
+  margin: 50rpx auto;
+}
+
+.img {
+  flex: 1;
+  border: solid 2rpx #eee;
+  margin: 20rpx;
+  height: 200rpx;
+}
+
+.title {
+  background: #f8f8f8;
+  text-align: center;
+  padding: 10rpx;
+}
+
+.van-checkbox {
+  display: flex;
+  align-items: flex-start !important;
+}

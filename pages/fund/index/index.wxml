@@ -1,0 +1,177 @@
+<view>
+    <van-nav-bar title="标题" left-text="返回" right-text="按钮" left-arrow bind:click-left="onClickLeft" />
+    <van-tabs active="{{ active }}" bind:change="onChange">
+        <van-tab title="基金产品">
+            <view class="foud-view">
+                <view class="foud-menu">
+                    <view class="foud-menu-item" data-menu='fundMarket' bindtap="goMenu">
+                        <image src="/assets/foud/market.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">基金超市</view>
+                    </view>
+                    <!-- <view class="foud-menu-item">
+                        <image src="/assets/foud/investment.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">定投专区</view>
+                    </view> -->
+                    <view class="foud-menu-item" data-menu='riskAssessment' bindtap="goMenu">
+                        <image src="/assets/foud/risk.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">风险评估</view>
+                    </view>
+                    <!-- <view class="foud-menu-item">
+                        <image src="/assets/foud/focus.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" data-menu='myFocus' bindtap="goMenu" />
+                        <view class="item-content">我的关注</view>
+                    </view> -->
+                </view>
+                <view class="notice">
+                    <van-icon name="fire-o" color="#ee0a24" />
+                    赣州银行个人手机银行在2021年正式上线啦～
+                </view>
+                <view class="ad-swipe">
+                    <swiper indicator-dots="{{true}}" autoplay="{{true}}">
+                        <swiper-item>
+                            <view class="swiper-item">
+                                <image src="/assets/foud/ad.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="ad_banner" />
+                            </view>
+                        </swiper-item>
+                    </swiper>
+                </view>
+                <view class="foud-swipe">
+                    <view class="title">
+                        <view class="text">货基专区</view>
+                        <view class="more">
+                            <image src="/assets/mainPage/more.png" class="more-css" />
+                        </view>
+                    </view>
+                    <view class="content">
+                        <swiper indicator-dots="{{true}}" autoplay="{{true}}">
+                            <swiper-item wx:for="{{ fundList }}" wx:key="index" bindtap="goDetail" data-prdcode='{{item.prdCode}}'>
+                                <!-- <image  class="bac" src="/assets/foud/foudbac.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /> -->
+                                <view class="swiper-item">
+                                    <view class="foud-info">
+                                        <view class="name">{{item.prdName}}（{{item.prdCode}}）</view>
+                                        <view class="earning">
+                                            <view class="money">
+                                                <view class="num">{{item.incomePerThousands}}</view>
+                                                <view class="text">万分收益率</view>
+                                            </view>
+                                            <view class="money">
+                                                <view class="num">{{item.incomePerThousands}}</view>
+                                                <view class="text">万分收益率</view>
+                                            </view>
+                                        </view>
+                                        <view class="btn">立即申请</view>
+                                    </view>
+                                </view>
+                            </swiper-item>
+                        </swiper>
+                    </view>
+                </view>
+                <view class="foud-select">
+                    <view class="title">
+                        <view class="text">精选基金</view>
+                        <view class="more">
+                            <image src="/assets/mainPage/more.png" class="more-css" />
+                        </view>
+                    </view>
+                    <view class="foud-select-list">
+                        <view class="foud-select-view" wx:for="{{ fundList }}" wx:key="index" bindtap="goDetail" data-prdcode='{{item.prdCode}}'>
+                            <view class="rate">
+                                <view class="num">{{item.threeMonthIncrease}}</view>
+                                <view class="text">近三月收益率</view>
+                            </view>
+                            <view class="info">
+                                <view class="name">{{item.prdName}}</view>
+                                <view class="code">{{item.prdCode}}</view>
+                            </view>
+                            <view class="type">{{item.prdSort?item.prdSort:'混合型'}}</view>
+                        </view>
+                    </view>
+                </view>
+                <!-- <view class="foud-select">
+                    <view class="title">
+                        <view class="text">定投专区</view>
+                        <view class="more">...</view>
+                    </view>
+                    <view class="foud-select-list">
+                        <view class="foud-select-view">
+                            <view class="rate">
+                                <view class="num">35.4%</view>
+                                <view class="text">近三月收益率</view>
+                            </view>
+                            <view class="info">
+                                <view class="name">XXXXXXXXXX基金</view>
+                                <view class="code">基金代码：932284</view>
+                            </view>
+                            <view class="type">混合型</view>
+                        </view>
+                    </view>
+                </view> -->
+            </view>
+        </van-tab>
+        <van-tab title="我的持仓">
+            <view class="foud-postion">
+                <view class="card">
+                    <view class="all_money">
+                        <view class="text">总金额(元)</view>
+                        <view class="num">{{myFundInfo.totalAmount}}</view>
+                    </view>
+                    <view class="incomes">
+                        <view class="icome_view">
+                            <view class="text">上日收益(元)</view>
+                            <view class="num">{{myFundInfo.incomeYesterday}}</view>
+                        </view>
+                        <view class="icome_view">
+                            <view class="text">持有收益(元)</view>
+                            <view class="num">{{myFundInfo.positionEarning}}</view>
+                        </view>
+                        <view class="icome_view">
+                            <view class="text">累计收益(元)</view>
+                            <view class="num">{{myFundInfo.accumulateEarning}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="foud-menu">
+                    <view class="foud-menu-item" data-menu='transactionRecord' bindtap="goMenu">
+                        <image src="/assets/foud/transaction.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">交易记录</view>
+                    </view>
+                    <view class="foud-menu-item" data-menu='myFixedPlan' bindtap="goMenu">
+                        <image src="/assets/foud/myfoud.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">我的定投</view>
+                    </view>
+                    <view class="foud-menu-item" data-menu='riskAssessment' bindtap="goMenu">
+                        <image src="/assets/foud/risk.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">风险评估</view>
+                    </view>
+                    <view class="foud-menu-item" data-menu='shareBonusSet' bindtap="goMenu">
+                        <image src="/assets/foud/fenhong.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                        <view class="item-content">分红设置</view>
+                    </view>
+                </view>
+                <view class="cell" bindtap='clickWay'>
+                    <view class="text">您有1笔交易正在确认中</view>
+                    <van-icon name="arrow" color="#ee0a24" />
+                </view>
+                <view class="postion_list">
+                    <view class="postion_list_view" bindtap='goHoldDetail' wx:for="{{ myFundInfo.fundList }}" wx:key="index" data-prdcode='{{item.prdCodeSeq}}'>
+                        <view class="name">{{item.prdName}}（{{item.prdCodeSeq}}）</view>
+                        <view class="money">
+                            <view class="money_item">
+                                <view class="num">{{item.totalAmount}}</view>
+                                <view class="text">总金额（元）</view>
+                            </view>
+                            <view class="money_item">
+                                <view class="num up">{{item.positionEarning}}</view>
+                                <view class="text">持有收益（元）</view>
+                            </view>
+                            <view class="money_item">
+                                <view class="num down">{{item.incomeYesterday}}</view>
+                                <view class="text">上日收益（元）</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+    <van-dialog id="van-dialog" />
+</view>

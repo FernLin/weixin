@@ -1,0 +1,41 @@
+<view class="m-30 bottom-safe">
+    <view class="flex jc-sb">
+        <view class="my-notice-t">我分享的动账通知</view>
+        <view class="my-notice-m">查看更多</view>
+    </view>
+    <view class="my-notice-info" wx:for="{{myShareList}}" wx:key="item">
+        <view class="flex jc-sb mb-13">
+            <view class="card-l mt-30">好友昵称</view>
+            <view class="card-r mt-30">{{item.signName}}</view>
+        </view>
+        <view class="flex jc-sb">
+            <view class="card-l mb-30">分享时间</view>
+            <view class="card-r mb-30">{{item.signDate}}</view>
+        </view>
+        <view class="fen-ge"></view>
+        <view class="unbind-btn">解绑</view>
+    </view>
+</view>
+
+<view class="m-30 bottom-safe">
+    <view class="flex jc-sb">
+        <view class="my-notice-t">分享给我的动账通知</view>
+        <view class="my-notice-m">查看更多</view>
+    </view>
+    <view class="my-notice-info" wx:for="{{otherShareList}}" wx:key="item">
+        <view class="flex jc-sb mb-13">
+            <view class="card-l mt-30">好友昵称</view>
+            <view class="card-r mt-30">{{item.signName}}</view>
+        </view>
+        <view class="flex jc-sb">
+            <view class="card-l mb-30">分享时间</view>
+            <view class="card-r mb-30">{{item.signDate}}</view>
+        </view>
+        <view class="fen-ge"></view>
+        <view class="unbind-btn">解绑</view>
+    </view>
+</view>
+
+<van-overlay show="{{ loading }}" class="loading">
+  <van-loading type="spinner" color="#1989fa"  />
+</van-overlay>

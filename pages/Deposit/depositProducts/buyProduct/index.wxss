@@ -1,0 +1,7 @@
+/* pages/Deposit/buyProduct/index.wxss */
+.flex1{
+  flex: 1;
+}
+.btn {
+  padding: 60rpx;
+}

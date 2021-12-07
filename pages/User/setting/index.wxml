@@ -1,0 +1,15 @@
+<!--pages/User/setting/index.wxml-->
+<view class="setting">
+  <view wx:if="{{false}}" calss="changePwdBox">
+    <view class="changePwd panel flex-center" bindtap="toUpdatePwd">
+      <text space="ensp" style="font-size:35rpx"> 修改手势密码</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="existBox flex-center" bindtap="toUser">
+    <view class="exist flex-center">
+      安全退出
+    </view>
+  </view>
+</view>

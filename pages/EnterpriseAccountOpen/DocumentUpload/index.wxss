@@ -1,0 +1,58 @@
+.content {
+    font-size: 30rpx;
+    color:#646464;
+}
+
+.card-title {
+    font-weight:500;
+    color:#333333;
+    font-size:32rpx;
+    line-height:48rpx;
+    padding: 30rpx 0 9rpx 30rpx;
+}
+
+.up-png {
+    width:320rpx;
+    height:248rpx;
+    margin: 40rpx 0 54rpx 0;
+}
+
+.upload-icon {
+    width:22rpx;
+    height:24rpx;
+}
+
+.delete-png {
+    width:40.33rpx;
+    height:40.33rpx;
+    top: 35rpx;
+    left: 320rpx;
+}
+
+.delete-png-r {
+    left: 290rpx;
+}
+
+.item-name {
+    color:#969696;
+    font-size:24rpx;
+    line-height:25.6rpx;
+    left: 102rpx;
+    bottom: 90rpx;
+}
+
+.item-name-l {
+    left: 79rpx !important;
+}
+
+.item-name-r {
+    left: 49rpx !important;
+}
+
+.ml-30 {
+    margin-left: 30rpx;
+}
+
+.mr-30 {
+    margin-right: 30rpx;
+}

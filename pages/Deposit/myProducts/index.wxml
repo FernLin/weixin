@@ -1,0 +1,62 @@
+<!--pages/Deposit/myProducts/index.wxml-->
+<view class="flex-c ai-c  m-20 p-20 border-r bg-o txt-w">
+  <view class="flex mt-20 ">
+    <view>总持仓</view>
+    <van-icon name="eye" style="margin-left:30rpx" bindtap="eyeclick" />
+  </view>
+  <view class=" mt-20 fw-b txt-30">{{totalPosition}}</view>
+  <view class="flex tag txt-w mt-20 ">
+    <view class="mt-20 p-lr-10">当前持有参考收益(元)</view>
+    <view class="mt-20 p-lr-10">+{{totalRevenue}}</view>
+  </view>
+</view>
+<view bindtap="goNext">
+  <van-cell title="历史交易" icon="todo-list-o" is-link />
+</view>
+<view class="m-20">银行定期</view>
+<view wx:for="{{depositBalanceList}}" wx:key="index" data-list="{{item}}"
+  class="flex-c myCertificatesDeposit mt-50 m-20 box-s" bindtap="goNext1">
+  <view class="flex panelitem">
+    <view>{{item.productName}}</view>
+    <!-- <van-tag color="red" text-color="#fff" type="danger">转让中</van-tag> -->
+  </view>
+  <view class="flex panelitem  ">
+    <view class="txt-b fw-b mt-20">卡号{{item.accountNoName}}</view>
+    <view class="tag mt-20">{{item.interestDueDate}}到期</view>
+  </view>
+  <view class="flex panelitem ">
+    <view class="flex-c list">
+      <view class="txt-o fw-b ">{{item.principal}}</view>
+      <view class="tag">持有本金(元)</view>
+
+    </view>
+    <view class="flex-c list">
+      <view class="txt-r fw-b ">{{item.totalInsterest}}</view>
+      <view class="tag">持有收益(元)</view>
+    </view>
+  </view>
+</view>
+<view class="m-20">大额存单</view>
+<view wx:for="{{largeDepositBalanceList}}" wx:key="index" data-list="{{item}}"
+  class="flex-c myCertificatesDeposit mt-50 m-20 box-s" bindtap="goNext1">
+  <view class="flex panelitem">
+    <view>{{item.productName}}</view>
+    <!-- <van-tag color="red" text-color="#fff" type="danger">转让中</van-tag> -->
+  </view>
+  <view class="flex panelitem  ">
+    <view class="txt-b fw-b mt-20">卡号{{item.accountNoName}}</view>
+    <view class="tag mt-20">{{item.interestDueDate}}到期</view>
+  </view>
+  <view class="flex panelitem ">
+    <view class="flex-c list">
+      <view class="txt-o fw-b ">{{item.principal}}</view>
+      <view class="tag">持有本金(元)</view>
+
+    </view>
+    <view class="flex-c list">
+      <view class="txt-r fw-b ">{{item.totalInsterest}}</view>
+      <view class="tag">持有收益(元)</view>
+    </view>
+  </view>
+</view>
+<view class="flex jc-c tag txt-b p-20" bindtap="goNext4">想再买点？去金融超市看看>></view>

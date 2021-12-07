@@ -1,0 +1,26 @@
+/* pages/accountManage/electronicOpenAccount/index.wxss */
+.btn {
+  width: 60%;
+  margin: 50rpx auto;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.img {
+  border: solid 2rpx #eee;
+  height: 200rpx;
+  width: 100%;
+}
+
+.title {
+  background: #f8f8f8;
+  text-align: center;
+  padding: 10rpx;
+}
+
+.van-checkbox {
+  display: flex;
+  align-items: flex-start !important;
+}

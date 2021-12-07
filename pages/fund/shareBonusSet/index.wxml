@@ -1,0 +1,13 @@
+<!--pages/foud/shareBonusSet/index.wxml-->
+<view class="r-v"></view>
+<view class="flex jc-sb set-info" bindtap="goSet"  wx:for="{{ shareList }}"  wx:key="index" data-prdinfo='{{item}}'>
+  <view>
+    <view class="v-n">{{item.prdName}}</view>
+    <view class="flex">
+      <view class="v-l">当前分红方式</view>
+      <view class="v-r">{{item.dividendMode}}</view>
+    </view>
+  </view>
+  <van-icon name="arrow" class="arrow" bindtap="goSet"/>
+</view>
+

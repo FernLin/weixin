@@ -1,0 +1,28 @@
+.content {
+    font-size: 30rpx;
+    color:#646464;
+}
+
+.input1 {
+    border-bottom: solid 2rpx #eee;
+    height: 100rpx;
+    box-sizing: border-box;
+}
+
+.card-title {
+    font-weight:500;
+    color:#333333;
+    font-size:32rpx;
+    line-height:48rpx;
+    padding: 30rpx 0 9rpx 30rpx;
+}
+
+.wen-xin {
+    color:#969696;
+    font-size:24rpx;
+    line-height:35rpx;
+}
+
+.mr-30 {
+    margin-right: 30rpx;
+}

@@ -1,0 +1,8 @@
+<!--pages/Loan/faceAuth/index.wxml-->
+<view class="container">
+  <view class="auth-panel">
+    <image src="../../../assets/Loan/face-auth.png" class="auth-icon" />
+    <text class="auth-title">我们需对您的身份进行验证，请移步至光线充足的位置，点击下一步开始人脸认证。</text>
+  </view>
+  <view class="primary-btn" bindtap="handleNext">下一步</view>
+</view>

@@ -1,0 +1,59 @@
+.content {
+    font-size: 30rpx;
+    color:#646464;
+}
+
+.input1 {
+    border-bottom: solid 2rpx #eee;
+    height: 100rpx;
+    box-sizing: border-box;
+}
+
+.card-title {
+    font-weight:500;
+    color:#333333;
+    font-size:32rpx;
+    line-height:48rpx;
+    padding: 30rpx 0 9rpx 30rpx;
+}
+
+radio .wx-radio-input{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 18rpx;
+}
+
+radio-group label:first-child {
+    margin-right: 78rpx;
+}
+
+/*  重写 checkbox 样式  */
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input{
+    border-radius: 50%;/* 圆角 */
+    width: 32rpx; /* 背景的宽 */
+    height: 32rpx; /* 背景的高 */
+    margin-right: 18rpx;
+}
+ /* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+    border: none;
+    background: #f4333c;
+}
+ /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+    border-radius: 50%;/* 圆角 */
+    width: 32rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+    height: 32rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+    line-height: 32rpx;
+    text-align: center;
+    font-size:30rpx; /* 对勾大小 30rpx */
+    color:#fff; /* 对勾颜色 白色 */
+    background: transparent;
+    transform:translate(-50%, -50%) scale(1);
+    -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+.mr-30 {
+    margin-right: 30rpx;
+}

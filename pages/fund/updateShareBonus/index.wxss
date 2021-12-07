@@ -1,0 +1,46 @@
+/* pages/foud/updateShareBonus/index.wxss */
+
+.set-info{
+  background: #FFF;
+  font-family:PingFang SC;
+  color:#646464;
+  height: 280rpx;
+  font-size:30rpx;
+  line-height:42rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.line {
+  margin: 0 auto;
+  width: 92%;
+  height: 1rpx;
+  background-color: #D8D8D8;
+}
+.v-n{
+  font-family: PingFang SC;
+  color: #333333;
+  font-size: 30rpx;
+  margin-bottom: 5rpx;
+}
+.v-l{
+  color: #999999;
+  font-size: 24rpx;
+}
+.arrow{
+  color: #c8c8c8;
+}
+.hint{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fdf4ec;
+  height: 72rpx;
+  font-size: 26rpx;
+  color: #f86e21;
+}
+.v-info{
+  margin-left: 20rpx;
+}
+.van-radio{
+  height: 140rpx;
+}

@@ -1,0 +1,76 @@
+/* pages/Loan/branch/branchList/index.wxss */
+page {
+  background-color: rgb(248, 248, 248);
+  height: 100%;
+}
+
+.branch-select-header {
+  height: 112rpx;
+  width: 750rpx;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.branch-positon {
+  margin: 40rpx 35rpx;
+  color: #323232;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+.city-position {
+  width: 24rpx;
+  height: 29rpx;
+  margin-right: 16rpx;
+}
+.search-container {
+  margin-right: 30rpx;
+  flex-grow: 1;
+  height: 72rpx;
+  background-color: #f7f7f7;
+  border-radius: 336rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 24rpx
+}
+.search-icon {
+  color: rgb(200, 200, 200);
+}
+.branch-search {
+  margin-left: 16rpx;
+  font-size: 28rpx;
+  flex-grow: 1;
+}
+
+.branch-list-container {
+  height: calc(100vh - 122rpx);
+  position: fixed;
+  bottom: 10rpx;
+}
+.branch-box {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 30rpx;
+}
+.box-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rpx;
+}
+.branch-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+.branch-distant {
+  font-size: 28rpx;
+  color: #e43234;
+}
+.branch-address {
+  font-size: 24rpx;
+  color: #999999;
+}

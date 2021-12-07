@@ -1,0 +1,53 @@
+<!--pages/foud/fundRedemption/index.wxml-->
+<view class="card-info height-170">
+  <view class="flex jc-sb f-info">
+    <view class="fund-name">{{fundInfo.prdName}}</view>
+    <view class="f-r">赎回规则</view>
+  </view>
+  <view class="fund-info">
+    <view class="fund-code-n">基金代码</view>
+    <view>{{fundInfo.prdCodeSeq}}</view>
+  </view>
+</view>
+
+<view class="card-info manager-text">
+  <view class="flex input1 jc-sb ta-p">
+    交易账户
+    <input bindinput="" gesturetype="text" class="ta-r input-c333" value="{{trsAccount}}" disabled="true" />
+  </view>
+</view>
+
+<view class="card-info height-179">
+  <view class="flex jc-sb part-p">
+    <view class="f-part">赎回份额</view>
+    <view class="f-all" bindtap='allRed'>全部赎回</view>
+  </view>
+  <view class="flex jc-sb f-info">
+    <input bindinput="changeRedeem" placeholder="最低为1份" gesturetype="text" placeholder-class="p-c" model:value="{{redeemShares}}" type="number" />
+    <view class="rate">费率：0.120%</view>
+  </view>
+</view>
+
+<view class="card-info">
+  <view class="flex input1 jc-sb ta-p">
+    预计赎回金额
+    <view class="flex ta-r w-80">
+      <input type="number" bindinput="" gesturetype="text" class="ta-r input-c333" value="6666元" disabled="true" value="{{fundInfo.totalAmount}}"/>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="flex jc-sb ta-p">
+    <view class="l-t">如遇巨额赎回</view>
+    <view class="flex w-70" bindtap="changeBankCard">
+      <!-- <text>{{cardInfo.acNoHidden}}</text> -->
+      <text class="continue">继续</text>
+      <van-icon name="arrow" class="arrow"/>
+    </view>
+  </view>
+</view>
+
+<view class="next-step" bindtap="showPwdWrap">赎回</view>
+
+<view class="hint">
+  温馨提示：巨额赎回是指当开放式基金的当日净赎回量（赎回申请总数扣除申购申请总数后的余额）超过基金规模的10%时，基金管理人可以在接受赎回比例不低于基金总规模10%的情况下，对其余的赎回申请延期办理。基金投资者在办理赎回申请时，需在连续赎回和取消赎回两种方式中选择该赎回申请的巨额赎回处理方式。
+</view>

@@ -1,0 +1,57 @@
+<view class="m-20">
+	请保持拍摄的身份证四周可见且图片清晰
+</view>
+<view class="flex">
+	<image class="img" src="../../../assets/hjmm1.jpg" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+	<image class="img" src="../../../assets/hjmm2.jpg" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+</view>
+<view class="title ">
+	身份证信息确认
+</view>
+
+<van-cell-group>
+	<van-field label="姓名" placeholder="请输入姓名" model:value="{{ value }}" hold-keyboard="{{true}}" />
+	<van-field label="身份证号" placeholder="请输入身份证号" model:value="{{ value }}" hold-keyboard="{{true}}" />
+
+	<van-field label="性别" placeholder="请选择性别" model:value="{{ value }}" bind:click-input="showPopup"
+		hold-keyboard="{{true}}" />
+	<van-popup position="bottom" show="{{ show }}" bind:close="onClose">
+		<van-picker show-toolbar bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{ columns }}"
+			bind:change="onChange" />
+	</van-popup>
+
+	<van-field label="身份证有效期" placeholder="请输入身份证有效期" model:value="{{ value }}" hold-keyboard="{{true}}" />
+	<van-field label="家庭住址" placeholder="请输入家庭住址" model:value="{{ value }}" hold-keyboard="{{true}}" />
+
+	<van-field label="行业" placeholder="请输入行业" model:value="{{ value }}" bind:click-input="showPopup"
+		hold-keyboard="{{true}}" />
+	<van-popup position="bottom" show="{{ show }}" bind:close="onClose">
+		<van-picker show-toolbar bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{ columns }}"
+			bind:change="onChange" />
+	</van-popup>
+
+	<van-field label="职业" placeholder="请输入职业" model:value="{{ value }}" bind:click-input="showPopup"
+		hold-keyboard="{{true}}" />
+	<van-popup position="bottom" show="{{ show }}" bind:close="onClose">
+		<van-picker show-toolbar bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{ columns }}"
+			bind:change="onChange" />
+	</van-popup>
+
+	<van-field label="最高学历" placeholder="请选择最高学历" model:value="{{ value }}" bind:click-input="showPopup"
+		hold-keyboard="{{true}}" />
+	<van-popup position="bottom" show="{{ show }}" bind:close="onClose">
+		<van-picker show-toolbar bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{ columns }}"
+			bind:change="onChange" />
+	</van-popup>
+</van-cell-group>
+<view class="m-20 tag  ">
+	<van-checkbox icon-class="checkbox" value="{{ checked }}" bind:change="onChangeChecked">
+		<view class="txt-b">我已阅读并同意<text class="txt-o">《银行账户委托协议授权书》《银行账户委托协议授权书》《银行账户委托协议授权书》《银行账户委托协议授权书》</text>
+		</view>
+	</van-checkbox>
+</view>
+
+
+<view class="btn">
+	<van-button block type="default" bindtap="goBankCardSupport">下一步</van-button>
+</view>

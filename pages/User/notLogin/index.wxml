@@ -1,0 +1,75 @@
+<!--pages/User/notLogin/index.wxml-->
+<view class="user">
+  <view class="userInfo">
+    <view class="headImg flex-center">
+      <view class="headImgCircle flex-center">
+        <image style="height:100rpx;width:100rpx;border-radius:50%" src="{{user.headImageUrl}}"/>
+      </view>
+    </view>
+    <view class="otherInfo">
+     <view class="name" style="font-size:32rpx;color:green">点击登录</view>
+     <view class="loginTime" style="font-size:20rpx;color:rgb(208,171,171)">登录后可查询个人资产负债</view>
+    </view>
+    <view class="flex-center">
+      <view class="settingImg flex-center">
+        <navigator url="/pages/User/setting/index" hover-class="none">
+          <image style="height:60rpx;width:60rpx" src="/assets/user/setting.png"/>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <navigator url="" hover-class="none">
+    <view class="finantialInfo">
+      <view class="myFinatialTitleBox">
+        <view class="myFinatialTitle panel">
+          <view class="flex-r">
+            <view style="font-weight:bold;font-size:35rpx">我的资产</view>
+            <van-icon name="eye" style="margin-left:5rpx"/>
+          </view>
+          <van-icon name="arrow" style="margin-right:40rpx"/>
+        </view>
+      </view>
+      <view class="myFinatialBox">
+        <view class="myFinatialView">
+          <view class="myFinatial">
+            <view class="finatialInfoBox">
+              <view style="text-align:center;font-size:24rpx">总资产(元)</view>
+              <view style="text-align:center;font-size:40rpx">--</view>
+            </view>
+          </view>
+          <view class="myFinatial">
+            <view class="finatialInfoBox">
+              <view style="text-align:center;font-size:24rpx">总收益(元)</view>
+              <view style="text-align:center;font-size:40rpx">--</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+  <view class="flex-c myrightBox">
+		<view class="flex panel">
+			<view class="flex">
+				<view class="childTitle">
+					我的权益
+				</view>
+			</view>
+			<view class="flex tag" style="margin-right:50rpx">
+				<view style="font-size:32rpx;color:black">
+					更多
+				</view>
+			</view>
+		</view>
+		<view class="myrightImgBox">
+			<view class="myrightImgBox1">
+        <view class="myrightImg flex-center">
+          <van-icon name="photo-o"/>
+        </view>
+        <view class="myrightImg flex-center">
+          <van-icon name="photo-o"/>
+        </view>
+      </view>
+		</view>
+	</view>
+  <view class="bottom"></view>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/Sign/index.wxml-->
+<view class="Sign">
+	<van-tabs swipeable active="a" tab-class="tabs" color="#ff4500" title-active-color="#ff4500" line-width="300rpx">
+		<van-tab title="电子账户开户" name="a">
+			<view class="tabsbox">
+				<view class="p-tb">线上快速开通电子账户,可购买储蓄存款以及理财产品。支持绑定银行一类账户</view>
+				<view class="btn">
+					<van-button block type="default" bindtap="goVerified">下一步</van-button>
+				</view>
+			</view>
+		</van-tab>
+		<van-tab title="绑定银行卡" name="a">
+			<view class="tabsbox">
+				<view class="p-tb">绑定银行卡，支持余额查询、交易明细查询等操作。如需购买产品，请开通电子账户</view>
+				<view class="btn">
+					<van-button block type="default" bindtap="goBankCardInfo">下一步</van-button>
+				</view>
+			</view>
+		</van-tab>
+	</van-tabs>
+</view>

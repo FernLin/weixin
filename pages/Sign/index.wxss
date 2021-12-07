@@ -1,0 +1,26 @@
+/* pages/Sign/index.wxss */
+.Sign {
+  font-size: 24rpx;
+}
+
+.tabs {
+  font-size: 40rpx !important;
+}
+
+.p-tb {
+  padding: 100rpx 0;
+}
+
+.btn {
+  width: 60%;
+}
+
+.tabsbox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 100rpx;
+  box-sizing: border-box;
+}

@@ -1,0 +1,56 @@
+<view>
+    <!-- <van-nav-bar title="基金超市" left-text="返回" right-text="按钮" left-arrow bind:click-left="onClickLeft" /> -->
+    <view class="product_detail">
+        <view class="product_detail_header">
+            <view class="name">{{prdInfo.prdName}}（{{prdInfo.prdCode}}）</view>
+            <view class="info">
+                <view class="income">
+                    <view class="num">3.07%</view>
+                    <view class="gray_text">近一年收益率</view>
+                </view>
+                <view class="income">
+                    <view class="num">1.3462</view>
+                    <view class="gray_text">最新净值</view>
+                </view>
+            </view>
+            <view class="info2">
+                <view class="type">{{prdInfo.prdSort}}</view>
+                <view class="risk type">{{prdInfo.riskLevel}}</view>
+                <view class="detailbtn">
+                    基金资料
+                    <van-icon name="arrow" color="rgba(1, 122, 255, 1)" />
+                </view>    
+            </view>
+        </view>
+        <view class="product_detail_pic">
+            <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph"ec="{{ ec }}"></ec-canvas>
+            <view class="tips gray_text">估值仅供参考，实际涨跌幅以基金净值为准</view>
+        </view>
+        <view class="product_detail_history">
+            <view class="title">历史净值</view>
+            <view class="header">
+                <view class="item">日期</view>
+                <view class="item">单位净值</view>
+                <view class="item">累计净值</view>
+                <view class="item">日涨幅</view>
+            </view>
+            <view class="content">
+                <view class="view" wx:for="{{ prdInfo.historyNetWorthList }}"  wx:key="index">
+                    <view class="item">{{item.date}}</view>
+                    <view class="item">{{item.unitNetWorth}}</view>
+                    <view class="item">{{item.accumulativeNetWorth}}</view>
+                    <view class="item">{{item.dailyIncrease}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="product_detail_btn">
+            <!-- <view class="focus">
+                <van-icon name="star-o" />
+                <view>关注</view>
+            </view> -->
+            <view class="investment btn" bindtap='guAutoMatic'>定投</view>
+            <view class="buy btn" bindtap='goBuy'>购买</view>
+        </view>
+    </view>
+     <van-dialog id="van-dialog" />
+</view>

@@ -1,0 +1,8 @@
+<!--pages/Sign/gesturePasswordSetting/index.wxml-->
+<view class="gesturePasswordSetting flex-c mt-50">
+	<view>
+		请绘制手势密码
+	</view>
+	<image class="" src="../../../assets/tabbar1.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror=""
+		bindload="" />
+</view>

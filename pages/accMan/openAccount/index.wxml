@@ -1,0 +1,53 @@
+<!--pages/accountManage/electronicOpenAccount/index.wxml-->
+<view class="m-20">
+	请保持拍摄的身份证四周可见且图片清晰
+</view>
+<view class="flex">
+	<view class="flex1 m-20">
+		<ocr-navigator bind:onSuccess="idCard" certificateType="idCard" opposite="{{false}}">
+			<image class="img" src="{{image_path[0]}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+		</ocr-navigator>
+	</view>
+	<view class="flex1  m-20">
+		<ocr-navigator bind:onSuccess="idCard" certificateType="idCard" opposite="{{true}}">
+			<image class="img" src="{{image_path[1]}} " mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+		</ocr-navigator>
+	</view>
+
+</view>
+<view class="title ">
+	身份证信息确认
+</view>
+{{detail}}
+<van-cell-group>
+	<van-field  label="姓名" placeholder="反显姓名" model:value="{{ userName }}" hold-keyboard="{{true}}" />
+	<van-field   label="性别" placeholder="反显性别" model:value="{{ genderName}}" />
+	<van-field  label="身份证号" placeholder="反显身份证号" model:value="{{ idNo }}" hold-keyboard="{{true}}" />
+	<van-field  label="有效期" placeholder="反显身份证有效期" model:value="{{idNoValidDate }}{{ idNoFailureDate}}" />
+	<van-field label="家庭住址" placeholder="请输入家庭住址" model:value="{{ address }}" hold-keyboard="{{true}}" />
+	<view class="bg-h"></view>
+	
+	<picker bindchange="tradePicker" range="{{trades}}">
+		<van-field is-link arrow-direction="down" readonly label="行业" placeholder="请输入行业" model:value="{{ trade}}" />
+	</picker>
+	<van-field label="职业名称" placeholder="请输入职业名称" model:value="{{ workUnit }}" hold-keyboard="{{true}}" />
+	<picker bindchange="professionPicker" range="{{professions}}">
+		<van-field is-link arrow-direction="down" readonly label="职业" placeholder="请输入职业" model:value="{{ profession}}" />
+	</picker>
+
+	<picker bindchange="educationPicker" range="{{educations}}">
+		<van-field is-link arrow-direction="down" readonly label="最高学历" placeholder="请选择最高学历"
+			model:value="{{ education}}" />
+	</picker>
+	
+
+</van-cell-group>
+<view class="m-20 tag  ">
+	<van-checkbox icon-class="checkbox" value="{{ checked }}" bind:change="onChangeChecked">
+		<view class="txt-b">我已阅读并同意<text class="txt-o">《银行账户委托协议授权书》《银行账户委托协议授权书》《银行账户委托协议授权书》《银行账户委托协议授权书》</text>
+		</view>
+	</van-checkbox>
+</view>
+<view class="btn">
+	<van-button block type="default" bindtap="confirm">下一步</van-button>
+</view>

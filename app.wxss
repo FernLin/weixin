@@ -1,0 +1,248 @@
+/**app.wxss**/
+page {
+  background-color: #f8f8f8;
+  font-family:Source Han Sans SC VF;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-r {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-c {
+  align-items: center;
+
+}
+
+.ai-fs {
+  align-items: flex-start;
+}
+
+.ai-b {
+  align-items: baseline;
+}
+
+.jc-c {
+  justify-content: center;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.jc-sa {
+  justify-content: space-around;
+}
+
+.m-20 {
+  margin: 22rpx;
+}
+
+.m-30 {
+  margin: 30rpx;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.mt-30 {
+  margin-top: 30rpx;
+}
+
+.mt-50 {
+  margin-top: 50rpx;
+}
+
+.p-20 {
+  padding: 20rpx;
+}
+
+.p-30 {
+  padding: 30rpx;
+}
+
+.pt-20 {
+  padding-top: 20rpx;
+}
+
+.pb-20 {
+  padding-bottom: 20rpx;
+}
+
+.p-lr-10 {
+  padding: 0 10rpx;
+}
+
+.ta-c {
+  text-align: center;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.panel {
+  justify-content: space-between;
+}
+
+.panelitem {
+  justify-content: space-between;
+}
+
+.panelbox {
+  width: 100%;
+
+  padding-bottom: 20rpx;
+}
+
+.panelitem {
+  margin-top: 10rpx;
+}
+
+.border-b {
+  border-bottom: solid 2rpx #eee;
+}
+
+/* 文字 */
+.lab {
+  color: #fff;
+  padding: 2rpx 4rpx;
+  border-radius: 8rpx;
+}
+
+.tag {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.txt-r {
+  color: red;
+}
+
+.txt-w {
+  color: white
+}
+
+.txt-o {
+  color: orange;
+}
+
+.txt-g {
+  color: yellowgreen;
+}
+
+.txt-b {
+  color: black;
+}
+
+.txt-9 {
+  color: #999;
+}
+
+.txt-d {
+  color: dodgerblue;
+}
+
+.txt-4186f5 {
+  color: #4186f5;
+}
+
+.txt-30 {
+  font-size: 40rpx;
+}
+
+.fw-b {
+  font-weight: bold;
+}
+
+.band {
+  box-shadow: 0rpx 0rpx 20rpx #e1e1e1;
+  border-radius: 16rpx;
+  padding: 40rpx;
+}
+
+.box-s {
+  box-shadow: 0rpx 0rpx 20rpx #e1e1e1;
+}
+
+.border-r {
+  border-radius: 16rpx;
+}
+
+.bg-o {
+  background: orange;
+}
+
+.bg-w {
+  background: #FFF;
+}
+
+.bg-h {
+  background: #f8f8f8;
+  height: 20rpx;
+}
+
+.van-field__label {
+  font-size: 30rpx !important;
+}
+
+.van-field__body {
+  font-size: 28rpx !important;
+}
+
+.posi-re {
+  position: relative;
+}
+
+.posi-ab {
+  position: absolute;
+}
+
+.next-step-btn {
+  margin: 64rpx 30rpx 60rpx;
+  height:90rpx;
+  background-color:#e43234;
+  border-radius:45rpx;
+  
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#ffffff;
+  font-size:32rpx;
+  line-height:90rpx;
+  text-align:center;
+}
+
+.loading {
+  text-align: center;
+}
+
+.loading .van-loading {
+  margin-top: calc(100% - 40rpx);
+}
+
+.bottom-safe {
+  padding-bottom:constant(safe-area-inset-bottom); 
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.gray_text{
+  color: rgba(153, 153, 153, 1);
+  font-size: 24rpx;
+}

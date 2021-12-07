@@ -1,0 +1,127 @@
+.product_detail {
+  padding-bottom: 170rpx;
+}
+.product_detail .product_detail_header {
+  padding: 31rpx 60rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.product_detail .product_detail_header .name {
+  color: #333333;
+  font-size: 32rpx;
+}
+.product_detail .product_detail_header .info {
+  display: flex;
+  margin: 30rpx 0;
+  border-bottom: 1rpx solid #ffffff;
+}
+.product_detail .product_detail_header .info .income {
+  margin-right: 154rpx;
+}
+.product_detail .product_detail_header .info .income .num {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+.product_detail .product_detail_header .info2 {
+  display: flex;
+  font-size: 22rpx;
+}
+.product_detail .product_detail_header .info2 .type {
+  color: #3378f6;
+  background-color: #e6eeff;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  border-radius: 5rpx;
+  padding: 0 10rpx;
+}
+.product_detail .product_detail_header .info2 .risk {
+  color: #c78f30;
+  background-color: #fff5e3;
+}
+.product_detail .product_detail_header .info2 .detailbtn {
+  margin-left: auto;
+  color: #017aff;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+.product_detail .product_detail_pic {
+  margin: 20rpx 0;
+  width: 100%;
+  height: 522rpx;
+  background-color: #fff;
+  position: relative;
+}
+.product_detail .product_detail_pic ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.product_detail .product_detail_pic .tips {
+  margin-top: -50rpx;
+  text-align: center;
+}
+.product_detail .product_detail_history {
+  background-color: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.product_detail .product_detail_history .title {
+  padding: 30rpx 0;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.product_detail .product_detail_history .header {
+  display: flex;
+  padding: 20rpx 0;
+  text-align: center;
+}
+.product_detail .product_detail_history .header .item {
+  flex: 1;
+  font-size: 26rpx;
+  color: #999999;
+}
+.product_detail .product_detail_history .content .view {
+  display: flex;
+  padding: 29rpx 0;
+  border-top: 1rpx solid #e6e6e6;
+  text-align: center;
+}
+.product_detail .product_detail_history .content .view .item {
+  flex: 1;
+  color: #333333;
+  font-size: 30rpx;
+}
+.product_detail .product_detail_btn {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: 168rpx;
+  padding: 15rpx 30rpx 15rpx 50rpx;
+}
+.product_detail .product_detail_btn .focus {
+  text-align: center;
+}
+.product_detail .product_detail_btn .btn {
+  height: 70rpx;
+  border-radius: 35rpx;
+  border: 1rpx solid #ECECEC;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  text-align: center;
+  width: 280rpx;
+}
+.product_detail .product_detail_btn .investment {
+  border: 1rpx solid #ECECEC;
+  color: #323232;
+  margin: 0 20rpx 0 50rpx;
+}
+.product_detail .product_detail_btn .buy {
+  background-color: #d70b30;
+  color: #fff;
+}

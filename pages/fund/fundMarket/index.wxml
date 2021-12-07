@@ -1,0 +1,32 @@
+<view>
+    <!-- <van-nav-bar title="基金超市" left-text="返回" right-text="按钮" left-arrow bind:click-left="onClickLeft" /> -->
+    <van-tabs active="{{ active }}" bind:change="onChange">
+        <van-tab title="全部" value=""></van-tab>
+        <van-tab title="货币" value='货币型'></van-tab>
+        <van-tab title="债券" value="债券型"></van-tab>
+        <van-tab title="混合" value='混合型'></van-tab>
+        <van-tab title="股票" value='股票型'></van-tab>
+        <van-tab title="其他" value='其他'></van-tab>
+    </van-tabs>
+    <view class="fund_list">
+        <view class="header">
+            <view class="item">基金名称</view>
+            <view class="item">近3个月/7日年化</view>
+            <view class="item">万份收益</view>
+            <view class="item">基金类型</view>
+        </view>
+        <view class="content">
+            <view class="view" bindtap="goDetail" wx:for="{{ fundList }}" wx:key="index" data-prdcode='{{item.prdCode}}'>
+                <view class="item info">
+                    <view class="name">{{item.prdName}}</view>
+                    <view class="code">{{item.prdCode}}</view>
+                </view>
+                <view class="item rate">{{item.threeMonthIncrease}}</view>
+                <view class="item income">{{item.incomePerThousands}}元</view>
+                <view class="item">
+                    <view class="type">{{item.prdSort?item.prdSort:'混合型'}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

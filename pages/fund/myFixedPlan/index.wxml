@@ -1,0 +1,33 @@
+<view>
+    <view class="account">
+        <van-cell title="交易账户" is-link  value="{{payerAcNo}}"/>
+    </view>
+    <view class="my_list" wx:for="{{list}}" wx:key="index">
+        <view class="item">
+            <view class="line1">
+                <view class="name">{{item.prdName}}</view>
+                <view class="status">{{item.transStatus=='0'?'进行中':'已暂停'}}</view>
+            </view>
+            <view class="line2">
+                <view class="line2_view">
+                    <view class="num">{{item.trsAmt}}</view>
+                    <view class="text">定投金额（元）</view>
+                </view>
+                <view class="line2_view">
+                    <view class="num">{{item.nextPayDate}}</view>
+                    <view class="text">下次扣款日</view>
+                </view>
+            </view>
+            <view class="line3">
+                <view class="line3_item">
+                    <view class="label">扣款账户：</view>
+                    <view class="value">{{item.payerAcNo}}</view>
+                </view>
+                <view class="line3_item">
+                    <view class="label">扣款周期：</view>
+                    <view class="value">{{item.payPeriod}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

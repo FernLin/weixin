@@ -1,0 +1,377 @@
+.top-png {
+  width: 100%;
+  height: 304rpx;
+}
+
+.user-info {
+  top: 50rpx;
+  left: 50rpx;
+}
+
+.is-login>image{
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 50%;
+}
+
+.user-info-d {
+  margin-left: 34rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+
+.user-info-d view {
+  margin-bottom: 4rpx;
+}
+
+.user-name {
+  font-size: 34rpx;
+  font-weight: 500;
+  line-height: 49rpx;
+  margin-bottom: 12rpx !important;
+}
+
+.acc-man {
+  margin: -45rpx 50rpx 20rpx;
+  border-radius:42.5rpx;
+  height:90rpx;
+  font-size: 28rpx;
+}
+
+.acc-png-s {
+  width: 68rpx;
+  height: 68rpx;
+  margin-left: 16rpx;
+  margin-right: 14rpx;
+  border-radius: 50%;
+}
+
+.concact {
+  margin: 0 50rpx 0 10rpx;
+}
+
+.online-booking {
+  margin-top: 18rpx;
+}
+
+.large-amount {
+  opacity:0.9;
+  width:335rpx;
+  height:166rpx;
+  background-image:linear-gradient(314.1deg,#d12f37 0%,#f25241 100%);
+  border-radius:20rpx;
+}
+
+.small-change {
+  width:335rpx;
+  height:166rpx;
+  background-image:linear-gradient(134.75deg,#f9c872 0.02%,#be8e40 100%);
+  border-radius:20rpx;
+}
+
+.online-booking-1 {
+  margin: 32rpx 0 0 39rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#ffffff;
+  font-size:32rpx;
+  line-height:45rpx;
+}
+
+.right-icon {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 15rpx;
+}
+
+.online-booking-2 {
+  margin: 4rpx 0 0 39rpx;
+  opacity:0.67;
+  color:#ffffff;
+  font-size:26rpx;
+  line-height:37rpx;
+}
+
+.png-posi {
+  width: 150rpx;
+  height: 106rpx;
+  bottom: 0;
+  right: 0;
+}
+
+.ocr-wrapper {
+  margin: 40rpx auto;
+  width: 375rpx;
+}
+
+.intro {
+  margin: 40rpx;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.banner {
+  width: 100%;
+}
+
+.bg1 {
+  background: linear-gradient(to top right, #5EFCE8, #736EFE);
+}
+
+.bg2 {
+  background: linear-gradient(to top right, #FFE985, #FA742B);
+}
+
+.bg3 {
+  background: linear-gradient(to top right, #FFF720, #49C628);
+}
+
+.bg-w {
+  background: #fff;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.boxd {
+  border-radius: 10rpx;
+  padding: 15rpx 25rpx;
+  font-weight: bold;
+  margin: 10rpx;
+}
+
+.banner image {
+  width: 100%;
+}
+
+.panel {
+  border-left: solid 6rpx red;
+}
+
+.wnjx,
+.deck {
+  background: #fff;
+  padding: 20rpx;
+}
+
+.wnjxitem {
+  flex: 1;
+  align-items: center;
+  font-size: 24rpx;
+  border: solid 2rpx #eee;
+  margin: 0 60rpx;
+  padding: 20rpx;
+}
+
+
+.txt-r {
+  font-size: 35rpx;
+}
+
+.txt-32 {
+  font-size: 32rpx;
+  font-weight:700;
+}
+
+.txt-43 {
+  font-size: 43rpx;
+  font-weight:700;
+  color: #d70b30;
+}
+
+.txt-26 {
+  font-size: 26rpx;
+  color: #969696;
+}
+
+.txt-30 {
+  font-size: 30rpx;
+  color:#323232;
+}
+
+.txt-26-noc {
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.txt-22-noc {
+  font-size: 22rpx;
+}
+
+.mt-10 {
+  margin-top: 10rpx;
+}
+
+.mt-30 {
+  margin-top: 30rpx;
+}
+
+.ml-20 {
+  margin-left: 20rpx;
+}
+
+.mr-60 {
+  margin-right: 60rpx;
+}
+
+.c-d7 {
+  color: #d70b30;
+}
+
+.c-f45 {
+  color: #f45555;
+}
+
+.c-418 {
+  color:#4186f5;
+}
+
+.bg-l {
+  width:301rpx;
+  height:195rpx;
+  background-image:linear-gradient(180deg,#fff4f0 0%,#ffffff 100%);
+  border-radius:8px;
+}
+
+.bg-r {
+  width:301rpx;
+  height:195rpx;
+  background-image:linear-gradient(180deg,#eff7ff 0%,#ffffff 100%);
+  border-radius:8px;
+}
+
+.more-css {
+  width: 32rpx;
+  height: 8rpx;
+}
+
+.but-css {
+  width:140rpx;
+  height:40rpx;
+  border: 1rpx solid;
+  border-radius:25rpx;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 40rpx;
+  margin-top: 30rpx;
+}
+
+.acc-open-png {
+  width:100%;
+  height:190rpx;
+  margin-top: 19rpx;
+}
+
+
+.bottom-download image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 58rpx;
+}
+
+.txt-1 {
+  font-weight:900;
+  color:#323232;
+  font-size:36rpx;
+  line-height:52rpx;
+  margin-top: 13rpx;
+}
+
+.txt-2 {
+  opacity:0.5;
+  color:#323232;
+  font-size:30rpx;
+  letter-spacing:7.2rpx;
+  line-height:44rpx;
+}
+
+.txt-3 view{
+  display: inline-block;
+  width:280rpx;
+  height:66rpx;
+  line-height: 66rpx;
+  background-color:#e43234;
+  border-radius:40rpx;
+  font-weight:700;
+  color:#ffffff;
+  font-size:30rpx;
+  margin-top: 24rpx;
+  margin-bottom: 75rpx;
+}
+
+.loan-item {
+  background-color:#ffffff;
+  border-radius:12rpx;
+}
+
+.loan-icon {
+  opacity:1;
+  width:200rpx;
+  height:180rpx;
+  bottom: 0;
+  right: 18rpx;
+}
+
+.loan-name {
+  font-weight:500;
+  color:#323232;
+  font-size:30rpx;
+  line-height:44rpx;
+  margin-right: 25rpx;
+}
+
+.loan-type {
+  margin-right: 12rpx;
+  height:40rpx;
+  border:1px solid;
+  border-color:#eb5f00;
+  color: #eb5f00;
+  border-radius:8rpx;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  font-size: 26rpx;
+}
+
+.loan-quota {
+  font-weight:900;
+  color:#d70b30;
+  font-size:52rpx;
+  line-height:64rpx;
+}
+
+.loan-quota-t {
+  color:#969696;
+  font-size:26rpx;
+  line-height:36rpx;
+  margin-top: 6rpx;
+}
+
+.loan-rate {
+  font-weight:700;
+  color:#323232;
+  font-size:42rpx;
+  line-height:64rpx;
+}
+
+.ml-175 {
+  margin-left: 175rpx;
+}
+
+.wel-txt {
+  font-weight:700;
+  color:#ffffff;
+  font-size:38rpx;
+  line-height:55rpx;
+}
+
+.login-png {
+  margin-top: 16rpx;
+  width:128rpx;
+  height:46rpx;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}

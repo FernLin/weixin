@@ -1,0 +1,14 @@
+<!--pages/Sign/login/index.wxml-->
+<view class="login flex-c">
+	<image class="avatar mt-50" src="../../../assets/loanThree.png" mode="" lazy-load="false" binderror="" bindload="" />
+	<view class="mt-50 name">
+		小刘
+	</view>
+	<view class=" mt-50 tag txt-b">
+		请绘制手势密码
+	</view>
+	<image bindtap="goNext" class="img" src="../../../assets/tabbar1.png" mode="aspectFit" lazy-load="false" />
+	<view class=" mt-50 tag txt-b" bindtap="goNext1">
+		忘记手势密码
+	</view>
+</view>

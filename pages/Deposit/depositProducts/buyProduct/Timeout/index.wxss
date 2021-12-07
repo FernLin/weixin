@@ -1,0 +1,14 @@
+/* pages/Deposit/depositProducts/buyProduct/Timeout/index.wxss */
+.cardTiedSuccessfully {
+  align-items: center;
+}
+
+.btn {
+  width: 60%;
+}
+.box{
+  width: 500rpx;
+}
+.mt-50 {
+  margin-top: 50rpx;
+}

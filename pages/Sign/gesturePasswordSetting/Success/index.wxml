@@ -1,0 +1,10 @@
+<!--pages/Sign/gesturePasswordSetting/Success/index.wxml-->
+<view class="cardTiedSuccessfully flex-c mt-50">
+	<van-icon name="passed" color="#00b300" size="80" />
+	<view class="mt-50">
+		手势密码设置成功!
+	</view>
+	<view class="btn mt-50">
+		<van-button block type="default">确定</van-button>
+	</view>
+</view>

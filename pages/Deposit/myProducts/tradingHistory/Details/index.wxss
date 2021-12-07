@@ -1,0 +1,8 @@
+/* pages/Deposit/myProducts/tradingHistory/Details/index.wxss */
+.bg {
+  border: solid 2rpx #eee;
+}
+
+.flex1 {
+  color: #999;
+}

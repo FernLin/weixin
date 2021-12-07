@@ -1,0 +1,39 @@
+<!--pages/loan/index.wxml-->
+<!--index.wxml-->
+<view class="posi-re">
+    <view class="posi-ab loan-title">
+        乐税贷
+        <view  class="loan-detail flex">
+            产品详情
+            <van-icon class="loan-icon-r" name="arrow" />
+        </view>
+    </view>
+    
+    <image class="top-png posi-re" src="/assets/Loan/top-bg.png" />
+    <view class="t-t flex jc-sb p-30">
+        <view class="t-item">
+            <image src="/assets/Loan/loan-icon.png" />
+            凭税可贷
+        </view>
+        <view class="t-item">
+            <image src="/assets/Loan/s-icon.png" />
+            随借随还
+        </view>
+        <view class="t-item">
+            <image src="/assets/Loan/time-icon.png" />
+            按日计息
+        </view>
+    </view>
+    <view class="ta-c card-0 m-30">
+        <view class="card-1">申请人为企业法定代表人</view>
+        <view class="card-2">最高可获得(元)</view>
+        <view class="card-3">300,000.00</view>
+        <view class="card-4">利息每万元每日<text class="card-4-1">1.9元</text>起</view>
+    </view>
+    <view class="next-step-btn">获取额度</view>
+    <view class="next-step-btn search">进度查询</view>
+</view>
+
+
+
+

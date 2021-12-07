@@ -1,0 +1,46 @@
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="flex input1 p-30 jc-sb">
+        机构
+        <input bindinput="bindModel" maxlength="11" type="number" placeholder="请输入企业名称" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        城市
+        <van-icon name="arrow" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        网点
+        <van-icon name="arrow" />
+    </view>
+</view>
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="flex input1 p-30 jc-sb">
+        预约开户时间
+        <van-icon name="arrow" />
+    </view>
+</view>
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="flex input1 p-30 jc-sb">
+        经办人
+        <input bindinput="" maxlength="11" type="number" placeholder="请输入经办人姓名" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        手机号
+        <input bindinput="bindModel" maxlength="11" type="number" placeholder="请输入手机号" gesturetype="text" class="flex1 ta-r" />
+    </view>
+    <view class="flex input1 p-30 jc-sb">
+        验证码
+        <input bindinput="bindPassword" maxlength="6" password placeholder="请输入短信验证码" type="text" class="flex1 ta-r" />
+        <view class="fen-ge">|</view>
+        <view class="txt-d pass" bindtap="getVercode" wx:if="{{ countDownFlag }}">获取验证码</view>
+        <view wx:else>{{ countDownNum }}秒后重新获取</view>
+    </view>
+</view>
+
+<view class="next-step-btn" bindtap="goLoginRegister">
+    下一步
+</view>
+
+<view class="wen-xin m-30">温馨提示：如遇周末或节假日则顺延至节后第一个工作日办理。</view>

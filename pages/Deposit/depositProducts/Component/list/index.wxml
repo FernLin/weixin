@@ -1,0 +1,39 @@
+<!--pages/Deposit/depositProducts/Component/bankRegular/index.wxml-->
+<view>
+
+	<view wx:for="{{listData}}" wx:key="index" class="flex-c m-20 p-20 band mt-50" bindtap="golist" data-list='{{item}}'>
+		<view class="flex jc-sb ">
+			<view class="fw-b"> {{item.prdCodeName}}</view>
+			<view>
+				<van-tag class="p-lr-10" color="#ffe1e1" text-color="orange" size="medium">今日起息</van-tag>
+				<!-- <van-tag class="p-lr-10" color="#ffe1e1" text-color="orange" size="medium">{{item.paymentRule}}付息</van-tag> -->
+			</view>
+		</view>
+		<view class="flex mt-20">
+			<view class=" flex flex1">
+				<view class="txt-30 txt-r fw-b">
+					{{item.execRate}}%
+				</view>
+			</view>
+			<view class="flex flex1 tag">
+				<view class="flex">
+					<view style="width:120rpx">期限</view>
+					<view class="txt-b fw-b flex1">{{item.depositTerm}}年</view>
+				</view>
+			</view>
+		</view>
+		<view class="flex mt-20">
+			<view class=" flex flex1">
+				<view class="tag">
+					年利率
+				</view>
+			</view>
+			<view class="flex flex1 tag">
+				<view class="flex">
+					<view style="width:120rpx">起购金额</view>
+					<view class="txt-b fw-b flex1">{{item.beginAmount}}元起购</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

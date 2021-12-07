@@ -1,0 +1,32 @@
+/* pages/Deposit/myProducts/depositDetails/index.wxss */
+.list {
+  align-items: center;
+  padding: 20rpx;
+}
+
+.lab {
+  background: red;
+  font-size: 24rpx;
+}
+
+.bg {
+  background: #f8f8f8;
+  padding: 20rpx;
+}
+
+.flex {
+  width: 100%;
+}
+
+.btn {
+  flex: 1;
+  margin: 0 20rpx;
+}
+
+.flex1 {
+  flex: 1.2;
+}
+
+.flex2 {
+  flex: 2;
+}

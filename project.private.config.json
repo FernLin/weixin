@@ -1,0 +1,72 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/ssmm/index",
+          "pathName": "pages/ssmm/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/Sign/index",
+          "pathName": "pages/Sign/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/accountManage/electronicOpenAccount/index",
+          "pathName": "pages/accountManage/electronicOpenAccount/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/register/index",
+          "pathName": "pages/login/register/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/accountManage/electronicOpenAccount/index",
+          "pathName": "pages/accountManage/electronicOpenAccount/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/fund/fundBuy/index",
+          "pathName": "pages/fund/fundBuy/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/fund/fundAutoMatic/index",
+          "pathName": "pages/fund/fundAutoMatic/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/fund/riskAssessment/index",
+          "pathName": "pages/fund/riskAssessment/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

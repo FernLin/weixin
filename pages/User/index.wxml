@@ -1,0 +1,130 @@
+<!--pages/User/index.wxml-->
+<view class="user-page">
+    <view class="top-card posi-re">
+        <image src="../../assets/mine/topbg.png" />
+        <view class="posi-ab flex user-info">
+            <view class="flex jc-sb">
+                <view class="flex">
+                    <image src="{{ user.headImageUrl }}" class="user-head-png" />
+                    <view wx:if="{{ token_key }}" class="top-n">
+                        {{ user.userName }}，您好~！
+                    </view>
+                    <view wx:else class="top-n" bindtap="toLogin">
+                        请登录~！
+                    </view>
+                </view>
+                <view class="flex-c ai-c">
+                    <image src="/assets/mine/downicon.png" class="down-i" />
+                    <view class="down-txt">手机银行下载</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view >
+        <view class="flex jc-sb mlr-30">
+            <view class="acc-l">我的账户</view>
+            <view class="flex acc-r" wx:if="{{ !bankCardList }}" bindtap="goBankCardList">去绑卡<van-icon name="arrow" /></view>
+            <view class="flex acc-r" wx:else bindtap="goBankCardList">添加账户<van-icon name="arrow" /></view>
+        </view>
+        <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList }}">
+            <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+                <view class="scroll-view-item_H s-item posi-re" wx:for="{{ bankCardList }}" wx:key="acNo" bindtap="goTransDetail" data-item="{{ item }}">
+                    <image src="/assets/mine/cardbg.png" />
+                    <view class="posi-ab flex-c b-c-i">
+                        <text class="b-c-num">{{ item.acNoHidden }}</text>
+                        <view  class="flex b-c-t">
+                            <!-- <view >借记卡</view> -->
+                            <view >{{ item.bankAcTypeName }}</view>
+                        </view>
+                        <view class="b-c-add">账户余额（元）</view>
+                        <view class="b-c-m">323,847.00</view>
+                        <view class="b-c-add">开户行：{{ item.openBank }}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="no-card m-30 ta-c" wx:else>
+            <image src="/assets/mine/empty.png" />
+            <view >暂无账户~</view>
+        </view>
+    </view>
+    <view > 
+        <view class="flex jc-sb mlr-30">
+            <view class="acc-l">我的贷款</view>
+            <view class="flex acc-r" wx:if="{{ loanInfo.length == 0 }}" bindtap="goBindBankCard">去绑卡<van-icon name="arrow" /></view>
+            <image src="/assets/mainPage/more.png" class="more-css" wx:else />
+        </view>
+        <view class="m-30 lone-p" wx:if="{{ loanInfo.length != 0 }}">
+            <view class="flex p-30">
+                <view class="loan-t">{{loanInfo.loanName}}</view>
+                <view class="loan-i">{{loanInfo.loanStatus}}</view>
+            </view>
+            <view class="flex jc-sb ml-30 pb-50">
+                <view class="flex-c">
+                    <view class="loan-t-b">贷款金额（元）</view>
+                    <view class="loan-money">{{loanInfo.loanAmount}}</view>
+                </view>
+                <view class="mr-60 loan-go-de">
+                    点击查看
+                </view>
+            </view>
+        </view>
+	    <view class="no-card m-30 ta-c" wx:else>
+            <image src="/assets/mine/empty.png" />
+            <view >暂无贷款~</view>
+        </view>
+    </view>
+    <view > 
+        <view class="flex jc-sb mlr-30">
+            <view class="acc-l">我的存款</view>
+            <view class="flex acc-r" wx:if="{{ loanInfo.length == 0 }}" bindtap="goBindBankCard">去绑卡<van-icon name="arrow" /></view>
+            <image src="/assets/mainPage/more.png" class="more-css" wx:else />
+        </view>
+        <view class="m-30 lone-p" wx:if="{{ loanInfo.length != 0 }}">
+            <view class="flex p-30">
+                <view class="loan-t">{{loanInfo.loanName}}</view>
+                <view class="loan-i">{{loanInfo.loanStatus}}</view>
+            </view>
+            <view class="flex jc-sb ml-30 pb-50">
+                <view class="flex-c">
+                    <view class="loan-t-b">贷款金额（元）</view>
+                    <view class="loan-money">{{loanInfo.loanAmount}}</view>
+                </view>
+                <view class="mr-60 loan-go-de">
+                    点击查看
+                </view>
+            </view>
+        </view>
+	    <view class="no-card m-30 ta-c" wx:else>
+            <image src="/assets/mine/empty.png" />
+            <view >暂无存款~</view>
+        </view>
+    </view>
+    <view > 
+        <view class="mlr-30 acc-l">我的预约</view>
+        <view class="m-30 p-30 app-info" wx:if="{{ false }}">
+            <view class="flex">
+                <van-icon name="clock" color="#e43234" />
+                <view class="app-info-t">大额取款预约信息</view>
+            </view>
+            <view class="dashed-line"></view>
+            <view class="flex jc-sb mb-13">
+                <view class="app-info-l">预约码</view>
+                <view class="app-info-r">39304034</view>
+            </view>
+            <view class="flex jc-sb mb-13">
+                <view class="app-info-l">预约时间</view>
+                <view class="app-info-r">2021-12-12</view>
+            </view>
+            <view class="flex jc-sb">
+                <view class="app-info-l">预约网点信息</view>
+                <view class="app-info-r">赣州银行XX支行</view>
+            </view>
+        </view>
+        <view class="no-card m-30 ta-c" wx:else>
+            <image src="/assets/mine/empty.png" />
+            <view >暂无预约~</view>
+        </view>
+    </view>
+</view>
+

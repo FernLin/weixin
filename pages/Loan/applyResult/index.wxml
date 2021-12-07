@@ -1,0 +1,14 @@
+<!--pages/Loan/applyResult/index.wxml-->
+<view class="container">
+  <view class="result-panel">
+    <image src="{{ result.iconUrl }}" class="result-icon" />
+    <text class="result-title">{{ result.title }}</text>
+    <text class="result-content">{{ result.content }}</text>
+  </view>
+  <view wx:if="{{result.status === 5 || result.status === 6}}" class="back-btn" bindtap="handleBack">重新申请</view>
+  <view wx:else class="back-btn" bindtap="handleBack">返回</view>
+  <view wx:if="{{ result.status === 5 }}" class="tips">{{tips}}</view>
+  <view class="position-link">
+    <van-cell wx:if="{{ result.status === 7 }}" title="网点信息" is-link />
+  </view>
+</view>

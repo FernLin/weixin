@@ -1,0 +1,73 @@
+<view>
+    <view class="detail_view">
+        <view class="info">
+            <view class="fund_name">
+                <view class="name">{{fundInfo.prdName}}</view>
+                <view class="desc">
+                    基金材料
+                    <van-icon name="arrow" />
+                </view>
+            </view>
+            <view class="fund_info">
+                <view class="all_position">
+                    <view class="gray_text">总金额(元)</view>
+                    <view class="num">{{fundInfo.totalAmount}}</view>
+                </view>
+                <view class="income">
+                    <view class="income_item">
+                        <view class="num">{{fundInfo.incomeYesterday}}</view>
+                        <view class="gray_text">上日收益(元)</view>
+                    </view>
+                    <view class="income_item">
+                        <view class="num">{{fundInfo.positionEarning}}</view>
+                        <view class="gray_text">持有收益(元)</view>
+                    </view>
+                    <view class="income_item">
+                        <view class="num">{{fundInfo.positionEarningRate}}</view>
+                        <view class="gray_text">持有收益率</view>
+                    </view>
+                </view>
+                <view class="fund_info2">
+                    <view class="item">
+                        <view class="left">日涨跌幅</view>
+                        <view class="right">{{fundInfo.dailyPrice}}</view>
+                    </view>
+                    <view class="item">
+                        <view class="left">持有单价</view>
+                        <view class="right">{{fundInfo.positionUnitPrice}}/份</view>
+                    </view>
+                    <view class="item">
+                        <view class="left">最新净值</view>
+                        <view class="right">{{fundInfo.newNetWorth}}</view>
+                    </view>
+                    <view class="item">
+                        <view class="left">持有份额</view>
+                        <view class="right">{{fundInfo.positionShare}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cell">
+            <van-cell title="交易记录" is-link bindtap='goRecord'/>
+            <van-cell title="分红方式" is-link value="{{fundInfo.dividendMode}}" bindtap='goDividend'/>
+        </view>
+        <view class="echarts">
+            <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph"></ec-canvas>
+            <view class="tips gray_text">估值仅供参考，实际涨跌幅以基金净值为准</view>
+        </view>
+        <view class="btn_view">
+            <view class="btn_item">
+                <view class="button" bindtap='sellFund'>卖出</view>
+            </view>
+            <view class="btn_item">
+                <view class="button" bindtap='exchange'>转换</view>
+            </view>
+            <view class="btn_item">
+                <view class="button" bindtap='guAutoMatic'>定投</view>
+            </view>
+            <view class="btn_item">
+                <view class="button buy_btn" bindtap='goBuy'>买入</view>
+            </view>
+        </view>
+    </view>
+</view>

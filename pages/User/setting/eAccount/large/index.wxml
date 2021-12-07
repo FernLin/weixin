@@ -1,0 +1,145 @@
+<!--pages/User/setting/eAccount/large/index.wxml-->
+<view class="large flex-c">
+  <view class="top flex-center">
+    <view class="topIn flex-r flex-center">
+      <view class="topInView flex-r panel">
+        <view class="topInViewChild1 flex-c flex-center">
+          <view class="imageBox flex-center">
+            <image class="image" mode="scaleToFill" src="/assets/user/headImage.png"></image>
+          </view>
+          <view class="bank flex-center">中国农业银行(7890)</view>
+          <view class="card">**三的储蓄卡</view>
+        </view>
+        <view class="topInViewChild2 flex-c flex-center">
+          <view>转账</view>
+          <view>---->----</view>
+        </view>
+        <view class="topInViewChild1 flex-c flex-center">
+          <view class="imageBox flex-center">
+            <image class="image" mode="scaleToFill" src="/assets/user/headImage.png"></image>
+          </view>
+          <view class="bank flex-center">柳州银行(7890)</view>
+          <view class="card">**三的电子账户</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="step1 flex-center">
+    <view class="step1In">
+      <view class="title flex">第一步：复制您的电子账户卡号</view>
+      <view class="s1contentBox flex-center b">
+        <view class="s1contentView flex-c flex-center">
+          <view class="s1content1 flex-r">
+            <view class="imageBox flex-center" >
+              <image class="image" mode="scaleToFill" src="/assets/user/headImage.png"></image>
+            </view>
+            <view class="info flex-center">
+              柳州银行电子账户
+            </view>
+          </view>
+          <view class="s1content2 flex-r flex-center">
+            <text space="ensp" style="font-size:32rpx;width:70%">6217 9876 8876 6395</text>
+            <view class="flex-center" style="font-weight:bold;border:#000 solid 2rpx;border-radius:40rpx;font-size:25rpx;width:20%;height:40rpx">复制卡号</view>
+          </view>
+          <view class="s1content3 flex-r flex-center">
+            <text space="ensp" style="font-size:32rpx;width:70%">柳州银行股份有限公司营业部</text>
+            <view class="flex-center" style="font-weight:bold;border:#000 solid 2rpx;border-radius:40rpx;font-size:25rpx;width:20%;height:40rpx">复制开户行</view>
+          </view>
+          <view class="s1content4 flex-r flex-center">
+            <view style="" class="s1content4child flex spar flex-c">
+              <text space="ensp" class="font-28-lightBlack">收款户名</text>
+              <text space="ensp" class="font-28-black">**三</text>
+            </view>
+            <view class="s1content4child flex spar flex-c">
+              <text space="ensp" class="font-28-lightBlack">收款银行</text>
+              <text space="ensp" class="font-28-black">柳州银行</text>
+            </view>
+            <view class="s1content4child flex spar flex-c">
+              <text space="ensp" class="font-28-lightBlack">开户地</text>
+              <text space="ensp" class="font-28-black">广西柳州</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="step2 flex-center ">
+    <view class="step2In ">
+      <view class="title flex">第二步：打开农业银行(绑定银行卡)APP，选择转账功能</view>
+      <view class="s2contentBox flex-center b">
+        <view class="contentBoxView">
+          <view style="width:100%;height:45%" class="flex-c panel">
+            <view class="flex-r flex-center spar" style="width:100%;height:30%">
+              <view style="width:10%;height:90%" class="flex font-28-black-bold">1</view>
+              <view style="width:70%;height:90%" class="flex font-28-black-bold">粘贴第一步复制的柳州银行卡号</view>
+            </view>
+            <view class="flex-r flex-center spar" style="width:100%;height:30%">
+              <view style="width:10%;height:90%" class="flex font-28-black-bold">2</view>
+              <view style="width:70%;height:90%" class="flex font-28-black-bold">选择转账银行：柳州银行，如搜索不到，请选择城市商业银行或其他银行</view>
+            </view>
+            <view class="flex-r flex-center spar" style="width:100%;height:30%">
+              <view style="width:10%;height:90%" class="flex font-28-black-bold">3</view>
+              <view style="width:70%;height:90%" class="flex font-28-black-bold">选择开户地：广西柳州，部分银行选填</view>
+            </view>
+          </view>
+          <view style="width:100%;height:55%">
+            <view class="font-28-lightBlack">
+              注意：<text>\n</text><text>\n</text>
+              1.请确保使用绑定银行卡进行转账，若使用非绑定银行卡转账，资金将于下一个工作日被退回；<text>\n</text><text>\n</text>
+              2.您也可以通过绑定银行卡的网银或线下网点进行转账操作；<text>\n</text><text>\n</text>
+              3.大部分银行在首次转账后，后续转账可以直接从转账记录选择进行转账。
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="step3 flex-center ">
+    <view class="step3In ">
+      <view class="title flex">第三步：转账成功后，使用电子账户继续购买产品</view>
+      <view class="s3contentBox flex-center b">
+        <view class="contentBoxView">
+          <view class="font-28-lightBlack">
+            到账时间：<text>\n</text> <text>\n</text>
+            预计30分钟内到账，具体以银行处理时间为准
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="faq flex-center">
+    <view class="faqIn">
+      <view class="title flex">常见问题与转账攻略</view>
+      <view class="faqcontentBox flex-center b">
+        <view class="flex-c contentBoxView spar">
+          <view style="width:100%;" class="flex-c">
+            <text class="font-28-black-bold">1.如何选择转账银行名称？</text>
+            <text class="font-28-lightBlack flex-center">
+              在转账银行列表中，搜索关键词“柳州”，选择柳州银行。部分银行若搜不到，请选择城市商业银行或其他银行
+            </text>
+          </view>
+          <view style="width:100%" class="flex-c">
+            <text class="font-28-black-bold">2.超出银行APP大额限制时，如何转账？</text>
+            <text class="font-28-lightBlack">
+              1) 请先确认是否因个人在银行设置了转账限额，可通过联系银行客服，进行限额调整。（部分银行APP支持线上调整）
+              2) 若超过单笔限额，可分多笔转账。
+              3) 若超过当日限额，可按照银行要求，补办流程，如增加人脸识别、U盾验证等方式
+            </text>
+          </view>
+          <view style="width:100%" class="flex-c">
+            <text class="font-28-black-bold">3.转账未到怎么办？</text>
+            <text class="font-28-lightBlack">
+              请先确保使用绑定卡完成转账，若使用费绑定卡进行了转账操作，资金将不会进入电子账户，一般会在1-2个工作日后，将资金原路退回。若使用绑定卡完成转账，并超过1个小时未到账，可联系绑定卡的银行客服进行咨询，再联系柳州银行客服进行咨询。
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom flex-center">
+    <view style="width:95%;height:50%" class="flex-r flex-center">
+      <van-icon name="phone"/>
+      <text  class="font-28-black">联系柳州银行客服：0772-96289</text>
+    </view>
+  </view>
+</view>

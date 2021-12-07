@@ -1,0 +1,21 @@
+/* pages/Deposit/depositProducts/buyProduct/Success/index.wxss */
+.cardTiedSuccessfully {
+  align-items: center;
+}
+
+.btn {
+  width: 100%;
+}
+
+.mt-50 {
+  margin-top: 50rpx;
+}
+.flex1{
+  flex: 1;
+  width: 100%;
+  background: #f8f8f8;
+}
+.btn1{
+  flex:1;
+  margin: 20rpx;
+}

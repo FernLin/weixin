@@ -1,0 +1,59 @@
+/* pages/login/index.wxss */
+.input {
+  border-bottom: solid 2rpx orange;
+}
+
+.input1 {
+  border-bottom: solid 2rpx #eee;
+  height: 100rpx;
+  box-sizing: border-box;
+}
+
+.img {
+  text-align: center;
+}
+
+.flex1 {
+  flex: 1;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+}
+
+.icon {
+  font-size: 32rpx;
+}
+
+.login {
+  font-size: 30rpx;
+  color:#646464;
+}
+
+.btn {
+  margin-top: 60rpx;
+}
+
+.fen-ge {
+  margin: -5rpx 30rpx 0;
+}
+
+.log-reg-btn {
+  margin: 64rpx 50rpx 60rpx;
+  height:90rpx;
+  background-color:#e43234;
+  border-radius:45rpx;
+  
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#ffffff;
+  font-size:32rpx;
+  line-height:90rpx;
+  text-align:center;
+}
+
+.loading {
+  text-align: center;
+}
+
+.loading .van-loading {
+  margin-top: calc(100% - 40rpx);
+}

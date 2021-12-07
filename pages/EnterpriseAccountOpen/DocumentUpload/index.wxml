@@ -1,0 +1,39 @@
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="card-title">营业执照</view>
+    <view class="posi-re">
+        <image class="up-png ml-30" src="{{ businessLicense }}" />
+        <view class="flex posi-ab item-name">
+            <image class="upload-icon" src="/assets/enteraccopen/upload.png" />
+            <view>上传营业执照</view>
+        </view>
+        <image class="posi-ab delete-png" src="/assets/enteraccopen/deletepng.png" />
+    </view>
+</view>
+<view class="bg-w content">
+    <view style="height:20rpx;background:#f8f8f8"></view>
+    <view class="card-title">法人/负责人身份证件</view>
+    <view class="flex jc-sb">
+        <view class="posi-re">
+            <image class="up-png ml-30" src="{{ idCard1 }}" />
+            <view class="flex posi-ab item-name item-name-l">
+                <image class="upload-icon" src="/assets/enteraccopen/upload.png" />
+                <view>上传身份证人像面</view>
+            </view>
+            <image class="posi-ab delete-png" src="/assets/enteraccopen/deletepng.png" />
+        </view>
+        <view class="posi-re">
+            <image class="up-png mr-30" src="{{ idCard2 }}" />
+            <view class="flex posi-ab item-name item-name-r">
+                <image class="upload-icon" src="/assets/enteraccopen/upload.png" />
+                <view>上传身份证国徽面</view>
+            </view>
+            <image class="posi-ab delete-png delete-png-r" src="/assets/enteraccopen/deletepng.png" />
+        </view>
+    </view>
+    
+</view>
+
+<view class="next-step-btn" bindtap="goLoginRegister">
+    下一步
+</view>

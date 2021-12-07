@@ -1,0 +1,4 @@
+/* pages/Deposit/depositProducts/Component/bankRegular/index.wxss */
+.flex1 {
+  flex: 1;
+}

@@ -1,0 +1,19 @@
+<!--pages/Sign/cardTiedSuccessfully/index.wxml-->
+<view class="cardTiedSuccessfully flex-c mt-50">
+	<van-icon name="passed" color="#00b300" size="80" />
+	<view class="mt-50">
+		开户成功!
+	</view>
+	<!-- <view class="mt-50">
+		<view>
+			手机号：<text class="" selectable="false" space="false" decode="false">13754854452</text>
+		</view>
+		<view class="mt-20">
+			账号：<text class="" selectable="false" space="false" decode="false">622506 1234 5678 0214</text>
+		</view>
+	</view> -->
+	<view class="flex mt-50">
+		<van-button class="btn" block type="default" bindtap="goMyAccount">确定</van-button>
+		<van-button class="btn" block type="default" bindtap="goDepositProducts">购买产品</van-button>
+	</view>
+</view>

@@ -1,0 +1,50 @@
+/* pages/Loan/submit/index.wxss */
+
+.info-confirm-panel {
+  margin-top: 20rpx;
+}
+
+.info-confirm-panel .van-cell__title {
+  flex: auto;
+  width: 200rpx;
+  color: #646464;
+  font-size: 30rpx;
+}
+.info-confirm-panel .van-cell__value {
+  flex: auto;
+  flex-grow: 1;
+  color: #232320;
+  font-size: 30rpx;
+}
+.confirm-radio {
+  width: 690rpx;
+  margin: 0 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.confirm-radio .van-radio {
+  align-items: unset;
+}
+.confirm-radio .van-radio__icon-wrap {
+  padding-top: 60rpx;
+}
+.submit-tips {
+  margin: 60rpx 30rpx;
+  color: #969696;
+  font-size: 24rpx;
+}
+.link-text {
+  color: #4a90e2;
+}
+.primary-btn {
+  margin-top: 24rpx;
+  background-color: #e43234;
+  width: 690rpx;
+  height:90rpx;
+  line-height:90rpx;
+  border-radius: 45rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #FFFFFF;
+  text-align: center;
+}

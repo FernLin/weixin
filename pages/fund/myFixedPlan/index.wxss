@@ -1,0 +1,63 @@
+.account {
+  margin-top: 30rpx ;
+}
+.my_list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.my_list .item {
+  padding: 30rpx;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  width: 690rpx;
+  background: #fff;
+  margin: 30rpx 0;
+}
+.my_list .item .line1 {
+  display: flex;
+  margin-bottom: 24rpx;
+}
+.my_list .item .line1 .name {
+  color: #333333;
+  font-weight: 500;
+  font-size: 28rpx;
+}
+.my_list .item .line1 .status {
+  color: #3672ec;
+  padding: 4rpx 17rpx;
+  border: 1rpx solid #3672ec;
+  border-radius: 8rpx;
+  margin-left: auto;
+  font-size: 22rpx;
+}
+.my_list .line2 {
+  display: flex;
+  padding-bottom: 34rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+}
+.my_list .line2 .line2_view {
+  margin-right: 140rpx;
+}
+.my_list .line2 .line2_view white-space:nowrap .num {
+  color: #323232;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 14rpx;
+}
+.my_list .line2 .line2_view .text {
+  font-size: 24rpx;
+  color: #969696;
+}
+.my_list .line3 {
+  margin-top: 29rpx;
+}
+.my_list .line3 .line3_item {
+  display: flex;
+  color: #646464;
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+.my_list .line3 .line3_item .label {
+  margin-right: 40rpx;
+}

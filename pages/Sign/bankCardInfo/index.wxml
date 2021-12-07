@@ -1,0 +1,14 @@
+<!--pages/Sign/bankCardInfo/index.wxml-->
+<van-cell-group>
+	<van-field label="卡号" placeholder="请输入姓名" model:value="{{ value }}" bind:click-icon="onClickIcon" icon="photograph"
+		hold-keyboard="{{true}}" />
+	<van-field label="手机号" placeholder="请输入手机号" model:value="{{ value1 }}" hold-keyboard="{{true}}">
+	</van-field>
+	<van-field label="验证码" placeholder="请输入短信验证码" model:value="{{ value2 }}" border="{{ false }}"
+		hold-keyboard="{{true}}">
+		<van-button slot="button" size="small" color="orange">发送验证码</van-button>
+	</van-field>
+</van-cell-group>
+<view class="btn">
+	<van-button block type="default" bindtap="goNext">下一步</van-button>
+</view>

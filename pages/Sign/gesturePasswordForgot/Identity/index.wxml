@@ -1,0 +1,13 @@
+<!--pages/Sign/gesturePasswordForgot/Identity/index.wxml-->
+<view class=" flex-c ">
+	<view class="m-20">
+		请保持拍摄的身份证四周可见且图片清晰
+	</view>
+	<view class="flex-c">
+		<image class="img" src="../../../../assets/hjmm1.jpg" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+		<image class="img" src="../../../../assets/hjmm2.jpg" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+	</view>
+	<view class="btn">
+		<van-button block type="default" bindtap="goNext">下一步</van-button>
+	</view>
+</view>

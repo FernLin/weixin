@@ -1,0 +1,44 @@
+<!--pages/Loan/branch/index.wxml-->
+<!--pages/loan/index.wxml-->
+<!--index.wxml-->
+<view class="container">
+<view class="input-panel">
+  <van-cell-group>
+    <view class="cell-title">公司经营地址</view>
+    <van-field
+      value="{{ branchAddress }}"
+      placeholder="请输入详细经营地址"
+      name="peopleName"
+      border="{{ false }}"
+      bind:change="handleAddressChange"
+    />
+  </van-cell-group>
+</view>
+<view class="input-pane1">
+  <van-cell-group class="input-pane1">
+    <view class="cell-title">银行网点</view>
+    <van-cell class="branch-picker posi-re" title="{{branchInfo.deptName}}" label="{{branchInfo.addr}}" border="{{ false }}" bindtap="handleChooseBranch" >
+      <view class="branch-cell-right posi-ab">
+        <text class="link-text">更换网点</text>
+        <van-icon name="arrow" />
+      </view>
+    </van-cell>
+  </van-cell-group>
+</view>
+<view class="input-panel">
+  <van-cell-group>
+    <van-field
+      value="{{ peopleName }}"
+      placeholder="选填"
+      label="推荐人"
+      date-field="peopleName"
+      border="{{ false }}"
+      input-align="right"
+      bind:change="handlePeopleNameChange"
+    />
+  </van-cell-group>
+</view>
+
+<view class="primary-btn" bindtap="handleNext">下一步</view>
+  </view>
+  

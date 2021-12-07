@@ -1,0 +1,42 @@
+/* pages/Loan/uploadId/index.wxss */
+
+page {
+  background-color: rgb(248, 248, 248);
+  height: 100%;
+}
+
+.upload-panel {
+  width: 690rpx;
+  margin: 30rpx 0;
+  padding: 24rpx 30rpx;
+  background-color: #fff;
+}
+.upload-title {
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: bold;
+
+}
+.idcard-uploader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30rpx 0;
+}
+.id-icon {
+
+  width: 320rpx;
+  height: 248rpx;
+}
+.primary-btn {
+  margin-top: 64rpx;
+  background-color: #e43234;
+  width: 690rpx;
+  height:90rpx;
+  line-height:90rpx;
+  border-radius: 45rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #FFFFFF;
+  text-align: center;
+}

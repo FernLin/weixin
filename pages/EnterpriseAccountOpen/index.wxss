@@ -1,0 +1,27 @@
+.item-css {
+    height:100rpx;
+    line-height: 100rpx;
+}
+
+.png-icon {
+    width:40rpx;
+    height:40rpx;
+    margin-left: 30rpx;
+    margin-right: 20rpx;
+}
+
+.item-txt {
+    color:#646464;
+    font-size:30rpx;
+}
+
+.right-icon {
+    height: 32rpx;
+    width: 32rpx;
+    color:#c8c8c8;
+    margin-right: 30rpx;
+}
+
+
+
+

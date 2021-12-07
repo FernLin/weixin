@@ -1,0 +1,23 @@
+/* pages/login/register/index.wxss */
+.input{
+  border-bottom: solid 2rpx orange;
+}
+.input1{
+  border-bottom: solid 2rpx #eee;
+}
+.flex1{
+  flex: 1;
+  padding-left: 20rpx;
+}
+.icon{
+  font-size: 32rpx;
+}
+.login{
+  font-size: 24rpx;
+}
+.btn{
+  margin-top:60rpx;
+}
+.pass{
+  padding:0 20rpx;
+}

@@ -1,0 +1,10 @@
+<!--pages/Loan/applyResult/index.wxml-->
+<view class="container">
+  <view class="result-panel">
+    <image src="{{ result.iconUrl }}" class="result-icon" />
+    <text class="result-title">{{ result.title }}</text>
+    <text class="result-id">受理编号：{{ result.id }}</text>
+    <text class="result-content">{{ result.content }}</text>
+  </view>
+  <view class="back-btn" bindtap="handleBack">完成</view>
+</view>

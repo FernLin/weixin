@@ -1,0 +1,17 @@
+/* pages/Sign/gesturePasswordForgot/Identity/index.wxss */
+
+.flex-c {
+  width: 100%;
+}
+
+.btn {
+  width: 60%;
+  margin: 50rpx auto;
+}
+
+.img {
+  width: 600rpx;
+  margin: 20rpx auto;
+  border: solid 2rpx #eee;
+  height: 300rpx;
+}

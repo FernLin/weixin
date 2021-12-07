@@ -1,0 +1,71 @@
+/* pages/foud/fundBuyResult/index.wxss */
+.result-info {
+  background: #FFF;
+  font-family: PingFang SC;
+  color: #646464;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin: 31rpx;
+  padding-bottom: 54rpx;
+  border-radius: 12rpx
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 59rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  margin-bottom: 50rpx;
+}
+
+.png-icon {
+  width: 118rpx;
+  height: 118rpx;
+}
+.accept{
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  font-size: 32rpx;
+  margin-top: 34rpx;
+  margin-bottom: 40rpx;
+}
+.v-l{
+  color: #646464;
+  font-size: 28rpx;
+}
+.v-r{
+  color: #323232;
+  font-size: 28rpx;
+}
+.p-49{
+  padding-right: 49rpx;
+  padding-left: 49rpx;
+  padding-top: 20rpx;
+}
+.back-btn {
+  width: 330rpx;
+  margin: 30rpx;
+  margin-top: 64rpx;
+  background-color: rgb(228, 50, 52);
+  border-radius: 45rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.cc-btn{
+  width: 330rpx;
+  margin: 30rpx;
+  margin-top: 64rpx;
+  background-color:#ffffff;
+  border-radius: 45rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #323232;
+  border:1px solid;
+  border-color:#e6e6e6;
+}

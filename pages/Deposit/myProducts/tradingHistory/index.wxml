@@ -1,0 +1,90 @@
+<!--pages/Deposit/myProducts/tradingHistory/index.wxml-->
+<view class="flex-c m-20 p-20 box-s border-r ">
+  <view class="select mt-20">
+    <view class="txt-o">存款类型</view>
+    <picker bindchange="isflagPicker" range="{{isflags}}">
+      <view class="flex jc-sb mt-20 ai-fs">
+        <view class="fw-b">
+          {{isflag}}
+        </view>
+        <van-icon name="arrow" />
+      </view>
+    </picker>
+  </view>
+  <view class="select mt-50">
+    <view class="txt-o">操作类型</view>
+    <picker bindchange="transTypePicker" range="{{transTypes}}">
+      <view class="flex jc-sb mt-20 ai-fs">
+        <view class="fw-b">
+          {{transType}}
+        </view>
+        <van-icon name="arrow" />
+      </view>
+    </picker>
+  </view>
+  <view class="select mt-50" style="margin-bottom:20rpx">
+    <view class="txt-o">银行卡号</view>
+    <picker bindchange="accountNoPicker" range="{{accountNos}}">
+      <view class="flex jc-sb mt-20 ai-fs">
+        <view class="fw-b">
+          {{accountNoName}}
+        </view>
+        <van-icon name="arrow" />
+      </view>
+    </picker>
+  </view>
+  <view class="select mt-50" style="margin-bottom:20rpx">
+    <view class="txt-o">查询日期</view>
+    <view class="flex jc-sb mt-20">
+      <van-button bindtap="actionBtn" block data-index="1" class="{{action==1?'action':''}} flex1 " size="small">
+        近一周
+      </van-button>
+      <van-button bindtap="actionBtn" block data-index="2" class="  {{action==2?'action':''}} flex1 p-lr-10"
+        size="small">
+        近一个月
+      </van-button>
+      <van-button bindtap="actionBtn" block data-index="3" class=" {{action==3?'action':''}} flex1 p-lr-10"
+        size="small">
+        近三个月
+      </van-button>
+      <van-button bindtap="actionBtn" block data-index="4" class="  {{action==4?'action':''}} flex1" size="small">
+        自定义
+      </van-button>
+    </view>
+    <view wx:if="{{dateShow}}" class="flex mt-50 txt-o">
+      <view class="flex1 ">
+        <picker class="bg-o pick" mode="date" model:value="{{beginDate}}" bindchange="beginDateChange">
+          <view class="flex p-lr-10">
+            <view class="flex1 p-lr-10">{{beginDate}}</view>
+            <van-icon name="calendar-o" />
+          </view>
+        </picker>
+      </view>
+      <view class="ta-c" style="width:40rpx">-</view>
+      <view class="flex1 ">
+        <picker class="bg-o pick" mode="date" value="{{endDate}}" bindchange="endDateChange">
+          <view class="flex p-lr-10">
+            <view class="flex1 p-lr-10">{{endDate}}</view>
+            <van-icon name="calendar-o" />
+          </view>
+        </picker>
+      </view>
+    </view>
+
+  </view>
+</view>
+<view wx:for="{{list}}" wx:key="index" class="flex-c m-20 p-20 box-s border-r" bindtap="goNext" data-item="{{item}}">
+  <view class="m-20 fw-b">{{item.productName}} </view>
+  <view class="flex jc-sa">
+    <view class="  flex">
+      <view class="">交易金额 : </view>
+      <view class="txt-o fw-b ">{{item.transAmount}}</view>
+    </view>
+    <view>交易日期</view>
+    <view class="txt-o fw-b">{{item.transDate}}</view>
+    <view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+
+</view>

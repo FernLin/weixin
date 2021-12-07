@@ -1,0 +1,112 @@
+<!--pages/Deposit/depositProducts/productDetails/index.wxml-->
+<view class="bg-o p-20 txt-w">
+  <view class=" fw-b p-lr-10  mt-20">{{list.productName}}</view>
+  <view class="mt-20">
+    <van-tag class="p-lr-10" color="#fff" text-color="orange" size="medium">{{list.minAmount}}元起购</van-tag>
+    <van-tag class="p-lr-10" color="#fff" text-color="orange" size="medium">{{list.stepAmount}}元递增</van-tag>
+  </view>
+  <view class="mt-50">
+    <view class="flex m-20">
+      <view class=" flex flex1">
+        <view class="txt-30 txt-w fw-b">
+          {{list.dueRate}}%
+        </view>
+      </view>
+      <view class=" flex flex1">
+        <view class="txt-30 txt-w fw-b">
+          {{list.investPeriod}}年
+        </view>
+      </view>
+    </view>
+    <view class="flex m-20">
+      <view class=" flex flex1 tag txt-w">
+        年利率
+      </view>
+      <view class=" flex flex1 tag txt-w">
+        产品期限
+      </view>
+    </view>
+  </view>
+</view>
+<view class=" p-20">
+  <view class=" fw-b p-lr-10  mt-20">产品特点</view>
+  <view>
+    <van-steps steps="{{ steps }}" active="{{ active }}" direction="vertical" size="50" active-color="orange" />
+  </view>
+</view>
+<view class=" p-20">
+  <view class="txt-b">
+    <text class="fw-b p-lr-10  mt-20 ruls {{rule? 'active':''}}" bindtap="clickRule">计息规则</text>
+    <text class="fw-b p-lr-10  mt-20  ruls {{rule? '':'active'}}" bindtap="clickRule1">支取规则</text>
+  </view>
+  <view class=" mt-20 labitem1">
+    <text wx:if="{{rule}}">{{list.interestRule}}</text>
+    <text wx:if="{{!rule}}">{{list.interestRule}}</text>
+  </view>
+</view>
+<view class=" bg border-b">
+  <view class="">购买流程</view>
+  <view class="flex ai-c mt-20 jc-sa ai-fs">
+    <view class="flex-c ai-c flex1">
+      <view class="number">1</view>
+      <view class="mt-20">开通电子账户</view>
+    </view>
+    <van-icon name="arrow" size="20" />
+    <view class="flex-c ai-c flex1">
+      <view class="number">2</view>
+      <view class="mt-20">充值</view>
+    </view>
+    <van-icon name="arrow" size="20" />
+    <view class="flex-c ai-c flex1">
+      <view class="number">3</view>
+      <view class="mt-20">支付</view>
+    </view>
+    <van-icon name="arrow" size="20" />
+    <view class="flex-c ai-c flex1">
+      <view class="number">4</view>
+      <view class="mt-20">购买完成</view>
+    </view>
+  </view>
+</view>
+<view class="flex m-20 mb">
+  <view class="p-lr-10" bindtap="showPopup">
+    <van-icon name="balance-list-o" size="36" />
+  </view>
+  <view class="btn flex1">
+    <van-button block color="orange" bindtap="goNext">购买</van-button>
+  </view>
+</view>
+
+<view class="fenx">
+  <van-icon name="send-gift" size="40" />
+</view>
+<!-- 弹窗 -->
+<van-popup closeable show="{{ show }}" bind:close="onClose">
+  <view class="determine flex jc-c ai-c ">
+    <view class="dialog">
+      <view class="flex jc-sa p-20">
+        <view>收益计算器</view>
+      </view>
+      <view class="bg flex-c jc-c ai-c">
+        <view class="txt-o txt-30"> {{totalTaxAmount}} </view>
+        <view class="mt-20">产品到期收益(元)</view>
+      </view>
+      <view class="flex input m-20">
+        <view class="tag txt-30 btn">￥</view>
+        <input model:value="{{demandTransactionAmount}}" placeholder="{{list.minAmount}}元起购,{{list.stepAmount}}元递增"
+          cursor-spacing="150" focus confirm-hold hold-keyboard class="flex1" type="number" />
+      </view>
+      <view class="flex">
+        <view class="flex1 flex-c ai-c tag">
+          <view class=" txt-b">
+            <text>储蓄存款利率</text>
+            <text class=" txt-o"> {{list.dueRate}}%</text>
+          </view>
+        </view>
+      </view>
+      <view class="m-20 ">
+        <van-button bindtap="getMoney" block color="orange">立即计算</van-button>
+      </view>
+    </view>
+  </view>
+</van-popup>

@@ -1,0 +1,34 @@
+<!--pages/loan/index.wxml-->
+<!--index.wxml-->
+<view class="detail-page">
+    <view class="detail-title">乐税贷</view>
+    <image class="top-png posi-re" src="/assets/Loan/detail-png.png" />
+    <view class="detail-card p-30 posi-re">
+        <view class="flex title">
+            <view class="title-icon"></view>
+            产品介绍
+        </view>
+        <text class="detali-txt">
+            “乐税贷”为赣州银行面向依法按时纳税的中小企业主，研发的互联网贷款产品。
+        </text>
+    </view>
+    <view class="detail-card-b m-30 p-30">
+        <view class="flex title">
+            <view class="title-icon"></view>
+            申请资格
+        </view>
+        <text class="detali-txt">
+            （1）申请人为企业法定代表人。
+        </text>
+        <text class="detali-txt">
+            （2）申请人年龄22周岁（含）-59周岁（含），无不良信用记录。
+        </text>
+        <text class="detali-txt">
+            （3）企业成立2年（含）以上，具有合法经营资质，无不良信用记录；
+        </text>
+        <text class="detali-txt">
+            （4）企业的纳税状态为“正常”且最新纳税信等级非D，无未缴清的税款；
+        </text>
+    </view>
+</view>
+

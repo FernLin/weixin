@@ -1,0 +1,28 @@
+<!--pages/Deposit/depositProducts/buyProduct/Success/index.wxml-->
+<view class="cardTiedSuccessfully flex-c mt-50">
+  <van-icon name="passed" color="#00b300" size="80" />
+  <view class="mt-50">
+    您的购买交易申请成功!
+  </view>
+  <view class="m-20 flex1">
+    <view class="flex-c  tag txt-b p-20">
+      <view class="flex flex1 jc-sb  ">
+        <view>产品名称：</view>
+        <view>{{list.productName}}</view>
+      </view>
+      <view class="flex flex1 jc-sb pt-20">
+        <view>认购账户</view>
+        <view>{{list.accountNo}}</view>
+      </view>
+      <view class="flex flex1 jc-sb pt-20 ">
+        <view>认购金额</view>
+        <view>{{list.transAmount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn mt-20 flex">
+    <van-button class="btn1" block type="default" bindtap="goNext">完成</van-button>
+    <van-button class="btn1" block type="default" bindtap="goNext1">继续购买</van-button>
+  </view>
+</view>

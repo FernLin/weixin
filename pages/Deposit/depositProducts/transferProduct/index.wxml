@@ -1,0 +1,80 @@
+<!--pages/Deposit/depositProducts/transferProduct/index.wxml-->
+<view class="flex panel title">
+  <view>
+    收益率
+    <van-icon wx:if="{{des}}" name="descending" />
+    <van-icon wx:if="{{!des}}" name="ascending" />
+  </view>
+  <view>
+    期限
+    <van-icon wx:if="{{des}}" name="descending" />
+    <van-icon wx:if="{{!des}}" name="ascending" />
+  </view>
+  <view>
+    起购金额
+    <van-icon wx:if="{{des}}" name="descending" />
+    <van-icon wx:if="{{!des}}" name="ascending" />
+  </view>
+</view>
+<view class="list border-b">
+  <view class="tit"> 取息宝J2期(12个月)</view>
+  <view class="flex jc-sa">
+    <view class="flex1">
+      <view class=" txt-r">
+        4.94%
+      </view>
+      <view class="tag">
+        预期年利率
+      </view>
+    </view>
+    <view class="flex1 bor">
+      <view class=" txt-r">
+        2021/01/25
+      </view>
+      <view class="tag">
+        到期时间
+      </view>
+    </view>
+    <view class="flex1">
+      <view class=" txt-r">
+        20万
+      </view>
+      <view class="tag">
+        存款金额（元）
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="list border-b">
+  <view class="tit"> 取息宝J2期(12个月)</view>
+  <view class="flex jc-sa">
+    <view class="flex1">
+      <view class=" txt-r">
+        4.94%
+      </view>
+      <view class="tag">
+        预期年利率
+      </view>
+    </view>
+    <view class="flex1 bor">
+      <view class=" txt-r">
+        2021/01/25
+      </view>
+      <view class="tag">
+        到期时间
+      </view>
+    </view>
+    <view class="flex1">
+      <view class=" txt-r">
+        20万
+      </view>
+      <view class="tag">
+        存款金额（元）
+      </view>
+    </view>
+  </view>
+</view>
+<view class="btn">
+  <van-button block plain type="warning">我要转让</van-button>
+</view>

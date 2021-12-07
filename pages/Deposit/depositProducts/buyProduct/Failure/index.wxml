@@ -1,0 +1,11 @@
+<!--pages/Deposit/depositProducts/buyProduct/Failure/index.wxml-->
+<view class="cardTiedSuccessfully flex-c mt-50">
+  <van-icon name="close" color="red" size="80" />
+	<view class="mt-50">
+		您的购买交易申请失败!
+	</view>
+	<view class="btn mt-50">
+		<van-button block type="default">返回</van-button>
+	</view>
+</view>
+

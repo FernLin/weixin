@@ -1,0 +1,18 @@
+/* pages/Deposit/myProducts/tradingHistory/index.wxss */
+.flex1 {
+  flex: 1;
+}
+.pick {
+  border-radius: 4rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.action .van-button--block {
+  color: white;
+  background: orange;
+  border-color: orange;
+}
+.bg-o {
+  background: rgba(255, 166, 0, 0.1);
+}

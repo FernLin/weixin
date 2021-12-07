@@ -1,0 +1,13 @@
+<!--pages/Deposit/depositProducts/buyProduct/Timeout/index.wxml-->
+<view class="cardTiedSuccessfully flex-c mt-50">
+  <view class="flex box mt-50">
+    <van-icon class="p-20" name="close" color="red" size="60" />
+    <view class=" tag p-20">
+      交易超时，请勿重复提交，请稍后至历史交易中查询 该笔交易是否完成。
+    </view>
+  </view>
+
+  <view class="btn mt-50">
+    <van-button block type="default">返回</van-button>
+  </view>
+</view>

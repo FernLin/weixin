@@ -1,0 +1,125 @@
+/* pages/User/index.wxss */
+.user{
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-flow: column;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userInfo{
+  display: flex;
+  flex-flow: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 140rpx;
+}
+
+.headImg{
+  margin-left: 20rpx;
+}
+
+.headImgCircle{
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.otherInfo{
+  padding-left: 20rpx;
+  width: 500rpx;
+}
+
+.name{
+  margin-top: 20rpx;
+  height: 50rpx;
+}
+
+.loginTime{
+  margin-top: 10rpx;
+  height: 40rpx;
+}
+
+.settingImg{
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.finantialInfo{
+  margin-left:0 auto;
+  width: 97%;
+  height: 300rpx;
+  background-color: rgb(253, 251, 251);
+  border-radius: 16rpx;
+}
+
+.myFinatialTitleBox{
+  margin-top: 10rpx;
+  height: 120rpx;
+}
+
+.myFinatialTitle{
+  height: 120rpx;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.myFinatialBox{
+  margin-top: 10rpx;
+  height: 150rpx;
+}
+
+.myFinatialView{
+  height: 150rpx;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myFinatial{
+  width: 45%;
+  height: 150rpx;
+}
+.finatialInfoBox{
+  height: 150rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.myrightBox{
+  margin-top: 40rpx;
+  height: 350rpx;
+}
+
+.childTitle{
+  font-size: 35rpx;
+  font-weight: bolder;
+}
+
+.myrightImgBox{
+  width: 100%;
+  height: 240rpx;
+  margin-top: 30rpx;
+  
+}
+
+.myrightImgBox1{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.myrightImg{
+  width: 48%;
+  height: 240rpx;
+  background-color: #e8e8e8;
+}

@@ -1,0 +1,12 @@
+/* pages/Sign/gesturePasswordSetting/Success/index.wxss */
+.cardTiedSuccessfully {
+  align-items: center;
+}
+
+.btn {
+  width: 60%;
+}
+
+.mt-50 {
+  margin-top: 50rpx;
+}

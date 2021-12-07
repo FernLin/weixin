@@ -1,0 +1,90 @@
+.datail_header {
+  background-color: #fff;
+  padding: 30rpx;
+}
+.datail_header .header_name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 31rpx;
+}
+.datail_header .header_name .name {
+  margin-left: 6rpx;
+  font-size: 32rpx;
+  color: #333333;
+}
+.datail_header .header_money {
+  display: flex;
+  align-items: center;
+}
+.datail_header .header_money .money_item {
+  margin-right: 130rpx;
+}
+.datail_header .header_money .money_item .money {
+  color: #c7161e;
+}
+.datail_header .header_money .money_item .num {
+  margin-bottom: 7rpx;
+  font-size: 52rpx;
+  font-weight: 500;
+}
+.detail_middle {
+  margin: 20rpx 0;
+}
+.detail_middle,
+.detail_bottom {
+  background-color: #fff;
+  padding: 30rpx;
+}
+.detail_middle .label,
+.detail_bottom .label {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+}
+.detail_middle .van-step__title,
+.detail_bottom .van-step__title {
+  margin-left: 20rpx;
+}
+.detail_middle .step_time,
+.detail_bottom .step_time {
+  font-size: 30rpx;
+  color: #999999;
+  margin-top: 6rpx;
+}
+.detail_middle .step_text,
+.detail_bottom .step_text {
+  font-size: 30rpx;
+  color: #333333;
+}
+.detail_middle .sure_info,
+.detail_bottom .sure_info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+.detail_middle .sure_info .left,
+.detail_bottom .sure_info .left {
+  color: #646464;
+}
+.detail_middle .sure_info .right,
+.detail_bottom .sure_info .right {
+  color: #323232;
+}
+.detail_middle .sure_info .money,
+.detail_bottom .sure_info .money {
+  color: #c7161e;
+}
+.detail_btn {
+  padding: 0 30rpx;
+}
+.detail_btn .btn {
+  margin: 64rpx 0;
+  background-color: #e43234;
+  color: #fff;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 32rpx;
+}

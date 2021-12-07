@@ -1,0 +1,37 @@
+<view>
+  <view class="result_page">
+    <view class="result_box">
+      <view class="type">
+        您为 <text class="bold" selectable="false" space="false" decode="false">{{riskLevel[result.riskLevel]}}</text>投资者
+      </view>
+      <view class="time">评估有效期至{{result.riskDate}}</view>
+      <view class="suit_text">适合产品类型</view>
+      <view class="risk_level">{{suitType[result.riskLevel]}}</view>
+    </view>
+    <view class="tips_box" wx:if="{{false}}">
+      <view class="tips_item">
+        <image src="/assets/foud/risk_tip.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="icon" />
+        <view class="text">
+          本风险承受能力评估结果的有效期为12个月。评估问卷旨在了解您可承受的风险程度、以及您的投资经验，借此协助您选择合适的理财产品类别，以达到您的投资目标。
+        </view>
+      </view>
+      <view class="tips_item">
+        <image src="/assets/foud/risk_tip.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="icon" />
+        <view class="text">本银行建议您，当您发生可能影响自身风险承受能力的情形，再次购买理财产品时应当主动要求进行风险承受能力评估。</view>
+      </view>
+      <view class="tips_item">
+        <image src="/assets/foud/risk_tip.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="icon" />
+        <view class="text">声明：本投资风险评估问卷的准确性视乎您所填写的答案而定，如有任何疑问，您可以对投资产品是否合适进行独立评估。</view>
+      </view>
+      <view class="tips_item last">
+        <image src="/assets/foud/risk_tip.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="icon" />
+        <view class="text">重新评估请点击“重新评估”</view>
+      </view>
+    </view>
+    <view class="btn1" wx:if="{{false}}">重新评估</view>
+    <view class="btn2_box">
+      <view class="my_fund" bindtap='goFund'>我的理财</view>
+      <view class="buy" bindtap='goFund'>前往购买</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+<!--pages/Sign/bankCardSupport/Support/index.wxml-->
+<view wx:for="{{bankDataList}}" wx:key="index">
+  <van-cell title="{{item.bankName}}" />
+</view>

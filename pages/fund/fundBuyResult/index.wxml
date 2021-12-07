@@ -1,0 +1,26 @@
+<!--pages/foud/fundBuyResult/index.wxml-->
+<view class="result-info">
+  <view class="info">
+    <image src="../../../assets/LoanApplyResult/success.png" class="png-icon"></image>
+    <view class="accept">交易委托已受理</view>
+    <view>
+      最终确认结果以基金公司确认结果为准，请于T+2（T为工作日）查询确认结果。”，若该笔交易为预受理状态，则提示语为“现在为非交易时间，您的申请将于下一工作日09:30之后进行处理。最终确认结果以基金公司确认结果为准，请于T+2（T为工作日）查询确认结果。
+    </view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">基金名称</view>
+    <view class="v-r">{{prdInfo.prdName}}</view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">基金代码</view>
+    <view class="v-r">{{prdInfo.prdCode}}</view>
+  </view>
+  <view class="flex jc-sb p-49">
+    <view class="v-l">认购/申购金额</view>
+    <view class="v-r">{{prdInfo.perchasingAmount}}元</view>
+  </view>
+</view>
+<view class="flex">
+  <view class="cc-btn" bindtap="handleBack">我的持仓</view>
+  <view class="back-btn" bindtap="handleBack">完成</view>
+</view>

@@ -1,0 +1,22 @@
+<view class="newPwd flex-center flex-c">
+  <view class="titleBox flex-center">
+    <view style="font-size:25rpx">请绘制新手势密码</view>
+  </view>
+  <view class="pwdBox flex-c panel">
+    <view class="pwdRow flex-r panel">
+      <view class="pwdCircle"></view>
+      <view class="pwdCircle"></view>
+      <view class="pwdCircle"></view>
+    </view>
+    <view class="pwdRow flex-r panel">
+      <view class="pwdCircle"></view>
+      <view class="pwdCircle"></view>
+      <view class="pwdCircle"></view>
+    </view>
+    <view class="pwdRow flex-r panel">
+      <view class="pwdCircle"></view>
+      <view class="pwdCircle"></view>
+      <view class="pwdCircle"></view>
+    </view>
+  </view>
+</view>

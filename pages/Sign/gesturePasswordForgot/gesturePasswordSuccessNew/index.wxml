@@ -1,0 +1,10 @@
+<!--pages/Sign/gesturePasswordForgot/gesturePasswordSuccessNew/index.wxml-->
+<view class="gesturePasswordSetting flex-c mt-50">
+	<view>
+		请确认新手势密码
+	</view>
+	<image bindtap="goNext" class="" src="../../../../assets/tabbar1.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+  <view class="mt-50">
+		温馨提示：手势密码修改后需要重新登录
+	</view>
+</view>

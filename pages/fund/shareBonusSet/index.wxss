@@ -1,0 +1,41 @@
+/* pages/foud/shareBonusSet/index.wxss */
+.r-v{
+  margin-bottom: 20rpx;
+}
+.set-info{
+  background: #FFF;
+  font-family:PingFang SC;
+  color:#646464;
+  height: 170rpx;
+  font-size:30rpx;
+  line-height:42rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom: solid 2rpx #eee;
+  box-sizing: border-box;
+}
+.line {
+  margin: 0 auto;
+  width: 92%;
+  height: 1rpx;
+  background-color: #D8D8D8;
+}
+.v-n{
+  font-family: PingFang SC;
+  color: #333333;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+.v-l{
+  color: #969696;
+  font-size: 28rpx;
+  margin-right: 30rpx;
+}
+.v-r{
+  color: #333333;
+  font-size: 28rpx;
+}
+.arrow{
+  color: #c8c8c8;
+}

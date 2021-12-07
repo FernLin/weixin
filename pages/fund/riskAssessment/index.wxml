@@ -1,0 +1,56 @@
+<view class="card-info manager-text">
+<view class="flex p-30 jc-sb"  bindtap="changeBankCard">
+  <view class="l-t">账号</view>
+  <view class="flex w-70">
+    <!-- <text>{{cardInfo.acNoHidden}}</text> -->
+    <text>{{showAcNo}}</text>
+    <van-icon name="arrow" />
+  </view>
+</view>
+</view>
+<view class="confirm-radio ">
+  <van-radio-group value="{{ isConfirm }}" bind:change="handleConfirm">
+    <van-radio name="1" icon-size="30rpx" checked-color="#e43234">
+      <!-- <text class="link-text">本人保证.上述所填信息为本人真实意愿，并接受贵行评估意见。同时确认当本人发生可能影响自身风险承受能力的情形，再次购买理财产品时，必须主动要求银行重新对本人进行风险 承受能力评估，否则由此导致的一切后果由本人承担。</text> -->
+    </van-radio>
+  </van-radio-group>
+  <text class="link-text">本人保证.上述所填信息为本人真实意愿，并接受贵行评估意见。同时确认当本人发生可能影响自身风险承受能力的情形，再次购买理财产品时，必须主动要求银行重新对本人进行风险
+    承受能力评估，否则由此导致的一切后果由本人承担。</text>
+</view>
+
+<view class="next-step" bindtap="goNext">下一步</view>
+
+<!-- 选择银行卡 -->
+<van-popup show="{{bankCardPopup}}" round position="bottom">
+    <van-picker columns="{{actions}}" show-toolbar bind:cancel="onClose" bind:confirm="onConfirm"/>
+</van-popup>
+
+<view class="m-30 bottom-safe">
+    <view class="bg-w p-30 mb-30 tran-card" wx:for="{{ transInfoList }}" wx:key="item">
+        <view class="ta-c flex jc-c money-num"><view wx:if="{{ item.transAmt<0 }}">-</view><view wx:else>+</view>￥{{ item.transAmt}}</view>
+        <view class="ta-c tran-date">{{item.transTime}}</view>
+        <view class="flex jc-sb mt-30">
+            <view >
+                <view class="bank-name">{{item.oppositeAcctName}}</view>
+                <view class="bank-card">尾号{{item.endCardNo}}</view>
+            </view>
+            <image class="direct-icon" src="/assets/direct.png" />
+            <view >
+                <view class="bank-name ta-r">{{item.oppositeBankName}}</view>
+                <view class="bank-card ta-r">尾号{{item.endOppositeAcct}}</view>
+            </view>
+        </view>
+        <view class="flex jc-sb mt-30">
+            <view class="tran-l">余额</view>
+            <view class="tran-r">￥23,000.00</view>
+        </view>
+        <view class="flex jc-sb mt-16">
+            <view class="tran-l">摘要</view>
+            <view class="tran-r">无</view>
+        </view>
+        <view class="flex jc-sb mt-16">
+            <view class="tran-l">附言</view>
+            <view class="tran-r">{{item.addWord}}</view>
+        </view>
+    </view>
+</view>

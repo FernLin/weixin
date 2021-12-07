@@ -1,0 +1,54 @@
+/* pages/foud/fundsign/index.wxss */
+.card-info {
+  background: #FFF;
+  font-family:PingFang SC;
+  color:#646464;
+  font-size:30rpx;
+  line-height:42rpx;
+}
+.input1 {
+  border-bottom: solid 2rpx #eee;
+  height: 100rpx;
+  box-sizing: border-box;
+}
+/* .input-saomiao {
+    width: calc(100% - 52rpx);
+} */
+
+.saomiao-css {
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: 20rpx;
+}
+.next-step {
+  margin: 64rpx 30rpx;
+  height:90rpx;
+  background-color:#e43234;
+  border-radius:45rpx;
+  
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#ffffff;
+  font-size:32rpx;
+  line-height:90rpx;
+  text-align: center;
+}
+.input-c333{
+  color: #333333;
+}
+.confirm-radio {
+  width: 690rpx;
+  margin: 0 30rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.link-text {
+  color: #4a90e2;
+  margin-right: 20rpx
+}
+.manager-text{
+  margin-top: 20rpx;
+}
+.van-radio{
+  margin-top: 30rpx;
+}

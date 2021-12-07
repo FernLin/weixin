@@ -1,0 +1,30 @@
+<!--pages/Loan/submit/index.wxml-->
+<view class="container">
+  <view class="info-confirm-panel">
+    <van-cell-group>
+      <van-cell title="证件类型" value="{{loanApplyInfo.userInfo.certTypeName}}" />
+      <van-cell title="证件姓名" value="{{loanApplyInfo.userInfo.userName}}" />
+      <van-cell title="证件号码" value="{{loanApplyInfo.userInfo.idNo}}" />
+    </van-cell-group>
+  </view>
+  <view class="info-confirm-panel">
+    <van-cell-group>
+      <van-cell title="有效期限至" value="2019-12-12" />
+    </van-cell-group>
+  </view>
+  <view class="confirm-radio">
+    <van-radio-group value="{{ isConfirm }}" bind:change="handleConfirm">
+      <van-radio name="1" label-disabled icon-size="30rpx" checked-color="#e43234">
+        <text>
+          我已认真阅读<text class="link-text">《个人征信报告及信息查询授权书》</text>，并授权赣州银行查询我的个人征信信息，个人金融资产及公积金缴存等信息。
+        </text>
+      </van-radio>
+    </van-radio-group>
+  </view>
+  <view class="primary-btn" bindtap="handleNext">下一步</view>
+  <view class="submit-tips">温馨提示：请您确认图像识别信息，若信息识别有误，请您返回重新识别。</view>
+</view>
+<van-overlay show="{{ loading }}" class="loading">
+  <van-loading type="spinner" color="#1989fa"  />
+</van-overlay>
+

@@ -1,0 +1,18 @@
+<!--pages/Deposit/depositProducts/buyProduct/determine/index.wxml-->
+<view class="determine flex jc-c ai-c ">
+  <view class="dialog">
+    <view class="flex jc-sb p-20">
+      <view bindtap="goBack"><van-icon name="cross" /></view>
+      <view>短信验证码</view>
+      <view></view>
+    </view>
+    <view class="tag mt-50">已向您手机 <text class="txt-d">13788546654</text> 发送短信验证码</view>
+    <view class="flex input m-20">
+      <input cursor-spacing="150" focus confirm-hold hold-keyboard class="flex1" type="number" />
+      <view class="tag txt-d btn">获取验证码</view>
+    </view>
+    <view class="m-20">
+      <van-button block type="info" bindtap="goNext">下一步</van-button>
+    </view>
+  </view>
+</view>

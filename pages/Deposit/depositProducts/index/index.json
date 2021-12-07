@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "list": "../Component/list/index"
+  },
+  "navigationBarTitleText": "存款产品",
+  "enablePullDownRefresh": true
+}

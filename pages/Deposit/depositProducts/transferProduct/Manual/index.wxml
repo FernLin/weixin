@@ -1,0 +1,7 @@
+<!--pages/Deposit/depositProducts/transferProduct/Manual/index.wxml-->
+<view class="flex jc-sa m-20 border-b">
+  取息宝J2期(6个月)产品说明书
+</view>
+<text class="tag txt-b">1.产品22:00前购买当日起息（包含节假日），自存入日起每3个月作为一个计息周期支付利息，根据存入日对月对日付息，计息天数算头不算尾;
+2.根据本计息周期内实际持有天数，按照满期利率计算利息，利息自动转入电子账户，本金自动续存到下一个计息周期。若当月无对应付息日，则最后一天作为付息日;
+3.每期利息=本金×满期利率×计息周期实际天数÷360</text>

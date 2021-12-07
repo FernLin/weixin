@@ -1,0 +1,107 @@
+<!--pages/finance/index.wxml-->
+<!--pages/Deposit/myProducts/index.wxml-->
+<view class="flex-c ai-c  m-20 p-20 border-r bg-o txt-w">
+  <view class="flex mt-20 ">
+    <view>总资产</view>
+    <van-icon name="eye" style="margin-left:30rpx" bindtap="eyeclick" />
+  </view>
+  <view class=" mt-20 fw-b txt-30">{{list.totalBalance}}</view>
+  <view class="flex tag txt-w mt-20 ">
+    <view class="mt-20 p-lr-10">总收益(元)</view>
+    <view class="mt-20 p-lr-10">+{{list.totalBalance}}</view>
+  </view>
+</view>
+
+<view class="m-20 mt-50 border-b flex jc-sb p-20" bindtap="activte">
+  <view class="fw-b">
+    活期
+  </view>
+  <view class="flex">
+    <view class="p-lr-10 fw-b txt-o">{{list.accountBalance}}</view>
+    <van-icon class="p-lr-10" name="arrow-down" />
+  </view>
+</view>
+<view wx:if="{{act}}">
+  <view wx:for="{{accountBalanceList}}" wx:key="index" data-list="{{item}}"
+    class="flex-c myCertificatesDeposit mt-50 m-20 box-s" bindtap="goNext1">
+    <view class="flex panelitem  ">
+      <view class="txt-b fw-b mt-20">卡号{{item.accountNoName}}</view>
+    </view>
+    <view class="flex panelitem ">
+      <view class="flex list">
+        <view class="tag">账户余额(元):</view>
+        <view class="txt-o fw-b ">{{item.accountBalance}}</view>
+      </view>
+      <view class="flex list">
+        <view class="tag">账户类型:</view>
+        <view class="txt-r fw-b ">{{item.bankAcTypeName}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="m-20 mt-50 border-b flex jc-sb p-20" bindtap="activte1">
+  <view class="fw-b">
+    银行定期
+  </view>
+  <view class="flex">
+    <view class="p-lr-10 fw-b txt-o">{{list.accountBalance}}</view>
+    <van-icon class="p-lr-10" name="arrow-down" />
+  </view>
+</view>
+<view wx:if="{{act1}}">
+  <view wx:for="{{depositBalanceList}}" wx:key="index" data-list="{{item}}"
+    class="flex-c myCertificatesDeposit mt-50 m-20 box-s" bindtap="goNext1">
+    <view class="flex panelitem">
+      <view>{{item.productName}}</view>
+      <!-- <van-tag color="red" text-color="#fff" type="danger">转让中</van-tag> -->
+    </view>
+    <view class="flex panelitem  ">
+      <view class="txt-b fw-b mt-20">卡号{{item.accountNoName}}</view>
+      <view class="tag mt-20">{{item.interestDueDate}}到期</view>
+    </view>
+    <view class="flex panelitem ">
+      <view class="flex-c list">
+        <view class="txt-o fw-b ">{{item.principal}}</view>
+        <view class="tag">持有本金(元)</view>
+
+      </view>
+      <view class="flex-c list">
+        <view class="txt-r fw-b ">{{item.totalInsterest}}</view>
+        <view class="tag">持有收益(元)</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="m-20 mt-50 border-b flex jc-sb p-20" bindtap="activte2">
+  <view class="fw-b">
+    大额存单
+  </view>
+  <view class="flex">
+    <view class="p-lr-10 fw-b txt-o">{{list.accountBalance}}</view>
+    <van-icon class="p-lr-10" name="arrow-down" />
+  </view>
+</view>
+<view wx:if="{{act2}}">
+  <view wx:for="{{largeDepositBalanceList}}" wx:key="index" data-list="{{item}}"
+    class="flex-c myCertificatesDeposit mt-50 m-20 box-s" bindtap="goNext1">
+    <view class="flex panelitem">
+      <view>{{item.productName}}</view>
+      <!-- <van-tag color="red" text-color="#fff" type="danger">转让中</van-tag> -->
+    </view>
+    <view class="flex panelitem  ">
+      <view class="txt-b fw-b mt-20">卡号{{item.accountNoName}}</view>
+      <view class="tag mt-20">{{item.interestDueDate}}到期</view>
+    </view>
+    <view class="flex panelitem ">
+      <view class="flex-c list">
+        <view class="txt-o fw-b ">{{item.principal}}</view>
+        <view class="tag">持有本金(元)</view>
+
+      </view>
+      <view class="flex-c list">
+        <view class="txt-r fw-b ">{{item.totalInsterest}}</view>
+        <view class="tag">持有收益(元)</view>
+      </view>
+    </view>
+  </view>
+</view>

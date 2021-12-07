@@ -1,0 +1,4 @@
+/* pages/Deposit/myProducts/depositDetails/nterestDetails/index.wxss */
+.nterestDetails{
+  background: #f8f8f8;
+}

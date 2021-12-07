@@ -1,0 +1,283 @@
+.foud-view {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.foud-view .foud-menu {
+  display: flex;
+  background-color: #fff;
+  margin: 20rpx 0;
+  box-sizing: border-box;
+  padding: 43rpx 0 36rpx 0;
+}
+.foud-view .foud-menu .foud-menu-item {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.foud-view .foud-menu .foud-menu-item image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.foud-view .foud-menu .foud-menu-item .item-content {
+  font-size: 24rpx;
+  margin-top: 19rpx;
+}
+.foud-view .notice {
+  font-size: 26rpx;
+  margin: 20rpx 0;
+  background-color: #fff;
+  padding: 15rpx;
+}
+.foud-view .ad-swipe {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  height: 200rpx;
+}
+.foud-view .ad-swipe swiper {
+  height: 100%;
+}
+.foud-view .ad-swipe .swiper-item {
+  height: 100%;
+  width: 100%;
+  background-color: #FEF1E5;
+}
+.foud-view .ad-swipe .swiper-item .ad_banner {
+  width: 100%;
+  height: 100%;
+}
+.foud-view .foud-swipe .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 45rpx 0;
+}
+.foud-view .foud-swipe .title .text {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.foud-view .foud-swipe .title .more image {
+  width: 32rpx;
+  height: 8rpx;
+}
+.foud-view .foud-swipe .content {
+  height: 357rpx;
+}
+.foud-view .foud-swipe .content swiper {
+  height: 100%;
+}
+.foud-view .foud-swipe .content .swiper-item {
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #FEF1E5;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info .name {
+  padding: 32.5rpx 0;
+  font-size: 32rpx;
+  color: #633e11;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info .earning {
+  display: flex;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info .earning .money {
+  margin: 0 50rpx;
+  text-align: center;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info .earning .money .num {
+  color: #d70b30;
+  font-size: 42rpx;
+  white-space: nowrap;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info .earning .money .text {
+  color: #96754d;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.foud-view .foud-swipe .content .swiper-item .foud-info .btn {
+  width: 480rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  color: #fff;
+  background: linear-gradient(to left, #d12f37 0%, #f25241 100%);
+  font-size: 30rpx;
+  border-radius: 34rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.foud-view .foud-swipe .content .swiper-item .bac {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.foud-view .foud-select .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 45rpx 0;
+}
+.foud-view .foud-select .title .text {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.foud-view .foud-select .title .more image {
+  width: 32rpx;
+  height: 8rpx;
+}
+.foud-view .foud-select .foud-select-list {
+  background: #fff;
+  border-radius: 20rpx;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view {
+  display: flex;
+  padding: 30rpx;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .rate {
+  margin-right: 59rpx;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .rate .num {
+  font-size: 40rpx;
+  color: #d70b30;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .rate .text {
+  margin-top: 10rpx;
+  color: #969696;
+  font-size: 26rpx;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .info {
+  margin-right: 15rpx;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .info .name {
+  color: #323232;
+  font-size: 30rpx;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .info .code {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #646464;
+}
+.foud-view .foud-select .foud-select-list .foud-select-view .type {
+  height: 38rpx;
+  text-align: center;
+  line-height: 38rpx;
+  padding: 0 17rpx;
+  color: #fa6128;
+  background: #ffecdf;
+  font-size: 22rpx;
+  border-radius: 5rpx;
+  margin-left: auto;
+}
+.foud-postion {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.foud-postion .card {
+  width: 100%;
+  height: 262rpx;
+  background: linear-gradient(to left, #d12f37 0%, #f25241 100%);
+  position: relative;
+  color: #ffffff;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  padding: 23rpx 0 0 30rpx;
+  margin-top: 22rpx;
+}
+.foud-postion .card .all_money {
+  margin-bottom: 20rpx;
+}
+.foud-postion .card .all_money .text {
+  font-size: 26rpx;
+}
+.foud-postion .card .all_money .num {
+  font-size: 42rpx;
+  font-weight: 600;
+  margin-top: 10rpx;
+}
+.foud-postion .card .incomes {
+  display: flex;
+}
+.foud-postion .card .incomes .icome_view {
+  margin-right: 70rpx;
+}
+.foud-postion .card .incomes .icome_view .text {
+  font-size: 26rpx;
+  white-space: nowrap;
+}
+.foud-postion .card .incomes .icome_view .num {
+  font-weight: 600;
+  font-size: 32rpx;
+  margin-top: 5rpx;
+}
+.foud-postion .foud-menu {
+  display: flex;
+  background-color: #fff;
+  margin: 20rpx 0;
+  box-sizing: border-box;
+  padding: 43rpx 0 36rpx 0;
+}
+.foud-postion .foud-menu .foud-menu-item {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.foud-postion .foud-menu .foud-menu-item image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.foud-postion .foud-menu .foud-menu-item .item-content {
+  font-size: 24rpx;
+  margin-top: 19rpx;
+}
+.foud-postion .cell {
+  margin: 20rpx 0;
+  padding: 0 30rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  display: flex;
+  font-size: 26rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  justify-content: space-between;
+}
+.foud-postion .postion_list {
+  background: #fff;
+  border-radius: 10rpx;
+}
+.foud-postion .postion_list .postion_list_view {
+  padding: 30rpx;
+}
+.foud-postion .postion_list .postion_list_view .name {
+  color: #333333;
+  font-size: 28rpx;
+}
+.foud-postion .postion_list .postion_list_view .money {
+  margin-top: 24rpx;
+  display: flex;
+}
+.foud-postion .postion_list .postion_list_view .money .money_item {
+  margin-right: 79rpx;
+}
+.foud-postion .postion_list .postion_list_view .money .money_item .num {
+  font-weight: bold;
+  font-size: 36rpx;
+  color: #323232;
+}
+.foud-postion .postion_list .postion_list_view .money .money_item .text {
+  color: #969696;
+  font-size: 24rpx;
+  white-space: nowrap;
+}
+.foud-postion .postion_list .postion_list_view .money .money_item .up {
+  color: #c7161e;
+}
+.foud-postion .postion_list .postion_list_view .money .money_item .down {
+  color: #6abf47;
+}

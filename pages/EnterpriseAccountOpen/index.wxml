@@ -1,0 +1,17 @@
+<view >
+    <view class="flex jc-sb bg-w mt-30 item-css" bindtap="goEnterAccOpen">
+        <view class="flex ml-30">
+            <image class="png-icon" src="/assets/enteraccopen/time.png" />
+            <view class="item-txt">企业开户预约</view>
+        </view>
+        <van-icon class="right-icon" name="arrow" />
+    </view>
+    <view class="flex jc-sb bg-w mt-30 item-css" bindtap="goEnterAccOpenQuery">
+        <view class="flex ml-30">
+            <image class="png-icon" src="/assets/enteraccopen/search.png" />
+            <view class="item-txt">预约查询</view>
+        </view>
+        <van-icon class="right-icon" name="arrow" />
+    </view>
+
+</view>

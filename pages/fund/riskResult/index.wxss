@@ -1,0 +1,104 @@
+.result_page {
+  background: linear-gradient(to left, #d12f37 0%, #f25241 100%);
+  background-size: 750rpx 200rpx;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.result_page .result_box {
+  width: 690rpx;
+  margin: 0 auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60rpx;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.result_page .result_box .type {
+  color: #333333;
+  font-size: 32rpx;
+  margin: 12rpx 0;
+  white-space: nowrap;
+}
+.result_page .result_box .type .bold {
+  font-size: 64rpx;
+  font-weight: bolder;
+  margin: 0 20rpx;
+}
+.result_page .result_box .time {
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 41rpx;
+}
+.result_page .result_box .suit_text {
+  color: #666666;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.result_page .result_box .risk_level {
+  background-color: #fff5e3;
+  padding: 10rpx 20rpx;
+  font-size: 26rpx;
+  color: #c78f30;
+}
+.result_page .tips_box {
+  width: 690rpx;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  padding: 30rpx 24rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  background: #fff;
+}
+.result_page .tips_box .tips_item {
+  display: flex;
+  margin-bottom: 60rpx;
+}
+.result_page .tips_box .tips_item .icon {
+  width: 26rpx;
+  height: 24rpx;
+  margin-right: 12rpx;
+}
+.result_page .tips_box .tips_item .text {
+  font-size: 26rpx;
+  color: #999999;
+}
+.result_page .tips_box .last {
+  margin-bottom: 0;
+}
+.result_page .btn1 {
+  width: 690rpx;
+  margin: 64rpx auto 0;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #e43234;
+  color: #fff;
+  border-radius: 45rpx;
+}
+.result_page .btn2_box {
+  display: flex;
+  justify-content: space-around;
+  margin: 64rpx auto 0;
+  text-align: center;
+}
+.result_page .btn2_box .my_fund {
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  background-color: #ffffff;
+  color: #323232;
+  width: 330rpx;
+  border: 1rpx solid #e6e6e6;
+}
+.result_page .btn2_box .buy {
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #e43234;
+  color: #fff;
+  border-radius: 45rpx;
+  width: 330rpx;
+}

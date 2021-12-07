@@ -1,0 +1,77 @@
+<!-- pages/foud/fundRedemption/index.wxml -->
+<view class="card-info height-170">
+  <view class="flex jc-sb f-info">
+    <view class="fund-name">{{prdInfo.prdName}}</view>
+  </view>
+  <view class="fund-info">
+    <view class="fund-code-n">基金代码</view>
+    <view>{{prdInfo.prdCode}}</view>
+  </view>
+</view>
+<van-cell title="交易账户" is-link value="{{showAccount}}" bind:click='clickAcc' />
+<van-cell title="定投间隔" is-link value="{{fixedGap+fixedDate}}" bind:click='clickInterval' />
+<view class="card-info height-179">
+  <view class="flex jc-sb part-p">
+    <view class="f-part">定投金额</view>
+  </view>
+  <view class="flex jc-sb f-info">
+    <input  placeholder="最低为1元" gesturetype="text" placeholder-class="p-c" model:value="{{perchasingAmount}}" type="number" />
+  </view>
+</view>
+<view class="mt-30">
+  <van-cell title="计划终止方式" is-link bind:click='clickTermination' value="{{planStopType}}" />
+  <van-cell title="请选择终止时间" is-link bind:click='clickTerminationDate' value="{{planStopDate}}" wx:if="{{planStopType=='按时间中止'}}" />
+  <van-field model:value="{{ planStopNum }}" placeholder="请填写定投次数" border="{{ false }}" label='定投次数' wx:if="{{planStopType=='按次数中止'}}" />
+  <van-field model:value="{{ maticDesc }}" placeholder="不超过10字(选填)" border="{{ false }}" label='定投描述' />
+</view>
+<view class="confirm-radio ">
+  <van-radio-group value="{{ isChecked }}" bind:change="handleConfirm">
+    <van-radio class="van-radio" name="1" icon-size="30rpx" checked-color="#e43234">
+      本人已经阅读本期理财产品
+      <text class="link-text">《产品说明书》</text>
+      、
+      <text class="link-text">《理财产品风险揭示书》</text>
+      、
+      <text class="link-text">《理财产品销售协议》</text>
+      、
+      <text class="link-text">《客户权益须知》</text>
+      并清楚该产品的相关提示，愿意承担相关风险。
+      <text class="link-text"></text>
+    </van-radio>
+  </van-radio-group>
+</view>
+<view class="next-step" bindtap="tapNextStep">下一步</view>
+<!-- 密码输入框 -->
+<view wx:if='{{showPayPwdInput}}'>
+  <view class='bg_layer'></view>
+  <view class='input_main'>
+    <view class='input_title'>
+      <view class='input_back' catchtap='hidePayLayer'>×</view>
+      <!-- <view class="close">×</view> -->
+      <text class="title">请输入交易密码</text>
+    </view>
+    <view class="v-n">{{prdInfo.prdName}}</view>
+    <view class="v-amount">¥{{perchasingAmount}}</view>
+    <view class="pwd-hint">
+      请输入
+      <text>{{showAccount}}</text>
+      6位交易密码
+    </view>
+    <view class='input_row' catchtap='getFocus'>
+      <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+        <text wx:if='{{pwdVal.length>i}}'></text>
+      </view>
+    </view>
+    <!-- <view class='forget_pwd' catchtap='hidePayLayer'>忘记密码</view> -->
+    <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd' maxlength='6' />
+    <view class="confirm-btn" bindtap="sureBuy">确定</view>
+  </view>
+</view>
+<van-action-sheet show="{{ showTermination }}" actions="{{ terminatioAction }}" bind:close="onCloseTermination" bind:select="onSelectTermination" />
+<van-action-sheet show="{{ showAccAction }}" actions="{{ accAction }}" bind:close="onClose" bind:select="onSelect" />
+<van-popup show="{{showPicker}}" round position="bottom">
+  <van-picker columns="{{ pickList }}" bind:change="onChangePicker" show-toolbar='true' bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+<van-popup show="{{showDatePicker}}" round position="bottom">
+  <van-picker columns="{{ dateList }}" bind:change="onChangePicker" show-toolbar='true' bind:cancel="onCancelDate" bind:confirm="onConfirmDate" />
+</van-popup>

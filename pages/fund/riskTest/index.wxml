@@ -1,0 +1,16 @@
+<view>
+  <view class="test_page">
+    <view class="text_box" wx:for="{{quesionList}}" wx:key="index">
+      <view class="question_title">Q{{item.questionNo}}.{{item.questionTitle}}</view>
+      <view class="question_option">
+        <van-radio-group value="{{ selectList[index].riskOption }}"  bind:change="onChange" wx:for="{{item.options}}" wx:for-item="item1" wx:for-index='index1' wx:key="index1"  data-obj='{{item1}}' data-index='{{index}}'>
+          <van-radio name="{{item1.riskOption}}" checked-color="#ee0a24" class="radio" >{{item1.subject}}</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <view class="btn" bindtap='nextStep'>
+      下一步
+    </view>
+      
+  </view>
+</view>

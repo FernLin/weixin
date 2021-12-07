@@ -1,0 +1,56 @@
+<!--pages/Deposit/buyProduct/index.wxml-->
+<view class="flex-c ai-c m-20">
+  <view class="fw-b ">{{list.productName}} </view>
+  <view class="txt-30 txt-r fw-b mt-20"> {{list.dueRate}}%</view>
+  <view class="tag">储蓄存款利率</view>
+</view>
+<view class="bg-h"></view>
+<view class="flex jc-sb ai-fs  m-20 txt-9 mt-50">
+  <view>付款账户</view>
+  <view class="txt-b flex-c">
+    <view bindtap="showPopup"> {{accountName}}</view>
+    <view class="flex jc-sb  mt-20">
+      <view class="tag txt-b ">
+        余额￥{{accountBalance}}
+      </view>
+      <van-button bindtap="topup" size="mini" round color="orange" type="default">充值</van-button>
+    </view>
+  </view>
+  <view>
+    <van-icon name="arrow-down" />
+  </view>
+</view>
+<!-- 下拉 -->
+<van-popup position="bottom" show="{{ show }}" bind:close="onClose">
+  <van-picker show-toolbar columns="{{ columns }}" bind:change="onChange" bind:cancel="onClose"
+    bind:confirm="onConfirm" />
+</van-popup>
+<!--  -->
+<view class="bg-h"></view>
+<view class="p-20 border-b">
+  <view class="flex jc-sb pb-20 txt-9">
+    <view>
+      购买金额
+    </view>
+    <view class="tag txt-o">到期收益(元)：{{totalTaxAmount}}</view>
+  </view>
+  <view class="flex mt-50 m-20">
+    <van-icon name="gold-coin-o" size="30" />
+    <input model:value="{{demandTransactionAmount}}" class="p-lr-10 flex1"
+      placeholder="请输入购买金额({{list.minAmount}}元起购，{{list.stepAmount}}元递增)" type="number" bindblur="getMoney"
+      bindinput="cnMoneyFormat" />
+  </view>
+</view>
+<view class="flex jc-sb m-20 tag ">
+  <view>大写金额：{{moneyFormat}}</view>
+
+</view>
+<view class="btn">
+  <van-button block color="orange" round bindtap="depositBuy">确认</van-button>
+</view>
+
+<view class="flex-c ai-c tag txt-b">
+  <van-checkbox value="{{ checked }}" bind:change="checkedOnChange">
+    <view>我已阅读并同意《柳州银行存款产品服务协议》</view>
+  </van-checkbox>
+</view>

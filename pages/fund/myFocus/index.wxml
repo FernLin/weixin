@@ -1,0 +1,25 @@
+<view>
+    <view></view>
+    <view class="focus_list">
+        <block wx:for="{{focusList}}">
+            <movable-area class="m_a">
+                <movable-view class="m_v" direction="horizontal" inertia="true" out-of-bounds="true">
+                    <view class="focus_item">
+                        <view class="name">{{item.name}}</view>
+                        <view class="fund_info">
+                            <view class="box code_box">
+                                <view class="code">{{item.code}}</view>
+                                <view class="gray_text">基金代码</view>
+                            </view>
+                            <view class="box">
+                                <view class="worth">{{item.worth}}</view>
+                                <view class="gray_text">基金代码</view>
+                            </view>
+                        </view>
+                        <view class="remove" bindtap="delItem">删除</view>
+                    </view>
+                </movable-view>
+            </movable-area>
+        </block>
+    </view>
+</view>

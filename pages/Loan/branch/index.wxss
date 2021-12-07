@@ -1,0 +1,47 @@
+/* pages/Loan/branch/index.wxss */
+page {
+  background-color: rgb(248, 248, 248);
+  height: 100%;
+}
+.input-panel {
+  margin-top: 21rpx;
+}
+.cell-title {
+  background-color: #FFFFFF;
+  line-height: 48rpx;
+  padding-top: 30rpx;
+  padding-left: 30rpx;
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.branch-picker {
+  
+}
+
+.branch-picker .van-cell__title {
+  font-size: 30rpx;
+  flex: auto;
+  flex-grow: 1;
+}
+.branch-cell-right {
+  font-size: 24rpx;
+  right: 30rpx;
+}
+.link-text {
+  color: #4a90e2;
+  margin-right: 20rpx
+}
+.primary-btn {
+  margin-top: 64rpx;
+  background-color: #e43234;
+  width: 690rpx;
+  height:90rpx;
+  line-height:90rpx;
+  border-radius: 45rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #FFFFFF;
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+<!--pages/Loan/branch/branchList/index.wxml-->
+<view class="container">
+  <view class="branch-select-header">
+    <view class="branch-positon">
+      <image class="city-position" src="../../../../assets/Loan/city-position.png"></image>
+      <text>赣州</text>
+    </view>
+    <view class="search-container">
+      <van-icon class="search-icon" name="search" />
+      <input class="branch-search" value="{{ keyword }}" confirm-type="search" bindconfirm="handleSearch" type="text" placeholder="请输入网点名称/街道名称" />
+    </view>
+  </view>
+  <scroll-view class="branch-list-container" scroll-y>
+    <view class="branch-box" wx:for="{{branchList}}" wx:key="item" bindtap="chooseBranch" data-item="{{item}}">
+      <view class="box-line">
+        <view class="branch-name">{{item.deptName}}</view>
+        <view class="branch-distant">{{item.distance}}</view>
+      </view>
+      <view class="box-line">
+        <view class="branch-address">{{item.addr}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

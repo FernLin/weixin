@@ -1,0 +1,35 @@
+<!--pages/Deposit/myProducts/tradingHistory/Details/index.wxml-->
+<view class="m-20  border-r box-s p-20">
+  <view class="flex  txt-b   jc-sb border-b">
+    <view class="m-20 txt-30">{{list.productName}} </view>
+    <view class="flex m-20 ">
+      <view>交易金额:</view>
+      <view class="txt-o fw-b txt-30">{{list.transAmount}}</view>
+    </view>
+  </view>
+  <view class="m-20 flex jc-sb">
+    <view class="flex1">认购账户：</view>
+    <view class="txt-b flex2">{{list.accountNoName}}</view>
+  </view>
+  <view class="m-20 flex jc-sb">
+    <view class="flex1">币种：</view>
+    <view class="txt-b flex2">{{list.currency}}</view>
+  </view>
+  <view class="m-20 flex jc-sb">
+    <view class="flex1">产品期限：</view>
+    <view class="txt-b flex2">{{list.interestBeginDate}}至{{list.interestDueDate}}</view>
+  </view>
+  <view class="m-20 flex jc-sb">
+    <view class="flex1">下一付息日：</view>
+    <view class="txt-b flex2">{{list.nextinterestDate}}</view>
+  </view>
+  <view class="m-20 flex jc-sb">
+    <view class="flex1">当前收益（元）：</view>
+    <view class="txt-b flex2">{{list.totalInsterest}}</view>
+  </view>
+  <view class="m-20 flex jc-sb">
+    <view class="flex1">已派发收益（元）：</view>
+    <view class="txt-b flex2 flex">{{list.distributedInterest}}
+    </view>
+  </view>
+</view>
