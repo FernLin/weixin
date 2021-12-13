@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/financeSupermarket/index",
+    "pages/Microservice/index",
     "pages/Loan/productApply/productDetail/index",
     "pages/Loan/productApply/index",
     "pages/Loan/index",
@@ -25,6 +25,7 @@
     "pages/accMan/index",
     "pages/accMan/bindCard/index",
     "pages/accMan/accNotice/index",
+    "pages/accMan/accNoticeOpera/index",
     "pages/accMan/openAccount/index",
 
     "pages/tranDetail/index",
@@ -97,7 +98,6 @@
     "pages/Sign/Verified/bankCardSupport/Support/index",
     "pages/Sign/Verified/faceRecognition/index",
     "pages/Sign/Verified/cardTiedSuccessfully/index"
-
   ],
   "usingComponents": {
     "van-grid": "@vant/weapp/grid/index",
@@ -146,9 +146,10 @@
     "backgroundColor": "",
     "position": "bottom",
     "borderStyle": "black",
-    "list": [{
-        "pagePath": "pages/financeSupermarket/index",
-        "text": "首页",
+    "list": [
+      {
+        "pagePath": "pages/Microservice/index",
+        "text": "微服务",
         "iconPath": "./assets/Tab1.png",
         "selectedIconPath": "./assets/Tab1Action.png"
       },

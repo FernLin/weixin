@@ -14,6 +14,7 @@ Page({
     idCard: "",
     userName: "",
     phoneNum: "",
+    codeNum: "",
     messagePass: "",
     messageIndex: "",
     columns: [{values:['身份证', "港澳通行证"], defaultIndex: 0}],
@@ -24,7 +25,7 @@ Page({
   },
   // 下一步
   goNext() {
-    if(this.data.bindCardId && this.data.userName && this.data.idCard && this.data.bindCardType && this.data.phoneNum && this.data.messagePass) {
+    if(this.data.bindCardId && this.data.userName && this.data.idCard && this.data.bindCardType && this.data.phoneNum && this.data.codeNum && this.data.messagePass) {
       // this.bindBankCard()
       // this.setData({
       //   bindPopup: true,
@@ -37,6 +38,10 @@ Page({
         duration: 5000 //停留时间
       })
     }
+  },
+  // TODO:更新图形验证码
+  getCaptchaImg() {
+    console.log('刷新图形验证码');
   },
   // 获取验证码
   getVercode() {
@@ -192,6 +197,12 @@ Page({
   bindUserName(e) {
     this.setData({
       userName: e.detail.value
+    })
+  },
+  // 图形验证码
+  bindCodeNum(e) {
+    this.setData({
+      codeNum: e.detail.value
     })
   },
   // 用户手机号

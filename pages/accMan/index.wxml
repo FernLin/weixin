@@ -1,6 +1,6 @@
 <view class="bottom-safe">
-    <van-tabs active="{{ active }}" bind:change="onChange">
-        <van-tab title="银行卡">
+    <!-- <van-tabs active="{{ active }}" bind:change="onChange">
+        <van-tab title="银行卡"> -->
             <view class="bank-card posi-re" wx:for="{{ bankCardList }}" wx:key="item">
                 <view class="info" bindtap="goTransDetail" data-item="{{ item }}">
                     <image src="{{ bankPng }}" />
@@ -32,20 +32,20 @@
             <view class="m-30">
                 <view class="add-card-btn" bindtap="goBindCard">添加银行卡</view>
                 <view class="flex jc-sb notice">
-                    <view>动账通知分享查询</view>
-                    <view>动账通知分享签约</view>
-                    <view>动账通知分享解约</view>
+                    <view bindtap="goNoticeQuery">动账通知分享查询</view>
+                    <view bindtap="goNoticeBind">动账通知分享签约</view>
+                    <view bindtap="goNoticeUnbind">动账通知分享解约</view>
                 </view>
             </view>
-        </van-tab>
-        <van-tab title="电子账户">
+        <!-- </van-tab> -->
+        <!-- <van-tab title="电子账户">
             <view class="bank-card posi-re" wx:for="{{ bankCardList }}" wx:key="item">
                 <view class="info" bindtap="goTransDetail" data-item="{{ item }}">
                     <image src="{{ bankPng }}" />
                     <view class="flex-c">
                         <text class="bank-card-id">{{ item.acNoHidden }}</text>
                         <view class="flex">
-                            <!-- <view class="card-type">借记卡</view> -->
+                            <view class="card-type">借记卡</view>
                             <view class="card-type-1">{{ item.bankAcTypeName }}</view>
                             <view class="fen-ge"></view>
                             <view class="card-type-1">工资卡</view>
@@ -68,8 +68,8 @@
                 <view class="add-card-btn" bindtap="openAccount">开通电子账户</view>
                 
             </view>
-        </van-tab>
-    </van-tabs>
+        </van-tab> -->
+    <!-- </van-tabs> -->
     <!-- 解绑验证码弹框 -->
     <van-popup show="{{unbindPopup}}" class="van-popup-m">
         <view class="unbind-popup m-30 posi-re">

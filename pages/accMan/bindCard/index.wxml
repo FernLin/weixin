@@ -37,13 +37,13 @@
         手机号
         <input type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" />
     </view>
-    <!-- <view class="flex input1 p-30 jc-sb">
+    <view class="flex input1 p-30 jc-sb">
         图形验证码
         <view class="flex ta-r w-70">
-            <input type="number" placeholder="请输入图形验证码" gesturetype="text" class="ta-r input-saomiao" />
-            <image class="yzm-css" src="/assets/appInfo/yzm.png" />
+            <input maxlength="4" bindinput="bindCodeNum" placeholder="请输入图形验证码" gesturetype="text" class="ta-r input-saomiao" />
+            <image class="yzm-css" src="/assets/appInfo/yzm.png" bindtap="getCaptchaImg" />
         </view>
-    </view> -->
+    </view>
     <view class="flex input1 p-30 jc-sb">
         短信验证码
         <view class="flex ta-r">

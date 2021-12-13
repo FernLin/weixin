@@ -1,0 +1,220 @@
+.microservice-content {
+  padding: 20rpx 30rpx 30rpx;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.bg-w {
+  background: #fff;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+
+.tag-content {
+  margin-left: 24rpx;
+}
+
+.tag-content text {
+  font-size: 26rpx;
+  color: #EB5F00;
+  border: 1rpx solid #EB5F00;
+  border-radius: 8rpx;
+  padding: 4rpx 12rpx;
+  margin-right: 12rpx;
+}
+
+.avatar {
+  width: 133rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+  margin-right: 40rpx;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.contact image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.contact text {
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 20rpx;
+}
+
+.ad-swipe {
+  margin-top: 20rpx;
+  height: 200rpx;
+}
+
+.ad-swipe swiper {
+  height: 100%;
+}
+
+.ad-swipe .swiper-item {
+  height: 100%;
+  width: 100%;
+  background-color: #FEF1E5;
+}
+
+.ad-swipe .swiper-item .ad_banner {
+  width: 100%;
+  height: 100%;
+}
+
+.txt-r {
+  font-size: 35rpx;
+}
+
+.txt-32 {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.txt-42 {
+  font-size: 42rpx;
+  font-weight: 700;
+  color: #d70b30;
+}
+
+.txt-normal-42 {
+  font-size: 42rpx;
+  font-weight: 600;
+  color: #323232;
+}
+
+.txt-26 {
+  font-size: 26rpx;
+  color: #969696;
+}
+
+.txt-30 {
+  font-size: 30rpx;
+  color: #323232;
+}
+
+.txt-26-noc {
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.txt-22-noc {
+  font-size: 22rpx;
+}
+
+.mt-10 {
+  margin-top: 10rpx;
+}
+
+.mt-30 {
+  margin-top: 30rpx;
+}
+
+.mt-36 {
+  margin-top: 36rpx;
+}
+
+.ml-20 {
+  margin-left: 20rpx;
+}
+
+.mr-60 {
+  margin-right: 60rpx;
+}
+
+.c-d7 {
+  color: #d70b30;
+}
+
+.c-f45 {
+  color: #f45555;
+}
+
+.c-418 {
+  color: #4186f5;
+}
+
+.more-css {
+  width: 32rpx;
+  height: 8rpx;
+}
+
+.loan-item {
+  background-color: #ffffff;
+  border-radius: 12rpx;
+}
+
+.loan-icon {
+  opacity: 1;
+  width: 200rpx;
+  height: 180rpx;
+  bottom: 0;
+  right: 18rpx;
+}
+
+.other-opera-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.opera-detail {
+  position: relative;
+}
+
+.opera-detail .opera-bg {
+  width: 335rpx;
+  height: 166rpx;
+}
+
+.opera-detail .opera-body {
+  position: absolute;
+  top: 36rpx;
+  left: 38rpx;
+}
+
+.opera-detail .opera-body image {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.opera-name text {
+  font-size: 32rpx;
+  color: #A9574C;
+  font-weight: 500;
+}
+
+.opera-name image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 12rpx;
+}
+
+.click-btn {
+  margin-top: 18rpx;
+  font-size: 22rpx;
+  color: #A9574C;
+  background-color: rgba(169, 87, 76, 0.09);
+  border-radius: 16rpx;
+  padding: 4rpx 14rpx;
+}
+
+.reserve .opera-name text {
+  color: #687BC5;
+}
+
+.reserve .click-btn {
+  color: #687BC5;
+  background-color: rgba(104, 123, 197, 0.09);
+}

@@ -161,11 +161,11 @@ Page({
     }
   },
   goBankCardList() {
-    if (app.util.gologin()) {
+    // if (app.util.gologin()) {
       wx.navigateTo({
         url: '/pages/accMan/index',
       })
-    }
+    // }
   },
   // 银行卡转账查询
   goTransDetail(e) {

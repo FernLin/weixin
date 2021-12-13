@@ -1,0 +1,131 @@
+<!--index.wxml-->
+<view class="microservice-content">
+	<!-- 专属客户经理 -->
+	<view class="flex1 bg-w p-30">
+		<view class="txt-32">专属客户经理</view>
+		<view class="flex mt-30">
+			<image class="avatar" src="/assets/mainPage/testImg.png" />
+			<view class="flex-c flex1">
+				<view class="txt-30">克里斯汀娜</view>
+				<view class="txt-26 mt-20">赣州银行萍乡分行</view>
+				<view class="flex mt-36">
+					<view class="contact" bindtap="callManager">
+						<image class="" src="/assets/mainPage/phone.png" />
+						<text>打电话</text>
+					</view>
+					<view class="contact">
+						<image class="" src="/assets/mainPage/wechat.png" />
+						<text>加微信</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<!-- 广告滚动 -->
+	<view class="ad-swipe">
+		<swiper indicator-dots="{{true}}" autoplay="{{true}}">
+			<swiper-item>
+				<view class="swiper-item">
+					<image src="/assets/mainPage/adImg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror=""
+						bindload="" class="ad_banner" />
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view class="swiper-item">
+					<image src="/assets/mainPage/adImg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror=""
+						bindload="" class="ad_banner" />
+				</view>
+			</swiper-item>
+		</swiper>
+	</view>
+
+	<!-- 贷款推荐 -->
+	<view class="flex1 mt-30">
+		<view class="flex jc-sb">
+			<view class="txt-32">贷款推荐</view>
+			<view style="height:40rpx" class="flex">
+				<image src="{{ morePng }}" class="more-css" bindtap="goLoanPage" />
+			</view>
+		</view>
+		<view class="bg-w p-30 mt-30 posi-re loan-item">
+			<image class="posi-ab loan-icon" src="/assets/mainPage/loanicon.png" />
+			<view class="flex">
+				<text class="txt-30">乐税贷</text>
+				<view class="tag-content">
+					<text>随借随还</text>
+					<text>按日计息</text>
+					<text>审批快</text>
+				</view>
+			</view>
+			<view class="flex mt-36">
+				<view class="flex-c mr-60">
+					<view class="txt-42">50万</view>
+					<view class="txt-26 mt-10">最高额度（元）</view>
+				</view>
+				<view>
+					<view class="txt-normal-42">8.19%</view>
+					<text class="txt-26 mt-10">利率低至</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<!-- 基金推荐 -->
+	<view class="flex1 mt-30">
+		<view class="flex jc-sb">
+			<view class="txt-32">基金推荐</view>
+			<view style="height:40rpx" class="flex">
+				<image src="{{ morePng }}" class="more-css" bindtap="goFoud" />
+			</view>
+		</view>
+		<view class="bg-w p-30 mt-30" style="border-radius: 20rpx">
+			<view class="flex">
+				<view class="flex-c mr-60">
+					<view class="txt-42">4.53%</view>
+					<view class="txt-26">近一年收益率</view>
+				</view>
+				<view>
+					<view class="txt-30">季季鑫34号</view>
+					<text class="txt-26 flex mt-10">298天 | 5万起购 | <text class="c-d7"> 稳健又灵活</text></text>
+				</view>
+			</view>
+			<view class="flex mt-30">
+				<view class="flex-c mr-60">
+					<view class="txt-42">4.53%</view>
+					<view class="txt-26">近一年收益率</view>
+				</view>
+				<view>
+					<view class="txt-30">金瑞香安鑫JS3433号
+						<van-icon class="ml-20" name="fire" size="30rpx" color="#d70b30;" />
+					</view>
+					<text class="txt-26 flex mt-10">298天 | 5万起购 | <text class="c-d7"> 10年销冠产品</text></text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<!-- 其他操作 -->
+	<view class="other-opera-content mt-30">
+		<view class="opera-detail" bindtap="goEnterpriseAccountOpen">
+			<image class="opera-bg" src="/assets/mainPage/operaOpenAccount.png" />
+			<view class="opera-body">
+				<view class="opera-name">
+					<text>企业预开户</text>
+					<image src="/assets/mainPage/goOpenAccount.png" />
+				</view>
+				<text class="click-btn">点击查看</text>
+			</view>
+		</view>
+		<view class="opera-detail">
+			<image class="opera-bg" src="/assets/mainPage/operaReserve.png" />
+			<view class="opera-body reserve">
+				<view class="opera-name">
+					<text>网点预约</text>
+					<image src="/assets/mainPage/goReserve.png" />
+				</view>
+				<text class="click-btn">点击查看</text>
+			</view>
+		</view>
+	</view>
+</view>
