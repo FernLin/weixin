@@ -7,7 +7,7 @@
                     <view class="flex-c">
                         <text class="bank-card-id">{{ item.acNoHidden }}</text>
                         <view class="flex">
-                            <!-- <view class="card-type">借记卡</view> -->
+                            <view class="card-type">借记卡</view>
                             <view class="card-type-1">{{ item.bankAcTypeName }}</view>
                             <view class="fen-ge"></view>
                             <view class="card-type-1">工资卡</view>

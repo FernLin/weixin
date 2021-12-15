@@ -27,6 +27,7 @@
     "pages/accMan/accNotice/index",
     "pages/accMan/accNoticeOpera/index",
     "pages/accMan/openAccount/index",
+    "pages/accMan/accDetail/index",
 
     "pages/tranDetail/index",
     "pages/login/index",
@@ -131,7 +132,8 @@
     "van-overlay": "@vant/weapp/overlay/index",
     "van-toast": "@vant/weapp/toast/index",
     "ocr-navigator": "plugin://ocr-plugin/ocr-navigator",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-switch": "@vant/weapp/switch/index"
   },
   "window": {
     "backgroundTextStyle": "light",

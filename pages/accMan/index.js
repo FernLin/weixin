@@ -7,7 +7,17 @@ Page({
    */
   data: {
     bankPng: "/assets/bankicon.png",
-    bankCardList: "",
+    bankCardList: [{
+      acNoHidden: '123123123123123',
+      bankAcTypeName: '1类卡',
+      openBank: '赣州银行总部',
+      majorCardFlag: '1'
+    }, {
+      acNoHidden: '123123123123123',
+      bankAcTypeName: '1类卡',
+      openBank: '赣州银行总部',
+      majorCardFlag: '0'
+    }],
     unbindPopup: false,
     unbindCardInfo: "",
     messagePass: "",
@@ -202,9 +212,9 @@ Page({
   // 设为默认
   setDefault(e) {
     Dialog.confirm({
-      title: "提示",
-      message: `确认设置\n${e.currentTarget.dataset.item.acNoHidden}\n为默认账户？`,
-    })
+        title: "提示",
+        message: `确认设置\n${e.currentTarget.dataset.item.acNoHidden}\n为默认账户？`,
+      })
       .then(() => {
         // on confirm
         let data = {

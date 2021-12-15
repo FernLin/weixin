@@ -33,7 +33,7 @@
         <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList }}">
             <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
                 <view class="scroll-view-item_H posi-re" wx:for="{{ bankCardList }}" wx:key="acNo"
-                    bindtap="goTransDetail" data-item="{{ item }}">
+                    bindtap="goAccountDetail" data-item="{{ item }}">
                     <view class="flex-c">
                         <image src="/assets/mine/cardTag.png" />
                         <text class="b-c-num">{{ item.acNoHidden }}</text>

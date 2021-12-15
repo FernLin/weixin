@@ -85,8 +85,24 @@ Page({
     this.setData({
       "user.headImageUrl": "/assets/mine/head.png",
       "user.userName": "",
-      bankCardList: [{acNoHidden: '123123123123123',bankAcTypeName: '1类卡', openBank: '赣州银行总部'},{acNoHidden: '123123123123123',bankAcTypeName: '1类卡', openBank: '赣州银行总部'}],
-      loanInfo: {loanName: '牛牛贷', loanStatus: '已放款', loanAmount: '32663'},
+      bankCardList: [{
+        acNoHidden: '673123123123123',
+        bankAcTypeName: '1类卡',
+        openBank: '赣州银行总部',
+        majorCardFlag: '1',
+        balance: '200'
+      }, {
+        acNoHidden: '123123123123123',
+        bankAcTypeName: '2类卡',
+        openBank: '赣州银行总部',
+        majorCardFlag: '0',
+        balance: '800'
+      }],
+      loanInfo: {
+        loanName: '牛牛贷',
+        loanStatus: '已放款',
+        loanAmount: '32663'
+      },
     });
   },
   // 获取用户银行卡信息
@@ -162,11 +178,11 @@ Page({
       url: "/pages/accMan/index",
     });
   },
-  // 银行卡转账查询
-  goTransDetail(e) {
+  // 跳转至账户详细页面
+  goAccountDetail(e) {
     var obj = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: "/pages/tranDetail/index?obj=" + encodeURIComponent(obj),
+      url: "/pages/accMan/accDetail/index?obj=" + encodeURIComponent(obj),
     });
   },
   /**
