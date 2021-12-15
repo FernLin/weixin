@@ -20,38 +20,45 @@
             </view>
         </view>
     </view>
-    <view >
+    <view>
         <view class="flex jc-sb mlr-30">
             <view class="acc-l">我的账户</view>
-            <view class="flex acc-r" wx:if="{{ !bankCardList }}" bindtap="goBankCardList">去绑卡<van-icon name="arrow" /></view>
-            <view class="flex acc-r" wx:else bindtap="goBankCardList">添加账户<van-icon name="arrow" /></view>
+            <view class="flex acc-r" wx:if="{{ !bankCardList }}" bindtap="goBankCardList">去绑卡
+                <van-icon name="arrow" />
+            </view>
+            <view class="flex acc-r" wx:else bindtap="goBankCardList">添加账户
+                <van-icon name="arrow" />
+            </view>
         </view>
         <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList }}">
             <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
-                <view class="scroll-view-item_H s-item posi-re" wx:for="{{ bankCardList }}" wx:key="acNo" bindtap="goTransDetail" data-item="{{ item }}">
-                    <image src="/assets/mine/cardbg.png" />
-                    <view class="posi-ab flex-c b-c-i">
+                <view class="scroll-view-item_H posi-re" wx:for="{{ bankCardList }}" wx:key="acNo"
+                    bindtap="goTransDetail" data-item="{{ item }}">
+                    <view class="flex-c">
+                        <image src="/assets/mine/cardTag.png" />
                         <text class="b-c-num">{{ item.acNoHidden }}</text>
-                        <view  class="flex b-c-t">
-                            <!-- <view >借记卡</view> -->
-                            <view >{{ item.bankAcTypeName }}</view>
+                        <view class="flex b-c-t">
+                            <view >借记卡</view>
+                            <view>{{ item.bankAcTypeName }}</view>
                         </view>
                         <view class="b-c-add">账户余额（元）</view>
                         <view class="b-c-m">323,847.00</view>
-                        <view class="b-c-add">开户行：{{ item.openBank }}</view>
+                        <view class="b-c-bank">开户行：{{ item.openBank }}</view>
                     </view>
                 </view>
             </scroll-view>
         </view>
         <view class="no-card m-30 ta-c" wx:else>
             <image src="/assets/mine/empty.png" />
-            <view >暂无账户~</view>
+            <view>暂无账户~</view>
         </view>
     </view>
-    <view > 
+    <view>
         <view class="flex jc-sb mlr-30">
             <view class="acc-l">我的贷款</view>
-            <view class="flex acc-r" wx:if="{{ loanInfo.length == 0 }}" bindtap="goBindBankCard">去绑卡<van-icon name="arrow" /></view>
+            <view class="flex acc-r" wx:if="{{ loanInfo.length == 0 }}" bindtap="goBindBankCard">去绑卡
+                <van-icon name="arrow" />
+            </view>
             <image src="/assets/mainPage/more.png" class="more-css" wx:else />
         </view>
         <view class="m-30 lone-p" wx:if="{{ loanInfo.length != 0 }}">
@@ -69,12 +76,12 @@
                 </view>
             </view>
         </view>
-	    <view class="no-card m-30 ta-c" wx:else>
+        <view class="no-card m-30 ta-c" wx:else>
             <image src="/assets/mine/empty.png" />
-            <view >暂无贷款~</view>
+            <view>暂无贷款~</view>
         </view>
     </view>
-    <view > 
+    <!-- <view > 
         <view class="flex jc-sb mlr-30">
             <view class="acc-l">我的存款</view>
             <view class="flex acc-r" wx:if="{{ loanInfo.length == 0 }}" bindtap="goBindBankCard">去绑卡<van-icon name="arrow" /></view>
@@ -99,10 +106,10 @@
             <image src="/assets/mine/empty.png" />
             <view >暂无存款~</view>
         </view>
-    </view>
-    <view > 
+    </view> -->
+    <view>
         <view class="mlr-30 acc-l">我的预约</view>
-        <view class="m-30 p-30 app-info" wx:if="{{ false }}">
+        <view class="m-30 p-30 app-info" wx:if="{{ true }}">
             <view class="flex">
                 <van-icon name="clock" color="#e43234" />
                 <view class="app-info-t">大额取款预约信息</view>
@@ -123,8 +130,7 @@
         </view>
         <view class="no-card m-30 ta-c" wx:else>
             <image src="/assets/mine/empty.png" />
-            <view >暂无预约~</view>
+            <view>暂无预约~</view>
         </view>
     </view>
 </view>
-

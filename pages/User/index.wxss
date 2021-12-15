@@ -4,9 +4,9 @@
   overflow-x: hidden;
 }
 
-.top-card>image{
+.top-card > image {
   width: 100%;
-  height:252rpx;
+  height: 252rpx;
 }
 
 .user-info {
@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.user-info>view {
+.user-info > view {
   width: 100%;
   margin-right: 85rpx;
 }
@@ -28,11 +28,11 @@
 
 .top-n {
   margin-left: 35rpx;
-  font-family:PingFang SC;
-  font-weight:500;
-  color:#323232;
-  font-size:34rpx;
-  line-height:48rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #323232;
+  font-size: 34rpx;
+  line-height: 48rpx;
 }
 
 .down-i {
@@ -42,37 +42,23 @@
 
 .down-txt {
   margin-top: 10rpx;
-  font-family:PingFang SC;
-  color:#646464;
-  font-size:24rpx;
-  line-height:33rpx;
+  font-family: PingFang SC;
+  color: #646464;
+  font-size: 24rpx;
+  line-height: 33rpx;
 }
 
 .acc-l {
-  font-weight:700;
-  color:#323232;
-  font-size:32rpx;
-  line-height:46rpx;
+  font-weight: 700;
+  color: #323232;
+  font-size: 32rpx;
+  line-height: 46rpx;
 }
 
 .acc-r {
-  color:#4186f5;
-  font-size:28rpx;
-  line-height:40rpx;
-}
-
-.s-item {
-  margin-left: 30rpx;
-  width: auto !important;
-}
-
-.s-item:last-child {
-  margin-right: 30rpx;
-}
-
-.s-item>image{
-  width: 636rpx;
-  height: 380rpx;
+  color: #4186f5;
+  font-size: 28rpx;
+  line-height: 40rpx;
 }
 
 .b-c-i {
@@ -81,40 +67,42 @@
 }
 
 .b-c-num {
-  font-weight:700;
-  color:#ffffff;
-  font-size:44rpx;
-  line-height:64rpx;
+  font-size: 44rpx;
+  color: #333333;
+  font-weight: 600;
 }
 
 .b-c-t {
-  margin-top: 11rpx;
-  font-weight:500;
-  color:#ffffff;
-  font-size:32rpx;
-  line-height:46rpx;
+  margin-top: 14rpx;
+  font-size: 32rpx;
+  color: #666666;
+  font-weight: 500;
 }
+
 .b-c-t view {
   margin-right: 44rpx;
 }
 
 .b-c-m {
   margin-top: 2rpx;
-  font-weight:700;
-  color:#ffffff;
-  font-size:46rpx;
-  line-height:66rpx;
+  font-size: 46rpx;
+  color: #333333;
+  font-weight: 600;
 }
 
 .b-c-add {
   opacity: 0.6;
-  margin-top: 25rpx;
-  font-weight:500;
-  color:#FFF;
-  font-size:28rpx;
-  line-height:40rpx;
+  margin-top: 30rpx;
+  color: #999999;
+  font-size: 28rpx;
 }
 
+.b-c-bank {
+  opacity: 0.6;
+  margin-top: 24rpx;
+  color: #999999;
+  font-size: 28rpx;
+}
 
 .more-css {
   width: 32rpx;
@@ -122,84 +110,84 @@
 }
 
 .lone-p {
-  background-color:#ffffff;
-  border-radius:20rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
 }
 
 .loan-t {
-  font-weight:500;
-  color:#323232;
-  font-size:32rpx;
-  line-height:46rpx;
+  font-weight: 500;
+  color: #323232;
+  font-size: 32rpx;
+  line-height: 46rpx;
   margin-right: 16rpx;
 }
 
 .loan-i {
-  height:38rpx;
-  background-color:#e6eeff;
-  border-radius:8rpx;
+  height: 38rpx;
+  background-color: #e6eeff;
+  border-radius: 8rpx;
   padding: 4rpx 17rpx;
 
-  font-family:PingFang SC;
-  color:#3378f6;
-  font-size:22rpx;
-  line-height:38rpx;
-  text-align:center;
+  font-family: PingFang SC;
+  color: #3378f6;
+  font-size: 22rpx;
+  line-height: 38rpx;
+  text-align: center;
 }
 
 .loan-t-b {
-  opacity:0.6;
-  color:#323232;
-  font-size:28rpx;
-  line-height:40rpx;
+  opacity: 0.6;
+  color: #323232;
+  font-size: 28rpx;
+  line-height: 40rpx;
 }
 
 .loan-money {
   margin-top: 3rpx;
-  font-weight:700;
-  color:#323232;
-  font-size:36rpx;
-  line-height:52rpx;
+  font-weight: 700;
+  color: #323232;
+  font-size: 36rpx;
+  line-height: 52rpx;
 }
 
 .loan-go-de {
-  font-family:PingFang SC;
-  font-weight:500;
-  color:#4186f5;
-  font-size:26rpx;
-  line-height:40rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #4186f5;
+  font-size: 26rpx;
+  line-height: 40rpx;
 }
 
 .app-info {
-  background-color:#ffffff;
-  border-radius:20rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
   margin-bottom: 80rpx;
 }
 
 .app-info-t {
-  font-weight:500;
-  color:#323232;
-  font-size:32rpx;
-  line-height:46rpx;
+  font-weight: 500;
+  color: #323232;
+  font-size: 32rpx;
+  line-height: 46rpx;
   margin-left: 14rpx;
 }
 
 .dashed-line {
   margin: 30rpx 0;
-  border-bottom:1rpx dashed;
-  border-color:#d8d8d8;
+  border-bottom: 1rpx dashed;
+  border-color: #d8d8d8;
 }
 
 .app-info-l {
-  color:#646464;
-  font-size:26rpx;
-  line-height:37rpx
+  color: #646464;
+  font-size: 26rpx;
+  line-height: 37rpx;
 }
 
 .app-info-r {
-  color:#323232;
-  font-size:26rpx;
-  line-height:37rpx;
+  color: #323232;
+  font-size: 26rpx;
+  line-height: 37rpx;
 }
 
 .txtb {
@@ -262,7 +250,6 @@
   height: 300rpx;
 }
 
-
 .finantialInfo {
   width: 95%;
   height: 300rpx;
@@ -319,7 +306,6 @@
   width: 100%;
   height: 240rpx;
   margin-top: 30rpx;
-
 }
 
 .myrightImgBox1 {
@@ -335,16 +321,31 @@
   background-color: #e8e8e8;
 }
 
-.scroll-view_H{
+.scroll-view_H {
   white-space: nowrap;
 }
 
-.scroll-view-item_H{
+.scroll-view-item_H {
   display: inline-block;
-  width: 100%;
-  height: 300rpx;
+  margin-left: 30rpx;
+  width: 606rpx;
+  height: 354rpx;
+  border-radius: 20rpx;
+  padding: 26rpx 0 0 30rpx;
+  background-color: #ffffff;
 }
 
+.scroll-view-item_H:last-child {
+  margin-right: 30rpx;
+}
+
+.scroll-view-item_H image {
+  position: absolute;
+  width: 278rpx;
+  height: 234rpx;
+  bottom: 0;
+  right: 0;
+}
 
 .mt-50 {
   margin-top: 50rpx;
@@ -371,18 +372,18 @@
 }
 
 .no-card {
-  height:160rpx;
-  background-color:#ffffff;
-  border-radius:20rpx;
+  height: 160rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
 
-  color:#969696;
-  font-size:26rpx;
-  line-height:37rpx;
+  color: #969696;
+  font-size: 26rpx;
+  line-height: 37rpx;
 }
 
-.no-card>image {
-  width:50rpx;
-  height:44rpx;
+.no-card > image {
+  width: 50rpx;
+  height: 44rpx;
   margin-top: 32rpx;
   margin-bottom: 12rpx;
 }
