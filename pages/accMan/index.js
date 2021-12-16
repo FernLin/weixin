@@ -32,24 +32,13 @@ Page({
       url: "/pages/accMan/bindCard/index",
     });
   },
-  //跳转动账通知分享查询
-  goNoticeQuery() {
+  // 跳转动账通知管理
+  goNoticeManage() {
     wx.navigateTo({
-      url: "/pages/accMan/accNotice/index",
+      url: "/pages/accMan/noticeManage/index",
     });
   },
-  //跳转动账通知分享签约
-  goNoticeBind() {
-    wx.navigateTo({
-      url: "/pages/accMan/accNoticeOpera/index?type=1",
-    });
-  },
-  //跳转动账通知分享解约
-  goNoticeUnbind() {
-    wx.navigateTo({
-      url: "/pages/accMan/accNoticeOpera/index?type=0",
-    });
-  },
+
   //开户
   openAccount() {
     wx.navigateTo({
@@ -209,54 +198,7 @@ Page({
       url: "/pages/tranDetail/index?obj=" + encodeURIComponent(obj),
     });
   },
-  // 设为默认
-  setDefault(e) {
-    Dialog.confirm({
-        title: "提示",
-        message: `确认设置\n${e.currentTarget.dataset.item.acNoHidden}\n为默认账户？`,
-      })
-      .then(() => {
-        // on confirm
-        let data = {
-          acNo: e.currentTarget.dataset.item.acNo,
-        };
-        let header = {
-          trsType: "confirm",
-        };
-        app.api
-          .post("pweb/wxPublicMajorAcct.do", data, header)
-          .then((res) => {
-            if (res.respCode == "00000000") {
-              wx.showToast({
-                title: "设置成功~！",
-                icon: "none", //icon
-                duration: 3000, //停留时间
-              });
-              this.getUserBankCardInfo();
-            } else {
-              wx.showToast({
-                title: res.respMessage,
-                icon: "none", //icon
-                duration: 5000, //停留时间
-              });
-            }
-          })
-          .catch((res) => {
-            wx.showToast({
-              title: res.respMessage,
-              icon: "none", //icon
-              duration: 3000, //停留时间
-            });
-          });
-      })
-      .catch(() => {
-        wx.showToast({
-          title: "已取消~",
-          icon: "none", //icon
-          duration: 3000, //停留时间
-        });
-      });
-  },
+
   // 获取用户银行卡信息
   getUserBankCardInfo() {
     app.api.post("pweb/perAcListQry.do").then((res) => {

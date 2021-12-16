@@ -5,17 +5,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-    loading: false,
-    accountDetail: '',
-    noticeSwitch: false
-  },
-
-  onChange(data) {
-    this.setData({
-      noticeSwitch: data.detail
-    });
-  },
+  data: {},
 
   jumpTo(event) {
     wx.navigateTo({
@@ -23,18 +13,31 @@ Page({
     })
   },
 
+  //跳转动账通知分享查询
+  goNoticeQuery() {
+    wx.navigateTo({
+      url: "/pages/accMan/accNotice/index",
+    });
+  },
+  //跳转动账通知分享签约
+  goNoticeBind() {
+    wx.navigateTo({
+      url: "/pages/accMan/accNoticeOpera/index?type=1",
+    });
+  },
+  //跳转动账通知分享解约
+  goNoticeUnbind() {
+    wx.navigateTo({
+      url: "/pages/accMan/accNoticeOpera/index?type=0",
+    });
+  },
+
   onShow: function () {},
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.setData({
-      loading: false,
-      accountDetail: JSON.parse(decodeURIComponent(options.obj))
-    });
-    console.log(this.data.loading);
-  },
+  onLoad: function () {},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

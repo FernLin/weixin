@@ -81,7 +81,7 @@
 }
 
 .btn-css {
-    width: 50%;
+    width: 100%;
     height:44rpx;
     color:#3378f6;
     font-size:30rpx;
@@ -96,10 +96,6 @@
     right: 0;
 }
 
-.reset-css {
-    width: 100% !important;
-}
-
 .add-card-btn {
     height:90rpx;
     border-radius:12rpx;
@@ -108,14 +104,6 @@
     line-height:90rpx;
     border: 1rpx solid #e43234;
     text-align: center;
-}
-
-.notice {
-    color:#3378f6;
-    font-size:26rpx;
-    line-height:37rpx;
-    margin-top: 37rpx;
-    margin-bottom: 80rpx;
 }
 
 .unbind-popup>view {

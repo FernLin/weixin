@@ -1,0 +1,38 @@
+.noticeBg {
+  width: 100%;
+  height: 380rpx;
+}
+
+.notice-content {
+  margin-top: -10rpx;
+  padding: 0 30rpx;
+}
+
+.notice-item {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  top: -50rpx;
+  position: relative;
+  border-radius: 12rpx;
+}
+.item-describe {
+  font-size: 30rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  padding: 50rpx 30rpx;
+}
+.item-describe image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 44rpx;
+}
+.right-icon {
+  height: 32rpx;
+  width: 32rpx;
+  color: #c8c8c8;
+  margin-right: 30rpx;
+}

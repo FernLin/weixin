@@ -36,8 +36,8 @@
             <text class="item-label">解绑微信</text>
             <van-icon class="right-icon" name="arrow" />
         </view>
-        <view class="setting-item">
-            <text class="item-label">通知共享管理</text>
+        <view class="setting-item" data-type="mine" bindtap="jumpTo">
+            <text class="item-label">我的共享管理</text>
             <van-icon class="right-icon" name="arrow" />
         </view>
     </view>

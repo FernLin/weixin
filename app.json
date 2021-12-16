@@ -28,6 +28,8 @@
     "pages/accMan/accNoticeOpera/index",
     "pages/accMan/openAccount/index",
     "pages/accMan/accDetail/index",
+    "pages/accMan/noticeManage/index",
+    "pages/accMan/noticeShareManage/index",
 
     "pages/tranDetail/index",
     "pages/login/index",

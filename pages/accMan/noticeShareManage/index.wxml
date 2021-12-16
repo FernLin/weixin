@@ -1,0 +1,127 @@
+<view class="manage-content">
+    <view class="{{type === 'mine' ? 'main-content' : ''}}">
+        <view class="bank-card posi-re" wx:if="{{type === 'mine'}}">
+            <view class="info" bindtap="goTransDetail">
+                <image src="/assets/bankicon.png" />
+                <view class="flex-c">
+                    <text class="bank-card-id">{{ accountDetail.acNoHidden }}</text>
+                    <view class="flex">
+                        <view class="card-type">借记卡</view>
+                        <view class="card-type-1">{{ accountDetail.bankAcTypeName }}</view>
+                        <view class="fen-ge"></view>
+                        <view class="card-type-1">工资卡</view>
+                    </view>
+                </view>
+            </view>
+            <image class="shui-yin posi-ab" src="/assets/mine/cardTag.png" />
+            <view class="de-acc posi-ab" wx:if="{{ accountDetail.majorCardFlag=='1' }}">
+                <image src="/assets/appInfo/righttopicon.png" />
+                <view class="de-acc-txt posi-ab">默认账户</view>
+            </view>
+        </view>
+        <viwe class="manage-title">
+            {{type === "mine" ? "共享" : "接收"}}列表
+        </viwe>
+        <view class="manage-list">
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>嘿嘿嘿</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>哈哈哈</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>嘿嘿嘿</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>哈哈哈</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>嘿嘿嘿</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>哈哈哈</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>嘿嘿嘿</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="item-msg">
+                    <image src="/assets/mine/head.png" />
+                    <view>
+                        <text>哈哈哈</text>
+                        <text>共享日期 2020-02-02</text>
+                    </view>
+                </view>
+                <view class="cancel-btn">
+                    取消
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="add-btn" wx:if="{{type === 'mine'}}">
+        <van-button round plain color="#E43234" icon="add-o" size="large">添加共享人</van-button>
+    </view>
+</view>

@@ -6,21 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loading: false,
-    accountDetail: '',
-    noticeSwitch: false
-  },
-
-  onChange(data) {
-    this.setData({
-      noticeSwitch: data.detail
-    });
-  },
-
-  jumpTo(event) {
-    wx.navigateTo({
-      url: "/pages/accMan/noticeShareManage/index?type=" + event.currentTarget.dataset.type,
-    })
+    type: '',
+    accountDetail: {
+      acNoHidden: '673123123123123',
+      bankAcTypeName: '1类卡',
+      openBank: '赣州银行总部',
+      majorCardFlag: '1',
+      balance: '200'
+    }
   },
 
   onShow: function () {},
@@ -28,12 +21,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (option) {
     this.setData({
-      loading: false,
-      accountDetail: JSON.parse(decodeURIComponent(options.obj))
+      type: option.type
     });
-    console.log(this.data.loading);
+    wx.setNavigationBarTitle({
+      title: `${option.type === "mine" ? "我的" : "接收"}共享管理`,
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

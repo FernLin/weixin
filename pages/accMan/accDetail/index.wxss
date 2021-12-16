@@ -131,7 +131,7 @@
 }
 .setting-item:first-child {
   padding: 20rpx 0;
-  border-bottom: unset;
+  border-top: unset;
 }
 .item-label {
   font-size: 30rpx;

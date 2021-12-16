@@ -15,11 +15,7 @@
                     </view>
                 </view>
                 <view class="posi-ab card-fun flex">
-                    <view class="btn-css" wx:if="{{ item.majorCardFlag=='0' }}" bindtap="setDefault" data-item="{{ item }}">
-                        设为默认
-                    </view>
-                    <view class="fen-ge-btn" wx:if="{{ item.majorCardFlag=='0' }}"></view>
-                    <view bindtap="unBindBankCard" data-item="{{ item }}" class="btn-css {{ item.majorCardFlag!='0' ? 'reset-css':'' }}">
+                    <view bindtap="unBindBankCard" data-item="{{ item }}" class="btn-css">
                         解绑
                     </view>
                     <image class="shui-yin posi-ab" src="/assets/appInfo/whiteicon.png" bindtap="goTransDetail" data-item="{{ item }}" />
@@ -31,11 +27,7 @@
             </view>
             <view class="m-30">
                 <view class="add-card-btn" bindtap="goBindCard">添加银行卡</view>
-                <view class="flex jc-sb notice">
-                    <view bindtap="goNoticeQuery">动账通知分享查询</view>
-                    <view bindtap="goNoticeBind">动账通知分享签约</view>
-                    <view bindtap="goNoticeUnbind">动账通知分享解约</view>
-                </view>
+                <view class="add-card-btn mt-30" bindtap="goNoticeManage">动账通知管理</view>
             </view>
         <!-- </van-tab> -->
         <!-- <van-tab title="电子账户">

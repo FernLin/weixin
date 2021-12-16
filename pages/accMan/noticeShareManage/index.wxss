@@ -1,0 +1,141 @@
+.manage-content {
+  position: relative;
+  height: 100vh;
+}
+
+.main-content {
+  height: calc(100vh - 134rpx);
+  overflow: scroll;
+}
+
+.bank-card {
+  margin: 30rpx 30rpx 0;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  height: 250rpx;
+  padding: 30rpx 0 0 30rpx;
+}
+
+.info {
+  color: #323232;
+  display: flex;
+}
+
+.info > image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 35rpx;
+}
+
+.bank-card-id {
+  font-weight: 700;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  margin-bottom: 7rpx;
+}
+
+.card-type {
+  font-weight: 500;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-right: 50rpx;
+}
+
+.card-type-1 {
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+
+.fen-ge {
+  width: 1rpx;
+  height: 19rpx;
+  border-right: 1rpx solid;
+  border-color: #323232;
+  margin: 0 20rpx;
+}
+
+.de-acc {
+  top: 0;
+  right: 0;
+}
+
+.de-acc > image {
+  width: 120rpx;
+  height: 42rpx;
+}
+
+.de-acc-txt {
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 24rpx;
+  line-height: 42rpx;
+  top: 0;
+  left: 13rpx;
+}
+
+.shui-yin {
+  width: 218rpx;
+  height: 186rpx;
+  right: 0;
+  bottom: 0;
+}
+
+.manage-title {
+  display: block;
+  font-size: 32rpx;
+  color: #323232;
+  font-weight: 500;
+  margin: 36rpx 30rpx;
+}
+
+.manage-list {
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+.list-item {
+  padding: 36rpx 0;
+  border-top: 1rpx solid #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list-item:first-child {
+  border-top: unset;
+}
+.item-msg {
+  display: flex;
+  align-items: center;
+}
+.item-msg > image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
+}
+.item-msg > view {
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  color: #333333;
+}
+.item-msg > view > text:last-child {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 18rpx;
+}
+.cancel-btn {
+  padding: 10rpx 40rpx;
+  margin-right: 20rpx;
+  border: 1px solid #e43234;
+  border-radius: 28rpx;
+  font-size: 26rpx;
+  color: #e43234;
+  background-color: rgba(228, 50, 52, 0.05);
+}
+
+.add-btn {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: calc(100vw - 60rpx);
+  padding: 16rpx 30rpx;
+}
