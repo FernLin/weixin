@@ -35,7 +35,7 @@
 }
 
 .card-type {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 28rpx;
   line-height: 44rpx;
   margin-right: 50rpx;
@@ -65,7 +65,7 @@
 }
 
 .de-acc-txt {
-  font-weight: 500;
+  font-weight: 600;
   color: #ffffff;
   font-size: 24rpx;
   line-height: 42rpx;
@@ -84,7 +84,7 @@
   display: block;
   font-size: 32rpx;
   color: #323232;
-  font-weight: 500;
+  font-weight: 600;
   margin: 36rpx 30rpx;
 }
 

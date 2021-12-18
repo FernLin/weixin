@@ -39,7 +39,7 @@
   border-radius:45rpx;
   
   font-family:PingFang SC;
-  font-weight:500;
+  font-weight:600;
   color:#ffffff;
   font-size:32rpx;
   line-height:90rpx;

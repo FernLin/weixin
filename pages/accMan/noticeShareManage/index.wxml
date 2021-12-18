@@ -122,6 +122,6 @@
         </view>
     </view>
     <view class="add-btn" wx:if="{{type === 'mine'}}">
-        <van-button round plain color="#E43234" icon="add-o" size="large">添加共享人</van-button>
+        <van-button round plain color="#E43234" icon="add-o" size="large" open-type="share">添加共享人</van-button>
     </view>
 </view>

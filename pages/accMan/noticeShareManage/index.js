@@ -56,5 +56,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {}
+  onShareAppMessage: function (option) {
+    console.log('添加分享人', option);
+    return {
+      title: '测试',
+      path: '/pages/Microservice/index',
+      imageUrl: '/assets/mainPage/head.png',
+      success: function (res) {
+        console.log('转发成功', res);
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log('转发失败', res);
+      }
+    }
+  }
 })

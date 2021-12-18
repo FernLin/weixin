@@ -13,116 +13,123 @@
     "pages/User/setting/eAccount/index",
     "pages/User/setting/eAccount/large/index",
     "pages/accountManager/index",
-    "pages/tranDetail/index"
+    "pages/tranDetail/index",
+    "pages/CashReserve/index"
   ],
-  "subPackages": [{
-    "root": "pages/Loan/",
-    "pages": [
-      "productApply/index",
-      "index",
-      "productApply/productDetail/index",
-      "uploadId/index",
-      "submit/index",
-      "faceAuth/index",
-      "branch/branchList/index",
-      "branch/index",
-      "applyResult/index",
-      "apply/index"
-    ]
-  }, {
-    "root": "pages/EnterpriseAccountOpen/",
-    "pages": [
-      "ApplyResult/index",
-      "index",
-      "EnterpriseAccountOpening/index",
-      "AppointmentInquiry/index",
-      "DocumentUpload/index",
-      "EnterpriseInformation/index"
-    ]
-  }, {
-    "root": "pages/accMan/",
-    "pages": [
-      "index",
-      "bindCard/index",
-      "accNotice/index",
-      "accNoticeOpera/index",
-      "openAccount/index",
-      "accDetail/index",
-      "noticeManage/index",
-      "noticeShareManage/index"
-    ]
-  }, {
-    "root": "pages/login/",
-    "pages": [
-      "index",
-      "register/index",
-      "register/passwordSet/index",
-      "register/passwordSet/Success/index",
-      "forgetPassword/index",
-      "forgetPassword/passwordSet/index",
-      "forgetPassword/passwordSet/Success/index"
-    ]
-  }, {
-    "root": "pages/fund/",
-    "pages": [
-      "index/index",
-      "fundMarket/index",
-      "productDetail/index",
-      "transactionRecord/index",
-      "myFundDetail/index",
-      "oneTransactionRecord/index",
-      "myFocus/index",
-      "transactionDetail/index",
-      "fundSign/index",
-      "riskAssessment/index",
-      "fundBuy/index",
-      "fundAutoMatic/index",
-      "fundBuyResult/index",
-      "fundRedemption/index",
-      "fundTransfer/index",
-      "shareBonusSet/index",
-      "updateShareBonus/index",
-      "riskTest/index",
-      "riskResult/index",
-      "myFixedPlan/index",
-      "fundAutoMaticResult/index",
-      "fundTransferResult/index",
-      "fundRedemptionResult/index"
-    ]
-  }, {
-    "root": "pages/Deposit/",
-    "pages": [
-      "depositProducts/index/index",
-      "depositProducts/productDetails/index",
-      "depositProducts/transferProduct/index",
-      "depositProducts/transferProduct/Manual/index",
-
-      "depositProducts/buyProduct/index",
-      "depositProducts/buyProduct/determine/index",
-      "depositProducts/buyProduct/Success/index",
-      "depositProducts/buyProduct/Failure/index",
-      "depositProducts/buyProduct/Timeout/index",
-
-      "myProducts/index",
-      "myProducts/depositDetails/index",
-      "myProducts/depositDetails/nterestDetails/index",
-      "myProducts/withdrawalConfirmed/index",
-      "myProducts/withdrawalConfirmed/determine/index",
-      "myProducts/withdrawalConfirmed/Result/index",
-      "myProducts/tradingHistory/index",
-      "myProducts/tradingHistory/Details/index",
-      "myCertificatesDeposit/index"
-    ]
-  }, {
-    "root": "pages/Sign/",
-    "pages": [
-      "Verified/index",
-      "Verified/bankCardSupport/index",
-      "Verified/bankCardSupport/Support/index",
-      "Verified/faceRecognition/index",
-      "Verified/cardTiedSuccessfully/index"
-    ]
-  }],
+  "subPackages": [
+    {
+      "root": "pages/Loan/",
+      "pages": [
+        "productApply/index",
+        "index",
+        "productApply/productDetail/index",
+        "uploadId/index",
+        "submit/index",
+        "faceAuth/index",
+        "branch/branchList/index",
+        "branch/index",
+        "applyResult/index",
+        "apply/index"
+      ]
+    },
+    {
+      "root": "pages/EnterpriseAccountOpen/",
+      "pages": [
+        "ApplyResult/index",
+        "index",
+        "EnterpriseAccountOpening/index",
+        "AppointmentInquiry/index",
+        "DocumentUpload/index",
+        "EnterpriseInformation/index"
+      ]
+    },
+    {
+      "root": "pages/accMan/",
+      "pages": [
+        "index",
+        "bindCard/index",
+        "accNotice/index",
+        "accNoticeOpera/index",
+        "openAccount/index",
+        "accDetail/index",
+        "noticeManage/index",
+        "noticeShareManage/index"
+      ]
+    },
+    {
+      "root": "pages/login/",
+      "pages": [
+        "index",
+        "register/index",
+        "register/passwordSet/index",
+        "register/passwordSet/Success/index",
+        "forgetPassword/index",
+        "forgetPassword/passwordSet/index",
+        "forgetPassword/passwordSet/Success/index"
+      ]
+    },
+    {
+      "root": "pages/fund/",
+      "pages": [
+        "index/index",
+        "fundMarket/index",
+        "productDetail/index",
+        "transactionRecord/index",
+        "myFundDetail/index",
+        "oneTransactionRecord/index",
+        "myFocus/index",
+        "transactionDetail/index",
+        "fundSign/index",
+        "riskAssessment/index",
+        "fundBuy/index",
+        "fundAutoMatic/index",
+        "fundBuyResult/index",
+        "fundRedemption/index",
+        "fundTransfer/index",
+        "shareBonusSet/index",
+        "updateShareBonus/index",
+        "riskTest/index",
+        "riskResult/index",
+        "myFixedPlan/index",
+        "fundAutoMaticResult/index",
+        "fundTransferResult/index",
+        "fundRedemptionResult/index"
+      ]
+    },
+    {
+      "root": "pages/Deposit/",
+      "pages": [
+        "depositProducts/index/index",
+        "depositProducts/productDetails/index",
+        "depositProducts/transferProduct/index",
+        "depositProducts/transferProduct/Manual/index",
+        "depositProducts/buyProduct/index",
+        "depositProducts/buyProduct/determine/index",
+        "depositProducts/buyProduct/Success/index",
+        "depositProducts/buyProduct/Failure/index",
+        "depositProducts/buyProduct/Timeout/index",
+        "myProducts/index",
+        "myProducts/depositDetails/index",
+        "myProducts/depositDetails/nterestDetails/index",
+        "myProducts/withdrawalConfirmed/index",
+        "myProducts/withdrawalConfirmed/determine/index",
+        "myProducts/withdrawalConfirmed/Result/index",
+        "myProducts/tradingHistory/index",
+        "myProducts/tradingHistory/Details/index",
+        "myCertificatesDeposit/index"
+      ]
+    },
+    {
+      "root": "pages/Sign/",
+      "pages": [
+        "Verified/index",
+        "Verified/bankCardSupport/index",
+        "Verified/bankCardSupport/Support/index",
+        "Verified/faceRecognition/index",
+        "Verified/cardTiedSuccessfully/index"
+      ]
+    }
+  ],
   "usingComponents": {
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
@@ -156,7 +163,8 @@
     "van-toast": "@vant/weapp/toast/index",
     "ocr-navigator": "plugin://ocr-plugin/ocr-navigator",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-switch": "@vant/weapp/switch/index"
+    "van-switch": "@vant/weapp/switch/index",
+    "van-search": "@vant/weapp/search/index"
   },
   "window": {
     "backgroundTextStyle": "light",
@@ -171,7 +179,8 @@
     "backgroundColor": "",
     "position": "bottom",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/Microservice/index",
         "text": "微服务",
         "iconPath": "./assets/Tab1.png",

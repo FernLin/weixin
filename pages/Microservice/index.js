@@ -46,8 +46,7 @@ Page({
       listData: options.currentTarget.dataset.list,
     };
     wx.navigateTo({
-      url:
-        "/pages/Deposit/depositProducts/productDetails/index" +
+      url: "/pages/Deposit/depositProducts/productDetails/index" +
         "?prama=" +
         encodeURIComponent(JSON.stringify(prama)),
     });
@@ -186,6 +185,12 @@ Page({
       url: "/pages/EnterpriseAccountOpen/index",
     });
   },
+  // 网点预约
+  goCashReserve() {
+    wx.navigateTo({
+      url: "/pages/CashReserve/index",
+    });
+  },
   // 联系客户经理
   callManager() {
     // wx.showActionSheet({
@@ -205,8 +210,7 @@ Page({
       return;
     }
     wx.navigateTo({
-      url:
-        "/pages/Loan/apply/index" +
+      url: "/pages/Loan/apply/index" +
         "?prama=" +
         encodeURIComponent(JSON.stringify(item)),
     });
@@ -217,8 +221,7 @@ Page({
       listData: this.data.loanList,
     };
     wx.navigateTo({
-      url:
-        "/pages/Loan/index" +
+      url: "/pages/Loan/index" +
         "?prama=" +
         encodeURIComponent(JSON.stringify(prama)),
     });

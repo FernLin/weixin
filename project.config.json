@@ -47,7 +47,7 @@
     "minifyWXML": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.16.1",
+  "libVersion": "2.21.1",
   "appid": "wx6fef8b94fe6a840a",
   "projectname": "weiting",
   "debugOptions": {

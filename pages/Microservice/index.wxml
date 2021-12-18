@@ -117,7 +117,7 @@
 				<text class="click-btn">点击查看</text>
 			</view>
 		</view>
-		<view class="opera-detail">
+		<view class="opera-detail" bindtap="goCashReserve">
 			<image class="opera-bg" src="/assets/mainPage/operaReserve.png" />
 			<view class="opera-body reserve">
 				<view class="opera-name">

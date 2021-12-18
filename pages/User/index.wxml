@@ -1,4 +1,7 @@
 <!--pages/User/index.wxml-->
+<!-- <view style="width:100%">
+ <official-account></official-account>
+</view> -->
 <view class="user-page">
     <view class="top-card posi-re">
         <image src="../../assets/mine/topbg.png" />
