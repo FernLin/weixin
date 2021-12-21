@@ -22,182 +22,18 @@
           </view>
           <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
           <view class="btn-content">
-            <view>
+            <view data-type="large" bindtap="goCashOpera">
               <image src="/assets/cashReserve/largeCash.png" />
               <text>大额取现</text>
             </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
-              <image src="/assets/cashReserve/smallCash.png" />
-              <text>零钞兑换</text>
-            </view>
-          </view>
-        </view>
-        <view class="bank-item">
-          <view class="flex jc-sb">
-            <view class="bank-name">
-              <text>文明支行</text>
-              <text>上次预约</text>
-            </view>
-            <view class="bank-distance">
-              <text>1.30km</text>
-              <image src="/assets/cashReserve/position.png" />
-            </view>
-          </view>
-          <view class="bank-address">江西省赣州市章贡区赣江源大道15号公园号1栋11号</view>
-          <view class="btn-content">
-            <view>
-              <image src="/assets/cashReserve/largeCash.png" />
-              <text>大额取现</text>
-            </view>
-            <view>
+            <view data-type="small" bindtap="goCashOpera">
               <image src="/assets/cashReserve/smallCash.png" />
               <text>零钞兑换</text>
             </view>
           </view>
         </view>
       </view>
-
-      <van-popup show="{{ showPicker }}" position="bottom" round custom-style="height: 600rpx;">
-        <van-picker custom-class="picker-content" active-class="picker-item" columns="{{ columns }}" title="选择城市" show-toolbar bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
-      </van-popup>
+      <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择城市" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
     </van-tab>
     <van-tab title="我的预约">
       <view class="record-list">

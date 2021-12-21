@@ -3,6 +3,13 @@
  <official-account></official-account>
 </view> -->
 <view class="user-page">
+    <view class="online-service" style="display: {{ showService ? 'block' : 'none' }}">
+        <view class="posi-re">
+            <image class="close-icon" src="../../assets/mine/close.png" bindtap="closeService" />
+            <image class="online-icon" src="../../assets/mine/onlineService.png" />
+            <button open-type="contact" plain></button>
+        </view>
+    </view>
     <view class="top-card posi-re">
         <image src="../../assets/mine/topbg.png" />
         <view class="posi-ab flex user-info">
@@ -35,13 +42,12 @@
         </view>
         <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList }}">
             <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
-                <view class="scroll-view-item_H posi-re" wx:for="{{ bankCardList }}" wx:key="acNo"
-                    bindtap="goAccountDetail" data-item="{{ item }}">
+                <view class="scroll-view-item_H posi-re" wx:for="{{ bankCardList }}" wx:key="acNo" bindtap="goAccountDetail" data-item="{{ item }}">
                     <view class="flex-c">
                         <image src="/assets/mine/cardTag.png" />
                         <text class="b-c-num">{{ item.acNoHidden }}</text>
                         <view class="flex b-c-t">
-                            <view >借记卡</view>
+                            <view>借记卡</view>
                             <view>{{ item.bankAcTypeName }}</view>
                         </view>
                         <view class="b-c-add">账户余额（元）</view>
@@ -65,16 +71,16 @@
             <image src="/assets/mainPage/more.png" class="more-css" wx:else />
         </view>
         <view class="m-30 lone-p" wx:if="{{ loanInfo.length != 0 }}">
-            <view class="flex p-30">
+            <view class="flex">
                 <view class="loan-t">{{loanInfo.loanName}}</view>
                 <view class="loan-i">{{loanInfo.loanStatus}}</view>
             </view>
-            <view class="flex jc-sb ml-30 pb-50">
+            <view class="flex jc-sb pt-50">
                 <view class="flex-c">
                     <view class="loan-t-b">贷款金额（元）</view>
                     <view class="loan-money">{{loanInfo.loanAmount}}</view>
                 </view>
-                <view class="mr-60 loan-go-de">
+                <view class="loan-go-de">
                     点击查看
                 </view>
             </view>

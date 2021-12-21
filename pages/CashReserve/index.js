@@ -23,29 +23,39 @@ Page({
     ],
     recordType: 1,
   },
+  // 银行预约操作类型
+  goCashOpera(event) {
+    wx.navigateTo({
+      url: '/pages/CashReserve/CashOpera/index?type=' + event.currentTarget.dataset.type,
+    })
+  },
+  // tab切换
   onChange(event) {
     console.log(this.data.columns);
     console.log('标签切换成功至', event.detail.name);
   },
+  // 展示城市选择
   openPicker() {
     this.setData({
       showPicker: true
     });
   },
+  // 选择城市
   handlePicker(event) {
     const {
       picker,
       value,
       index
     } = event.detail;
-    console.log(value);
     picker.setColumnValues(1, citys[value[0]]);
   },
+  // 选择器取消
   onPickerCancel() {
     this.setData({
       showPicker: false
     });
   },
+  // 选择器确认
   onPickerConfirm(event) {
     this.setData({
       showPicker: false

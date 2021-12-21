@@ -4,6 +4,33 @@
   overflow-x: hidden;
 }
 
+.online-service {
+  position: fixed;
+  bottom: 140rpx;
+  right: 30rpx;
+  z-index: 9999;
+}
+
+.close-icon {
+  position: absolute;
+  right: 0;
+  width: 24rpx;
+  height: 24rpx;
+  z-index: 2;
+}
+
+.online-icon {
+  position: absolute;
+  width: 152rpx;
+  height: 162rpx;
+}
+
+.online-service button {
+  width: 152rpx;
+  height: 162rpx;
+  border: unset;
+}
+
 .top-card > image {
   width: 100%;
   height: 252rpx;
@@ -67,16 +94,15 @@
 }
 
 .b-c-num {
-  font-size: 44rpx;
+  font-size: 32rpx;
   color: #333333;
   font-weight: 600;
 }
 
 .b-c-t {
-  margin-top: 14rpx;
-  font-size: 32rpx;
+  margin-top: 26rpx;
+  font-size: 28rpx;
   color: #666666;
-  font-weight: 500;
 }
 
 .b-c-t view {
@@ -84,23 +110,21 @@
 }
 
 .b-c-m {
-  margin-top: 2rpx;
-  font-size: 46rpx;
+  margin-top: 20rpx;
+  font-size: 36rpx;
   color: #333333;
   font-weight: 600;
 }
 
 .b-c-add {
-  opacity: 0.6;
-  margin-top: 30rpx;
+  margin-top: 44rpx;
   color: #999999;
-  font-size: 28rpx;
+  font-size: 26rpx;
 }
 
 .b-c-bank {
-  opacity: 0.6;
-  margin-top: 24rpx;
-  color: #999999;
+  margin-top: 30rpx;
+  color: #666666;
   font-size: 28rpx;
 }
 
@@ -112,6 +136,7 @@
 .lone-p {
   background-color: #ffffff;
   border-radius: 20rpx;
+  padding: 36rpx 60rpx 40rpx 30rpx;
 }
 
 .loan-t {
@@ -136,26 +161,21 @@
 }
 
 .loan-t-b {
-  opacity: 0.6;
-  color: #323232;
-  font-size: 28rpx;
-  line-height: 40rpx;
+  color: #999999;
+  font-size: 26rpx;
 }
 
 .loan-money {
-  margin-top: 3rpx;
-  font-weight: 700;
+  margin-top: 20rpx;
+  font-weight: 600;
   color: #323232;
   font-size: 36rpx;
-  line-height: 52rpx;
 }
 
 .loan-go-de {
-  font-family: PingFang SC;
   font-weight: 500;
   color: #4186f5;
   font-size: 26rpx;
-  line-height: 40rpx;
 }
 
 .app-info {
@@ -329,9 +349,9 @@
   display: inline-block;
   margin-left: 30rpx;
   width: 606rpx;
-  height: 354rpx;
+  height: 350rpx;
   border-radius: 20rpx;
-  padding: 26rpx 0 0 30rpx;
+  padding: 40rpx 0 0 30rpx;
   background-color: #ffffff;
 }
 
@@ -363,8 +383,8 @@
   margin-right: 60rpx;
 }
 
-.pb-50 {
-  padding-bottom: 50rpx;
+.pt-50 {
+  padding-top: 50rpx;
 }
 
 .mb-13 {

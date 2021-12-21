@@ -1,0 +1,9 @@
+<view class="component-container">
+  <view class="step-btn left-btn" bindtap="letBtnClick">
+    <image src="{{leftIcon}}" />
+  </view>
+  <view class="count">{{ countFormatter ? countFormatter(value) : value }}</view>
+  <view class="step-btn right-btn" bindtap="rightBtnClick">
+    <image src="{{rightIcon}}" />
+  </view>
+</view>

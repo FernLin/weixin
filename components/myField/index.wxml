@@ -1,0 +1,14 @@
+<view class="field-content {{hideBorder ? 'hide-border' : ''}}">
+  <text class="field-label">{{label}}</text>
+  <view class="field-value-content" wx:if="{{ !useSlot }}" bindtap="onClick">
+    <view>
+      <text class="field-value">{{value}}</text>
+      <text class="field-placeholder" wx:if="{{ !value && placeholder }}">{{placeholder}}</text>
+    </view>
+    <van-icon wx:if="{{ arrow }}" name="arrow" class="right-icon" />
+  </view>
+  <view class="field-value-content" wx:else>
+    <slot></slot>
+    <van-icon wx:if="{{ arrow }}" name="arrow" class="right-icon" />
+  </view>
+</view>

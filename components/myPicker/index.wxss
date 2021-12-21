@@ -1,0 +1,8 @@
+/* components/myPicker/index.wxss */
+.picker-content {
+  height: 600rpx;
+}
+
+.picker-item {
+  color: #e43234 !important;
+}

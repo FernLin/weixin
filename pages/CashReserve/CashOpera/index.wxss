@@ -1,0 +1,102 @@
+.opera-content {
+  margin-top: 20rpx;
+}
+
+.field-list {
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+}
+.radio-group van-radio:first-child {
+  margin-right: 70rpx;
+}
+
+.amount-content {
+  border-top: 1px solid #e6e6e6;
+  padding: 30rpx 0;
+}
+.input-label {
+  font-size: 30rpx;
+  color: #646464;
+}
+.input-content {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.input-content text {
+  font-size: 42rpx;
+  color: #333333;
+  margin-right: 14rpx;
+}
+.input {
+  font-size: 42rpx;
+  color: #333333;
+  font-weight: 600;
+}
+.placeholder {
+  font-size: 42rpx;
+  color: #c4c4c4;
+  font-weight: 500;
+}
+
+.small-field {
+  display: block;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.money {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.money-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.size {
+  font-size: 30rpx;
+  color: #333333;
+}
+.tip {
+  background-color: #f8f8f8;
+  color: #969696;
+  font-size: 22rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  margin-top: 10rpx;
+}
+.count {
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  text-align: center;
+}
+
+.reserve-btn {
+  margin: 60rpx 30rpx 0;
+  background-color: #e43234;
+  height: 90rpx;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  font-weight: 500;
+}
+.prompt {
+  margin: 90rpx 30rpx 30rpx;
+  font-size: 24rpx;
+  color: #969696;
+}
+.prompt view:last-child {
+  margin-top: 10rpx;
+  line-height: 40rpx;
+}

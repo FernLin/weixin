@@ -27,14 +27,12 @@
 		<swiper indicator-dots="{{true}}" autoplay="{{true}}">
 			<swiper-item>
 				<view class="swiper-item">
-					<image src="/assets/mainPage/adImg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror=""
-						bindload="" class="ad_banner" />
+					<image src="/assets/mainPage/adImg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="ad_banner" />
 				</view>
 			</swiper-item>
 			<swiper-item>
 				<view class="swiper-item">
-					<image src="/assets/mainPage/adImg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror=""
-						bindload="" class="ad_banner" />
+					<image src="/assets/mainPage/adImg.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" class="ad_banner" />
 				</view>
 			</swiper-item>
 		</swiper>

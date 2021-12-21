@@ -100,14 +100,6 @@
   border-left: 1px solid #e6e6e6;
 }
 
-.picker-content {
-  height: 600rpx;
-}
-
-.picker-item {
-  color: #e43234 !important;
-}
-
 .record-list {
   padding: 0 30rpx;
 }

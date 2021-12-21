@@ -1,0 +1,3 @@
+<van-popup show="{{ show }}" position="bottom" round custom-style="height: 600rpx;">
+  <van-picker custom-class="picker-content" active-class="picker-item" columns="{{ columns }}" title="{{title}}" show-toolbar bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>

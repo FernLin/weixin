@@ -1,0 +1,93 @@
+<view class="opera-content">
+  <view class="field-list">
+    <my-field label="姓名" value="张三" hideBorder />
+    <my-field label="网点名称" value="黄金支行营业部" />
+    <my-field label="业务种类" useSlot>
+      <van-radio-group value="{{ reserveType }}" bind:change="onTypeChange" class="radio-group">
+        <van-radio icon-size="30rpx" checked-color="#E43234" name="large">大额取款</van-radio>
+        <van-radio icon-size="30rpx" checked-color="#E43234" name="small">零钞兑换</van-radio>
+      </van-radio-group>
+    </my-field>
+    <my-field label="取款账户" value="{{selectedAccount}}" arrow bind:click="onAcClick" />
+    <my-field label="取款日期" value="{{selectedDate}}" arrow bind:click="onDateClick" placeholder="请选择" />
+    <view class="amount-content" wx:if="{{reserveType === 'large'}}">
+      <view class="input-label">取款金额</view>
+      <view class="input-content">
+        <text>￥</text>
+        <input placeholder="最低50,000.00元" maxlength="12" class="input" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <viwe class="small-field" wx:if="{{reserveType === 'small'}}">
+    <view class="money">
+      <view class="money-detail">
+        <view class="size">20元</view>
+        <view class="tip">100张递增</view>
+      </view>
+      <view class="money-detail">
+        <my-amount-editor value="{{cashPoolStep.cny20}}" base="20" maxMsg="最高4000元" step="100" max="200" min="0" bind:change="changeValue" />
+        <view class="count">{{cashPool.cny20}}元</view>
+      </view>
+    </view>
+    <view class="money">
+      <view class="money-detail">
+        <view class="size">10元</view>
+        <view class="tip">100张递增</view>
+      </view>
+      <view class="money-detail">
+        <my-amount-editor value="{{cashPoolStep.cny10}}" base="10" maxMsg="最高2000元" step="100" max="200" min="0" bind:change="changeValue" />
+        <view class="count">{{cashPool.cny10}}元</view>
+      </view>
+    </view>
+    <view class="money">
+      <view class="money-detail">
+        <view class="size">5元</view>
+        <view class="tip">100张递增</view>
+      </view>
+      <view class="money-detail">
+        <my-amount-editor value="{{cashPoolStep.cny5}}" base="5" maxMsg="最高1000元" step="100" max="200" min="0" bind:change="changeValue" />
+        <view class="count">{{cashPool.cny5}}元</view>
+      </view>
+    </view>
+    <view class="money">
+      <view class="money-detail">
+        <view class="size">1元</view>
+        <view class="tip">50张递增</view>
+      </view>
+      <view class="money-detail">
+        <my-amount-editor value="{{cashPoolStep.cny1}}" base="1" maxMsg="最高100元" step="50" max="100" min="0" bind:change="changeValue" />
+        <view class="count">{{cashPool.cny1}}元</view>
+      </view>
+    </view>
+    <view class="money">
+      <view class="money-detail">
+        <view class="size">5角</view>
+        <view class="tip">50张递增</view>
+      </view>
+      <view class="money-detail">
+        <my-amount-editor value="{{cashPoolStep.cny05}}" base="0.5" maxMsg="最高50元" step="50" max="100" min="0" bind:change="changeValue" />
+        <view class="count">{{cashPool.cny05}}元</view>
+      </view>
+    </view>
+    <view class="money">
+      <view class="money-detail">
+        <view class="size">1角</view>
+        <view class="tip">50张递增</view>
+      </view>
+      <view class="money-detail">
+        <my-amount-editor value="{{cashPoolStep.cny01}}" base="0.1" maxMsg="最高10元" step="50" max="100" min="0" bind:change="changeValue" />
+        <view class="count">{{cashPool.cny01}}元</view>
+      </view>
+    </view>
+    <my-field label="兑换总金额" value="{{cashTotal}}元" hideBorder />
+  </viwe>
+
+  <button class="reserve-btn">预约</button>
+  <view class="prompt">
+    <view>温馨提示：</view>
+    <view>失约累计三次，自第三次失约日起暂停使用预约功能一年。预约成功后请及时前往网点办理业务。</view>
+  </view>
+
+</view>
+<my-picker show="{{ showPicker }}" columns="{{ columns }}" title="{{title}}" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
+<van-toast id="van-toast" />

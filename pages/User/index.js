@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showService: true,
     token_key: false,
     eyeshow: false,
     totalNumber: "0", //总条数
@@ -183,6 +184,11 @@ Page({
     var obj = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
       url: "/pages/accMan/accDetail/index?obj=" + encodeURIComponent(obj),
+    });
+  },
+  closeService() {
+    this.setData({
+      showService: false
     });
   },
   /**
