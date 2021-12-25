@@ -1,7 +1,7 @@
-// const baseUrl = "http://csiihf.tpddns.net:9000/"; //请求根
-// const baseUrl = "http://192.168.0.104:8020/"; //请求根
-const baseUrl = "http://115.150.104.8:8091/"; //本地开发请求根
-// const baseUrl = "http://192.168.0.140:8020/"; //请求根
+// const baseUrl = "http://115.150.104.9:8091/xiaxinyang/wxmini/"; //夏新阳
+// const baseUrl = "http://115.150.104.9:8091/chentianlong/wxmini/"; //陈天龙
+const baseUrl = "http://115.150.104.9:8091/jidenghui/wxmini/"; //吉登辉
+// const baseUrl = "https://upecwxdevtest.bankgz.com/wxmini/"; //生产地址
 
 const app = getApp();
 const http = (

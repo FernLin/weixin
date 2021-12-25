@@ -18,7 +18,7 @@ Page({
     // this.queryHotsaleAndFollow()
     // this.getDepositList()
     // this.adda()
-    this.getLoanList();
+    // this.getLoanList();
   },
   // adda() {
   //   app.api.post('250:8020/pweb/perSendSms.do', {
