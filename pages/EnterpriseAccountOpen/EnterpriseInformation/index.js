@@ -55,7 +55,7 @@ Page({
       });
     }
   },
-  goLoginRegister() {
+  toNext() {
     this.setData({
       errorMsg: {
         licenseNum: "",
@@ -98,7 +98,9 @@ Page({
     }
     if (this.data.canNext) {
       wx.navigateTo({
-        url: "/pages/EnterpriseAccountOpen/DocumentUpload/index",
+        url:
+          "/pages/EnterpriseAccountOpen/DocumentUpload/index?enterpriseInfo=" +
+          JSON.stringify(this.data.accountInfo),
       });
     }
   },

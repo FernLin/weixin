@@ -23,8 +23,9 @@ export default {
    /**
    * 证件上传
    * @param {
-    * provCode: 省编码
-    * cityCode: 市编码
+    * license: 营业执照
+    * frontImage: 身份证面部
+    * backImage: 身份证国徽
     * }
     */
    wxAuthIdentity(params) {

@@ -60,13 +60,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    app.service.CashReserve.wxOutletsDeptQry({
-      deptType: "2",
-      bankName: "赣州",
-    }).then((res) => {
-      console.log(res);
-    });
+  onLoad: function (options) {
+    console.log(options.enterpriseInfo);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

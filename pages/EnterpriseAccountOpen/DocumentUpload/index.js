@@ -1,81 +1,113 @@
 // pages/User/index.js
-const app = getApp()
+import Toast from "@vant/weapp/toast/toast";
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     businessLicense: "/assets/enteraccopen/open1.png",
-    idCard1: "/assets/enteraccopen/idcard1.png",
-    idCard2: "/assets/enteraccopen/idcard2.png",
-    items: [
-      {value: '1', name: '基本户'},
-      {value: '2', name: '一般户', checked: 'true'}
-    ]
+    faceCard: "/assets/enteraccopen/idcard1.png",
+    emblemCard: "/assets/enteraccopen/idcard2.png",
+    tempPath: {
+      license: "",
+      face: "",
+      emblem: "",
+    },
+    tempData: {},
   },
-  goBindCard() {
-    wx.navigateTo({
-        url: '/pages/accMan/bindCard/index',
-    })
+  uploadCard(event) {
+    const that = this;
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ["image"],
+      sourceType: ["album", "camera"],
+      camera: "back",
+      success(res) {
+        that.setData({
+          [`tempPath.${event.currentTarget.dataset.name}`]: res.tempFiles[0]
+            .tempFilePath,
+        });
+      },
+      faile(res) {
+        console.log(res);
+      },
+    });
   },
-
-  radioChange(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
-
-    const items = this.data.items
-    for (let i = 0, len = items.length; i < len; ++i) {
-      items[i].checked = items[i].value === e.detail.value
-    }
-
+  deleteImg(event) {
     this.setData({
-      items
-    })
+      [`tempPath.${event.currentTarget.dataset.name}`]: "",
+    });
+  },
+  toNext() {
+    const res = { ...this.data.tempData, imageNo: "" };
+    wx.navigateTo({
+      url:
+        "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
+        JSON.stringify(res),
+    });
+    // if (
+    //   this.data.tempPath.license &&
+    //   this.data.tempPath.face &&
+    //   this.data.tempPath.emblem
+    // ) {
+    //   app.service.EnterpriseAccountOPen.wxAuthIdentity({
+    //     license: wx
+    //       .getFileSystemManager()
+    //       .readFileSync(this.data.tempPath.license, "base64"),
+    //     frontImage: wx
+    //       .getFileSystemManager()
+    //       .readFileSync(this.data.tempPath.face, "base64"),
+    //     backImage: wx
+    //       .getFileSystemManager()
+    //       .readFileSync(this.data.tempPath.emblem, "base64"),
+    //   }).then((res) => {
+    //     console.log(res);
+    //     const res = { ...this.data.tempData, imageNo: "" };
+    //     wx.navigateTo({
+    //       url:
+    //         "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
+    //         JSON.stringify(res),
+    //     });
+    //   });
+    // } else {
+    //   Toast("请完整上传所需证件！");
+    // }
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    
+  onLoad: function (options) {
+    this.setData({
+      tempData: JSON.parse(options.enterpriseInfo),
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
-})
+  onShareAppMessage: function () {},
+});

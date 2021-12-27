@@ -17,6 +17,10 @@
     margin: 40rpx 0 54rpx 0;
 }
 
+.load-img {
+    border-radius: 20rpx;
+}
+
 .upload-icon {
     width:22rpx;
     height:24rpx;
