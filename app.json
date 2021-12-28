@@ -11,13 +11,25 @@
     "pages/User/setting/updateResult/index",
     "pages/User/setting/logout/index",
     "pages/User/setting/eAccount/index",
-    "pages/User/setting/eAccount/large/index",
-    "pages/accountManager/index",
-    "pages/tranDetail/index",
-    "pages/CashReserve/index",
-    "pages/CashReserve/CashOpera/index"
+    "pages/User/setting/eAccount/large/index"
   ],
-  "subPackages": [
+  "subPackages": [{
+      "root": "pages/tranDetail/",
+      "pages": [
+        "index"
+      ]
+    }, {
+      "root": "pages/accountManager/",
+      "pages": [
+        "index"
+      ]
+    }, {
+      "root": "pages/CashReserve/",
+      "pages": [
+        "index",
+        "CashOpera/index"
+      ]
+    },
     {
       "root": "pages/Loan/",
       "pages": [
@@ -175,13 +187,12 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color": "#999",
-    "selectedColor": "#ffa600",
+    "color": "#A1A1A1",
+    "selectedColor": "#E43234",
     "backgroundColor": "",
     "position": "bottom",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/Microservice/index",
         "text": "微服务",
         "iconPath": "./assets/Tab1.png",

@@ -1,0 +1,11 @@
+function formatDistance(distance) {
+  if (distance && distance / 1000 > 1) {
+    return (distance / 1000).toFixed(2) + "km";
+  } else {
+    return Number(distance).toFixed(0) + "m";
+  }
+}
+
+module.exports = {
+  formatDistance: formatDistance,
+};
