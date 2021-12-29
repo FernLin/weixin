@@ -1,19 +1,19 @@
 // pages/CashReserve/CashOpera/index.js
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    reserveType: 'large',
+    reserveType: "large",
     showPicker: false,
-    title: '',
-    pickerType: '',
+    title: "",
+    pickerType: "",
     columns: [],
-    columnsAccount: ['632145698754126', '632145685214569'],
-    columnsDate: ['2021-12-21 10:00-16:00', '2021-12-22 10:00-16:00'],
-    selectedAccount: '632145698754126',
-    selectedDate: '',
+    columnsAccount: ["632145698754126", "632145685214569"],
+    columnsDate: [],
+    selectedAccount: "632145698754126",
+    selectedDate: {},
     cashTotal: 0,
     cashPoolStep: {
       cny20: 0,
@@ -37,38 +37,38 @@ Page({
     switch (event.detail.base) {
       case 20:
         this.setData({
-          'cashPoolStep.cny20': event.detail.count,
-          'cashPool.cny20': event.detail.amount,
+          "cashPoolStep.cny20": event.detail.count,
+          "cashPool.cny20": event.detail.amount,
         });
         break;
       case 10:
         this.setData({
-          'cashPoolStep.cny10': event.detail.count,
-          'cashPool.cny10': event.detail.amount,
+          "cashPoolStep.cny10": event.detail.count,
+          "cashPool.cny10": event.detail.amount,
         });
         break;
       case 5:
         this.setData({
-          'cashPoolStep.cny5': event.detail.count,
-          'cashPool.cny5': event.detail.amount,
+          "cashPoolStep.cny5": event.detail.count,
+          "cashPool.cny5": event.detail.amount,
         });
         break;
       case 1:
         this.setData({
-          'cashPoolStep.cny1': event.detail.count,
-          'cashPool.cny1': event.detail.amount,
+          "cashPoolStep.cny1": event.detail.count,
+          "cashPool.cny1": event.detail.amount,
         });
         break;
       case 0.5:
         this.setData({
-          'cashPoolStep.cny05': event.detail.count,
-          'cashPool.cny05': event.detail.amount,
+          "cashPoolStep.cny05": event.detail.count,
+          "cashPool.cny05": event.detail.amount,
         });
         break;
       case 0.1:
         this.setData({
-          'cashPoolStep.cny01': event.detail.count,
-          'cashPool.cny01': event.detail.amount,
+          "cashPoolStep.cny01": event.detail.count,
+          "cashPool.cny01": event.detail.amount,
         });
         break;
     }
@@ -76,11 +76,13 @@ Page({
   },
 
   getCashTotal() {
-    const total = Object.values(this.data.cashPool).reduce((prev, cur, index, arr) => {
-      return prev + cur;
-    });
+    const total = Object.values(this.data.cashPool).reduce(
+      (prev, cur, index, arr) => {
+        return prev + cur;
+      }
+    );
     this.setData({
-      cashTotal: total
+      cashTotal: total,
     });
   },
 
@@ -92,53 +94,45 @@ Page({
 
   onAcClick() {
     this.setData({
-      pickerType: 'account',
+      pickerType: "account",
       showPicker: true,
-      title: '选择账户',
-      columns: this.data.columnsAccount
+      title: "选择账户",
+      columns: this.data.columnsAccount,
     });
   },
   onDateClick() {
     this.setData({
-      pickerType: 'date',
+      pickerType: "date",
       showPicker: true,
-      title: '选择日期',
-      columns: this.data.columnsDate
+      title: "选择日期",
+      columns: this.data.columnsDate,
     });
   },
 
   // 选择账户
   handlePicker(event) {
-    const {
-      picker,
-      value,
-      index
-    } = event.detail;
-    console.log(`当前值：${value}, 当前索引：${index}`);
+    const { picker, value, index } = event.detail;
+    console.log('选择', value);
   },
   // 选择器取消
   onPickerCancel() {
     this.setData({
-      showPicker: false
+      showPicker: false,
     });
   },
   // 选择器确认
   onPickerConfirm(event) {
     this.setData({
-      showPicker: false
+      showPicker: false,
     });
-    const {
-      picker,
-      value,
-      index
-    } = event.detail;
-    console.log(`当前值：${value}, 当前索引：${index}`);
-    this.data.pickerType === 'account' ?
-      this.setData({
-        selectedAccount: value
-      }) : this.setData({
-        selectedDate: value
-      })
+    const { picker, value, index } = event.detail;
+    this.data.pickerType === "account"
+      ? this.setData({
+          selectedAccount: value,
+        })
+      : this.setData({
+          selectedDate: value,
+        });
   },
 
   /**
@@ -146,56 +140,55 @@ Page({
    */
   onLoad: function (option) {
     this.setData({
-      reserveType: option.type
+      reserveType: option.type,
+    });
+    app.service.CashReserve.wxLargeCashBookDateQry().then((res) => {
+      if (res.data.list) {
+        const dateList = res.data.list.map((date) => {
+          return {
+            text: date + " 10:00-16:00",
+            value: date,
+          };
+        });
+        this.setData({
+          columnsDate: dateList,
+        });
+      }
     });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
-})
+  onShareAppMessage: function () {},
+});

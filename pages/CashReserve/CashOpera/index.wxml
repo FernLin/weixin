@@ -9,7 +9,7 @@
       </van-radio-group>
     </my-field>
     <my-field label="取款账户" value="{{selectedAccount}}" arrow bind:click="onAcClick" />
-    <my-field label="取款日期" value="{{selectedDate}}" arrow bind:click="onDateClick" placeholder="请选择" />
+    <my-field label="取款日期" value="{{selectedDate.text}}" arrow bind:click="onDateClick" placeholder="请选择" />
     <view class="amount-content" wx:if="{{reserveType === 'large'}}">
       <view class="input-label">取款金额</view>
       <view class="input-content">
