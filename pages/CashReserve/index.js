@@ -21,6 +21,7 @@ Page({
     columns: [],
     recordType: 1,
     bankList: [],
+    locationData: {},
   },
   // 银行预约操作类型
   goCashOpera(event) {
@@ -32,13 +33,73 @@ Page({
   },
   // tab切换
   onChange(event) {
-    console.log("标签切换成功至", event.detail.name);
     // TODO: tab切换至我的预约页面，请求数据
+    if (event.detail.name === 1) {
+      app.service.CashReserve.wxLargeCashBookQry().then((res) => {
+        console.log(res);
+      });
+    }
   },
   // 关键字搜索
   onSearch(event) {
-    console.log(event.detail);
-    // TODO: 关键字输入确认请求数据
+    if (this.data.locationData) {
+      app.service.CashReserve.wxQueryDeptListByDist({
+        // distance: "米",
+        longitude: this.data.locationData.longitude,
+        latitude: this.data.locationData.latitude,
+        cityCode: this.data.selectedCityCode,
+        provCd: this.data.selectedProvCode,
+        deptName: event.detail,
+        tradeFlag: 1,
+      }).then((content) => {
+        ctx.splice(0, this.data.bankList.length, content.data.list);
+        this.setData({
+          bankList: content.data.list,
+        });
+      });
+    } else {
+      Toast("获取当前位置失败，请重新授权！");
+    }
+  },
+  // 关键字输入框清空
+  onClear() {
+    if (this.data.locationData) {
+      app.service.CashReserve.wxQueryDeptListByDist({
+        // distance: "米",
+        longitude: this.data.locationData.longitude,
+        latitude: this.data.locationData.latitude,
+        cityCode: this.data.selectedCityCode,
+        provCd: this.data.selectedProvCode,
+        deptName: "",
+        tradeFlag: 1,
+      }).then((content) => {
+        app.service.CashReserve.wxLatelyBookDeptQry({
+          longitude: this.data.locationData.longitude,
+          latitude: this.data.locationData.latitude,
+        }).then((result) => {
+          const list = content.data.list;
+          if (result.data.deptId) {
+            list.unshift({
+              recent: true,
+              addr: result.data.deptAddr,
+              deptId: result.data.deptId,
+              deptName: result.data.deptName,
+              distance: result.data.distance,
+              lat: result.data.lat,
+              lon: result.data.lon,
+              moneyChangeScheduleFlag: result.data.moneyChangeScheduleFlag,
+              onlineLargeCashBookFlag: result.data.onlineLargeCashBookFlag,
+            });
+          }
+          ctx.splice(0, this.data.bankList.length, list);
+          this.setData({
+            bankList: list,
+          });
+        });
+      });
+    } else {
+      Toast("获取当前位置失败，请重新授权！");
+    }
   },
   // 展示城市选择
   openPicker() {
@@ -55,6 +116,7 @@ Page({
   onPickerCancel() {
     this.setData({
       showPicker: false,
+      searchVal: "",
     });
   },
   // 选择器确认
@@ -68,7 +130,43 @@ Page({
       selectedProvCode: value[0].value,
       selectedCityCode: value[1].value,
     });
-    // TODO: 选择器确认请求数据
+    if (this.data.locationData) {
+      app.service.CashReserve.wxQueryDeptListByDist({
+        // distance: "米",
+        longitude: this.data.locationData.longitude,
+        latitude: this.data.locationData.latitude,
+        cityCode: value[1].value,
+        provCd: value[0].value,
+        deptName: "",
+        tradeFlag: 1,
+      }).then((content) => {
+        app.service.CashReserve.wxLatelyBookDeptQry({
+          longitude: this.data.locationData.longitude,
+          latitude: this.data.locationData.latitude,
+        }).then((result) => {
+          const list = content.data.list;
+          if (result.data.deptId) {
+            list.unshift({
+              recent: true,
+              addr: result.data.deptAddr,
+              deptId: result.data.deptId,
+              deptName: result.data.deptName,
+              distance: result.data.distance,
+              lat: result.data.lat,
+              lon: result.data.lon,
+              moneyChangeScheduleFlag: result.data.moneyChangeScheduleFlag,
+              onlineLargeCashBookFlag: result.data.onlineLargeCashBookFlag,
+            });
+          }
+          ctx.splice(0, this.data.bankList.length, list);
+          this.setData({
+            bankList: list,
+          });
+        });
+      });
+    } else {
+      Toast("获取当前位置失败，请重新授权！");
+    }
   },
   // 取消预约
   onCancel() {
@@ -133,15 +231,22 @@ Page({
             citys: cityData,
             columns: columnData,
             selectedCity: cityData[provList[0].text][0].text,
+            selectedProvCode: provList[0].value,
+            selectedCityCode: cityData[provList[0].text][0].value,
           });
         });
       }
     });
   },
+  // 获取银行网点
   getBankList(provCode, cityCode, deptName = "") {
+    const that = this;
     wx.getLocation({
       type: "wgs84",
       success(res) {
+        that.setData({
+          locationData: res,
+        });
         app.service.CashReserve.wxQueryDeptListByDist({
           // distance: "米",
           longitude: res.longitude,
@@ -169,7 +274,10 @@ Page({
                 onlineLargeCashBookFlag: result.data.onlineLargeCashBookFlag,
               });
             }
-            ctx.append(content.data.list);
+            ctx.append(list);
+            that.setData({
+              bankList: list,
+            });
           });
         });
       },
@@ -183,7 +291,6 @@ Page({
    */
   onLoad: function () {
     this.getCityData();
-    // this.getBankList();
   },
 
   itemSizeFunc: function (item, idx) {

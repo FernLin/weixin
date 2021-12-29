@@ -82,7 +82,7 @@
   display: flex;
 }
 
-.btn-content view {
+.btn-content .opera {
   flex: 1;
   display: flex;
   align-items: center;
@@ -92,13 +92,14 @@
   padding: 6rpx 0;
 }
 
-.btn-content view image {
+.btn-content .opera image {
   width: 30rpx;
   height: 30rpx;
   margin-right: 14rpx;
 }
 
-.btn-content view:last-child {
+.line {
+  height: 50rpx;
   border-left: 1rpx solid #e6e6e6;
 }
 

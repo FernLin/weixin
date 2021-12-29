@@ -3,7 +3,7 @@
   <van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="预约登记" custom-class="my-tab">
       <view class="search-content">
-        <van-search value="{{ searchVal }}" bind:search="onSearch" custom-class="search-field" shape="round" placeholder="请输入网点名称/街道名称" />
+        <van-search value="{{ searchVal }}" bind:search="onSearch" bind:clear="onClear" custom-class="search-field" shape="round" placeholder="请输入网点名称/街道名称" />
         <view class="flex-center" bindtap="openPicker">
           <text class="current-city">{{selectedCity}}</text>
           <van-icon name="arrow-down" custom-class="icon-arrow" />
@@ -24,11 +24,12 @@
             </view>
             <view class="bank-address">{{item.addr}}</view>
             <view class="btn-content">
-              <view data-type="large" bindtap="goCashOpera" wx:if="{{item.onlineLargeCashBookFlag === '1'}}">
+              <view class="opera" data-type="large" bindtap="goCashOpera" wx:if="{{item.onlineLargeCashBookFlag === '1'}}">
                 <image src="/assets/cashReserve/largeCash.png" />
                 <text>大额取现</text>
               </view>
-              <view data-type="small" bindtap="goCashOpera" wx:if="{{item.moneyChangeScheduleFlag === '1'}}">
+              <view wx:if="{{item.onlineLargeCashBookFlag === '1' && item.moneyChangeScheduleFlag === '1'}}" class="line"></view>
+              <view class="opera" data-type="small" bindtap="goCashOpera" wx:if="{{item.moneyChangeScheduleFlag === '1'}}">
                 <image src="/assets/cashReserve/smallCash.png" />
                 <text>零钞兑换</text>
               </view>
