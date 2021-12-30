@@ -43,12 +43,12 @@ export default {
   /**
    * 预约操作
    * @param {
-   * bsTy:
-   * wddt:
-   * wdtm:
-   * amcr:
-   * wdAm:
-   * list:
+   * bsTy: 业务类型
+   * wddt: 取款日期
+   * wdtm: 取款时间
+   * amcr: 取款账户
+   * wdAm: 预约金额
+   * list: 零钞兑换
    * }
    */
   wxLargeCashBook(params) {

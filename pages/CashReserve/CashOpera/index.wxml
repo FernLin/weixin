@@ -1,24 +1,24 @@
 <view class="opera-content">
   <view class="field-list">
-    <my-field label="姓名" value="张三" hideBorder />
-    <my-field label="网点名称" value="黄金支行营业部" />
+    <my-field label="姓名" value="{{selectedAccount.acName}}" hideBorder />
+    <my-field label="网点名称" value="{{bankName}}" />
     <my-field label="业务种类" useSlot>
       <van-radio-group value="{{ reserveType }}" bind:change="onTypeChange" class="radio-group">
-        <van-radio icon-size="30rpx" checked-color="#E43234" name="large">大额取款</van-radio>
-        <van-radio icon-size="30rpx" checked-color="#E43234" name="small">零钞兑换</van-radio>
+        <van-radio icon-size="30rpx" checked-color="#E43234" name="1">大额取款</van-radio>
+        <van-radio icon-size="30rpx" checked-color="#E43234" name="2">零钞兑换</van-radio>
       </van-radio-group>
     </my-field>
-    <my-field label="取款账户" value="{{selectedAccount}}" arrow bind:click="onAcClick" />
+    <my-field label="取款账户" value="{{selectedAccount.text}}" arrow bind:click="onAcClick" />
     <my-field label="取款日期" value="{{selectedDate.text}}" arrow bind:click="onDateClick" placeholder="请选择" />
-    <view class="amount-content" wx:if="{{reserveType === 'large'}}">
+    <view class="amount-content" wx:if="{{reserveType === '1'}}">
       <view class="input-label">取款金额</view>
       <view class="input-content">
         <text>￥</text>
-        <input placeholder="最低50,000.00元" maxlength="12" class="input" placeholder-class="placeholder" />
+        <input value="{{amount}}" bindinput="changeAmount" type="number" placeholder="最低50,000.00元" maxlength="12" class="input" placeholder-class="placeholder" />
       </view>
     </view>
   </view>
-  <viwe class="small-field" wx:if="{{reserveType === 'small'}}">
+  <viwe class="small-field" wx:if="{{reserveType === '2'}}">
     <view class="money">
       <view class="money-detail">
         <view class="size">20元</view>
@@ -82,7 +82,7 @@
     <my-field label="兑换总金额" value="{{cashTotal}}元" hideBorder />
   </viwe>
 
-  <button class="reserve-btn">预约</button>
+  <button class="reserve-btn" bindtap="onReserve">预约</button>
   <view class="prompt">
     <view>温馨提示：</view>
     <view>失约累计三次，自第三次失约日起暂停使用预约功能一年。预约成功后请及时前往网点办理业务。</view>

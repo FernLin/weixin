@@ -25,10 +25,13 @@ Page({
   },
   // 银行预约操作类型
   goCashOpera(event) {
+    console.log(event);
     wx.navigateTo({
       url:
         "/pages/CashReserve/CashOpera/index?type=" +
-        event.currentTarget.dataset.type,
+        event.currentTarget.dataset.type +
+        "&name=" +
+        event.currentTarget.dataset.item.deptName,
     });
   },
   // tab切换

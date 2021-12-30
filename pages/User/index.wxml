@@ -15,12 +15,9 @@
         <view class="posi-ab flex user-info">
             <view class="flex jc-sb">
                 <view class="flex">
-                    <image src="{{ user.headImageUrl }}" class="user-head-png" />
-                    <view wx:if="{{ token_key }}" class="top-n">
-                        {{ user.userName }}，您好~！
-                    </view>
-                    <view wx:else class="top-n" bindtap="toLogin">
-                        请登录~！
+                    <image src="/assets/mine/head.png" class="user-head-png" />
+                    <view class="top-n">
+                        157****0892
                     </view>
                 </view>
                 <view class="flex-c ai-c">

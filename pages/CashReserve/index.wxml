@@ -24,12 +24,12 @@
             </view>
             <view class="bank-address">{{item.addr}}</view>
             <view class="btn-content">
-              <view class="opera" data-type="large" bindtap="goCashOpera" wx:if="{{item.onlineLargeCashBookFlag === '1'}}">
+              <view class="opera" data-type="1" data-item="{{item}}" bindtap="goCashOpera" wx:if="{{item.onlineLargeCashBookFlag === '1'}}">
                 <image src="/assets/cashReserve/largeCash.png" />
                 <text>大额取现</text>
               </view>
               <view wx:if="{{item.onlineLargeCashBookFlag === '1' && item.moneyChangeScheduleFlag === '1'}}" class="line"></view>
-              <view class="opera" data-type="small" bindtap="goCashOpera" wx:if="{{item.moneyChangeScheduleFlag === '1'}}">
+              <view class="opera" data-type="2" data-item="{{item}}" bindtap="goCashOpera" wx:if="{{item.moneyChangeScheduleFlag === '1'}}">
                 <image src="/assets/cashReserve/smallCash.png" />
                 <text>零钞兑换</text>
               </view>

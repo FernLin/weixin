@@ -61,17 +61,21 @@ Page({
   // 判断登录
   onShow: function () {
     this.loginselect();
+    this.setData({
+      showService: true,
+    });
   },
   loginselect() {
     let token_key = wx.getStorageSync("token_key");
     this.setData({
-      token_key
+      token_key,
     });
     if (token_key) {
       let userInfo = wx.getStorageSync("userInfo");
       let wxUserInfo = wx.getStorageSync("wxUserInfo");
       this.setData({
-        "user.headImageUrl": userInfo.pic || wxUserInfo.avatarUrl || "/assets/mine/head.png",
+        "user.headImageUrl":
+          userInfo.pic || wxUserInfo.avatarUrl || "/assets/mine/head.png",
         "user.userName": userInfo.userName || wxUserInfo.nickName,
       });
       this.getUserBankCardInfo();
@@ -86,23 +90,26 @@ Page({
     this.setData({
       "user.headImageUrl": "/assets/mine/head.png",
       "user.userName": "",
-      bankCardList: [{
-        acNoHidden: '673123123123123',
-        bankAcTypeName: '1类卡',
-        openBank: '赣州银行总部',
-        majorCardFlag: '1',
-        balance: '200'
-      }, {
-        acNoHidden: '123123123123123',
-        bankAcTypeName: '2类卡',
-        openBank: '赣州银行总部',
-        majorCardFlag: '0',
-        balance: '800'
-      }],
+      bankCardList: [
+        {
+          acNoHidden: "673123123123123",
+          bankAcTypeName: "1类卡",
+          openBank: "赣州银行总部",
+          majorCardFlag: "1",
+          balance: "200",
+        },
+        {
+          acNoHidden: "123123123123123",
+          bankAcTypeName: "2类卡",
+          openBank: "赣州银行总部",
+          majorCardFlag: "0",
+          balance: "800",
+        },
+      ],
       loanInfo: {
-        loanName: '牛牛贷',
-        loanStatus: '已放款',
-        loanAmount: '32663'
+        loanName: "牛牛贷",
+        loanStatus: "已放款",
+        loanAmount: "32663",
       },
     });
   },
@@ -188,7 +195,7 @@ Page({
   },
   closeService() {
     this.setData({
-      showService: false
+      showService: false,
     });
   },
   /**

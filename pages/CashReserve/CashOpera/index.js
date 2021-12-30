@@ -1,19 +1,22 @@
 // pages/CashReserve/CashOpera/index.js
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    reserveType: "large",
+    bankName: "",
+    reserveType: "1",
     showPicker: false,
     title: "",
     pickerType: "",
     columns: [],
-    columnsAccount: ["632145698754126", "632145685214569"],
+    columnsAccount: [],
     columnsDate: [],
-    selectedAccount: "632145698754126",
+    selectedAccount: {},
     selectedDate: {},
+    amount: "",
     cashTotal: 0,
     cashPoolStep: {
       cny20: 0,
@@ -112,7 +115,7 @@ Page({
   // 选择账户
   handlePicker(event) {
     const { picker, value, index } = event.detail;
-    console.log('选择', value);
+    console.log("选择", value);
   },
   // 选择器取消
   onPickerCancel() {
@@ -134,6 +137,45 @@ Page({
           selectedDate: value,
         });
   },
+  // 输入取款金额
+  changeAmount(event) {
+    this.setData({
+      amount: event.detail.value,
+    });
+  },
+  // 预约
+  onReserve() {
+    if (!this.data.selectedDate) {
+      Toast("请选择取款日期");
+      return;
+    }
+    let params;
+    if (this.data.reserveType === "1") {
+      console.log(Number(this.data.amount));
+      if (Number(this.data.amount) < 50000) {
+        Toast(
+          "抱歉该业务仅支持预约金额≥5万的大额取款，请您直接前往柜面办理业务"
+        );
+        return;
+      }
+      if (this.data.amount % 1 !== 0) {
+        Toast("预约金额必须为整数");
+        return;
+      }
+      params = {
+        bsTy: this.data.reserveType,
+        wddt: this.data.selectedDate.value.replace(/-/g, ''),
+        wdtm: "150000",
+        amcr: this.data.selectedAccount.acNo,
+        wdAm: this.data.amount,
+      };
+    } else {
+      
+    }
+    app.service.CashReserve.wxLargeCashBook(params).then((res) => {
+      console.log(res);
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -141,6 +183,7 @@ Page({
   onLoad: function (option) {
     this.setData({
       reserveType: option.type,
+      bankName: option.name,
     });
     app.service.CashReserve.wxLargeCashBookDateQry().then((res) => {
       if (res.data.list) {
@@ -152,6 +195,23 @@ Page({
         });
         this.setData({
           columnsDate: dateList,
+        });
+      }
+    });
+    app.service.Global.wxAcListQry({
+      openid: "csopenid",
+      unionId: "csunionid",
+    }).then((res) => {
+      if (res.data.userAccount) {
+        const acList = res.data.userAccount.map((el) => {
+          return {
+            ...el,
+            text: el.acNo,
+          };
+        });
+        this.setData({
+          columnsAccount: acList,
+          selectedAccount: acList[0],
         });
       }
     });
