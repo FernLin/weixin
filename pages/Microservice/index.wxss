@@ -14,15 +14,14 @@
   text-align: right;
 }
 
-
 .tag-content {
   margin-left: 24rpx;
 }
 
 .tag-content text {
   font-size: 26rpx;
-  color: #EB5F00;
-  border: 1rpx solid #EB5F00;
+  color: #eb5f00;
+  border: 1rpx solid #eb5f00;
   border-radius: 8rpx;
   padding: 4rpx 12rpx;
   margin-right: 12rpx;
@@ -64,7 +63,7 @@
 .ad-swipe .swiper-item {
   height: 100%;
   width: 100%;
-  background-color: #FEF1E5;
+  background-color: #fef1e5;
 }
 
 .ad-swipe .swiper-item .ad_banner {
@@ -122,6 +121,10 @@
 
 .mt-36 {
   margin-top: 36rpx;
+}
+
+.mt-48 {
+  margin-top: 48rpx;
 }
 
 .ml-20 {
@@ -191,7 +194,7 @@
 
 .opera-name text {
   font-size: 32rpx;
-  color: #A9574C;
+  color: #a9574c;
   font-weight: 500;
 }
 
@@ -204,17 +207,35 @@
 .click-btn {
   margin-top: 18rpx;
   font-size: 22rpx;
-  color: #A9574C;
+  color: #a9574c;
   background-color: rgba(169, 87, 76, 0.09);
   border-radius: 16rpx;
   padding: 4rpx 14rpx;
 }
 
 .reserve .opera-name text {
-  color: #687BC5;
+  color: #687bc5;
 }
 
 .reserve .click-btn {
-  color: #687BC5;
+  color: #687bc5;
   background-color: rgba(104, 123, 197, 0.09);
+}
+
+/* 默认指示点的样式 */
+.wx-swiper-dot {
+  width: 20rpx !important;
+  height: 6rpx !important;
+  background: white !important;
+  border-radius: 3rpx !important;
+  opacity: 0.44;
+}
+
+/* 选中指示点的样式 */
+.wx-swiper-dot.wx-swiper-dot-active {
+  width: 20rpx;
+  height: 6rpx;
+  background: white;
+  border-radius: 3rpx;
+  opacity: 1;
 }

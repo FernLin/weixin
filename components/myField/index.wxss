@@ -21,11 +21,11 @@
 }
 .field-value {
   font-size: 30rpx;
-  color: #333333;
+  color: #323232;
 }
 .field-placeholder {
   font-size: 30rpx;
-  color: #999999;
+  color: #c4c4c4;
 }
 .right-icon {
   height: 32rpx;

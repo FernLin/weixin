@@ -3,51 +3,51 @@
 </view>
 <view class="card-info">
     <view class="flex input1 p-30 jc-sb">
-        账号
+        <text>账号</text>
         <view class="flex ta-r w-80">
-            <input type="number" value="{{ bindCardId }}" bindinput="bindBankCardId" placeholder="请输入银行卡号" gesturetype="text" class="ta-r input-saomiao" />
+            <input type="number" value="{{ bindCardId }}" bindinput="bindBankCardId" placeholder="请输入银行卡号" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
             <ocr-navigator bind:onSuccess="bankSuccess" certificateType="bankCard" opposite="{{false}}" style="height: 32rpx">
                 <image class="saomiao-css" src="/assets/appInfo/saomiao.png" />
             </ocr-navigator>
         </view>
     </view>
     <view class="flex input1 p-30 jc-sb">
-        证件类型
-        <view class="ta-r w-70" bindtap="bindCardType">
+        <text>证件类型</text>
+        <view class="ta-r w-70 card-type" bindtap="bindCardType">
             <text class="placehoder-color" wx:if="{{!bindCardType}}">请选择证件类型</text>
             <text wx:else>{{bindCardType}}</text>
             <van-icon name="arrow" class="id-card-icon" />
         </view>
     </view>
     <view class="flex input1 p-30 jc-sb">
-        证件号码
+        <text>证件号码</text>
         <view class="flex ta-r w-70">
-            <input type="number" value="{{ idCard }}" bindinput="bindIdCard" placeholder="请输入证件号码" gesturetype="text" class="ta-r input-saomiao" />
+            <input type="number" value="{{ idCard }}" bindinput="bindIdCard" placeholder="请输入证件号码" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
             <ocr-navigator bind:onSuccess="success" certificateType="idCard" opposite="{{false}}" style="height: 32rpx">
                 <image class="saomiao-css" src="/assets/appInfo/saomiao.png" />
             </ocr-navigator>
-            
+
         </view>
     </view>
     <view class="flex input1 p-30 jc-sb">
-        姓名
-        <input value="{{ userName }}" bindinput="bindUserName" placeholder="请输入姓名" gesturetype="text" class="ta-r" />
+        <text>姓名</text>
+        <input value="{{ userName }}" bindinput="bindUserName" placeholder="请输入姓名" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
     </view>
     <view class="flex input1 p-30 jc-sb">
-        手机号
-        <input type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" />
+        <text>手机号</text>
+        <input type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
     </view>
     <view class="flex input1 p-30 jc-sb">
-        图形验证码
+        <text>图形验证码</text>
         <view class="flex ta-r w-70">
-            <input maxlength="4" bindinput="bindCodeNum" placeholder="请输入图形验证码" gesturetype="text" class="ta-r input-saomiao" />
+            <input maxlength="4" bindinput="bindCodeNum" placeholder="请输入图形验证码" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
             <image class="yzm-css" src="/assets/appInfo/yzm.png" bindtap="getCaptchaImg" />
         </view>
     </view>
     <view class="flex input1 p-30 jc-sb">
-        短信验证码
+        <text>短信验证码</text>
         <view class="flex ta-r">
-            <input bindinput="bindPassword" maxlength="6" placeholder="请输入验证码" type="text" class="ta-r mess-input" />
+            <input bindinput="bindPassword" maxlength="6" placeholder="请输入验证码" type="text" class="ta-r mess-input" placeholder-class="placehoder-color" />
             <view class="mess-fen-ge"></view>
             <view wx:if="{{ countDownFlag }}" bindtap="getVercode" class="get-vercode">获取验证码</view>
             <view wx:else>{{ countDownNum }}秒后重新获取</view>
@@ -56,7 +56,7 @@
 
     <!-- 证件类型 -->
     <van-popup show="{{idcardPopup}}" round position="bottom">
-        <van-picker columns="{{columns}}" show-toolbar bind:cancel="onClose" bind:confirm="onConfirm"/>
+        <van-picker columns="{{columns}}" show-toolbar bind:cancel="onClose" bind:confirm="onConfirm" />
     </van-popup>
 
     <!-- 绑定验证码弹框 -->

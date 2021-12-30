@@ -53,9 +53,9 @@ Page({
   },
   //基金
   goFoud() {
-    wx.navigateTo({
-      url: "/pages/fund/index/index",
-    });
+    // wx.navigateTo({
+    //   url: "/pages/fund/index/index",
+    // });
   },
   // goDeposit() {
   //   wx.navigateTo({
@@ -217,14 +217,14 @@ Page({
   },
   // 跳转至贷款产品页
   goLoanPage() {
-    let prama = {
-      listData: this.data.loanList,
-    };
-    wx.navigateTo({
-      url: "/pages/Loan/index" +
-        "?prama=" +
-        encodeURIComponent(JSON.stringify(prama)),
-    });
+    // let prama = {
+    //   listData: this.data.loanList,
+    // };
+    // wx.navigateTo({
+    //   url: "/pages/Loan/index" +
+    //     "?prama=" +
+    //     encodeURIComponent(JSON.stringify(prama)),
+    // });
   },
   goToOther: function () {
     wx.navigateTo({

@@ -11,7 +11,7 @@
 }
 
 .item-txt {
-    color:#646464;
+    color:#323232;
     font-size:30rpx;
 }
 

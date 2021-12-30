@@ -25,6 +25,7 @@
 }
 .content .van-cell__title {
     max-width: 6.5em !important;
+    color: #646464;
 }
 .content .van-field__label {
   color: #646464;
@@ -83,4 +84,8 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 
 .mr-30 {
   margin-right: 30rpx;
+}
+
+.van-field__placeholder {
+  color: #c4c4c4 !important;
 }
