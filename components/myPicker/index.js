@@ -10,33 +10,31 @@ Component({
     },
     title: {
       type: String,
-      value: '请选择',
+      value: "请选择",
     },
     columns: {
       type: Array,
       value: [],
-    }
+    },
   },
 
   /**
    * 组件的初始数据
    */
-  data: {
-
-  },
+  data: {},
 
   /**
    * 组件的方法列表
    */
   methods: {
     onChange: function (event) {
-      this.triggerEvent('change', event.detail)
+      this.triggerEvent("change", event.detail);
     },
     onCancel: function (event) {
-      this.triggerEvent('cancel', event.detail)
+      this.triggerEvent("cancel", event.detail);
     },
     onConfirm: function (event) {
-      this.triggerEvent('confirm', event.detail)
+      this.triggerEvent("confirm", event.detail);
     },
-  }
-})
+  },
+});

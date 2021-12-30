@@ -38,7 +38,9 @@ Page({
   onChange(event) {
     // TODO: tab切换至我的预约页面，请求数据
     if (event.detail.name === 1) {
-      app.service.CashReserve.wxLargeCashBookQry().then((res) => {
+      app.service.CashReserve.wxLargeCashBookQry({
+        FromUserName: "csopenid",
+      }).then((res) => {
         console.log(res);
       });
     }
@@ -79,6 +81,7 @@ Page({
         app.service.CashReserve.wxLatelyBookDeptQry({
           longitude: this.data.locationData.longitude,
           latitude: this.data.locationData.latitude,
+          FromUserName: "csopenid",
         }).then((result) => {
           const list = content.data.list;
           if (result.data.deptId) {
@@ -146,6 +149,7 @@ Page({
         app.service.CashReserve.wxLatelyBookDeptQry({
           longitude: this.data.locationData.longitude,
           latitude: this.data.locationData.latitude,
+          FromUserName: "csopenid",
         }).then((result) => {
           const list = content.data.list;
           if (result.data.deptId) {
@@ -262,6 +266,7 @@ Page({
           app.service.CashReserve.wxLatelyBookDeptQry({
             longitude: res.longitude,
             latitude: res.latitude,
+            FromUserName: "csopenid",
           }).then((result) => {
             const list = content.data.list;
             if (result.data.deptId) {

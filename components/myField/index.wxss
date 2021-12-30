@@ -18,6 +18,8 @@
 .field-value-content {
   display: flex;
   align-items: center;
+  flex: 1;
+  justify-content: flex-end;
 }
 .field-value {
   font-size: 30rpx;

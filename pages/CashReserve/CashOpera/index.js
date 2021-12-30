@@ -164,13 +164,13 @@ Page({
       }
       params = {
         bsTy: this.data.reserveType,
-        wddt: this.data.selectedDate.value.replace(/-/g, ''),
+        wddt: this.data.selectedDate.value.replace(/-/g, ""),
         wdtm: "150000",
         amcr: this.data.selectedAccount.acNo,
         wdAm: this.data.amount,
+        FromUserName: "csopenid",
       };
     } else {
-      
     }
     app.service.CashReserve.wxLargeCashBook(params).then((res) => {
       console.log(res);
@@ -185,7 +185,9 @@ Page({
       reserveType: option.type,
       bankName: option.name,
     });
-    app.service.CashReserve.wxLargeCashBookDateQry().then((res) => {
+    app.service.CashReserve.wxLargeCashBookDateQry({
+      FromUserName: "csopenid",
+    }).then((res) => {
       if (res.data.list) {
         const dateList = res.data.list.map((date) => {
           return {

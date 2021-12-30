@@ -14,6 +14,7 @@ export default {
    * @param {
    * longitude: 经度
    * latitude: 纬度
+   * FromUserName: 微信openid
    * }
    */
   wxLatelyBookDeptQry(params) {
@@ -36,9 +37,12 @@ export default {
   },
   /**
    * 预约日期查询
+   * @param {
+   * FromUserName: 微信openid
+   * }
    */
-  wxLargeCashBookDateQry() {
-    return post("wxLargeCashBookDateQry.do");
+  wxLargeCashBookDateQry(params) {
+    return post("wxLargeCashBookDateQry.do", params);
   },
   /**
    * 预约操作
@@ -49,6 +53,7 @@ export default {
    * amcr: 取款账户
    * wdAm: 预约金额
    * list: 零钞兑换
+   * FromUserName: 微信openid
    * }
    */
   wxLargeCashBook(params) {
@@ -56,9 +61,12 @@ export default {
   },
   /**
    * 预约记录查询
+   * @param {
+   * FromUserName: 微信openid
+   * }
    */
-  wxLargeCashBookQry() {
-    return post("wxLargeCashBookQry.do");
+  wxLargeCashBookQry(params) {
+    return post("wxLargeCashBookQry.do", params);
   },
   /**
    * 取消预约操作
