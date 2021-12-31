@@ -168,3 +168,18 @@
   padding: 24rpx;
   text-align: center;
 }
+.empty-content {
+  margin-top: 180rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.empty-content image {
+  width: 320rpx;
+  height: 230rpx;
+}
+.empty-content view {
+  margin-top: 30rpx;
+  color: #666666;
+  font-weight: 400;
+}

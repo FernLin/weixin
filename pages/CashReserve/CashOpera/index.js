@@ -6,6 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    addr: "",
+    deptName: "",
+    deptId: "",
     bankName: "",
     reserveType: "1",
     showPicker: false,
@@ -149,9 +152,19 @@ Page({
       Toast("请选择取款日期");
       return;
     }
-    let params;
+    // TODO: 余额判断
+    let params = {
+      addr: this.data.addr,
+      deptName: this.data.deptName,
+      bsTy: this.data.reserveType,
+      wddt: this.data.selectedDate.value.replace(/-/g, ""),
+      wdtm: "150000",
+      amcr: this.data.selectedAccount.acNo,
+      wdsn: this.data.deptId,
+      FromUserName: "csopenid",
+    };
+    // 大额预约
     if (this.data.reserveType === "1") {
-      console.log(Number(this.data.amount));
       if (Number(this.data.amount) < 50000) {
         Toast(
           "抱歉该业务仅支持预约金额≥5万的大额取款，请您直接前往柜面办理业务"
@@ -163,17 +176,44 @@ Page({
         return;
       }
       params = {
-        bsTy: this.data.reserveType,
-        wddt: this.data.selectedDate.value.replace(/-/g, ""),
-        wdtm: "150000",
-        amcr: this.data.selectedAccount.acNo,
+        ...params,
         wdAm: this.data.amount,
-        FromUserName: "csopenid",
       };
     } else {
+      // 零钱兑换
+      let loop = Object.entries(this.data.cashPool).filter((pt) => pt[1]);
+      if (loop.length === 0) {
+        Toast("请选择零钞");
+        return;
+      }
+      let ptA = {
+        cny20: 20,
+        cny10: 10,
+        cny5: 5,
+        cny1: 1,
+        cny05: 0.5,
+        cny01: 0.1,
+      };
+      params = {
+        ...params,
+        wdAm: this.data.cashTotal,
+        loopSize: String(loop.length),
+        list: loop.map((pt) => ({
+          cyun: ptA[pt[0]],
+          nubr: pt[1] / ptA[pt[0]],
+          amot: pt[1],
+        })),
+      };
     }
     app.service.CashReserve.wxLargeCashBook(params).then((res) => {
-      console.log(res);
+      if (res.respCode === "00000000") {
+        Toast.success(
+          `${this.data.reserveType === "1" ? "大额取款" : "零钱兑换"}预约成功！`
+        );
+        wx.navigateBack();
+      } else {
+        Toast(res.respMessage);
+      }
     });
   },
 
@@ -184,6 +224,9 @@ Page({
     this.setData({
       reserveType: option.type,
       bankName: option.name,
+      deptId: option.deptId,
+      addr: option.addr,
+      deptName: option.deptName,
     });
     app.service.CashReserve.wxLargeCashBookDateQry({
       FromUserName: "csopenid",

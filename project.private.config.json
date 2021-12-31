@@ -31,8 +31,8 @@
           "scene": null
         },
         {
-          "name": "pages/login/register/index",
-          "pathName": "pages/login/register/index",
+          "name": "注册页面开发",
+          "pathName": "pages/Register/index",
           "query": "",
           "scene": null
         },

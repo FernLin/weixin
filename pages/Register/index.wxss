@@ -1,0 +1,90 @@
+.register-content {
+  height: 100vh;
+  background-color: #ffffff;
+  padding: 170rpx 30rpx 0;
+}
+.title {
+  font-size: 50rpx;
+  color: #333333;
+  padding: 50rpx 30rpx 90rpx;
+  font-weight: 600;
+}
+.input-content {
+  padding: 0 30rpx;
+}
+.placeholder {
+  font-size: 32rpx;
+  color: #c4c4c4;
+  font-weight: 400;
+}
+.mobile-input {
+  height: 96rpx;
+  border-bottom: 1rpx solid #dddddd;
+  font-size: 32rpx;
+  color: #323232;
+  font-weight: 400;
+}
+.verify-content {
+  height: 96rpx;
+  border-bottom: 1rpx solid #dddddd;
+  display: flex;
+  align-items: center;
+}
+.verify-input {
+  font-size: 32rpx;
+  color: #323232;
+  font-weight: 400;
+  flex: 1;
+}
+.fen-ge {
+  width: 1rpx;
+  height: 50rpx;
+  border-right: 1rpx solid #e6e6e6;
+  margin: 0 20rpx;
+}
+.notice {
+  font-size: 28rpx;
+  color: #3378f6;
+  text-align: center;
+  font-weight: 400;
+  width: 170rpx;
+}
+.count-num {
+  font-size: 28rpx;
+  color: #646464;
+  text-align: center;
+  font-weight: 400;
+  width: 170rpx;
+}
+.agreement-content {
+  display: flex;
+  margin: 48rpx 0 64rpx;
+}
+.check-box-content {
+  position: relative;
+  top: 6rpx;
+}
+.text-content {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 42rpx;
+  font-weight: 400;
+  margin-left: 16rpx;
+}
+.text-content text {
+  color: #3378f6;
+}
+.reg-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background-color: #e43234;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  font-weight: 600;
+}
+.disable {
+  background-color: #dcdcdc;
+}

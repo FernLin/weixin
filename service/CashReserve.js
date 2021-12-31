@@ -52,6 +52,9 @@ export default {
    * wdtm: 取款时间
    * amcr: 取款账户
    * wdAm: 预约金额
+   * wdsn: 机构id
+   * addr: 机构地址
+   * deptName: 机构名称
    * list: 零钞兑换
    * FromUserName: 微信openid
    * }
@@ -71,13 +74,13 @@ export default {
   /**
    * 取消预约操作
    * @param {
-   * operationType:
-   * businessType:
-   * widtdrawDate:
-   * cardId:
-   * widtdrawTime:
-   * deptId:
-   * FromUserName:
+   * operationType: 操作类型(2:取消；3：办理；4：失效)
+   * businessType: 业务类型（1：大额取款；2：零钱兑换）
+   * widtdrawDate: 取款日期
+   * cardId: 卡账号
+   * widtdrawTime: 取款时间
+   * deptId: 机构id
+   * FromUserName: 微信openid
    * }
    */
   wxLargeCashBookCancel(params) {

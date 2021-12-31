@@ -6,6 +6,74 @@ function formatDistance(distance) {
   }
 }
 
+function formatDate(date) {
+  if (date && date.length >= 8) {
+    return (
+      date.substring(0, 4) +
+      "-" +
+      date.substring(4, 6) +
+      "-" +
+      date.substring(6, 8)
+    );
+  }
+}
+
+function formatTime(time) {
+  if (time && time.length >= 6) {
+    var start = parseInt(time.substring(0, 2));
+    var end = start + 1;
+    return (
+      start +
+      ":" +
+      time.substring(2, 4) +
+      ":" +
+      time.substring(4, 6) +
+      "-" +
+      end +
+      ":" +
+      time.substring(2, 4) +
+      ":" +
+      time.substring(4, 6)
+    );
+  }
+}
+
+// 银行卡显示规则
+function hiddenBankCard(bankNumber) {
+  if (bankNumber && bankNumber.length > 0) {
+    var regexp1 = getRegExp("[0-9]", "gi");
+    var regexp2 = getRegExp("(.{4})", "g");
+    var l1 = bankNumber.length;
+    var s1 = bankNumber.substring(0, 6);
+    var s2 = bankNumber.substring(l1 - 4);
+    var s3 = bankNumber.substring(l1 - 10).replace(regexp1, "*");
+    var hiddenNum = s1 + s3 + s2;
+    hiddenNum = hiddenNum.replace(regexp2, "$1 ");
+    return hiddenNum;
+  }
+}
+
+// 银行卡显示规则2
+function formatAccountNo(str) {
+  if (str && str.length > 0) {
+    if (typeof str !== "string") {
+      return "";
+    }
+
+    if (str.length < 8) {
+      return str;
+    }
+
+    var reg = getRegExp("^(d{4})[sS]+(w{4})$");
+    var value = str.toString().replace(reg, "$1 **** **** $2");
+    return value;
+  }
+}
+
 module.exports = {
   formatDistance: formatDistance,
+  formatDate: formatDate,
+  formatTime: formatTime,
+  hiddenBankCard: hiddenBankCard,
+  formatAccountNo: formatAccountNo,
 };

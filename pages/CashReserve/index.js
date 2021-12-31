@@ -1,6 +1,7 @@
 // pages/CashReserve/index.js
 
 import Toast from "@vant/weapp/toast/toast";
+import Dialog from "@vant/weapp/dialog/dialog";
 const createRecycleContext = require("miniprogram-recycle-view");
 var ctx;
 // 获取应用实例
@@ -22,6 +23,7 @@ Page({
     recordType: 1,
     bankList: [],
     locationData: {},
+    recordList: [],
   },
   // 银行预约操作类型
   goCashOpera(event) {
@@ -31,19 +33,64 @@ Page({
         "/pages/CashReserve/CashOpera/index?type=" +
         event.currentTarget.dataset.type +
         "&name=" +
+        event.currentTarget.dataset.item.deptName +
+        "&deptId=" +
+        event.currentTarget.dataset.item.deptId +
+        "&addr=" +
+        event.currentTarget.dataset.item.addr +
+        "&deptName=" +
         event.currentTarget.dataset.item.deptName,
     });
   },
   // tab切换
   onChange(event) {
-    // TODO: tab切换至我的预约页面，请求数据
     if (event.detail.name === 1) {
-      app.service.CashReserve.wxLargeCashBookQry({
-        FromUserName: "csopenid",
-      }).then((res) => {
-        console.log(res);
-      });
+      this.getRecordList();
     }
+  },
+  // 获取预约记录
+  getRecordList() {
+    app.service.CashReserve.wxLargeCashBookQry({
+      FromUserName: "csopenid",
+    }).then((res) => {
+      if (res.data) {
+        const { largeCashlist, smallChangeExchangelist } = res.data;
+        const largeList = largeCashlist.map((el) => {
+          return {
+            type: 1,
+            deptName: el.deptName,
+            deptAddr: el.deptAddr,
+            deptId: el.deptId,
+            name: el.largeList.name,
+            bankCardId: el.largeList.bankCardId,
+            bookTime: el.largeList.bookTime,
+            bookMoney: el.largeList.bookMoney,
+            bookDate: el.largeList.bookDate,
+          };
+        });
+        const smallList = smallChangeExchangelist.map((el) => {
+          let amounts = [];
+          el.list.forEach((li) => {
+            amounts.push(li.cyun + "元*" + li.nubr + "张");
+          });
+          return {
+            type: 2,
+            deptName: el.deptName,
+            deptAddr: el.bookAddr,
+            deptId: el.deptId,
+            name: el.name,
+            bankCardId: el.cardId,
+            bookTime: el.tradeTime,
+            bookDate: el.tradeDate,
+            amounts: amounts.join("; "),
+            count: el.bookNum,
+          };
+        });
+        this.setData({
+          recordList: [...largeList, ...smallList],
+        });
+      }
+    });
   },
   // 关键字搜索
   onSearch(event) {
@@ -176,9 +223,34 @@ Page({
     }
   },
   // 取消预约
-  onCancel() {
-    // TODO: 取消预约的点击事件
-    console.log("取消预约");
+  onCancel(event) {
+    Dialog.confirm({
+      title: "提示",
+      message: "您是否确认取消预约？",
+      confirmButtonText: "确定",
+      cancelButtonText: "暂不取消",
+    })
+      .then(() => {
+        const { item } = event.currentTarget.dataset;
+        app.service.CashReserve.wxLargeCashBookCancel({
+          operationType: "2",
+          businessType: String(item.type),
+          widtdrawDate: item.bookDate,
+          cardId: item.bankCardId,
+          widtdrawTime: item.bookTime,
+          deptId: item.deptId,
+          FromUserName: "csopenid",
+        }).then((res) => {
+          if (res.respCode === "00000000") {
+            this.getRecordList();
+          } else {
+            Toast(res.respMessage);
+          }
+        });
+      })
+      .catch(() => {
+        console.log("暂不取消");
+      });
   },
   // 获取城市数据
   getCityData() {

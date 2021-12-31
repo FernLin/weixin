@@ -41,44 +41,49 @@
     </van-tab>
     <van-tab title="我的预约">
       <view class="record-list">
-        <view class="record-item">
+        <view wx:if="{{recordList.length === 0}}" class="empty-content">
+          <image src="/assets/cashReserve/empty.png" />
+          <view>暂无预约哦~</view>
+        </view>
+        <view class="record-item" wx:for="{{recordList}}" wx:key="index">
           <view class="record-status">
-            <text>大额取款</text>
+            <text>{{item.type == 1 ? '大额取款' : '零钱兑换'}}</text>
             <text>已登记</text>
           </view>
           <view class="record-bank-name">
-            赣州银行黄金分行
+            {{item.deptName}}
           </view>
           <view class="record-customer-msg">
-            <text>6219 **** **** 0017</text>
-            <text>王*二</text>
+            <text>{{item.bankCardId}}</text>
+            <text>{{item.name}}</text>
           </view>
           <view class="record-msg">
             <text>预约时间</text>
-            <text>2020-12-12 12:00-13:00</text>
+            <text>{{util.formatDate(item.bookDate)}} {{util.formatTime(item.bookTime)}}</text>
           </view>
-          <view class="record-msg" wx:if="{{recordType === 0}}">
+          <view class="record-msg" wx:if="{{item.type == 1}}">
             <text>取款金额</text>
-            <text class="record-amount">￥300</text>
+            <text class="record-amount">￥{{item.bookMoney}}</text>
           </view>
           <view wx:else>
             <view class="record-msg">
               <text>零钞面额</text>
-              <text class="record-amount">5元*100张；10元100张；5角*2000枚；1角*3000枚</text>
+              <text class="record-amount">{{item.amounts}}</text>
             </view>
             <view class="record-msg">
               <text>兑换整钞金额</text>
-              <text class="record-amount">￥300</text>
+              <text class="record-amount">￥{{item.count}}</text>
             </view>
           </view>
           <view class="record-msg">
             <text>地址</text>
-            <text>江西省赣州市章贡区赣江源大道15号</text>
+            <text>{{item.deptAddr}}</text>
           </view>
-          <view class="record-cancel" bindtap="onCancel">取消预约</view>
+          <view class="record-cancel" data-item="{{item}}" bindtap="onCancel">取消预约</view>
         </view>
       </view>
     </van-tab>
   </van-tabs>
 </view>
 <van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
