@@ -12,12 +12,13 @@ Page({
     bankCardList: [],
     bankCardArr: [],
     unbindPopup: false,
-    unbindCardInfo: "",
     messagePass: "",
     messageIndex: "",
     loading: false,
-    unbindHiddenCard: "",
     verCodeChecked: false,
+    countDownFlag: true,
+    countDownNum: 60,
+    unbindCardNo: "",
   },
   //跳转绑卡
   goBindCard() {
@@ -40,83 +41,70 @@ Page({
   // },
   // 解绑银行卡校验
   unBindBankCard(e) {
-    this.setData({
-      unbindPopup: true,
-    });
-    // Dialog.confirm({
-    //   title: "提示",
-    //   message: "您是否确认解绑当前账号？",
-    //   confirmButtonText: "确定",
-    //   cancelButtonText: "暂不解绑",
-    // })
-    //   .then(() => {
-    //     app.service.Global.wxDeleteAccount({
-    //       acNo: e.currentTarget.dataset.item.acNo,
-    //       openid: openId,
-    //     }).then((res) => {
-    //       if (res.respCode == "00000000") {
-    //         Toast("解绑成功~");
-    //       } else {
-    //         Toast(res.respMessage);
-    //       }
-    //     });
-    //   })
-    //   .catch(() => {
-    //     console.log("暂不解绑");
-    //   });
+    Dialog.confirm({
+      title: "提示",
+      message: "是否确认解绑账户？",
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
+    })
+      .then(() => {
+        this.setData({
+          unbindPopup: true,
+          unbindCardNo: e.currentTarget.dataset.item.acNo,
+        });
+      })
+      .catch(() => {
+        console.log("暂不解绑");
+      });
   },
   // 发送解绑验证码
   getVercode() {
-    let data = {
-      mobilePhone: this.data.unbindCardInfo.openMobilephone,
-      transactionId: "perAcctDel",
-    };
-    app.api.post("pweb/perSendSms.do", data).then((res) => {
-      this.setData({
-        messageIndex: res.data.index,
-      });
-      wx.showToast({
-        title: "验证码已发送~！",
-        icon: "none", //icon
-        duration: 3000, //停留时间
-      });
-    });
+    this.countDownF();
   },
   // 校验短信验证码
-  checkVercode() {
-    let data = {
-      index: this.data.messageIndex,
-      transactionId: "perAcctDel",
-      code: this.data.messagePass,
-    };
-    app.api.post("pweb/perSAuthSmsStep.do", data).then((res) => {
-      if (res.respCode == "00000000" && res.data.authRes == "true") {
-        this.setData({
-          verCodeChecked: true,
-        });
-      } else {
-        wx.showToast({
-          title: res.respMessage,
-          icon: "none", //icon
-          duration: 5000, //停留时间
-        });
-      }
-    });
-  },
+  checkVercode() {},
   // 输入验证码
-  bindPassword(e) {
-    if (e.detail.value.length == 6) {
-      this.setData({
-        messagePass: e.detail.value,
-      });
-      this.checkVercode();
-    }
-  },
+  bindPassword(e) {},
   // 关闭弹框
   closePopup() {
     this.setData({
       unbindPopup: false,
     });
+  },
+  onPopupConfirm(e) {
+    this.setData({
+      unbindPopup: false,
+    });
+    app.service.Global.wxDeleteAccount({
+      acNo: this.data.unbindCardNo,
+      openid: openId,
+    }).then((res) => {
+      if (res.respCode == "00000000") {
+        Toast("解绑成功~");
+        this.getUserBankCardInfo();
+      } else {
+        Toast(res.respMessage);
+      }
+    });
+  },
+  countDownF() {
+    let _this = this;
+    this.setData({
+      countDownFlag: false,
+      countDownNum: 60,
+    });
+    let timer = setInterval(function () {
+      if (_this.data.countDownNum != 0) {
+        _this.setData({
+          countDownNum: _this.data.countDownNum - 1,
+        });
+      } else {
+        clearInterval(timer);
+        _this.setData({
+          countDownFlag: true,
+        });
+      }
+    }, 1000);
   },
   // 银行卡转账查询
   goTransDetail(e) {

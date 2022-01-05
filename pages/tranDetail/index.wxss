@@ -28,7 +28,24 @@
 .placeholder-color {
   color: #c4c4c4;
 }
-
+.search {
+  margin: 48rpx 30rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border: 1rpx solid #e43234;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #e43234;
+}
+.list-content {
+  padding: 0 30rpx;
+  height: calc(100vh - 404rpx);
+  overflow-y: scroll;
+}
+.list-content > view:last-child {
+  margin-bottom: unset;
+}
 .l-t {
   font-family: PingFang SC;
   color: #646464;
@@ -60,6 +77,10 @@
   color: #333333;
   font-size: 30rpx;
   line-height: 42rpx;
+  width: 260rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bank-card {

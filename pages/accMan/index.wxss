@@ -1,126 +1,184 @@
 .bank-card {
-    margin: 30rpx 30rpx 0;
-    background-color:#ffffff;
-    border-radius:12rpx;
-    height:310rpx;
+  margin: 30rpx 30rpx 0;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  height: 310rpx;
 }
 
 .info {
-    padding: 30rpx 0 0 30rpx;
-    color:#323232;
-    height: 180rpx;
-    display: flex;
+  padding: 30rpx 0 0 30rpx;
+  color: #323232;
+  height: 180rpx;
+  display: flex;
 }
 
-.info>image{
-    width:70rpx;
-    height:70rpx;
-    margin-right: 35rpx;
+.info > image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 35rpx;
 }
 
 .bank-card-id {
-    font-weight:700;
-    font-size:32rpx;
-    line-height:44rpx;
-    margin-bottom: 7rpx;
+  font-weight: 700;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  margin-bottom: 7rpx;
 }
 
 .card-type {
-    font-weight:600;
-    font-size:28rpx;
-    line-height:44rpx;
-    margin-right: 50rpx;
+  font-weight: 600;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-right: 50rpx;
 }
 
 .card-type-1 {
-    font-size:24rpx;
-    line-height:36rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
 }
 
 .fen-ge {
-    width: 1rpx;
-    height:19rpx;
-    border-right:1rpx solid;
-    border-color:#323232;
-    margin: 0 20rpx;
+  width: 1rpx;
+  height: 19rpx;
+  border-right: 1rpx solid;
+  border-color: #323232;
+  margin: 0 20rpx;
 }
-
-
 
 .de-acc {
-    top: 0;
-    right: 0;
+  top: 0;
+  right: 0;
 }
 
-.de-acc>image {
-    width: 120rpx;
-    height: 42rpx;
+.de-acc > image {
+  width: 120rpx;
+  height: 42rpx;
 }
 
 .de-acc-txt {
-    font-weight:600;
-    color:#ffffff;
-    font-size:24rpx;
-    line-height:42rpx;
-    top: 0;
-    left: 13rpx;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 24rpx;
+  line-height: 42rpx;
+  top: 0;
+  left: 13rpx;
 }
 
 .card-fun {
-    width: 100%;
-    bottom: 0;
-    height: 95rpx;
-    border-top:1px solid;
-    border-color:#e6e6e6;
+  width: 100%;
+  bottom: 0;
+  height: 95rpx;
+  border-top: 1px solid;
+  border-color: #e6e6e6;
 }
 
 .fen-ge-btn {
-    height:45rpx;
-    border-right:1px solid;
-    border-color:#e6e6e6;
+  height: 45rpx;
+  border-right: 1px solid;
+  border-color: #e6e6e6;
 }
 
 .btn-css {
-    width: 100%;
-    height:44rpx;
-    color:#3378f6;
-    font-size:30rpx;
-    line-height:44rpx;
-    text-align:center;
+  width: 100%;
+  height: 44rpx;
+  color: #3378f6;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  text-align: center;
 }
 
 .shui-yin {
-    width:214rpx;
-    height:138rpx;
-    top: -138rpx;
-    right: 0;
+  width: 214rpx;
+  height: 138rpx;
+  top: -138rpx;
+  right: 0;
 }
 
 .add-card-btn {
-    height:90rpx;
-    border-radius:12rpx;
-    color:#e43234;
-    font-size:32rpx;
-    line-height:90rpx;
-    border: 1rpx solid #e43234;
-    text-align: center;
+  height: 90rpx;
+  border-radius: 12rpx;
+  color: #e43234;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  border: 1rpx solid #e43234;
+  text-align: center;
 }
 
-.unbind-popup>view {
-    padding-top: 60rpx;
-    margin-bottom: 40rpx;
+.popup-content {
+  width: 690rpx;
+  border-radius: 12rpx;
+  top: 40%;
 }
-
-.unbind-popup>input {
-    padding-bottom: 40rpx;
+.unbind-content {
+  padding: 30rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-.closeBtn {
-    right: 0;
+.title {
+  font-size: 28rpx;
+  color: #323232;
+  font-weight: 500;
 }
-
-.van-popup-m .van-popup {
-    width: 80%;
-    border-radius: 20rpx;
-    top: 30% !important;
+.message {
+  font-size: 24rpx;
+  color: #646464;
+  margin-top: 56rpx;
+}
+.message text {
+  color: #323232;
+  font-weight: 600;
+}
+.verify-content {
+  width: 580rpx;
+  height: 80rpx;
+  background: #f7f7f7;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  margin: 16rpx 0 30rpx;
+}
+.verify-input {
+  font-size: 28rpx;
+  color: #323232;
+  font-weight: 500;
+  flex: 1;
+}
+.placeholder {
+  font-size: 28rpx;
+  color: #c4c4c4;
+}
+.fen-ge {
+  width: 1rpx;
+  height: 50rpx;
+  border-right: 1rpx solid #e6e6e6;
+  margin: 0 20rpx;
+}
+.notice {
+  font-size: 26rpx;
+  color: #437edf;
+  text-align: center;
+  font-weight: 500;
+  width: 170rpx;
+}
+.count-num {
+  font-size: 26rpx;
+  color: #646464;
+  text-align: center;
+  width: 170rpx;
+}
+.popup-btn {
+  width: calc(100% - 60rpx);
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background-color: #e43234;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  letter-spacing: -0.14rpx;
+  font-weight: 500;
 }

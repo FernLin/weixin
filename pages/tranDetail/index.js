@@ -1,4 +1,5 @@
 // pages/User/index.js
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 const openId = wx.getStorageSync("openid");
 Page({
@@ -30,6 +31,27 @@ Page({
         this.data[event.currentTarget.dataset.type]
       ).getTime(),
     });
+  },
+  getTransInfoList(acNo, startDate, endDate) {
+    app.service.Transaction.wxAcctDetailQry({
+      acNo,
+      startDate,
+      endDate,
+    }).then((res) => {
+      if (res.respCode === "00000000") {
+        this.setData({
+          transInfoList: res.data.list,
+        });
+      } else {
+        Toast(res.respMessage);
+      }
+    });
+  },
+  onSearch() {
+    const acNo = this.data.selectedAccount.acNo,
+      startDate = this.data.startDate.replace(/-/g, ""),
+      endDate = this.data.endDate.replace(/-/g, "");
+    this.getTransInfoList(acNo, startDate, endDate);
   },
   // 选择器取消
   onPickerCancel() {
@@ -74,17 +96,11 @@ Page({
       startDate: timeSlotN.m.start,
       endDate: timeSlotN.m.end,
     });
-    app.service.Transaction.wxAcctDetailQry({
-      acNo: options.acNo,
-      startDate: timeSlotN.m.start.replace(/-/g, ""),
-      endDate: timeSlotN.m.end.replace(/-/g, ""),
-    }).then((res) => {
-      if (res.data.list) {
-        this.setData({
-          transInfoList: res.data.list,
-        });
-      }
-    });
+    this.getTransInfoList(
+      options.acNo,
+      timeSlotN.m.start.replace(/-/g, ""),
+      timeSlotN.m.end.replace(/-/g, "")
+    );
     app.service.Global.wxAcListQry({
       openid: openId,
       unionId: "csunionid",

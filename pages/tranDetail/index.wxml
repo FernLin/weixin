@@ -12,7 +12,8 @@
             </view>
         </my-field>
     </view>
-    <view class="m-30 bottom-safe">
+    <view class="search" bindtap="onSearch">搜索</view>
+    <view class="list-content">
         <view class="bg-w p-30 mb-30 tran-card" wx:for="{{ transInfoList }}" wx:key="item">
             <view class="ta-c flex jc-c money-num {{item.borrowLoanFlag == 0 ? '' : 'text-red'}}">
                 <view wx:if="{{ item.borrowLoanFlag == 0 }}">-</view>
@@ -37,7 +38,7 @@
             </view>
             <view class="flex jc-sb mt-30">
                 <view class="tran-l">余额</view>
-                <view class="tran-r">￥{{item.accBalance}}</view>
+                <view class="tran-r">￥{{util.formatAmount(item.accBalance)}}</view>
             </view>
             <view class="flex jc-sb mt-16">
                 <view class="tran-l">摘要</view>
@@ -52,3 +53,4 @@
     <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择账号" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
     <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />
 </view>
+<van-toast id="van-toast" />
