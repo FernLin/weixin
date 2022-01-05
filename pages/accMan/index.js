@@ -1,23 +1,16 @@
 // pages/User/index.js
-const app = getApp();
+import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
+const app = getApp();
+const openId = wx.getStorageSync("openid");
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     bankPng: "/assets/bankicon.png",
-    bankCardList: [{
-      acNoHidden: '123123123123123',
-      bankAcTypeName: '1类卡',
-      openBank: '赣州银行总部',
-      majorCardFlag: '1'
-    }, {
-      acNoHidden: '123123123123123',
-      bankAcTypeName: '1类卡',
-      openBank: '赣州银行总部',
-      majorCardFlag: '0'
-    }],
+    bankCardList: [],
+    bankCardArr: [],
     unbindPopup: false,
     unbindCardInfo: "",
     messagePass: "",
@@ -40,103 +33,37 @@ Page({
   },
 
   //开户
-  openAccount() {
-    wx.navigateTo({
-      url: "/pages/accMan/openAccount/index",
-    });
-  },
-  getSortCardList() {
-    let cardList = wx.getStorageSync("bankCardList");
-    if (cardList) {
-      cardList.sort(function (a, b) {
-        return b.majorCardFlag - a.majorCardFlag;
-      });
-      this.setData({
-        bankCardList: cardList,
-      });
-    }
-  },
+  // openAccount() {
+  //   wx.navigateTo({
+  //     url: "/pages/accMan/openAccount/index",
+  //   });
+  // },
   // 解绑银行卡校验
   unBindBankCard(e) {
-    let data = {
-      acNo: e.currentTarget.dataset.item.acNo,
-    };
-    let header = {
-      trsType: "confirm",
-    };
     this.setData({
-      loading: true,
-      unbindHiddenCard: e.currentTarget.dataset.item.acNoHidden,
+      unbindPopup: true,
     });
-    app.api.post("pweb/perAcctDel.do", data, header).then((res) => {
-      this.setData({
-        loading: false,
-      });
-      if (
-        res.respCode == "00000000" &&
-        res.data.authenticateTypeList[0] == "S"
-      ) {
-        let unbindCardInfo = e.currentTarget.dataset.item;
-        unbindCardInfo.showPhoneNo = app.util.formatPhoneNo(
-          unbindCardInfo.openMobilephone
-        );
-        this.setData({
-          unbindPopup: true,
-          unbindCardInfo: unbindCardInfo,
-        });
-        this.getVercode();
-      } else {
-        wx.showToast({
-          title: res.respMessage,
-          icon: "none", //icon
-          duration: 5000, //停留时间
-        });
-      }
-    });
-  },
-  // 解绑银行卡
-  unBindBankCardF() {
-    if (!this.data.verCodeChecked) {
-      wx.showToast({
-        title: "验证码错误~！",
-        icon: "none", //icon
-        duration: 3000, //停留时间
-      });
-    }
-    let data = {
-      acNo: this.data.unbindCardInfo.acNo,
-    };
-    let header = {
-      transAuthType: "multi_step_auth",
-    };
-    app.api.post("pweb/perAcctDel.do", data, header).then((res) => {
-      if (res.respCode == "00000000") {
-        this.setData({
-          unbindPopup: false,
-        });
-        this.data.bankCardList.forEach((ele, index) => {
-          if (ele.acNo == this.data.unbindCardInfo.acNo) {
-            this.data.bankCardList.splice(index, 1);
-            this.setData({
-              bankCardList: this.data.bankCardList,
-            });
-            wx.setStorageSync("bankCardList", this.data.bankCardList);
-            return;
-          }
-        });
-        wx.showToast({
-          title: "解绑成功~！",
-          icon: "none", //icon
-          duration: 3000, //停留时间
-        });
-      } else {
-        wx.showToast({
-          title: res.respMessage,
-          icon: "none", //icon
-          duration: 5000, //停留时间
-        });
-      }
-    });
+    // Dialog.confirm({
+    //   title: "提示",
+    //   message: "您是否确认解绑当前账号？",
+    //   confirmButtonText: "确定",
+    //   cancelButtonText: "暂不解绑",
+    // })
+    //   .then(() => {
+    //     app.service.Global.wxDeleteAccount({
+    //       acNo: e.currentTarget.dataset.item.acNo,
+    //       openid: openId,
+    //     }).then((res) => {
+    //       if (res.respCode == "00000000") {
+    //         Toast("解绑成功~");
+    //       } else {
+    //         Toast(res.respMessage);
+    //       }
+    //     });
+    //   })
+    //   .catch(() => {
+    //     console.log("暂不解绑");
+    //   });
   },
   // 发送解绑验证码
   getVercode() {
@@ -201,31 +128,25 @@ Page({
 
   // 获取用户银行卡信息
   getUserBankCardInfo() {
-    app.api.post("pweb/perAcListQry.do").then((res) => {
-      if (res.respCode == "00000000") {
-        if (res.data.accountList && res.data.accountList.length != 0) {
-          let list = app.util.userComputed(res.data.accountList);
-          this.setData({
-            bankCardList: list,
-          });
-          wx.setStorageSync("bankCardList", res.data.accountList);
-          this.getSortCardList();
-        }
-      } else {
-        wx.showToast({
-          title: res.respMessage,
-          icon: "none", //icon
-          duration: 1500, //停留时间
+    app.service.Global.wxAcListQry({
+      openid: openId,
+      unionId: "csunionid",
+    }).then((res) => {
+      if (res.data.userAccount) {
+        wx.setStorageSync("bankCardList", res.data.userAccount);
+        this.setData({
+          bankCardList: res.data.userAccount,
         });
       }
     });
   },
+  onShow: function () {
+    this.getUserBankCardInfo();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    this.getSortCardList();
-  },
+  onLoad: function () {},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -13,9 +13,9 @@
     </view>
     <view class="flex input1 p-30 jc-sb">
         <text>证件类型</text>
-        <view class="ta-r w-70 card-type" bindtap="bindCardType">
-            <text class="placehoder-color" wx:if="{{!bindCardType}}">请选择证件类型</text>
-            <text wx:else>{{bindCardType}}</text>
+        <view class="ta-r w-70 card-type" bindtap="onBindCardType">
+            <text class="placehoder-color" wx:if="{{!bindCardType.text}}">请选择证件类型</text>
+            <text wx:else>{{bindCardType.text}}</text>
             <van-icon name="arrow" class="id-card-icon" />
         </view>
     </view>
@@ -37,13 +37,13 @@
         <text>手机号</text>
         <input type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
     </view>
-    <view class="flex input1 p-30 jc-sb">
+    <!-- <view class="flex input1 p-30 jc-sb">
         <text>图形验证码</text>
         <view class="flex ta-r w-70">
             <input maxlength="4" bindinput="bindCodeNum" placeholder="请输入图形验证码" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
             <image class="yzm-css" src="/assets/appInfo/yzm.png" bindtap="getCaptchaImg" />
         </view>
-    </view>
+    </view> -->
     <view class="flex input1 p-30 jc-sb">
         <text>短信验证码</text>
         <view class="flex ta-r">
@@ -53,19 +53,8 @@
             <view wx:else>{{ countDownNum }}秒后重新获取</view>
         </view>
     </view>
-
     <!-- 证件类型 -->
-    <van-popup show="{{idcardPopup}}" round position="bottom">
-        <van-picker columns="{{columns}}" show-toolbar bind:cancel="onClose" bind:confirm="onConfirm" />
-    </van-popup>
-
-    <!-- 绑定验证码弹框 -->
-    <!-- <van-popup class="van-popup-m" show="{{bindPopup}}">
-        <view class="unbind-popup m-30 posi-re" >
-            <van-icon name="close" class="posi-ab closeBtn" bindtap="closePopup" />
-            <view >短信已发送：{{phoneNum}}</view>
-            <input value="{{messagePass}}" bindinput="bindPassword" maxlength="6" placeholder="请输入短信验证码" type="text" disabled="{{inputDis}}"/>
-        </view>
-    </van-popup> -->
+    <my-picker show="{{ idcardPopup }}" columns="{{ columns }}" title="选择证件类型" bind:cancel="onClose" bind:confirm="onConfirm" />
 </view>
 <view class="next-step" bindtap="goNext">下一步</view>
+<van-toast id="van-toast" />

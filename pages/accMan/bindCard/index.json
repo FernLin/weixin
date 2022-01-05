@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "绑定银行卡"
+    "navigationBarTitleText": "绑定银行卡",
+    "usingComponents": {
+        "my-picker": "/components/myPicker/index"
+    }
 }

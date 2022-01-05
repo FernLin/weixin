@@ -12,17 +12,12 @@
     "pages/User/setting/logout/index",
     "pages/User/setting/eAccount/index",
     "pages/User/setting/eAccount/large/index",
-    "pages/Register/index"
+    "pages/Register/index",
+    "pages/Webview/index"
   ],
   "subPackages": [
     {
       "root": "pages/tranDetail/",
-      "pages": [
-        "index"
-      ]
-    },
-    {
-      "root": "pages/accountManager/",
       "pages": [
         "index"
       ]

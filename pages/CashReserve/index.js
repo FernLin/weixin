@@ -3,6 +3,7 @@
 import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const createRecycleContext = require("miniprogram-recycle-view");
+const openId = wx.getStorageSync("openid");
 var ctx;
 // 获取应用实例
 const app = getApp();
@@ -51,7 +52,7 @@ Page({
   // 获取预约记录
   getRecordList() {
     app.service.CashReserve.wxLargeCashBookQry({
-      FromUserName: "csopenid",
+      FromUserName: openId,
     }).then((res) => {
       if (res.data) {
         const { largeCashlist, smallChangeExchangelist } = res.data;
@@ -128,7 +129,7 @@ Page({
         app.service.CashReserve.wxLatelyBookDeptQry({
           longitude: this.data.locationData.longitude,
           latitude: this.data.locationData.latitude,
-          FromUserName: "csopenid",
+          FromUserName: openId,
         }).then((result) => {
           const list = content.data.list;
           if (result.data.deptId) {
@@ -196,7 +197,7 @@ Page({
         app.service.CashReserve.wxLatelyBookDeptQry({
           longitude: this.data.locationData.longitude,
           latitude: this.data.locationData.latitude,
-          FromUserName: "csopenid",
+          FromUserName: openId,
         }).then((result) => {
           const list = content.data.list;
           if (result.data.deptId) {
@@ -239,7 +240,7 @@ Page({
           cardId: item.bankCardId,
           widtdrawTime: item.bookTime,
           deptId: item.deptId,
-          FromUserName: "csopenid",
+          FromUserName: openId,
         }).then((res) => {
           if (res.respCode === "00000000") {
             this.getRecordList();
@@ -338,7 +339,7 @@ Page({
           app.service.CashReserve.wxLatelyBookDeptQry({
             longitude: res.longitude,
             latitude: res.latitude,
-            FromUserName: "csopenid",
+            FromUserName: openId,
           }).then((result) => {
             const list = content.data.list;
             if (result.data.deptId) {

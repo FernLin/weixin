@@ -1,4 +1,7 @@
 // pages/Register/index.js
+import Toast from "@vant/weapp/toast/toast";
+const app = getApp();
+const openId = wx.getStorageSync("openid");
 Page({
   /**
    * 页面的初始数据
@@ -30,27 +33,37 @@ Page({
   },
   // 下一步
   toNext() {
-    console.log(this.data);
+    // TODO: 校验输入的手机号
+    // TODO: 校验输入的验证码
+    const params = {
+      mobilePhone: this.data.mobile,
+      openid: openId,
+      unionId: "csunionid1",
+    };
+    app.service.Global.wxCifSign(params).then((res) => {
+      console.log(res);
+      if (res.respCode == "00000000") {
+        wx.navigateTo({
+          url: "/pages/accMan/bindCard/index",
+        });
+      } else {
+        Toast(res.respMessage);
+      }
+    });
   },
   // 获取验证码
   getVercode() {
+    // TODO: 校验手机号码格式
     if (this.data.mobile.length == 11) {
       this.countDownF();
       let data = {
         mobile: this.data.mobile,
         transactionId: "perLoginticWx",
       };
-      // app.api.post("pweb/perSendSmsNoLogin.do", data).then((res) => {
-      //   this.setData({
-      //     messageindex: res.data.index,
-      //   });
-      // });
+      // TODO: 获取验证码
+      Toast("验证码已发送~！");
     } else {
-      wx.showToast({
-        title: "请输入正确位数的手机号！",
-        icon: "none", //icon
-        duration: 3000, //停留时间
-      });
+      Toast("请输入正确格式的手机号！");
     }
   },
   // 开始倒计时

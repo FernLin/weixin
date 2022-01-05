@@ -1,26 +1,34 @@
 // pages/accMan/accDetail/index.js
-const app = getApp()
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     loading: false,
-    accountDetail: '',
-    noticeSwitch: false
+    accountDetail: "",
+    noticeSwitch: false,
+  },
+
+  // 交易明细
+  toTranDetail() {
+    wx.navigateTo({
+      url: "/pages/tranDetail/index?acNo=" + this.data.accountDetail.acNo,
+    });
   },
 
   onChange(data) {
     this.setData({
-      noticeSwitch: data.detail
+      noticeSwitch: data.detail,
     });
   },
 
   jumpTo(event) {
     wx.navigateTo({
-      url: "/pages/accMan/noticeShareManage/index?type=" + event.currentTarget.dataset.type,
-    })
+      url:
+        "/pages/accMan/noticeShareManage/index?type=" +
+        event.currentTarget.dataset.type,
+    });
   },
 
   onShow: function () {},
@@ -31,7 +39,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       loading: false,
-      accountDetail: JSON.parse(decodeURIComponent(options.obj))
+      accountDetail: JSON.parse(decodeURIComponent(options.obj)),
     });
     console.log(this.data.loading);
   },
@@ -62,5 +70,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {}
-})
+  onShareAppMessage: function () {},
+});

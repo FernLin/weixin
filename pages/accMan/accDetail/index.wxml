@@ -1,9 +1,10 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view>
     <view class="bank-card posi-re">
         <view class="info" bindtap="goTransDetail">
             <image src="/assets/bankicon.png" />
             <view class="flex-c">
-                <text class="bank-card-id">{{ accountDetail.acNoHidden }}</text>
+                <text class="bank-card-id">{{ util.hiddenBankCard(accountDetail.acNo) }}</text>
                 <view class="flex">
                     <view class="card-type">借记卡</view>
                     <view class="card-type-1">{{ accountDetail.bankAcTypeName }}</view>
@@ -12,11 +13,11 @@
                 </view>
                 <view class="card-balance">
                     <text>账户余额</text>
-                    <text>￥{{ accountDetail.balance }}</text>
+                    <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
                 </view>
             </view>
         </view>
-        <view class="posi-ab card-fun flex">
+        <view class="posi-ab card-fun flex" bindtap="toTranDetail">
             <view class="btn-css">
                 交易明细
             </view>

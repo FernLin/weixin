@@ -22,3 +22,4 @@
     下一步
   </view>
 </view>
+<van-toast id="van-toast" />

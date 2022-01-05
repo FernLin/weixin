@@ -147,19 +147,6 @@ Page({
       });
     }
   },
-  // goAccManager() {
-  //   if (app.util.gologin()) {
-  //     let prama = {
-  //       managerId: this.data.userInfo.managerId,
-  //     };
-  //     wx.navigateTo({
-  //       url:
-  //         "/pages/accountManager/index" +
-  //         "?prama=" +
-  //         encodeURIComponent(JSON.stringify(prama)),
-  //     });
-  //   }
-  // },
   success(e) {
     wx.showToast({
       title: "111",

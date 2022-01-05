@@ -1,6 +1,7 @@
 // pages/CashReserve/CashOpera/index.js
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
+const openId = wx.getStorageSync("openid");
 Page({
   /**
    * 页面的初始数据
@@ -152,7 +153,6 @@ Page({
       Toast("请选择取款日期");
       return;
     }
-    // TODO: 余额判断
     let params = {
       addr: this.data.addr,
       deptName: this.data.deptName,
@@ -161,7 +161,7 @@ Page({
       wdtm: "150000",
       amcr: this.data.selectedAccount.acNo,
       wdsn: this.data.deptId,
-      FromUserName: "csopenid",
+      FromUserName: openId,
     };
     // 大额预约
     if (this.data.reserveType === "1") {
@@ -173,6 +173,10 @@ Page({
       }
       if (this.data.amount % 1 !== 0) {
         Toast("预约金额必须为整数");
+        return;
+      }
+      if (Number(this.data.amount) > Number(this.data.selectedAccount.accBal)) {
+        Toast("可用余额不足");
         return;
       }
       params = {
@@ -229,7 +233,7 @@ Page({
       deptName: option.deptName,
     });
     app.service.CashReserve.wxLargeCashBookDateQry({
-      FromUserName: "csopenid",
+      FromUserName: openId,
     }).then((res) => {
       if (res.data.list) {
         const dateList = res.data.list.map((date) => {
@@ -244,7 +248,7 @@ Page({
       }
     });
     app.service.Global.wxAcListQry({
-      openid: "csopenid",
+      openid: openId,
       unionId: "csunionid",
     }).then((res) => {
       if (res.data.userAccount) {

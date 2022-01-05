@@ -1,36 +1,37 @@
+<wxs module="util" src="../../utils/wxParse.wxs"></wxs>
 <view class="bottom-safe">
     <!-- <van-tabs active="{{ active }}" bind:change="onChange">
         <van-tab title="银行卡"> -->
-            <view class="bank-card posi-re" wx:for="{{ bankCardList }}" wx:key="item">
-                <view class="info" bindtap="goTransDetail" data-item="{{ item }}">
-                    <image src="{{ bankPng }}" />
-                    <view class="flex-c">
-                        <text class="bank-card-id">{{ item.acNoHidden }}</text>
-                        <view class="flex">
-                            <view class="card-type">借记卡</view>
-                            <view class="card-type-1">{{ item.bankAcTypeName }}</view>
-                            <view class="fen-ge"></view>
-                            <view class="card-type-1">工资卡</view>
-                        </view>
-                    </view>
-                </view>
-                <view class="posi-ab card-fun flex">
-                    <view bindtap="unBindBankCard" data-item="{{ item }}" class="btn-css">
-                        解绑
-                    </view>
-                    <image class="shui-yin posi-ab" src="/assets/appInfo/whiteicon.png" bindtap="goTransDetail" data-item="{{ item }}" />
-                </view>
-                <view class="de-acc posi-ab" wx:if="{{ item.majorCardFlag=='1' }}">
-                    <image src="/assets/appInfo/righttopicon.png" />
-                    <view class="de-acc-txt posi-ab">默认账户</view>
+    <view class="bank-card posi-re" wx:for="{{ bankCardList }}" wx:key="item">
+        <view class="info" bindtap="goTransDetail" data-item="{{ item }}">
+            <image src="{{ bankPng }}" />
+            <view class="flex-c">
+                <text class="bank-card-id">{{ util.hiddenBankCard(item.acNo) }}</text>
+                <view class="flex">
+                    <view class="card-type">借记卡</view>
+                    <view class="card-type-1">{{ item.bankAcTypeName }}</view>
+                    <view class="fen-ge"></view>
+                    <view class="card-type-1">工资卡</view>
                 </view>
             </view>
-            <view class="m-30">
-                <view class="add-card-btn" bindtap="goBindCard">添加银行卡</view>
-                <view class="add-card-btn mt-30" bindtap="goNoticeManage">动账通知管理</view>
+        </view>
+        <view class="posi-ab card-fun flex" data-item="{{ item }}" bindtap="unBindBankCard">
+            <view class="btn-css">
+                解绑
             </view>
-        <!-- </van-tab> -->
-        <!-- <van-tab title="电子账户">
+            <image class="shui-yin posi-ab" src="/assets/appInfo/whiteicon.png" bindtap="goTransDetail" data-item="{{ item }}" />
+        </view>
+        <view class="de-acc posi-ab" wx:if="{{ item.majorCardFlag=='1' }}">
+            <image src="/assets/appInfo/righttopicon.png" />
+            <view class="de-acc-txt posi-ab">默认账户</view>
+        </view>
+    </view>
+    <view class="m-30">
+        <view class="add-card-btn" bindtap="goBindCard">添加银行卡</view>
+        <view class="add-card-btn mt-30" bindtap="goNoticeManage">动账通知管理</view>
+    </view>
+    <!-- </van-tab> -->
+    <!-- <van-tab title="电子账户">
             <view class="bank-card posi-re" wx:for="{{ bankCardList }}" wx:key="item">
                 <view class="info" bindtap="goTransDetail" data-item="{{ item }}">
                     <image src="{{ bankPng }}" />
@@ -81,4 +82,5 @@
     </van-overlay>
     <!-- 提示框 -->
     <van-dialog id="van-dialog" />
+    <van-toast id="van-toast" />
 </view>

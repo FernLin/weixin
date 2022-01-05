@@ -1,0 +1,3 @@
+<van-popup show="{{ show }}" position="bottom" round custom-style="height: 600rpx;">
+  <van-datetime-picker custom-class="picker-content" active-class="picker-item" show-toolbar type="date" title="{{title}}" value="{{ value }}" bind:input="onInput" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" min-date="{{ minDate }}" max-date="{{maxDate}}" formatter="{{ formatter }}" />
+</van-popup>

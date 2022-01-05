@@ -51,14 +51,14 @@ App({
 
   // 获取微信openId
   getOpenId() {
-    let openId = wx.getStorageSync("openid");
+    const openId = wx.getStorageSync("openid");
     if (openId == "" || openId == undefined) {
       wx.login({
         success: (res) => {
           // TODO: 根据后端接口获取openId
           // csopenid: 已注册，csopenid1: 未注册
-          wx.setStorageSync("openid", "csopenid");
-          this.judgeRegister("csopenid");
+          wx.setStorageSync("openid", "csopenid1");
+          this.judgeRegister("csopenid1");
         },
       });
     } else {

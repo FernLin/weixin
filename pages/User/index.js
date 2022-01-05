@@ -1,186 +1,57 @@
 // pages/User/index.js
 const app = getApp();
+const openId = wx.getStorageSync("openid");
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     showService: true,
-    token_key: false,
-    eyeshow: false,
-    totalNumber: "0", //总条数
-    totalPosition: "0", // 总持仓
-    totalRevenue: "0", //总收益
-    user: {
-      headImageUrl: "/assets/mine/head.png",
-      userName: "",
+    userName: "",
+    bankCardList: [],
+    loanInfo: {
+      loanName: "牛牛贷",
+      loanStatus: "已放款",
+      loanAmount: "32663",
     },
-    bankCardList: "",
-    loanInfo: "",
-    depoistList: [],
+    // depoistList: [],
   },
-  // 登录
-  toLogin() {
-    let info = wx.getStorageSync("wxUserInfo");
-    if (info == "" || info == undefined) {
-      wx.getUserProfile({
-        desc: "正在获取", //不写不弹提示框
-        success: function (res) {
-          wx.setStorageSync("wxUserInfo", res.userInfo);
-        },
-        fail: function (err) {
-          //console.log("获取失败: ", err)
-        },
-      });
-    }
-
+  // 下载或唤醒app
+  downloadApp() {
+    console.log("跳转至下载app页面");
+    const url = "http://115.150.104.8:8092/#/openBankApp";
+    const navtitle = "手机银行下载";
     wx.navigateTo({
-      url: "/pages/login/index",
-    });
-  },
-  toSetting() {
-    if (app.util.gologin()) {
-      wx.navigateTo({
-        url: "/pages/User/setting/index",
-      });
-    }
-  },
-
-  toFinance() {
-    if (app.util.gologin()) {
-      wx.navigateTo({
-        url: "/pages/User/finance/index",
-      });
-    }
-  },
-  eyeclick() {
-    this.setData({
-      eyeshow: !this.data.eyeshow,
-    });
-  },
-  // 判断登录
-  onShow: function () {
-    this.loginselect();
-    this.setData({
-      showService: true,
-    });
-  },
-  loginselect() {
-    let token_key = wx.getStorageSync("token_key");
-    this.setData({
-      token_key,
-    });
-    if (token_key) {
-      let userInfo = wx.getStorageSync("userInfo");
-      let wxUserInfo = wx.getStorageSync("wxUserInfo");
-      this.setData({
-        "user.headImageUrl":
-          userInfo.pic || wxUserInfo.avatarUrl || "/assets/mine/head.png",
-        "user.userName": userInfo.userName || wxUserInfo.nickName,
-      });
-      this.getUserBankCardInfo();
-      this.getUserLoanInfo();
-      this.getUserDepoist();
-    } else {
-      this.clearAll();
-    }
-  },
-  // 清除所有数据
-  clearAll() {
-    this.setData({
-      "user.headImageUrl": "/assets/mine/head.png",
-      "user.userName": "",
-      bankCardList: [
-        {
-          acNoHidden: "673123123123123",
-          bankAcTypeName: "1类卡",
-          openBank: "赣州银行总部",
-          majorCardFlag: "1",
-          balance: "200",
-        },
-        {
-          acNoHidden: "123123123123123",
-          bankAcTypeName: "2类卡",
-          openBank: "赣州银行总部",
-          majorCardFlag: "0",
-          balance: "800",
-        },
-      ],
-      loanInfo: {
-        loanName: "牛牛贷",
-        loanStatus: "已放款",
-        loanAmount: "32663",
-      },
+      // 跳转到webview页面
+      url: `/pages/Webview/index?url=${url}&nav=${navtitle}`,
     });
   },
   // 获取用户银行卡信息
   getUserBankCardInfo() {
-    app.api.post("pweb/perAcListQry.do").then((res) => {
-      if (res.respCode == "00000000") {
-        if (res.data.accountList && res.data.accountList.length != 0) {
-          let list = app.util.userComputed(res.data.accountList);
-          this.setData({
-            bankCardList: list,
-          });
-          wx.setStorageSync("bankCardList", res.data.accountList);
-        }
-      } else {
-        // wx.showToast({
-        //   title: res.respMessage,
-        //   icon: 'none', //icon
-        //   duration: 1500 //停留时间
-        // })
-      }
-    });
-  },
-  // 获取用户贷款信息
-  getUserDepoist() {
-    let data = {
-      acct: "1212",
-      productCategory: "12121",
-    };
-    app.api.post("pweb/perLumpSumTimeDepositOwnQry.do", data).then((res) => {
-      if (res.respCode == "00000000") {
+    app.service.Global.wxAcListQry({
+      openid: openId,
+      unionId: "csunionid",
+    }).then((res) => {
+      if (res.data.userAccount) {
+        wx.setStorageSync("bankCardList", res.data.userAccount);
         this.setData({
-          depoistList: res.data.list,
-        });
-      } else {
-        wx.showToast({
-          title: res.respMessage,
-          icon: "none", //icon
-          duration: 1500, //停留时间
+          bankCardList: res.data.userAccount,
         });
       }
     });
   },
   // 获取用户贷款信息
   getUserLoanInfo() {
-    let userInfo = wx.getStorageSync("userInfo");
-    let data = {
-      cifNo: userInfo.userId,
-      queryType: "未结清",
-      pageSize: "1",
-      pageNo: "1",
-    };
-    app.api.post("pweb/perQueryMyselfLoanList.do", data).then((res) => {
-      if (res.respCode == "00000000") {
-        this.setData({
-          loanInfo: res.data.list[0],
-        });
-      } else {
-        wx.showToast({
-          title: res.respMessage,
-          icon: "none", //icon
-          duration: 1500, //停留时间
-        });
-      }
-    });
+    // TODO: 获取用户贷款信息、
+    console.log("贷款信息");
   },
+  // 跳转至绑卡页面
   goBindBankCard() {
     wx.navigateTo({
       url: "/pages/accMan/bindCard/index",
     });
   },
+  // 跳转至账户列表页面
   goBankCardList() {
     wx.navigateTo({
       url: "/pages/accMan/index",
@@ -193,17 +64,23 @@ Page({
       url: "/pages/accMan/accDetail/index?obj=" + encodeURIComponent(obj),
     });
   },
+  // 关闭在线客服
   closeService() {
     this.setData({
       showService: false,
     });
   },
+  // 判断登录
+  onShow: function () {
+    this.getUserBankCardInfo();
+    this.setData({
+      showService: true,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    // this.loginselect()
-  },
+  onLoad: function () {},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

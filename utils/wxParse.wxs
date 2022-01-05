@@ -1,3 +1,4 @@
+// 格式化距离
 function formatDistance(distance) {
   if (distance && distance / 1000 > 1) {
     return (distance / 1000).toFixed(2) + "km";
@@ -6,6 +7,7 @@ function formatDistance(distance) {
   }
 }
 
+// 格式化日期
 function formatDate(date) {
   if (date && date.length >= 8) {
     return (
@@ -18,6 +20,7 @@ function formatDate(date) {
   }
 }
 
+// 格式化时间
 function formatTime(time) {
   if (time && time.length >= 6) {
     var start = parseInt(time.substring(0, 2));
@@ -38,7 +41,14 @@ function formatTime(time) {
   }
 }
 
-// 银行卡显示规则
+// 格式化时间
+function formatTimeSingal(time) {
+  if (time && time.length >= 6) {
+    return time.substring(0, 2) + ":" + time.substring(2, 4) + ":" + time.substring(4, 6);
+  }
+}
+
+// 银行卡脱敏
 function hiddenBankCard(bankNumber) {
   if (bankNumber && bankNumber.length > 0) {
     var regexp1 = getRegExp("[0-9]", "gi");
@@ -53,20 +63,20 @@ function hiddenBankCard(bankNumber) {
   }
 }
 
-// 银行卡显示规则2
-function formatAccountNo(str) {
-  if (str && str.length > 0) {
-    if (typeof str !== "string") {
-      return "";
-    }
+// 金额格式化
+function formatAmount(amount) {
+  if (amount && amount.length > 0) {
+    var regexp = getRegExp("B(?=(?:d{3})+$)", "g");
+    var strArr = parseFloat(amount).toFixed(2).toString().split(".");
+    var hiddenNum = strArr[0].replace(regexp, ",") + "." + strArr[1];
+    return hiddenNum;
+  }
+}
 
-    if (str.length < 8) {
-      return str;
-    }
-
-    var reg = getRegExp("^(d{4})[sS]+(w{4})$");
-    var value = str.toString().replace(reg, "$1 **** **** $2");
-    return value;
+// 获取账号尾号
+function tailNumber(account) {
+  if (account && account.length > 0) {
+    return account.slice(-4);
   }
 }
 
@@ -75,5 +85,7 @@ module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
   hiddenBankCard: hiddenBankCard,
-  formatAccountNo: formatAccountNo,
+  formatAmount: formatAmount,
+  formatTimeSingal: formatTimeSingal,
+  tailNumber: tailNumber
 };
