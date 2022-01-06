@@ -114,3 +114,9 @@
 .placehoder-color {
   color: #c4c4c4;
 }
+.jump {
+  margin-top: 64rpx;
+  font-size: 30rpx;
+  color: #3378f6;
+  text-align: center;
+}

@@ -44,7 +44,7 @@ Page({
       console.log(res);
       if (res.respCode == "00000000") {
         wx.navigateTo({
-          url: "/pages/accMan/bindCard/index",
+          url: "/pages/accMan/bindCard/index?fromRegister=true",
         });
       } else {
         Toast(res.respMessage);

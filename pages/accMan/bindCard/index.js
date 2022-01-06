@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    fromRegister: false,
     bankPng: "/assets/bankicon.png",
     bindCardId: "",
     bindCardType: {},
@@ -76,11 +77,15 @@ Page({
     app.service.Global.wxAddAccount(params).then((res) => {
       if (res.respCode == "00000000") {
         Toast("绑卡成功~！");
-        setTimeout(function () {
-          wx.switchTab({
-            url: "/pages/User/index",
-          });
-        }, 3000);
+        if (this.data.fromRegister) {
+          setTimeout(function () {
+            wx.switchTab({
+              url: "/pages/User/index",
+            });
+          }, 3000);
+        } else {
+          wx.navigateBack();
+        }
       } else {
         Toast(res.respMessage);
       }
@@ -209,10 +214,22 @@ Page({
       Toast("请重新上传~！");
     }
   },
+  // 跳过绑定
+  onJump() {
+    wx.switchTab({
+      url: "/pages/Microservice/index",
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
+  onLoad: function (options) {
+    if (options.fromRegister) {
+      this.setData({
+        fromRegister: true,
+      });
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

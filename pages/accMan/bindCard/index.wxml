@@ -57,4 +57,5 @@
     <my-picker show="{{ idcardPopup }}" columns="{{ columns }}" title="选择证件类型" bind:cancel="onClose" bind:confirm="onConfirm" />
 </view>
 <view class="next-step" bindtap="goNext">下一步</view>
+<view wx:if="{{fromRegister}}" class="jump" bindtap="onJump">跳过</view>
 <van-toast id="van-toast" />
