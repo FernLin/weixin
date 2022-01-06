@@ -105,20 +105,24 @@ Page({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.data.userAccount) {
-        const acList = res.data.userAccount.map((el) => {
-          return {
-            ...el,
-            text: el.acNo,
-          };
-        });
-        const currentAccount = acList.find((item) => {
-          return item.acNo === options.acNo;
-        });
-        this.setData({
-          columns: acList,
-          selectedAccount: currentAccount,
-        });
+      if (res.respCode === "00000000") {
+        if (res.data.userAccount) {
+          const acList = res.data.userAccount.map((el) => {
+            return {
+              ...el,
+              text: el.acNo,
+            };
+          });
+          const currentAccount = acList.find((item) => {
+            return item.acNo === options.acNo;
+          });
+          this.setData({
+            columns: acList,
+            selectedAccount: currentAccount,
+          });
+        }
+      } else {
+        Toast(res.respMessage);
       }
     });
   },

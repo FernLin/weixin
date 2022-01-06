@@ -235,33 +235,41 @@ Page({
     app.service.CashReserve.wxLargeCashBookDateQry({
       FromUserName: openId,
     }).then((res) => {
-      if (res.data.list) {
-        const dateList = res.data.list.map((date) => {
-          return {
-            text: date + " 10:00-16:00",
-            value: date,
-          };
-        });
-        this.setData({
-          columnsDate: dateList,
-        });
+      if (res.respCode === "00000000") {
+        if (res.data.list) {
+          const dateList = res.data.list.map((date) => {
+            return {
+              text: date + " 10:00-16:00",
+              value: date,
+            };
+          });
+          this.setData({
+            columnsDate: dateList,
+          });
+        }
+      } else {
+        Toast(res.respMessage);
       }
     });
     app.service.Global.wxAcListQry({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.data.userAccount) {
-        const acList = res.data.userAccount.map((el) => {
-          return {
-            ...el,
-            text: el.acNo,
-          };
-        });
-        this.setData({
-          columnsAccount: acList,
-          selectedAccount: acList[0],
-        });
+      if (res.respCode === "00000000") {
+        if (res.data.userAccount) {
+          const acList = res.data.userAccount.map((el) => {
+            return {
+              ...el,
+              text: el.acNo,
+            };
+          });
+          this.setData({
+            columnsAccount: acList,
+            selectedAccount: acList[0],
+          });
+        }
+      } else {
+        Toast(res.respMessage);
       }
     });
   },

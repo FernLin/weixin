@@ -1,6 +1,6 @@
 // pages/User/index.js
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
-const openId = wx.getStorageSync("openid");
 Page({
   /**
    * 页面的初始数据
@@ -28,15 +28,20 @@ Page({
   },
   // 获取用户银行卡信息
   getUserBankCardInfo() {
+    const openId = wx.getStorageSync("openid");
     app.service.Global.wxAcListQry({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.data.userAccount) {
-        wx.setStorageSync("bankCardList", res.data.userAccount);
-        this.setData({
-          bankCardList: res.data.userAccount,
-        });
+      if (res.respCode === "00000000") {
+        if (res.data.userAccount) {
+          wx.setStorageSync("bankCardList", res.data.userAccount);
+          this.setData({
+            bankCardList: res.data.userAccount,
+          });
+        }
+      } else {
+        Toast(res.respMessage);
       }
     });
   },

@@ -74,7 +74,6 @@ Page({
       acNo: this.data.bindCardId,
     };
     app.service.Global.wxAddAccount(params).then((res) => {
-      console.log(res);
       if (res.respCode == "00000000") {
         Toast("绑卡成功~！");
         setTimeout(function () {
