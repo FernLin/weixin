@@ -181,7 +181,7 @@
 .app-info {
   background-color: #ffffff;
   border-radius: 20rpx;
-  margin-bottom: 80rpx;
+  margin-bottom: 20rpx;
 }
 
 .app-info-t {
@@ -365,6 +365,11 @@
   height: 234rpx;
   bottom: 0;
   right: 0;
+}
+
+.only-one {
+  width: calc(100% - 90rpx);
+  margin-top: 30rpx;
 }
 
 .mt-50 {

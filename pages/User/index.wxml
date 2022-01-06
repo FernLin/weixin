@@ -38,7 +38,7 @@
                 <van-icon name="arrow" />
             </view>
         </view>
-        <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList.length > 0 }}">
+        <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList.length > 1 }}">
             <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
                 <view class="scroll-view-item_H posi-re" wx:for="{{ bankCardList }}" wx:key="acNo" bindtap="goAccountDetail" data-item="{{ item }}">
                     <view class="flex-c">
@@ -55,12 +55,25 @@
                 </view>
             </scroll-view>
         </view>
+        <view class="scroll-view-item_H posi-re only-one" wx:elif="{{ bankCardList.length === 1 }}" bindtap="goAccountDetail" data-item="{{ bankCardList[0] }}">
+            <view class="flex-c">
+                <image src="/assets/mine/cardTag.png" />
+                <text class="b-c-num">{{ util.hiddenBankCard(bankCardList[0].acNo) }}</text>
+                <view class="flex b-c-t">
+                    <view>借记卡</view>
+                    <view>{{ bankCardList[0].bankAcTypeName }}</view>
+                </view>
+                <view class="b-c-add">账户余额（元）</view>
+                <view class="b-c-m">{{util.formatAmount(bankCardList[0].accBal)}}</view>
+                <view class="b-c-bank">开户行：{{ bankCardList[0].openBank }}</view>
+            </view>
+        </view>
         <view class="no-card m-30 ta-c" wx:else>
             <image src="/assets/mine/empty.png" />
             <view>暂无账户~</view>
         </view>
     </view>
-    <view>
+    <!-- <view>
         <view class="flex jc-sb mlr-30">
             <view class="acc-l">我的贷款</view>
             <view class="flex acc-r" wx:if="{{ loanInfo.length == 0 }}" bindtap="goBindBankCard">去绑卡
@@ -87,7 +100,7 @@
             <image src="/assets/mine/empty.png" />
             <view>暂无贷款~</view>
         </view>
-    </view>
+    </view> -->
     <!-- <view > 
         <view class="flex jc-sb mlr-30">
             <view class="acc-l">我的存款</view>
@@ -116,23 +129,27 @@
     </view> -->
     <view>
         <view class="mlr-30 acc-l">我的预约</view>
-        <view class="m-30 p-30 app-info" wx:if="{{ true }}">
-            <view class="flex">
-                <van-icon name="clock" color="#e43234" />
-                <view class="app-info-t">大额取款预约信息</view>
-            </view>
-            <view class="dashed-line"></view>
-            <view class="flex jc-sb mb-13">
-                <view class="app-info-l">预约码</view>
-                <view class="app-info-r">39304034</view>
-            </view>
-            <view class="flex jc-sb mb-13">
-                <view class="app-info-l">预约时间</view>
-                <view class="app-info-r">2021-12-12</view>
-            </view>
-            <view class="flex jc-sb">
-                <view class="app-info-l">预约网点信息</view>
-                <view class="app-info-r">赣州银行XX支行</view>
+        <view class="m-30" wx:if="{{ recordList.length > 0 }}">
+            <view class="app-info p-30">
+                <view class="flex">
+                    <van-icon name="clock" color="#e43234" />
+                    <view class="app-info-t">{{item.type == 1 ? '大额取款' : '零钱兑换'}}预约信息</view>
+                </view>
+                <view class="dashed-line"></view>
+                <view class="flex jc-sb mb-13">
+                    <view class="app-info-l">预约码</view>
+                    <view class="app-info-r">39304034</view>
+                </view>
+                <view class="flex jc-sb mb-13">
+                    <view class="app-info-l">预约时间</view>
+                    <view class="app-info-r">
+                        {{util.formatDate(item.bookDate)}} {{util.formatTime(item.bookTime)}}
+                    </view>
+                </view>
+                <view class="flex jc-sb">
+                    <view class="app-info-l">预约网点信息</view>
+                    <view class="app-info-r">{{item.deptName}}</view>
+                </view>
             </view>
         </view>
         <view class="no-card m-30 ta-c" wx:else>

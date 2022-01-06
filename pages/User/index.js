@@ -9,11 +9,12 @@ Page({
     showService: true,
     userName: "",
     bankCardList: [],
-    loanInfo: {
-      loanName: "牛牛贷",
-      loanStatus: "已放款",
-      loanAmount: "32663",
-    },
+    recordList: [],
+    // loanInfo: {
+    //   loanName: "牛牛贷",
+    //   loanStatus: "已放款",
+    //   loanAmount: "32663",
+    // },
     // depoistList: [],
   },
   // 下载或唤醒app
@@ -38,6 +39,55 @@ Page({
           wx.setStorageSync("bankCardList", res.data.userAccount);
           this.setData({
             bankCardList: res.data.userAccount,
+          });
+        }
+      } else {
+        Toast(res.respMessage);
+      }
+    });
+  },
+  // 获取预约记录
+  getRecordList() {
+    const openId = wx.getStorageSync("openid");
+    app.service.CashReserve.wxLargeCashBookQry({
+      FromUserName: openId,
+    }).then((res) => {
+      if (res.respCode == "00000000") {
+        if (res.data) {
+          const { largeCashlist, smallChangeExchangelist } = res.data;
+          const largeList = largeCashlist.map((el) => {
+            return {
+              type: 1,
+              deptName: el.deptName,
+              deptAddr: el.deptAddr,
+              deptId: el.deptId,
+              name: el.largeList.name,
+              bankCardId: el.largeList.bankCardId,
+              bookTime: el.largeList.bookTime,
+              bookMoney: el.largeList.bookMoney,
+              bookDate: el.largeList.bookDate,
+            };
+          });
+          const smallList = smallChangeExchangelist.map((el) => {
+            let amounts = [];
+            el.list.forEach((li) => {
+              amounts.push(li.cyun + "元*" + li.nubr + "张");
+            });
+            return {
+              type: 2,
+              deptName: el.deptName,
+              deptAddr: el.bookAddr,
+              deptId: el.deptId,
+              name: el.name,
+              bankCardId: el.cardId,
+              bookTime: el.tradeTime,
+              bookDate: el.tradeDate,
+              amounts: amounts.join("; "),
+              count: el.bookNum,
+            };
+          });
+          this.setData({
+            recordList: [...largeList, ...smallList],
           });
         }
       } else {

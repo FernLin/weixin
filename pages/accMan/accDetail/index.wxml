@@ -15,6 +15,18 @@
                     <text>账户余额</text>
                     <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
                 </view>
+                <view class="card-balance">
+                    <text>可用余额</text>
+                    <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
+                </view>
+                <view class="card-balance">
+                    <text>开户日期</text>
+                    <text>2020-02-02 16:00:00</text>
+                </view>
+                <view class="card-balance">
+                    <text>开户行</text>
+                    <text>市民中心支行</text>
+                </view>
             </view>
         </view>
         <view class="posi-ab card-fun flex" bindtap="toTranDetail">
