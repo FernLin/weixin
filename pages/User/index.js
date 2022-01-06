@@ -96,10 +96,9 @@ Page({
     });
   },
   // 获取用户贷款信息
-  getUserLoanInfo() {
-    // TODO: 获取用户贷款信息、
-    console.log("贷款信息");
-  },
+  // getUserLoanInfo() {
+  //   console.log("贷款信息");
+  // },
   // 跳转至绑卡页面
   goBindBankCard() {
     wx.navigateTo({
@@ -128,6 +127,7 @@ Page({
   // 判断登录
   onShow: function () {
     this.getUserBankCardInfo();
+    this.getRecordList();
     this.setData({
       showService: true,
     });

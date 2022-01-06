@@ -13,7 +13,7 @@
         </my-field>
     </view>
     <view class="search" bindtap="onSearch">搜索</view>
-    <view class="list-content">
+    <view class="list-content" wx:if="{{transInfoList.length > 0}}">
         <view class="bg-w p-30 mb-30 tran-card" wx:for="{{ transInfoList }}" wx:key="item">
             <view class="ta-c flex jc-c money-num {{item.borrowLoanFlag == 0 ? '' : 'text-red'}}">
                 <view wx:if="{{ item.borrowLoanFlag == 0 }}">-</view>
@@ -49,6 +49,10 @@
                 <view class="tran-r">{{item.remark ? item.remark : '无'}}</view>
             </view>
         </view>
+    </view>
+    <view wx:else class="empty-content">
+        <image src="/assets/empty.png" />
+        <view>暂无记录哦~</view>
     </view>
     <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择账号" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
     <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />

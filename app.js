@@ -66,7 +66,6 @@ App({
     }
   },
   onLaunch() {
-    console.log("小程序加载");
     // 小程序加载时获取用户openid
     this.getOpenId();
     // 获取用户信息

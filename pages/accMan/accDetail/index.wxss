@@ -2,7 +2,6 @@
   margin: 30rpx 30rpx 0;
   background-color: #ffffff;
   border-radius: 12rpx;
-  height: 540rpx;
 }
 
 .info {
@@ -16,6 +15,12 @@
   width: 70rpx;
   height: 70rpx;
   margin-right: 35rpx;
+}
+
+.info-detail {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #e6e6e6;
+  padding: 40rpx 30rpx;
 }
 
 .bank-card-id {
@@ -39,15 +44,20 @@
 
 .card-balance {
   margin-top: 30rpx;
-  font-size: 32rpx;
-  color: #323232;
-  font-weight: 600;
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-balance:first-child {
+  margin-top: unset;
 }
 
 .card-balance text:first-child {
-  opacity: 0.8;
-  font-size: 26rpx;
-  margin-right: 16rpx;
+  color: #646464;
 }
 
 .fen-ge {
@@ -81,24 +91,17 @@
   width: 100%;
   bottom: 0;
   height: 95rpx;
-  border-top: 1px solid;
-  border-color: #e6e6e6;
+  border-top: 1rpx solid #e6e6e6;
 }
 
 .btn-css {
   width: 100%;
-  height: 44rpx;
+  height: 100rpx;
   color: #3378f6;
   font-size: 30rpx;
-  line-height: 44rpx;
+  line-height: 100rpx;
   text-align: center;
-}
-
-.shui-yin {
-  width: 214rpx;
-  height: 138rpx;
-  top: -138rpx;
-  right: 0;
+  border-top: 1rpx solid #e6e6e6;
 }
 
 .unbind-popup > view {

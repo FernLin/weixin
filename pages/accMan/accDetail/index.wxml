@@ -1,7 +1,7 @@
 <wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view>
     <view class="bank-card posi-re">
-        <view class="info" bindtap="goTransDetail">
+        <view class="info">
             <image src="/assets/bankicon.png" />
             <view class="flex-c">
                 <text class="bank-card-id">{{ util.hiddenBankCard(accountDetail.acNo) }}</text>
@@ -11,29 +11,28 @@
                     <view class="fen-ge"></view>
                     <view class="card-type-1">工资卡</view>
                 </view>
-                <view class="card-balance">
-                    <text>账户余额</text>
-                    <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
-                </view>
-                <view class="card-balance">
-                    <text>可用余额</text>
-                    <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
-                </view>
-                <view class="card-balance">
-                    <text>开户日期</text>
-                    <text>2020-02-02 16:00:00</text>
-                </view>
-                <view class="card-balance">
-                    <text>开户行</text>
-                    <text>市民中心支行</text>
-                </view>
             </view>
         </view>
-        <view class="posi-ab card-fun flex" bindtap="toTranDetail">
-            <view class="btn-css">
-                交易明细
+        <view class="info-detail">
+            <view class="card-balance">
+                <text>账户余额</text>
+                <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
             </view>
-            <image class="shui-yin posi-ab" src="/assets/appInfo/whiteicon.png" />
+            <view class="card-balance">
+                <text>可用余额</text>
+                <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
+            </view>
+            <view class="card-balance">
+                <text>开户日期</text>
+                <text>2020-02-02 16:00:00</text>
+            </view>
+            <view class="card-balance">
+                <text>开户行</text>
+                <text>市民中心支行</text>
+            </view>
+        </view>
+        <view class="btn-css" bindtap="toTranDetail">
+            交易明细
         </view>
         <view class="de-acc posi-ab" wx:if="{{ accountDetail.majorCardFlag=='1' }}">
             <image src="/assets/appInfo/righttopicon.png" />
@@ -43,7 +42,7 @@
     <view class="notice-setting">
         <view class="setting-item">
             <text class="item-label">动账通知</text>
-            <van-switch checked="{{noticeSwitch}}" bind:change="onChange" active-color="#E43234" />
+            <van-switch checked="{{noticeSwitch}}" bind:change="onChange" inactive-color="#E9E9E9" active-color="#E43234" />
         </view>
         <view class="setting-item">
             <text class="item-label">解绑微信</text>

@@ -46,6 +46,21 @@
 .list-content > view:last-child {
   margin-bottom: unset;
 }
+.empty-content {
+  margin-top: 180rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.empty-content image {
+  width: 320rpx;
+  height: 230rpx;
+}
+.empty-content view {
+  margin-top: 30rpx;
+  color: #666666;
+  font-weight: 400;
+}
 .l-t {
   font-family: PingFang SC;
   color: #646464;

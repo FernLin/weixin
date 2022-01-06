@@ -42,7 +42,7 @@
     <van-tab title="我的预约">
       <view class="record-list">
         <view wx:if="{{recordList.length === 0}}" class="empty-content">
-          <image src="/assets/cashReserve/empty.png" />
+          <image src="/assets/empty.png" />
           <view>暂无预约哦~</view>
         </view>
         <view class="record-item" wx:for="{{recordList}}" wx:key="index">
