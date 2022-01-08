@@ -1,4 +1,4 @@
-const { get, post, put } = require("../utils/util");
+const { get, post, put } = require("../utils/http");
 export default {
   /**
    * 网点信息查询

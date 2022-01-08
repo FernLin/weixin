@@ -54,46 +54,42 @@ Page({
     app.service.CashReserve.wxLargeCashBookQry({
       FromUserName: openId,
     }).then((res) => {
-      if (res.respCode == "00000000") {
-        if (res.data) {
-          const { largeCashlist, smallChangeExchangelist } = res.data;
-          const largeList = largeCashlist.map((el) => {
-            return {
-              type: 1,
-              deptName: el.deptName,
-              deptAddr: el.deptAddr,
-              deptId: el.deptId,
-              name: el.largeList.name,
-              bankCardId: el.largeList.bankCardId,
-              bookTime: el.largeList.bookTime,
-              bookMoney: el.largeList.bookMoney,
-              bookDate: el.largeList.bookDate,
-            };
+      if (res) {
+        const { largeCashlist, smallChangeExchangelist } = res;
+        const largeList = largeCashlist.map((el) => {
+          return {
+            type: 1,
+            deptName: el.deptName,
+            deptAddr: el.deptAddr,
+            deptId: el.deptId,
+            name: el.largeList.name,
+            bankCardId: el.largeList.bankCardId,
+            bookTime: el.largeList.bookTime,
+            bookMoney: el.largeList.bookMoney,
+            bookDate: el.largeList.bookDate,
+          };
+        });
+        const smallList = smallChangeExchangelist.map((el) => {
+          let amounts = [];
+          el.list.forEach((li) => {
+            amounts.push(li.cyun + "元*" + li.nubr + "张");
           });
-          const smallList = smallChangeExchangelist.map((el) => {
-            let amounts = [];
-            el.list.forEach((li) => {
-              amounts.push(li.cyun + "元*" + li.nubr + "张");
-            });
-            return {
-              type: 2,
-              deptName: el.deptName,
-              deptAddr: el.bookAddr,
-              deptId: el.deptId,
-              name: el.name,
-              bankCardId: el.cardId,
-              bookTime: el.tradeTime,
-              bookDate: el.tradeDate,
-              amounts: amounts.join("; "),
-              count: el.bookNum,
-            };
-          });
-          this.setData({
-            recordList: [...largeList, ...smallList],
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+          return {
+            type: 2,
+            deptName: el.deptName,
+            deptAddr: el.bookAddr,
+            deptId: el.deptId,
+            name: el.name,
+            bankCardId: el.cardId,
+            bookTime: el.tradeTime,
+            bookDate: el.tradeDate,
+            amounts: amounts.join("; "),
+            count: el.bookNum,
+          };
+        });
+        this.setData({
+          recordList: [...largeList, ...smallList],
+        });
       }
     });
   },
@@ -109,13 +105,11 @@ Page({
         deptName: event.detail,
         tradeFlag: 1,
       }).then((content) => {
-        if (content.respCode == "00000000") {
-          ctx.splice(0, this.data.bankList.length, content.data.list);
+        if (content.list) {
+          ctx.splice(0, this.data.bankList.length, content.list);
           this.setData({
-            bankList: content.data.list,
+            bankList: content.list,
           });
-        } else {
-          Toast(res.respMessage);
         }
       });
     } else {
@@ -134,37 +128,33 @@ Page({
         deptName: "",
         tradeFlag: 1,
       }).then((content) => {
-        if (content.respCode == "00000000") {
+        if (content.list) {
           app.service.CashReserve.wxLatelyBookDeptQry({
             longitude: this.data.locationData.longitude,
             latitude: this.data.locationData.latitude,
             FromUserName: openId,
           }).then((result) => {
-            if (result.respCode == "00000000") {
-              const list = content.data.list;
-              if (result.data.deptId) {
+            if (result) {
+              const list = content.list;
+              if (result.deptId) {
                 list.unshift({
                   recent: true,
-                  addr: result.data.deptAddr,
-                  deptId: result.data.deptId,
-                  deptName: result.data.deptName,
-                  distance: result.data.distance,
-                  lat: result.data.lat,
-                  lon: result.data.lon,
-                  moneyChangeScheduleFlag: result.data.moneyChangeScheduleFlag,
-                  onlineLargeCashBookFlag: result.data.onlineLargeCashBookFlag,
+                  addr: result.deptAddr,
+                  deptId: result.deptId,
+                  deptName: result.deptName,
+                  distance: result.distance,
+                  lat: result.lat,
+                  lon: result.lon,
+                  moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
+                  onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
                 });
               }
               ctx.splice(0, this.data.bankList.length, list);
               this.setData({
                 bankList: list,
               });
-            } else {
-              Toast(res.respMessage);
             }
           });
-        } else {
-          Toast(res.respMessage);
         }
       });
     } else {
@@ -210,37 +200,33 @@ Page({
         deptName: "",
         tradeFlag: 1,
       }).then((content) => {
-        if (content.respCode == "00000000") {
+        if (content.list) {
           app.service.CashReserve.wxLatelyBookDeptQry({
             longitude: this.data.locationData.longitude,
             latitude: this.data.locationData.latitude,
             FromUserName: openId,
           }).then((result) => {
-            if (result.respCode == "00000000") {
-              const list = content.data.list;
-              if (result.data.deptId) {
+            if (result) {
+              const list = content.list;
+              if (result.deptId) {
                 list.unshift({
                   recent: true,
-                  addr: result.data.deptAddr,
-                  deptId: result.data.deptId,
-                  deptName: result.data.deptName,
-                  distance: result.data.distance,
-                  lat: result.data.lat,
-                  lon: result.data.lon,
-                  moneyChangeScheduleFlag: result.data.moneyChangeScheduleFlag,
-                  onlineLargeCashBookFlag: result.data.onlineLargeCashBookFlag,
+                  addr: result.deptAddr,
+                  deptId: result.deptId,
+                  deptName: result.deptName,
+                  distance: result.distance,
+                  lat: result.lat,
+                  lon: result.lon,
+                  moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
+                  onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
                 });
               }
               ctx.splice(0, this.data.bankList.length, list);
               this.setData({
                 bankList: list,
               });
-            } else {
-              Toast(res.respMessage);
             }
           });
-        } else {
-          Toast(res.respMessage);
         }
       });
     } else {
@@ -266,10 +252,8 @@ Page({
           deptId: item.deptId,
           FromUserName: openId,
         }).then((res) => {
-          if (res.respCode === "00000000") {
+          if (res) {
             this.getRecordList();
-          } else {
-            Toast(res.respMessage);
           }
         });
       })
@@ -285,68 +269,60 @@ Page({
     let promiseList = [];
     // 获取省数据
     app.service.CashReserve.wxDeptProvAndCityQry().then((res) => {
-      if (res.respCode === "00000000") {
-        if (res.data.provList && res.data.provList.length > 0) {
-          res.data.provList.forEach((prov) => {
-            provList.push({
-              text: prov.provName,
-              value: prov.provCd,
-            });
-            // 获取市数据
-            promiseList.push(
-              new Promise((resolve, reject) => {
-                app.service.CashReserve.wxDeptProvAndCityQry({
-                  provCode: prov.provCd,
-                }).then((result) => {
-                  if (result.respCode === "00000000") {
-                    if (result.data.cityList) {
-                      // 市数据格式化
-                      const temp = result.data.cityList.map((city) => {
-                        return {
-                          text: city.cityName,
-                          value: city.cityCode,
-                        };
-                      });
-                      resolve({
-                        key: prov.provName,
-                        value: temp,
-                      });
-                    }
-                  } else {
-                    Toast(res.respMessage);
-                  }
-                });
-              })
-            );
+      if (res.provList && res.provList.length > 0) {
+        res.provList.forEach((prov) => {
+          provList.push({
+            text: prov.provName,
+            value: prov.provCd,
           });
-          Promise.all(promiseList).then((rspList) => {
-            rspList.map((res) => {
-              cityData[res.key] = res.value;
-            });
-            columnData = [
-              {
-                values: provList,
-              },
-              {
-                values: cityData[provList[0].text],
-                defaultIndex: 0,
-              },
-            ];
-            this.getBankList(
-              provList[0].value,
-              cityData[provList[0].text][0].value
-            );
-            this.setData({
-              citys: cityData,
-              columns: columnData,
-              selectedCity: cityData[provList[0].text][0].text,
-              selectedProvCode: provList[0].value,
-              selectedCityCode: cityData[provList[0].text][0].value,
-            });
+          // 获取市数据
+          promiseList.push(
+            new Promise((resolve, reject) => {
+              app.service.CashReserve.wxDeptProvAndCityQry({
+                provCode: prov.provCd,
+              }).then((result) => {
+                if (result.cityList) {
+                  // 市数据格式化
+                  const temp = result.cityList.map((city) => {
+                    return {
+                      text: city.cityName,
+                      value: city.cityCode,
+                    };
+                  });
+                  resolve({
+                    key: prov.provName,
+                    value: temp,
+                  });
+                }
+              });
+            })
+          );
+        });
+        Promise.all(promiseList).then((rspList) => {
+          rspList.map((res) => {
+            cityData[res.key] = res.value;
           });
-        }
-      } else {
-        Toast(res.respMessage);
+          columnData = [
+            {
+              values: provList,
+            },
+            {
+              values: cityData[provList[0].text],
+              defaultIndex: 0,
+            },
+          ];
+          this.getBankList(
+            provList[0].value,
+            cityData[provList[0].text][0].value
+          );
+          this.setData({
+            citys: cityData,
+            columns: columnData,
+            selectedCity: cityData[provList[0].text][0].text,
+            selectedProvCode: provList[0].value,
+            selectedCityCode: cityData[provList[0].text][0].value,
+          });
+        });
       }
     });
   },
@@ -368,39 +344,33 @@ Page({
           deptName: deptName,
           tradeFlag: 1,
         }).then((content) => {
-          if (content.respCode == "00000000") {
+          if (content.list) {
             app.service.CashReserve.wxLatelyBookDeptQry({
               longitude: res.longitude,
               latitude: res.latitude,
               FromUserName: openId,
             }).then((result) => {
-              if (result.respCode == "00000000") {
-                const list = content.data.list;
-                if (result.data.deptId) {
+              if (result) {
+                const list = content.list;
+                if (result.deptId) {
                   list.unshift({
                     recent: true,
-                    addr: result.data.deptAddr,
-                    deptId: result.data.deptId,
-                    deptName: result.data.deptName,
-                    distance: result.data.distance,
-                    lat: result.data.lat,
-                    lon: result.data.lon,
-                    moneyChangeScheduleFlag:
-                      result.data.moneyChangeScheduleFlag,
-                    onlineLargeCashBookFlag:
-                      result.data.onlineLargeCashBookFlag,
+                    addr: result.deptAddr,
+                    deptId: result.deptId,
+                    deptName: result.deptName,
+                    distance: result.distance,
+                    lat: result.lat,
+                    lon: result.lon,
+                    moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
+                    onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
                   });
                 }
                 ctx.append(list);
                 that.setData({
                   bankList: list,
                 });
-              } else {
-                Toast(res.respMessage);
               }
             });
-          } else {
-            Toast(res.respMessage);
           }
         });
       },

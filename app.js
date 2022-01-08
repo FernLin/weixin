@@ -1,5 +1,6 @@
 // app.js
 var util = require("./utils/util");
+var api = require("./utils/http");
 var tiny = require("./tiny/tiny.js");
 var Rsa = require("./lib/rsa.js");
 var service = require("./service/index");
@@ -18,21 +19,11 @@ App({
   tiny: tiny,
   //配置方法
   api: {
-    get: util.get,
-    post: util.post,
-    put: util.put,
+    get: api.get,
+    post: api.post,
+    put: api.put,
   },
-  util: {
-    times: util.times,
-    gologin: util.gologin,
-    getDay: util.getDay,
-    userComputed: util.userComputed,
-    cnMoneyFormat: util.cnMoneyFormat,
-    dates: util.dates,
-    hiddenBankCard: util.hiddenBankCard,
-    formatAccountNo: util.formatAccountNo,
-    formatPhoneNo: util.formatPhoneNo,
-  },
+  util: util,
   service: service,
 
   // 判断用户是否注册
@@ -40,7 +31,7 @@ App({
     service.Global.wxGetUserInfo({
       openid: openId,
     }).then((result) => {
-      if (result.respCode !== "00000000") {
+      if (!result.signFlag) {
         // 未注册用户跳转至注册页面
         wx.reLaunch({
           url: "/pages/Register/index",
@@ -55,10 +46,13 @@ App({
     if (openId == "" || openId == undefined) {
       wx.login({
         success: (res) => {
-          // TODO: 根据后端接口获取openId
           // csopenid: 已注册，csopenid1: 未注册
-          wx.setStorageSync("openid", "csopenid1");
-          this.judgeRegister("csopenid1");
+          service.Global.wxGetOpenIdByCode({
+            code: res.code,
+          }).then((result) => {
+            wx.setStorageSync("openid", result.openId);
+            this.judgeRegister(result.openId);
+          });
         },
       });
     } else {
@@ -68,36 +62,6 @@ App({
   onLaunch() {
     // 小程序加载时获取用户openid
     this.getOpenId();
-    // 获取用户信息
-    // wx.getSetting({
-    //   success: (res) => {
-    //     if (res.authSetting["scope.userInfo"]) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserProfile({
-    //         desc: "用于完善会员资料", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-    //         success: (res) => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo;
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (this.userInfoReadyCallback) {
-    //             this.userInfoReadyCallback(res);
-    //           }
-    //           this.setData({
-    //             userInfo: res.userInfo,
-    //             hasUserInfo: true,
-    //           });
-    //         },
-    //       });
-    //       // wx.getUserInfo({
-    //       //   success: res => {
-
-    //       //   }
-    //       // })
-    //     }
-    //   },
-    // });
-    // this.initRsa();
   },
   //初始化rsa加密对象
   initRsa: function () {

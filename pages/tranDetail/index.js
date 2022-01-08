@@ -1,5 +1,4 @@
 // pages/User/index.js
-import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 const openId = wx.getStorageSync("openid");
 Page({
@@ -38,12 +37,10 @@ Page({
       startDate,
       endDate,
     }).then((res) => {
-      if (res.respCode === "00000000") {
+      if (res.list) {
         this.setData({
-          transInfoList: res.data.list,
+          transInfoList: res.list,
         });
-      } else {
-        Toast(res.respMessage);
       }
     });
   },
@@ -105,24 +102,20 @@ Page({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.respCode === "00000000") {
-        if (res.data.userAccount) {
-          const acList = res.data.userAccount.map((el) => {
-            return {
-              ...el,
-              text: el.acNo,
-            };
-          });
-          const currentAccount = acList.find((item) => {
-            return item.acNo === options.acNo;
-          });
-          this.setData({
-            columns: acList,
-            selectedAccount: currentAccount,
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+      if (res.userAccount) {
+        const acList = res.userAccount.map((el) => {
+          return {
+            ...el,
+            text: el.acNo,
+          };
+        });
+        const currentAccount = acList.find((item) => {
+          return item.acNo === options.acNo;
+        });
+        this.setData({
+          columns: acList,
+          selectedAccount: currentAccount,
+        });
       }
     });
   },

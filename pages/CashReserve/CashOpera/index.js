@@ -210,13 +210,11 @@ Page({
       };
     }
     app.service.CashReserve.wxLargeCashBook(params).then((res) => {
-      if (res.respCode === "00000000") {
+      if (res) {
         Toast.success(
           `${this.data.reserveType === "1" ? "大额取款" : "零钱兑换"}预约成功！`
         );
         wx.navigateBack();
-      } else {
-        Toast(res.respMessage);
       }
     });
   },
@@ -235,41 +233,33 @@ Page({
     app.service.CashReserve.wxLargeCashBookDateQry({
       FromUserName: openId,
     }).then((res) => {
-      if (res.respCode === "00000000") {
-        if (res.data.list) {
-          const dateList = res.data.list.map((date) => {
-            return {
-              text: date + " 10:00-16:00",
-              value: date,
-            };
-          });
-          this.setData({
-            columnsDate: dateList,
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+      if (res.list) {
+        const dateList = res.list.map((date) => {
+          return {
+            text: date + " 10:00-16:00",
+            value: date,
+          };
+        });
+        this.setData({
+          columnsDate: dateList,
+        });
       }
     });
     app.service.Global.wxAcListQry({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.respCode === "00000000") {
-        if (res.data.userAccount) {
-          const acList = res.data.userAccount.map((el) => {
-            return {
-              ...el,
-              text: el.acNo,
-            };
-          });
-          this.setData({
-            columnsAccount: acList,
-            selectedAccount: acList[0],
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+      if (res.userAccount) {
+        const acList = res.userAccount.map((el) => {
+          return {
+            ...el,
+            text: el.acNo,
+          };
+        });
+        this.setData({
+          columnsAccount: acList,
+          selectedAccount: acList[0],
+        });
       }
     });
   },

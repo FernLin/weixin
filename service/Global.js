@@ -1,4 +1,4 @@
-const { get, post, put } = require("../utils/util");
+const { get, post, put } = require("../utils/http");
 export default {
   /**
    * 获取用户是否注册
@@ -52,5 +52,25 @@ export default {
    */
   wxDeleteAccount(params) {
     return post("wxDeleteAccount.do", params);
+  },
+  /**
+   * 获取用户openid
+   * @param {
+   * code: 微信小程序提供的code
+   * }
+   */
+  wxGetOpenIdByCode(params) {
+    return post("wxGetOpenIdByCode.do", params);
+  },
+  /**
+   * 获取短信验证码
+   * @param {
+   * templateId: 微信小程序提供的code
+   * transactionId: 微信小程序提供的code
+   * mobilePhone: 微信小程序提供的code
+   * }
+   */
+  wxSendSms(params) {
+    return post("wxSendSms.do", params);
   },
 };

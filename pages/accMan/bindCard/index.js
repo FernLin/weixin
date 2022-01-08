@@ -75,19 +75,15 @@ Page({
       acNo: this.data.bindCardId,
     };
     app.service.Global.wxAddAccount(params).then((res) => {
-      if (res.respCode == "00000000") {
+      if (res) {
         Toast("绑卡成功~！");
         if (this.data.fromRegister) {
-          setTimeout(function () {
-            wx.switchTab({
-              url: "/pages/User/index",
-            });
-          }, 3000);
+          wx.switchTab({
+            url: "/pages/User/index",
+          });
         } else {
           wx.navigateBack();
         }
-      } else {
-        Toast(res.respMessage);
       }
     });
   },

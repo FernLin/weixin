@@ -1,140 +1,3 @@
-// const baseUrl = "http://115.150.104.9:8091/xiaxinyang/wxmini/"; //夏新阳
-// const baseUrl = "http://115.150.104.9:8091/chentianlong/wxmini/"; //陈天龙
-const baseUrl = "http://115.150.104.9:8091/jidenghui/wxmini/"; //吉登辉
-// const baseUrl = "http://115.150.104.9:8091/dangkui/wxmini/"; //党魁
-// const baseUrl = "http://115.150.104.9:8091/wangkangtao/wxmini/"; //王康桃
-// const baseUrl = "https://upecwxdevtest.bankgz.com/wxmini/"; //生产地址
-
-const app = getApp();
-const http = (
-  { url = "", param = {}, header = {}, type = "json", ...other } = {
-    url,
-    param,
-    header,
-    type,
-  }
-) => {
-  wx.showLoading({
-    //可以不加
-    title: "请求中...",
-    mask: true,
-  });
-  let cifSeq = wx.getStorageSync("cifSeq");
-  let userSeq = wx.getStorageSync("userSeq");
-  let openid = wx.getStorageSync("openid");
-  let publicdata = {
-    openId: openid,
-    requestGlobalJnlNo: "123123123123123",
-    requestGlobalTrackNo: "track123123",
-    requestJnlNo: "123123123123123",
-    requestChannelCode: "WP",
-    requestChannelId: "WP",
-    requestIp: "192.168.1.100",
-    terminalType: "ANDROID",
-    terminalId: "DJDJDJDJ",
-    authType: "MESSAGE",
-    authData: "123456",
-    requestDate: "2020-02-13 12:00:00",
-    requestCifSeq: cifSeq,
-    requestUserSeq: userSeq,
-    requestDeptSeq: 10000,
-    markingId: "100000",
-    bankId: "10000",
-  };
-  return new Promise((resolve, reject) => {
-    let cookieKey = wx.getStorageSync("cookieKey");
-    // console.log(cookieKey)
-    let cookie;
-    if (cookieKey != "") {
-      cookie = getCookieByArray(cookieKey);
-    }
-    wx.request({
-      url: baseUrl + url,
-      data: {
-        ...param,
-        // ...publicdata
-      },
-      header: {
-        //两种  ，一种json 一种 from
-        "content-type": "application/json",
-        cookie: cookie,
-        mchannelId: "PWES",
-        ...header,
-      },
-      ...other,
-      complete: (res) => {
-        wx.hideLoading(); //同上 ，可以不加
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          if (res.data.respCode == "invalid.user") {
-            wx.clearStorage();
-            wx.switchTab({
-              url: "/pages/Microservice/index",
-            });
-            wx.showToast({
-              title: "登录超时，请重新登录！",
-              icon: "none", //icon
-              duration: 5000, //停留时间
-            });
-            return;
-          }
-          resolve(res.data);
-          var coo = res.header["Set-Cookie"];
-          if (coo != undefined && coo != "") {
-            let arr = res.header["Set-Cookie"].split(",");
-            wx.setStorageSync("cookieKey", arr);
-          }
-        } else {
-          reject(res);
-        }
-      },
-    });
-  });
-};
-const getCookieByArray = (name) => {
-  var m = [];
-  name.forEach((se) => {
-    var cookies = se.split(";");
-    cookies.forEach((res) => {
-      // console.log(res)
-      var _d = res.split("=");
-      if (_d.length == 2 && _d[1] != "") {
-        console.log("----" + res);
-        m.push(res);
-      }
-    });
-  });
-  return m.join(";");
-};
-
-// 1.无需传参数请求(默认get请求,header为from)
-const get = (url, param, type) => {
-  return http({
-    url,
-    param,
-    type,
-  });
-};
-
-// 2.带参数请求并且为post
-const post = (url, param, header, type) => {
-  return http({
-    url,
-    param,
-    type,
-    header,
-    method: "post",
-  });
-};
-
-// 3.带参数请求post，header为json
-const put = (url, param) => {
-  return http({
-    url,
-    param,
-    type: "json",
-    method: "post",
-  });
-};
 // 获取时间
 const getDay = (day) => {
   var today = new Date();
@@ -411,10 +274,15 @@ const cnMoneyFormat = (money) => {
     .replace(/^元/, "零元");
   return cnMoney;
 };
+
+const validatePhone = (phone) => {
+  //校验手机号，号段主要有(不包括上网卡)：130~139、150~153，155~159，180~189、170~171、176~178。14号段为上网卡专属号段
+  const reg = /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/;
+  if (phone.length !== 11) return false;
+  return reg.test(phone);
+};
+
 module.exports = {
-  get,
-  post,
-  put,
   times,
   gologin,
   getDay,
@@ -424,4 +292,5 @@ module.exports = {
   hiddenBankCard,
   formatAccountNo,
   formatPhoneNo,
+  validatePhone,
 };

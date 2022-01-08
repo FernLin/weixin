@@ -57,4 +57,3 @@
     <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择账号" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
     <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />
 </view>
-<van-toast id="van-toast" />

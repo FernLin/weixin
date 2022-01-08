@@ -79,11 +79,9 @@ Page({
       acNo: this.data.unbindCardNo,
       openid: openId,
     }).then((res) => {
-      if (res.respCode == "00000000") {
+      if (res) {
         Toast("解绑成功~");
         this.getUserBankCardInfo();
-      } else {
-        Toast(res.respMessage);
       }
     });
   },
@@ -120,15 +118,11 @@ Page({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.respCode == "00000000") {
-        if (res.data.userAccount) {
-          wx.setStorageSync("bankCardList", res.data.userAccount);
-          this.setData({
-            bankCardList: res.data.userAccount,
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+      if (res.userAccount) {
+        wx.setStorageSync("bankCardList", res.userAccount);
+        this.setData({
+          bankCardList: res.userAccount,
+        });
       }
     });
   },

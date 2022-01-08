@@ -1,5 +1,4 @@
 // pages/User/index.js
-import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 Page({
   /**
@@ -34,15 +33,11 @@ Page({
       openid: openId,
       unionId: "csunionid",
     }).then((res) => {
-      if (res.respCode === "00000000") {
-        if (res.data.userAccount) {
-          wx.setStorageSync("bankCardList", res.data.userAccount);
-          this.setData({
-            bankCardList: res.data.userAccount,
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+      if (res.userAccount) {
+        wx.setStorageSync("bankCardList", res.userAccount);
+        this.setData({
+          bankCardList: res.userAccount,
+        });
       }
     });
   },
@@ -52,46 +47,42 @@ Page({
     app.service.CashReserve.wxLargeCashBookQry({
       FromUserName: openId,
     }).then((res) => {
-      if (res.respCode == "00000000") {
-        if (res.data) {
-          const { largeCashlist, smallChangeExchangelist } = res.data;
-          const largeList = largeCashlist.map((el) => {
-            return {
-              type: 1,
-              deptName: el.deptName,
-              deptAddr: el.deptAddr,
-              deptId: el.deptId,
-              name: el.largeList.name,
-              bankCardId: el.largeList.bankCardId,
-              bookTime: el.largeList.bookTime,
-              bookMoney: el.largeList.bookMoney,
-              bookDate: el.largeList.bookDate,
-            };
+      if (res) {
+        const { largeCashlist, smallChangeExchangelist } = res;
+        const largeList = largeCashlist.map((el) => {
+          return {
+            type: 1,
+            deptName: el.deptName,
+            deptAddr: el.deptAddr,
+            deptId: el.deptId,
+            name: el.largeList.name,
+            bankCardId: el.largeList.bankCardId,
+            bookTime: el.largeList.bookTime,
+            bookMoney: el.largeList.bookMoney,
+            bookDate: el.largeList.bookDate,
+          };
+        });
+        const smallList = smallChangeExchangelist.map((el) => {
+          let amounts = [];
+          el.list.forEach((li) => {
+            amounts.push(li.cyun + "元*" + li.nubr + "张");
           });
-          const smallList = smallChangeExchangelist.map((el) => {
-            let amounts = [];
-            el.list.forEach((li) => {
-              amounts.push(li.cyun + "元*" + li.nubr + "张");
-            });
-            return {
-              type: 2,
-              deptName: el.deptName,
-              deptAddr: el.bookAddr,
-              deptId: el.deptId,
-              name: el.name,
-              bankCardId: el.cardId,
-              bookTime: el.tradeTime,
-              bookDate: el.tradeDate,
-              amounts: amounts.join("; "),
-              count: el.bookNum,
-            };
-          });
-          this.setData({
-            recordList: [...largeList, ...smallList],
-          });
-        }
-      } else {
-        Toast(res.respMessage);
+          return {
+            type: 2,
+            deptName: el.deptName,
+            deptAddr: el.bookAddr,
+            deptId: el.deptId,
+            name: el.name,
+            bankCardId: el.cardId,
+            bookTime: el.tradeTime,
+            bookDate: el.tradeDate,
+            amounts: amounts.join("; "),
+            count: el.bookNum,
+          };
+        });
+        this.setData({
+          recordList: [...largeList, ...smallList],
+        });
       }
     });
   },
