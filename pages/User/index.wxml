@@ -31,10 +31,10 @@
     <view>
         <view class="flex jc-sb mlr-30">
             <view class="acc-l">我的账户</view>
-            <view class="flex acc-r" wx:if="{{ bankCardList.length === 0 }}" bindtap="goBankCardList">去绑卡
+            <view class="flex acc-r" wx:if="{{ bankCardList.length === 0 }}" bindtap="goBindBankCard">去绑卡
                 <van-icon name="arrow" />
             </view>
-            <view class="flex acc-r" wx:else bindtap="goBankCardList">添加账户
+            <view class="flex acc-r" wx:else bindtap="goBankCardList">账户管理
                 <van-icon name="arrow" />
             </view>
         </view>

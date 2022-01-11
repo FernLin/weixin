@@ -2,6 +2,7 @@
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 const openId = wx.getStorageSync("openid");
+const unionId = wx.getStorageSync("unionId");
 Page({
   /**
    * 页面的初始数据
@@ -247,7 +248,7 @@ Page({
     });
     app.service.Global.wxAcListQry({
       openid: openId,
-      unionId: "csunionid",
+      unionId,
     }).then((res) => {
       if (res.userAccount) {
         const acList = res.userAccount.map((el) => {

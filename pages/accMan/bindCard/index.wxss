@@ -63,7 +63,11 @@
   color: #4a90e2;
   font-size: 30rpx;
   line-height: 44rpx;
-  text-align: center;
+  text-align: right;
+  width: 160rpx;
+}
+.count-down {
+  width: 160rpx;
 }
 
 .mess-input {

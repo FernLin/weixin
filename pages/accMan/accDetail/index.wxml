@@ -20,15 +20,15 @@
             </view>
             <view class="card-balance">
                 <text>可用余额</text>
-                <text>￥{{ util.formatAmount(accountDetail.accBal) }}</text>
+                <text>￥{{ util.formatAmount(accountDetail.availBal) }}</text>
             </view>
             <view class="card-balance">
                 <text>开户日期</text>
-                <text>2020-02-02 16:00:00</text>
+                <text>{{accountDetail.opdt}}</text>
             </view>
             <view class="card-balance">
                 <text>开户行</text>
-                <text>市民中心支行</text>
+                <text>{{accountDetail.openBank}}</text>
             </view>
         </view>
         <view class="btn-css" bindtap="toTranDetail">

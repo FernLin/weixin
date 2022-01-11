@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indexCode: "",
     fromRegister: false,
     bankPng: "/assets/bankicon.png",
     bindCardId: "",
@@ -15,7 +16,7 @@ Page({
     userName: "",
     phoneNum: "",
     // codeNum: "",
-    messagePass: "",
+    verifyCode: "",
     messageIndex: "",
     columns: [
       {
@@ -51,39 +52,48 @@ Page({
       this.data.idCard &&
       this.data.userName &&
       this.data.phoneNum &&
-      this.data.messagePass
+      this.data.verifyCode
     ) {
       this.bindBankCard();
     } else {
       Toast("请输入完整信息~");
     }
   },
-  // 校验验证码
-  checkVercode() {
-    // TODO: 校验短信验证码
-    return;
-  },
   bindBankCard() {
     // TODO: 校验证件号码格式
-    // TODO: 校验短信验证码
-    let params = {
-      openid: openId,
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxAddAccount",
       mobilePhone: this.data.phoneNum,
-      cifName: this.data.userName,
-      idType: this.data.bindCardType.value,
-      idNo: this.data.idCard,
-      acNo: this.data.bindCardId,
-    };
-    app.service.Global.wxAddAccount(params).then((res) => {
-      if (res) {
-        Toast("绑卡成功~！");
-        if (this.data.fromRegister) {
-          wx.switchTab({
-            url: "/pages/User/index",
-          });
-        } else {
-          wx.navigateBack();
-        }
+    }).then((result) => {
+      if (result.authRes) {
+        let params = {
+          openid: openId,
+          mobilePhone: this.data.phoneNum,
+          cifName: this.data.userName,
+          idType: this.data.bindCardType.value,
+          idNo: this.data.idCard,
+          acNo: this.data.bindCardId,
+        };
+        app.service.Global.wxAddAccount(params).then((res) => {
+          if (res) {
+            Toast("绑卡成功~！");
+            if (this.data.fromRegister) {
+              wx.switchTab({
+                url: "/pages/User/index",
+              });
+            } else {
+              wx.navigateBack();
+            }
+          }
+        });
+      } else {
+        // TODO: 可以重新获取验证码
+        this.setData({
+          countDownFlag: true,
+          countDownNum: 60,
+        });
       }
     });
   },
@@ -142,29 +152,32 @@ Page({
   },
   // 输入验证码
   bindPassword(e) {
-    if (e.detail.value.length == 6) {
-      this.setData({
-        messagePass: e.detail.value,
-      });
-    }
+    this.setData({
+      verifyCode: e.detail.value,
+    });
   },
   // 获取验证码
   getVercode() {
-    if (this.data.phoneNum.length != 11) {
-      Toast("请输入手机号~！");
-      return;
-    }
-    let data = {
-      mobilePhone: this.data.phoneNum,
-      transactionId: "perAddAccount",
-    };
-    app.api.post("pweb/perSendSms.do", data).then((res) => {
-      this.countDownF();
-      this.setData({
-        messageIndex: res.data.index,
+    if (app.util.validatePhone(this.data.phoneNum)) {
+      app.service.Global.wxCommonConfirm({
+        transactionId: "wxAddAccount",
+      }).then((result) => {
+        let params = {
+          mobilePhone: this.data.phoneNum,
+          transactionId: "wxAddAccount",
+        };
+        app.service.Global.wxSendSms(params).then((res) => {
+          this.setData({
+            indexCode: res.index,
+            verifyCode: "",
+          });
+          this.countDownF();
+          Toast("验证码已发送~！");
+        });
       });
-      Toast("验证码已发送~！");
-    });
+    } else {
+      Toast("请输入正确格式的手机号！");
+    }
   },
   // 倒计时
   countDownF() {

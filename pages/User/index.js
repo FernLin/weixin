@@ -29,9 +29,10 @@ Page({
   // 获取用户银行卡信息
   getUserBankCardInfo() {
     const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
     app.service.Global.wxAcListQry({
       openid: openId,
-      unionId: "csunionid",
+      unionId,
     }).then((res) => {
       if (res.userAccount) {
         wx.setStorageSync("bankCardList", res.userAccount);

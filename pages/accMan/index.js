@@ -3,22 +3,23 @@ import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
 const openId = wx.getStorageSync("openid");
+const unionId = wx.getStorageSync("unionId");
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    indexCode: "",
     bankPng: "/assets/bankicon.png",
     bankCardList: [],
     bankCardArr: [],
     unbindPopup: false,
-    messagePass: "",
-    messageIndex: "",
+    verifyCode: "",
     loading: false,
-    verCodeChecked: false,
     countDownFlag: true,
     countDownNum: 60,
     unbindCardNo: "",
+    openMobile: "",
   },
   //跳转绑卡
   goBindCard() {
@@ -51,7 +52,9 @@ Page({
         this.setData({
           unbindPopup: true,
           unbindCardNo: e.currentTarget.dataset.item.acNo,
+          openMobile: e.currentTarget.dataset.item.openMobilephone,
         });
+        this.getVercode();
       })
       .catch(() => {
         console.log("暂不解绑");
@@ -59,12 +62,33 @@ Page({
   },
   // 发送解绑验证码
   getVercode() {
-    this.countDownF();
+    if (app.util.validatePhone(this.data.openMobile)) {
+      app.service.Global.wxCommonConfirm({
+        transactionId: "wxDeleteAccount",
+      }).then((result) => {
+        let params = {
+          mobilePhone: this.data.openMobile,
+          transactionId: "wxDeleteAccount",
+        };
+        app.service.Global.wxSendSms(params).then((res) => {
+          this.setData({
+            indexCode: res.index,
+            verifyCode: "",
+          });
+          this.countDownF();
+          Toast("验证码已发送~！");
+        });
+      });
+    } else {
+      Toast("请输入正确格式的手机号！");
+    }
   },
-  // 校验短信验证码
-  checkVercode() {},
   // 输入验证码
-  bindPassword(e) {},
+  verifyInput(event) {
+    this.setData({
+      verifyCode: event.detail.value,
+    });
+  },
   // 关闭弹框
   closePopup() {
     this.setData({
@@ -72,17 +96,28 @@ Page({
     });
   },
   onPopupConfirm(e) {
-    this.setData({
-      unbindPopup: false,
-    });
-    app.service.Global.wxDeleteAccount({
-      acNo: this.data.unbindCardNo,
-      openid: openId,
-    }).then((res) => {
-      if (res) {
-        Toast("解绑成功~");
-        this.getUserBankCardInfo();
-      }
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxDeleteAccount",
+      mobilePhone: this.data.openMobile,
+    }).then((result) => {
+      this.setData({
+        unbindPopup: false,
+      });
+      app.service.Global.wxDeleteAccount({
+        acNo: this.data.unbindCardNo,
+        openid: openId,
+      }).then((res) => {
+        if (res) {
+          Toast("解绑成功~");
+          this.setData({
+            indexCode: "",
+            verifyCode: "",
+          });
+          this.getUserBankCardInfo();
+        }
+      });
     });
   },
   countDownF() {
@@ -116,7 +151,7 @@ Page({
   getUserBankCardInfo() {
     app.service.Global.wxAcListQry({
       openid: openId,
-      unionId: "csunionid",
+      unionId,
     }).then((res) => {
       if (res.userAccount) {
         wx.setStorageSync("bankCardList", res.userAccount);

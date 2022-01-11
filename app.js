@@ -51,6 +51,7 @@ App({
             code: res.code,
           }).then((result) => {
             wx.setStorageSync("openid", result.openId);
+            wx.setStorageSync("unionId", result.unionId);
             this.judgeRegister(result.openId);
           });
         },

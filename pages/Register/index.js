@@ -11,6 +11,8 @@ Page({
     checked: false,
     mobile: "",
     verifyCode: "",
+    indexCode: "",
+    showOfficial: false,
   },
   // 获取输入的手机号
   mobileInput(event) {
@@ -33,17 +35,29 @@ Page({
   // 下一步
   toNext() {
     const openId = wx.getStorageSync("openid");
-    // TODO: 校验输入的手机号
-    // TODO: 校验输入的验证码
-    const params = {
+    const unionId = wx.getStorageSync("unionId");
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxCifSign",
       mobilePhone: this.data.mobile,
-      openid: openId,
-      unionId: "csunionid1",
-    };
-    app.service.Global.wxCifSign(params).then((res) => {
-      if (res) {
-        wx.navigateTo({
-          url: "/pages/accMan/bindCard/index?fromRegister=true",
+    }).then((result) => {
+      if (result.authRes) {
+        const params = {
+          mobilePhone: this.data.mobile,
+          openid: openId,
+          unionId,
+        };
+        app.service.Global.wxCifSign(params).then((res) => {
+          if (res) {
+            wx.navigateTo({
+              url: "/pages/accMan/bindCard/index?fromRegister=true",
+            });
+          }
+        });
+      } else {
+        this.setData({
+          showOfficial: true,
         });
       }
     });
@@ -51,16 +65,22 @@ Page({
   // 获取验证码
   getVercode() {
     if (app.util.validatePhone(this.data.mobile)) {
-      this.countDownF();
-      let params = {
-        mobilePhone: this.data.mobile,
-        transactionId: "wxCifSign",
-        templateId: "",
-      };
-      app.service.Global.wxSendSms(params).then((res) => {
-        console.log(res.smsCode);
-        Toast("验证码已发送~！");
-      });
+      app.service.Global.wxCommonConfirm({ transactionId: "wxCifSign" }).then(
+        (result) => {
+          let params = {
+            mobilePhone: this.data.mobile,
+            transactionId: "wxCifSign",
+          };
+          app.service.Global.wxSendSms(params).then((res) => {
+            this.setData({
+              indexCode: res.index,
+              verifyCode: "",
+            });
+            this.countDownF();
+            Toast("验证码已发送~！");
+          });
+        }
+      );
     } else {
       Toast("请输入正确格式的手机号！");
     }

@@ -63,14 +63,44 @@ export default {
     return post("wxGetOpenIdByCode.do", params);
   },
   /**
+   * 获取认证方式
+   * @param {
+   * transactionId: 接口名称id
+   * }
+   */
+  wxCommonConfirm(params) {
+    return post("wxCommonConfirm.do", params);
+  },
+  /**
    * 获取短信验证码
    * @param {
-   * templateId: 微信小程序提供的code
-   * transactionId: 微信小程序提供的code
-   * mobilePhone: 微信小程序提供的code
+   * transactionId: 接口名称id
+   * mobilePhone: 手机号码
    * }
    */
   wxSendSms(params) {
     return post("wxSendSms.do", params);
+  },
+  /**
+   * 验证短信验证码
+   * @param {
+   * index: 获取短信验证码接口发送的索引值
+   * code: 短信验证码
+   * transactionId: 接口名称id
+   * mobilePhone: 输入的手机号
+   * }
+   */
+  wxAuthSmsNoLogin(params) {
+    return post("wxAuthSmsNoLogin.do", params);
+  },
+  /**
+   * 解绑用户
+   * @param {
+   * openid: 用户openid
+   * unionId: 用户unionId
+   * }
+   */
+  wxRelBindUser(params) {
+    return post("wxRelBindUser.do", params);
   },
 };
