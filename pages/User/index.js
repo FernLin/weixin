@@ -9,6 +9,7 @@ Page({
     userName: "",
     bankCardList: [],
     recordList: [],
+    bindMobile: wx.getStorageSync("mobilePhone"),
     // loanInfo: {
     //   loanName: "牛牛贷",
     //   loanStatus: "已放款",
@@ -114,6 +115,12 @@ Page({
   closeService() {
     this.setData({
       showService: false,
+    });
+  },
+  // 跳转至设置界面
+  toSetting() {
+    wx.navigateTo({
+      url: "/pages/User/userSetting/index",
     });
   },
   // 判断登录

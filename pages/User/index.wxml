@@ -1,4 +1,5 @@
 <!--pages/User/index.wxml-->
+<wxs module="util" src="../../utils/wxParse.wxs"></wxs>
 <!-- <view style="width:100%">
  <official-account></official-account>
 </view> -->
@@ -17,9 +18,7 @@
             <view class="flex jc-sb">
                 <view class="flex">
                     <image src="/assets/mine/head.png" class="user-head-png" />
-                    <view class="top-n">
-                        157****0892
-                    </view>
+                    <view class="top-n" bindtap="toSetting"> {{util.hiddenPhone(bindMobile)}} </view>
                 </view>
                 <view class="flex-c ai-c" bindtap="downloadApp">
                     <image src="/assets/mine/downicon.png" class="down-i" />

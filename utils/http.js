@@ -49,7 +49,7 @@ const http = (
               wx.setStorageSync("cookieKey", arr);
             }
           } else {
-            // resolve(res.data);
+            reject(res.data);
             wx.showToast({
               title: res.data.respMessage,
               icon: "none",

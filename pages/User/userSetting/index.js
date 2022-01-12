@@ -1,4 +1,4 @@
-// pages/User/index.js
+// pages/User/userSetting/index.js
 import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
@@ -9,50 +9,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    indexCode: "",
-    bankPng: "/assets/bankicon.png",
-    bankCardList: [],
-    bankCardArr: [],
     unbindPopup: false,
     verifyCode: "",
     loading: false,
     countDownFlag: true,
     countDownNum: 60,
-    unbindCardNo: "",
-    openMobile: "",
+    openMobile: wx.getStorageSync("mobilePhone"),
+    indexCode: "",
   },
-  //跳转绑卡
-  goBindCard() {
-    wx.navigateTo({
-      url: "/pages/accMan/bindCard/index",
-    });
-  },
-  // 跳转动账通知管理
-  goNoticeManage() {
-    wx.navigateTo({
-      url: "/pages/accMan/noticeManage/index",
-    });
-  },
-
-  //开户
-  // openAccount() {
-  //   wx.navigateTo({
-  //     url: "/pages/accMan/openAccount/index",
-  //   });
-  // },
   // 解绑银行卡校验
-  unBindBankCard(e) {
+  onClick(e) {
     Dialog.confirm({
       title: "提示",
-      message: "是否确认解绑账户？",
+      message: "是否确认解绑微信？",
       confirmButtonText: "确定",
       cancelButtonText: "取消",
     })
       .then(() => {
         this.setData({
           unbindPopup: true,
-          unbindCardNo: e.currentTarget.dataset.item.acNo,
-          openMobile: e.currentTarget.dataset.item.openMobilephone,
         });
         this.getVercode();
       })
@@ -64,11 +39,11 @@ Page({
   getVercode() {
     if (app.util.validatePhone(this.data.openMobile)) {
       app.service.Global.wxCommonConfirm({
-        transactionId: "wxDeleteAccount",
+        transactionId: "wxRelBindUser",
       }).then((result) => {
         let params = {
           mobilePhone: this.data.openMobile,
-          transactionId: "wxDeleteAccount",
+          transactionId: "wxRelBindUser",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({
@@ -95,28 +70,27 @@ Page({
       unbindPopup: false,
     });
   },
-  onPopupConfirm(e) {
+  onPopupConfirm() {
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
-      transactionId: "wxDeleteAccount",
+      transactionId: "wxRelBindUser",
       mobilePhone: this.data.openMobile,
     }).then((result) => {
       this.setData({
         unbindPopup: false,
       });
-      app.service.Global.wxDeleteAccount({
-        acNo: this.data.unbindCardNo,
+      app.service.Global.wxRelBindUser({
+        unionId,
         openid: openId,
       })
         .then((res) => {
           if (res) {
             Toast("解绑成功~");
-            this.setData({
-              indexCode: "",
-              verifyCode: "",
+            // TODO：确认解绑微信后需要跳转的页面
+            wx.reLaunch({
+              url: "/pages/Register/index",
             });
-            this.getUserBankCardInfo();
           }
         })
         .catch((err) => {
@@ -146,39 +120,21 @@ Page({
       }
     }, 1000);
   },
-  // 银行卡转账查询
-  goTransDetail(e) {
-    var obj = JSON.stringify(e.currentTarget.dataset.item);
-    wx.navigateTo({
-      url: "/pages/tranDetail/index?obj=" + encodeURIComponent(obj),
-    });
-  },
-
-  // 获取用户银行卡信息
-  getUserBankCardInfo() {
-    app.service.Global.wxAcListQry({
-      openid: openId,
-      unionId,
-    }).then((res) => {
-      if (res.userAccount) {
-        wx.setStorageSync("bankCardList", res.userAccount);
-        this.setData({
-          bankCardList: res.userAccount,
-        });
-      }
-    });
-  },
-  onShow: function () {
-    this.getUserBankCardInfo();
-  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
+  onLoad: function (options) {},
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {},
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {},
+
   /**
    * 生命周期函数--监听页面隐藏
    */

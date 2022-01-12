@@ -44,7 +44,13 @@ function formatTime(time) {
 // 格式化时间
 function formatTimeSingal(time) {
   if (time && time.length >= 6) {
-    return time.substring(0, 2) + ":" + time.substring(2, 4) + ":" + time.substring(4, 6);
+    return (
+      time.substring(0, 2) +
+      ":" +
+      time.substring(2, 4) +
+      ":" +
+      time.substring(4, 6)
+    );
   }
 }
 
@@ -63,7 +69,18 @@ function hiddenBankCard(bankNumber) {
   }
 }
 
-// 金额格式化
+// 手机号脱敏
+function hiddenPhone(phone) {
+  if (phone && phone.length > 0) {
+    var regexp = getRegExp("[0-9]", "gi");
+    var s1 = phone.substring(0, 3);
+    var s2 = phone.substring(7);
+    var s3 = phone.substring(3, 7).replace(regexp, "*");
+    return s1 + s3 + s2;
+  }
+}
+
+// 金额格式化 正则表达式为：\B(?=(?:\d{3})+$)（格式化可能会修改斜杠）
 function formatAmount(amount) {
   if (amount && amount.length > 0) {
     var regexp = getRegExp("\B(?=(?:\d{3})+$)", "g");
@@ -85,7 +102,8 @@ module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
   hiddenBankCard: hiddenBankCard,
+  hiddenPhone: hiddenPhone,
   formatAmount: formatAmount,
   formatTimeSingal: formatTimeSingal,
-  tailNumber: tailNumber
+  tailNumber: tailNumber,
 };

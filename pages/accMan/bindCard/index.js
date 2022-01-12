@@ -45,7 +45,6 @@ Page({
   },
   // 下一步
   goNext() {
-    console.log(this.data);
     if (
       this.data.bindCardId &&
       this.data.bindCardType.value &&
@@ -76,24 +75,25 @@ Page({
           idNo: this.data.idCard,
           acNo: this.data.bindCardId,
         };
-        app.service.Global.wxAddAccount(params).then((res) => {
-          if (res) {
-            Toast("绑卡成功~！");
-            if (this.data.fromRegister) {
-              wx.switchTab({
-                url: "/pages/User/index",
-              });
-            } else {
-              wx.navigateBack();
+        app.service.Global.wxAddAccount(params)
+          .then((res) => {
+            if (res) {
+              Toast("绑卡成功~！");
+              if (this.data.fromRegister) {
+                wx.switchTab({
+                  url: "/pages/User/index",
+                });
+              } else {
+                wx.navigateBack();
+              }
             }
-          }
-        });
-      } else {
-        // TODO: 可以重新获取验证码
-        this.setData({
-          countDownFlag: true,
-          countDownNum: 60,
-        });
+          })
+          .catch((err) => {
+            this.setData({
+              countDownFlag: true,
+              countDownNum: 60,
+            });
+          });
       }
     });
   },

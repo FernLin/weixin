@@ -44,10 +44,6 @@
             <text class="item-label">动账通知</text>
             <van-switch checked="{{noticeSwitch}}" bind:change="onChange" inactive-color="#E9E9E9" active-color="#E43234" />
         </view>
-        <view class="setting-item">
-            <text class="item-label">解绑微信</text>
-            <van-icon class="right-icon" name="arrow" />
-        </view>
         <view class="setting-item" data-type="mine" bindtap="jumpTo">
             <text class="item-label">我的共享管理</text>
             <van-icon class="right-icon" name="arrow" />

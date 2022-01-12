@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "个人设置",
+  "usingComponents": {
+    "my-field": "/components/myField/index"
+  }
+}

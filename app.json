@@ -13,7 +13,8 @@
     "pages/User/setting/eAccount/index",
     "pages/User/setting/eAccount/large/index",
     "pages/Register/index",
-    "pages/Webview/index"
+    "pages/Webview/index",
+    "pages/User/userSetting/index"
   ],
   "subPackages": [
     {

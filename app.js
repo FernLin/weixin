@@ -37,6 +37,9 @@ App({
           url: "/pages/Register/index",
         });
       }
+      if (result.mobilePhone) {
+        wx.setStorageSync("mobilePhone", result.mobilePhone);
+      }
     });
   },
 

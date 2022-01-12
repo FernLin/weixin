@@ -48,13 +48,20 @@ Page({
           openid: openId,
           unionId,
         };
-        app.service.Global.wxCifSign(params).then((res) => {
-          if (res) {
-            wx.navigateTo({
-              url: "/pages/accMan/bindCard/index?fromRegister=true",
+        app.service.Global.wxCifSign(params)
+          .then((res) => {
+            if (res) {
+              wx.navigateTo({
+                url: "/pages/accMan/bindCard/index?fromRegister=true",
+              });
+            }
+          })
+          .catch((err) => {
+            this.setData({
+              countDownFlag: true,
+              countDownNum: 60,
             });
-          }
-        });
+          });
       } else {
         this.setData({
           showOfficial: true,
