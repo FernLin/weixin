@@ -107,7 +107,7 @@ Page({
         const acList = res.userAccount.map((el) => {
           return {
             ...el,
-            text: el.acNo,
+            text: app.util.hiddenBankCard(el.acNo),
           };
         });
         const currentAccount = acList.find((item) => {

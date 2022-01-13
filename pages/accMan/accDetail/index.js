@@ -37,10 +37,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const currentAccount = JSON.parse(decodeURIComponent(options.obj));
     this.setData({
       loading: false,
-      accountDetail: JSON.parse(decodeURIComponent(options.obj)),
+      accountDetail: currentAccount,
     });
+    wx.setStorageSync("currentAccount", currentAccount);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

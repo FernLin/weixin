@@ -13,15 +13,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/ssmm/index",
-          "pathName": "pages/ssmm/index",
+          "name": "企业预开户",
+          "pathName": "pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/Sign/index",
-          "pathName": "pages/Sign/index",
-          "query": "",
+          "name": "共享动账通知操作",
+          "pathName": "pages/accMan/operaNotice/index",
+          "query": "mobilePhone=15779000892&name=张三&account=6229676177000138824&avatarUrl=",
           "scene": null
         },
         {

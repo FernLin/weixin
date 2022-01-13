@@ -1,0 +1,76 @@
+.main-content {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 40rpx 30rpx 0;
+  text-align: center;
+}
+.img-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.word-name {
+  font-size: 30rpx;
+  color: #333333;
+  text-align: center;
+  font-weight: 500;
+  margin: 26rpx 0 38rpx;
+}
+.account-content {
+  display: flex;
+  align-items: center;
+  height: 150rpx;
+  border-top: 1rpx solid #e6e6e6;
+}
+.img-logo {
+  width: 70rpx;
+  height: 70rpx;
+}
+.account-block {
+  margin-left: 30rpx;
+  text-align: left;
+}
+.account-block view:first-child {
+  font-size: 30rpx;
+  color: #323232;
+  margin-bottom: 20rpx;
+}
+.account-block view:last-child {
+  font-size: 28rpx;
+  color: #666666;
+}
+.verify-content {
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+.custom-input {
+  font-size: 30rpx;
+  color: #323232;
+  text-align: right;
+  width: 240rpx;
+}
+.placehoder-color {
+  color: #c4c4c4;
+}
+.mess-fen-ge {
+  height: 51rpx;
+  border-right: 1rpx solid;
+  border-color: #e6e6e6;
+  margin: 0 30rpx;
+}
+.get-vercode {
+  color: #4a90e2;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  text-align: right;
+  width: 160rpx;
+}
+.count-down {
+  width: 160rpx;
+}
+.input-block {
+  padding: 0 30rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}

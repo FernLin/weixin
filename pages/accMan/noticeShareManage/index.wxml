@@ -122,6 +122,16 @@
         </view>
     </view>
     <view class="add-btn" wx:if="{{type === 'mine'}}">
-        <van-button round plain color="#E43234" icon="add-o" size="large" open-type="share">添加共享人</van-button>
+        <van-button round plain color="#E43234" icon="add-o" size="large" bindtap="onAdd">添加共享人</van-button>
     </view>
+    <van-popup show="{{showDialog}}" custom-class="popup-content">
+        <view class="block-content">
+            <view class="title">添加共享人</view>
+            <input value="{{mobilePhone}}" type="number" bindinput="bindPhoneNum" class="mobile-input" maxlength="11" placeholder="请输入签收人手机号" placeholder-class="placehoder-color" />
+            <view class="btn-content">
+                <button class="close-btn" bindtap="onClose">取消</button>
+                <button class="confirm-btn" open-type="share" disabled="{{disabled}}">确认</button>
+            </view>
+        </view>
+    </van-popup>
 </view>

@@ -66,7 +66,8 @@
         "openAccount/index",
         "accDetail/index",
         "noticeManage/index",
-        "noticeShareManage/index"
+        "noticeShareManage/index",
+        "operaNotice/index"
       ]
     },
     {

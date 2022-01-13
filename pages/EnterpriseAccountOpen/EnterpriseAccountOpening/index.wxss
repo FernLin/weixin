@@ -1,28 +1,47 @@
+.opera-content {
+  margin-top: 20rpx;
+}
+
 .content {
-    font-size: 30rpx;
-    color:#646464;
+  padding: 0 30rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
 }
 
-.input1 {
-    border-bottom: solid 2rpx #eee;
-    height: 100rpx;
-    box-sizing: border-box;
+.custom-input {
+  font-size: 30rpx;
+  color: #323232;
+  text-align: right;
 }
 
-.card-title {
-    font-weight:500;
-    color:#333333;
-    font-size:32rpx;
-    line-height:48rpx;
-    padding: 30rpx 0 9rpx 30rpx;
+.mess-fen-ge {
+  height: 51rpx;
+  border-right: 1rpx solid;
+  border-color: #e6e6e6;
+  margin: 0 30rpx;
 }
 
-.wen-xin {
-    color:#969696;
-    font-size:24rpx;
-    line-height:35rpx;
+.get-vercode {
+  color: #4a90e2;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  text-align: right;
+  width: 160rpx;
+}
+.count-down {
+  width: 160rpx;
 }
 
-.mr-30 {
-    margin-right: 30rpx;
+.mess-input {
+  width: 240rpx;
+}
+
+.placehoder-color {
+  color: #c4c4c4;
+}
+
+.notice {
+  color: #969696;
+  font-size: 24rpx;
+  margin: 60rpx 30rpx 0;
 }

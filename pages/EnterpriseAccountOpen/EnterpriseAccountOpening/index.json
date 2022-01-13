@@ -1,3 +1,8 @@
 {
-    "navigationBarTitleText": "企业开户"
+    "navigationBarTitleText": "企业开户",
+    "usingComponents": {
+        "my-picker": "/components/myPicker/index",
+        "my-field": "/components/myField/index",
+        "my-amount-editor": "/components/myAmountEditor/index"
+    }
 }

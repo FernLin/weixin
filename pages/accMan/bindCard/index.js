@@ -17,7 +17,6 @@ Page({
     phoneNum: "",
     // codeNum: "",
     verifyCode: "",
-    messageIndex: "",
     columns: [
       {
         values: [

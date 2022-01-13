@@ -54,7 +54,7 @@
             {{item.deptName}}
           </view>
           <view class="record-customer-msg">
-            <text>{{item.bankCardId}}</text>
+            <text>{{util.hiddenBankCard(item.bankCardId)}}</text>
             <text>{{item.name}}</text>
           </view>
           <view class="record-msg">

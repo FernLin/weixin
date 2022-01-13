@@ -139,3 +139,61 @@
   width: calc(100vw - 60rpx);
   padding: 16rpx 30rpx;
 }
+
+.mobile-input {
+  margin: 40rpx 30rpx 50rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #f7f7f7;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 12rpx;
+  padding: 0rpx 30rpx;
+  font-size: 28rpx;
+  color: #323232;
+}
+.placehoder-color {
+  color: #c4c4c4;
+}
+.popup-content {
+  width: 630rpx;
+  border-radius: 12rpx;
+  top: 40%;
+}
+.block-content {
+  padding: 48rpx 0 0;
+}
+.title {
+  font-size: 30rpx;
+  color: #323232;
+  font-weight: 500;
+  text-align: center;
+}
+.btn-content {
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #e6e6e6;
+}
+.btn-content button {
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  background-color: #fff;
+  border: unset;
+  border-radius: unset;
+  width: 100%;
+}
+.btn-content button:after {
+  content: none;
+}
+.btn-content button::after {
+  border: none;
+}
+.close-btn {
+  font-size: 32rpx;
+  color: #969696;
+}
+.confirm-btn {
+  font-size: 32rpx;
+  color: #f51616;
+  border-left: 1rpx solid #e6e6e6 !important;
+}

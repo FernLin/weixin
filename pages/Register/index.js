@@ -32,42 +32,45 @@ Page({
       checked: event.detail,
     });
   },
-  // 下一步
+  // 下一步 TODO: 注册完成进入绑定页面后点击返回键应该跳转到哪里？
   toNext() {
-    const openId = wx.getStorageSync("openid");
-    const unionId = wx.getStorageSync("unionId");
-    app.service.Global.wxAuthSmsNoLogin({
-      index: this.data.indexCode,
-      code: this.data.verifyCode,
-      transactionId: "wxCifSign",
-      mobilePhone: this.data.mobile,
-    }).then((result) => {
-      if (result.authRes) {
-        const params = {
-          mobilePhone: this.data.mobile,
-          openid: openId,
-          unionId,
-        };
-        app.service.Global.wxCifSign(params)
-          .then((res) => {
-            if (res) {
-              wx.navigateTo({
-                url: "/pages/accMan/bindCard/index?fromRegister=true",
-              });
-            }
-          })
-          .catch((err) => {
-            this.setData({
-              countDownFlag: true,
-              countDownNum: 60,
-            });
-          });
-      } else {
-        this.setData({
-          showOfficial: true,
-        });
-      }
+    wx.reLaunch({
+      url: "/pages/accMan/bindCard/index?fromRegister=true",
     });
+    // const openId = wx.getStorageSync("openid");
+    // const unionId = wx.getStorageSync("unionId");
+    // app.service.Global.wxAuthSmsNoLogin({
+    //   index: this.data.indexCode,
+    //   code: this.data.verifyCode,
+    //   transactionId: "wxCifSign",
+    //   mobilePhone: this.data.mobile,
+    // }).then((result) => {
+    //   if (result.authRes) {
+    //     const params = {
+    //       mobilePhone: this.data.mobile,
+    //       openid: openId,
+    //       unionId,
+    //     };
+    //     app.service.Global.wxCifSign(params)
+    //       .then((res) => {
+    //         if (res) {
+    //           wx.reLaunch({
+    //             url: "/pages/accMan/bindCard/index?fromRegister=true",
+    //           });
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         this.setData({
+    //           countDownFlag: true,
+    //           countDownNum: 60,
+    //         });
+    //       });
+    //   } else {
+    //     this.setData({
+    //       showOfficial: true,
+    //     });
+    //   }
+    // });
   },
   // 获取验证码
   getVercode() {
@@ -126,7 +129,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    wx.hideHomeButton();
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

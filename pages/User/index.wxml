@@ -129,16 +129,12 @@
     <view>
         <view class="mlr-30 acc-l">我的预约</view>
         <view class="m-30" wx:if="{{ recordList.length > 0 }}">
-            <view class="app-info p-30">
+            <view class="app-info p-30" wx:for="{{recordList}}" wx:key="index">
                 <view class="flex">
                     <van-icon name="clock" color="#e43234" />
                     <view class="app-info-t">{{item.type == 1 ? '大额取款' : '零钱兑换'}}预约信息</view>
                 </view>
                 <view class="dashed-line"></view>
-                <view class="flex jc-sb mb-13">
-                    <view class="app-info-l">预约码</view>
-                    <view class="app-info-r">39304034</view>
-                </view>
                 <view class="flex jc-sb mb-13">
                     <view class="app-info-l">预约时间</view>
                     <view class="app-info-r">

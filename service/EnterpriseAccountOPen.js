@@ -17,8 +17,8 @@ export default {
     * cityCode: 市编码
     * }
     */
-   wxdeptCityQry(params) {
-     return post("wxdeptCityQry.do", params);
+   wxDeptCityQry(params) {
+     return post("wxDeptCityQry.do", params);
    },
    /**
    * 证件上传

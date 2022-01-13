@@ -8,13 +8,13 @@
             </view>
             <van-icon class="right-icon" name="arrow" />
         </view>
-        <view class="notice-item" bindtap="goNoticeQuery">
+        <!-- <view class="notice-item" bindtap="goNoticeQuery">
             <view class="item-describe">
                 <image class="" src="/assets/mine/shareQuery.png" />
                 <text>动账通知分享查询</text>
             </view>
             <van-icon class="right-icon" name="arrow" />
-        </view>
+        </view> -->
         <view class="notice-item" bindtap="goNoticeBind">
             <view class="item-describe">
                 <image class="" src="/assets/mine/shareBind.png" />

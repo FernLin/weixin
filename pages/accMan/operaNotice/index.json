@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "共享动账通知",
+  "usingComponents": {
+    "my-field": "/components/myField/index"
+  }
+}

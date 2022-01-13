@@ -1,3 +1,4 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="content">
   <view class="setting-item" bindtap="onClick">
     <text class="item-label">解绑微信</text>
@@ -7,7 +8,7 @@
   <van-popup show="{{unbindPopup}}" custom-class="popup-content" closeable bind:close="closePopup">
     <view class="unbind-content">
       <view class="title">请输入短信验证码</view>
-      <view class="message">请输入 <text>{{openMobile}}</text> 收到的短信验证码</view>
+      <view class="message">请输入 <text>{{util.hiddenPhone(openMobile)}}</text> 收到的短信验证码</view>
       <view class="verify-content">
         <input value="{{verifyCode}}" bindinput="verifyInput" maxlength="6" type="number" placeholder="请输入短信验证码" class="verify-input" placeholder-class="placeholder" />
         <view class="fen-ge"></view>
