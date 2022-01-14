@@ -1,17 +1,76 @@
 // pages/accMan/operaNotice/index.js
+import Dialog from "@vant/weapp/dialog/dialog";
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    mobilePhone: "",
-    name: "",
-    account: "",
-    avatarUrl: "",
+    openId: "",
+    unionId: "",
+    signeeMobile: "",
+    signeeName: "",
+    signeeNameFirst: "",
+    signeeNameLast: "",
+    shareName: "",
+    shareAccount: "",
+    shareDate: "",
+    shareOpenId: "",
+    shareAvatar: "",
     verifyCode: "",
     countDownNum: 60,
     countDownFlag: true,
     indexCode: "",
+    hasUserInfo: false,
+    userInfo: {},
+    showDialog: false,
+  },
+  onConfirm() {
+    if (!this.data.hasUserInfo) {
+      wx.getUserProfile({
+        desc: "用于共享人识别用户", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          this.doSign(res.userInfo.avatarUrl);
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true,
+          });
+        },
+      });
+    } else {
+      this.doSign(this.data.userInfo.avatarUrl);
+    }
+  },
+  // 签约操作
+  doSign(avatarUrl) {
+    let params = {
+      openId: this.data.openId,
+      unionId: this.data.unionId,
+      acNo: this.data.shareAccount,
+      shareOpenId: this.data.shareOpenId,
+      shareDate: this.data.shareDate,
+      nickname: this.data.signeeName,
+      headimgurl: avatarUrl,
+      shareHeadimgurl: this.data.shareAvatar,
+    };
+    app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
+      console.log(res);
+    });
+  },
+  verifyName() {
+    this.setData({
+      showDialog: true,
+    });
+  },
+  onDialogClose() {
+    this.setData({
+      showDialog: false,
+    });
+  },
+  onDialogConfirm() {
+    this.setData({
+      showDialog: false,
+    });
   },
   // 输入验证码
   bindPassword(e) {
@@ -21,13 +80,13 @@ Page({
   },
   // 获取验证码
   getVercode() {
-    if (app.util.validatePhone(this.data.phoneNum)) {
+    if (app.util.validatePhone(this.data.signeeMobile)) {
       app.service.Global.wxCommonConfirm({
-        transactionId: "wxApplyOpenAct",
+        transactionId: "wxNoticeClassShareSignIn",
       }).then((result) => {
         let params = {
-          mobilePhone: this.data.phoneNum,
-          transactionId: "wxApplyOpenAct",
+          mobilePhone: this.data.signeeMobile,
+          transactionId: "wxNoticeClassShareSignIn",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({
@@ -67,13 +126,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    let len = options.signeeName.length;
     this.setData({
-      mobilePhone: options.mobilePhone,
-      name: options.name,
-      account: options.account,
-      avatarUrl: decodeURIComponent(options.avatarUrl),
+      signeeMobile: options.signeeMobile,
+      signeeName: options.signeeName,
+      shareName: options.shareName,
+      shareAccount: options.shareAccount,
+      shareDate: options.shareDate,
+      shareOpenId: options.shareOpenId,
+      shareAvatar: decodeURIComponent(options.shareAvatar),
+      // signeeNameFirst: options.signeeName,
+      // signeeNameLast: "",
     });
+    this.setData({
+      openId: "1234567899",
+      unionId: "987654321",
+    });
+    // wx.login({
+    //   success: (res) => {
+    //     app.service.Global.wxGetOpenIdByCode({
+    //       code: res.code,
+    //     }).then((result) => {
+    //       this.setData({
+    //         openId: result.openId,
+    //         unionId: result.unionId,
+    //       });
+    //       wx.getUserProfile({
+    //         desc: "用于共享人识别用户", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+    //         success: (res) => {
+    //           this.setData({
+    //             userInfo: res.userInfo,
+    //             hasUserInfo: true,
+    //           });
+    //         },
+    //       });
+    //     });
+    //   },
+    // });
   },
 
   /**

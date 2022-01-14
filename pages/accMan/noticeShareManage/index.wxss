@@ -140,8 +140,15 @@
   padding: 16rpx 30rpx;
 }
 
+.name-input {
+  margin: 40rpx 30rpx 20rpx;
+}
+
 .mobile-input {
-  margin: 40rpx 30rpx 50rpx;
+  margin: 0 30rpx 50rpx;
+}
+
+.custom-input {
   height: 80rpx;
   line-height: 80rpx;
   background: #f7f7f7;

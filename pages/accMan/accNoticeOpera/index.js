@@ -1,76 +1,100 @@
 // pages/User/index.js
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
+const openId = wx.getStorageSync("openid");
+const unionId = wx.getStorageSync("unionId");
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    loading: false,
-    columns: [
-      {
-        values: ["623112321452325345564", "623112321452325345562"],
-        defaultIndex: 0,
-      },
-    ],
-    accountNum: "",
-    phoneNum: "",
+    columnsAccount: [],
+    selectedAccount: {},
+    // mobilePhone: "",
     verifyCode: "",
-    showPopup: false,
-    countDownFlag: true,
     countDownNum: 60,
-    operaName: "",
+    countDownFlag: true,
+    indexCode: "",
+    currTransactionId: "",
   },
-  selectAccountNum() {
+  goNext() {
+    // 签约
+    if (this.data.currTransactionId === "wxDycAcNoticeSign") {
+      app.service.AccountMan.wxDycAcNoticeSign({
+        openId,
+        unionId,
+        acNo: this.data.selectedAccount.acNo,
+      }).then((res) => {
+        // TODO: 操作之后的交互
+        console.log(res);
+      });
+    } else {
+      // 解约
+      app.service.AccountMan.wxDycAcNoticeRelSign({
+        openId,
+        unionId,
+        acNo: this.data.selectedAccount.acNo,
+      }).then((res) => {
+        // TODO: 操作之后的交互
+        console.log(res);
+      });
+    }
+  },
+  onAcClick() {
     this.setData({
-      showPopup: true,
+      showPicker: true,
     });
   },
-  onConfirm(e) {
+  // 选择器取消
+  onPickerCancel() {
     this.setData({
-      accountNum: e.detail.value,
-      showPopup: false,
+      showPicker: false,
     });
   },
-  onClose(e) {
+  // 选择器确认
+  onPickerConfirm(event) {
     this.setData({
-      showPopup: false,
+      showPicker: false,
+    });
+    const { picker, value, index } = event.detail;
+    this.setData({
+      selectedAccount: value,
     });
   },
-  bindPhoneNum(e) {
-    this.setData({
-      phoneNum: e.detail.value,
-    });
-  },
-  BindVerifyCode(e) {
+  // 输入手机号
+  // bindPhoneNum(e) {
+  //   this.setData({
+  //     mobilePhone: e.detail.value,
+  //   });
+  // },
+  // 输入验证码
+  bindPassword(e) {
     this.setData({
       verifyCode: e.detail.value,
     });
   },
   // 获取验证码
   getVercode() {
-    if (this.data.phoneNum.length != 11) {
-      wx.showToast({
-        title: "请输入手机号~！",
-        icon: "none", //icon
-        duration: 3000, //停留时间
+    if (app.util.validatePhone(this.data.selectedAccount.openMobilephone)) {
+      app.service.Global.wxCommonConfirm({
+        transactionId: this.data.currTransactionId,
+      }).then((result) => {
+        let params = {
+          mobilePhone: this.data.selectedAccount.openMobilephone,
+          transactionId: this.data.currTransactionId,
+        };
+        app.service.Global.wxSendSms(params).then((res) => {
+          this.setData({
+            indexCode: res.index,
+            verifyCode: "",
+          });
+          this.countDownF();
+          Toast("验证码已发送~！");
+        });
       });
-      return;
+    } else {
+      Toast("请输入正确格式的手机号！");
     }
-    let data = {
-      mobilePhone: this.data.phoneNum,
-      transactionId: "perAddAccount",
-    };
-    app.api.post("pweb/perSendSms.do", data).then((res) => {
-      this.countDownF();
-      this.setData({
-        messageIndex: res.data.index,
-      });
-      wx.showToast({
-        title: "验证码已发送~！",
-        icon: "none", //icon
-        duration: 3000, //停留时间
-      });
-    });
   },
   // 倒计时
   countDownF() {
@@ -92,14 +116,33 @@ Page({
       }
     }, 1000);
   },
-  goNext() {
-    console.log("下一步");
+  getUserBankCardInfo(type) {
+    app.service.Global.wxAcListQry({
+      openid: openId,
+      unionId,
+    }).then((res) => {
+      if (res.userAccount) {
+        let acList = res.userAccount.filter((item) => {
+          if (type === "1") {
+            return item.shareFlag === "C";
+          } else {
+            return item.shareFlag === "N";
+          }
+        });
+        acList = acList.map((item) => {
+          return {
+            ...item,
+            text: app.util.hiddenBankCard(item.acNo),
+          };
+        });
+        this.setData({
+          columnsAccount: acList,
+          selectedAccount: acList[0],
+        });
+      }
+    });
   },
-  onShow: function () {
-    // this.setData({
-    //   loading: true,
-    // });
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面加载
@@ -107,10 +150,13 @@ Page({
   onLoad: function (option) {
     this.setData({
       operaName: option.type === "1" ? "签约" : "解约",
+      currTransactionId:
+        option.type === "1" ? "wxDycAcNoticeSign" : "wxDycAcNoticeRelSign",
     });
     wx.setNavigationBarTitle({
       title: `动账通知分享${this.data.operaName}`,
     });
+    this.getUserBankCardInfo(option.type);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -80,6 +80,15 @@ function hiddenPhone(phone) {
   }
 }
 
+// 姓名脱敏
+function hiddenName(name) {
+  if (name && name.length > 0) {
+    var len = name.length;
+    var first = name.substring(0, len - 1);
+    return first + "*";
+  }
+}
+
 // 金额格式化 正则表达式为：\B(?=(?:\d{3})+$)（格式化可能会修改斜杠）
 function formatAmount(amount) {
   if (amount && amount.length > 0) {
@@ -97,13 +106,29 @@ function tailNumber(account) {
   }
 }
 
+// 时间戳转换
+function getTime(time) {
+  if (time && time.length > 0) {
+    var date = getDate(time);
+    var Y = date.getFullYear() + "-";
+    var M =
+      (date.getMonth() + 1 < 10
+        ? "0" + (date.getMonth() + 1)
+        : date.getMonth() + 1) + "-";
+    var D = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    return Y + M + D;
+  }
+}
+
 module.exports = {
   formatDistance: formatDistance,
   formatDate: formatDate,
   formatTime: formatTime,
   hiddenBankCard: hiddenBankCard,
   hiddenPhone: hiddenPhone,
+  hiddenName: hiddenName,
   formatAmount: formatAmount,
   formatTimeSingal: formatTimeSingal,
   tailNumber: tailNumber,
+  getTime: getTime,
 };

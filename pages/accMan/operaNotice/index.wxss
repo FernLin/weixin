@@ -63,7 +63,7 @@
   color: #4a90e2;
   font-size: 30rpx;
   line-height: 44rpx;
-  text-align: right;
+  text-align: center;
   width: 160rpx;
 }
 .count-down {
@@ -73,4 +73,19 @@
   padding: 0 30rpx;
   background-color: #fff;
   margin-top: 20rpx;
+}
+.verify-name {
+  font-size: 28rpx;
+  color: #333333;
+}
+.van-dialog__header {
+  padding: 48rpx 0 30rpx;
+  font-size: 30rpx;
+  color: #323232;
+  font-weight: 500;
+}
+.dialog-notice {
+  font-size: 30rpx;
+  color: #666666;
+  text-align: center;
 }

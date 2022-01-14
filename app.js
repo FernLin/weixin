@@ -49,7 +49,6 @@ App({
     if (openId == "" || openId == undefined) {
       wx.login({
         success: (res) => {
-          // csopenid: 已注册，csopenid1: 未注册
           service.Global.wxGetOpenIdByCode({
             code: res.code,
           }).then((result) => {

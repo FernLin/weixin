@@ -1,13 +1,14 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="manage-content">
     <view class="{{type === 'mine' ? 'main-content' : ''}}">
         <view class="bank-card posi-re" wx:if="{{type === 'mine'}}">
             <view class="info" bindtap="goTransDetail">
                 <image src="/assets/bankicon.png" />
                 <view class="flex-c">
-                    <text class="bank-card-id">{{ accountDetail.acNoHidden }}</text>
+                    <text class="bank-card-id">{{ currentAccount.acNo }}</text>
                     <view class="flex">
                         <view class="card-type">借记卡</view>
-                        <view class="card-type-1">{{ accountDetail.bankAcTypeName }}</view>
+                        <view class="card-type-1">{{ currentAccount.bankAcTypeName }}</view>
                         <view class="fen-ge"></view>
                         <view class="card-type-1">工资卡</view>
                     </view>
@@ -22,100 +23,31 @@
         <viwe class="manage-title">
             {{type === "mine" ? "共享" : "接收"}}列表
         </viwe>
-        <view class="manage-list">
-            <view class="list-item">
+        <view class="manage-list" wx:if="{{type === 'mine'}}">
+            <view class="list-item" wx:for="{{myShareList}}" wx:key="index">
                 <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
+                    <image src="{{item.headimgurl}}" />
                     <view>
-                        <text>嘿嘿嘿</text>
-                        <text>共享日期 2020-02-02</text>
+                        <text>{{item.nickname}}</text>
+                        <text>共享日期 {{util.getTime(item.busiDate)}}</text>
                     </view>
                 </view>
-                <view class="cancel-btn">
+                <view class="cancel-btn" data-item="{{item}}" bindtap="onUnbind">
                     取消
                 </view>
             </view>
-            <view class="list-item">
+        </view>
+        <view class="manage-list" wx:else>
+            <!-- <view class="manage-list"> -->
+            <view class="list-item" wx:for="{{shareMyList}}" wx:key="index">
                 <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
+                    <image src="{{item.picId}}" />
                     <view>
-                        <text>哈哈哈</text>
-                        <text>共享日期 2020-02-02</text>
+                        <text>{{item.acName}}</text>
+                        <text>共享日期 {{util.getTime(item.busiDate)}}</text>
                     </view>
                 </view>
-                <view class="cancel-btn">
-                    取消
-                </view>
-            </view>
-            <view class="list-item">
-                <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
-                    <view>
-                        <text>嘿嘿嘿</text>
-                        <text>共享日期 2020-02-02</text>
-                    </view>
-                </view>
-                <view class="cancel-btn">
-                    取消
-                </view>
-            </view>
-            <view class="list-item">
-                <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
-                    <view>
-                        <text>哈哈哈</text>
-                        <text>共享日期 2020-02-02</text>
-                    </view>
-                </view>
-                <view class="cancel-btn">
-                    取消
-                </view>
-            </view>
-            <view class="list-item">
-                <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
-                    <view>
-                        <text>嘿嘿嘿</text>
-                        <text>共享日期 2020-02-02</text>
-                    </view>
-                </view>
-                <view class="cancel-btn">
-                    取消
-                </view>
-            </view>
-            <view class="list-item">
-                <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
-                    <view>
-                        <text>哈哈哈</text>
-                        <text>共享日期 2020-02-02</text>
-                    </view>
-                </view>
-                <view class="cancel-btn">
-                    取消
-                </view>
-            </view>
-            <view class="list-item">
-                <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
-                    <view>
-                        <text>嘿嘿嘿</text>
-                        <text>共享日期 2020-02-02</text>
-                    </view>
-                </view>
-                <view class="cancel-btn">
-                    取消
-                </view>
-            </view>
-            <view class="list-item">
-                <view class="item-msg">
-                    <image src="/assets/mine/head.png" />
-                    <view>
-                        <text>哈哈哈</text>
-                        <text>共享日期 2020-02-02</text>
-                    </view>
-                </view>
-                <view class="cancel-btn">
+                <view class="cancel-btn" data-item="{{item}}" bindtap="onUnbind">
                     取消
                 </view>
             </view>
@@ -127,7 +59,8 @@
     <van-popup show="{{showDialog}}" custom-class="popup-content">
         <view class="block-content">
             <view class="title">添加共享人</view>
-            <input value="{{mobilePhone}}" type="number" bindinput="bindPhoneNum" class="mobile-input" maxlength="11" placeholder="请输入签收人手机号" placeholder-class="placehoder-color" />
+            <input value="{{signeeName}}" bindinput="bindShareName" class="custom-input name-input" placeholder="请输入签收人姓名" placeholder-class="placehoder-color" />
+            <input value="{{signeeMobile}}" type="number" bindinput="bindPhoneNum" class="custom-input mobile-input" maxlength="11" placeholder="请输入签收人手机号" placeholder-class="placehoder-color" />
             <view class="btn-content">
                 <button class="close-btn" bindtap="onClose">取消</button>
                 <button class="confirm-btn" open-type="share" disabled="{{disabled}}">确认</button>
@@ -135,3 +68,5 @@
         </view>
     </van-popup>
 </view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

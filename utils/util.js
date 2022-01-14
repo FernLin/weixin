@@ -34,6 +34,23 @@ const times = (data) => {
   var D = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
   return Y + M + D;
 };
+// 时间戳转换
+const getFullTimes = (data) => {
+  var date = new Date(data);
+  var year = date.getFullYear() + "-";
+  var month =
+    (date.getMonth() + 1 < 10
+      ? "0" + (date.getMonth() + 1)
+      : date.getMonth() + 1) + "-";
+  var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+  var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+  var minute =
+    date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+  var second =
+    date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+  var time = hour + ":" + minute + ":" + second;
+  return year + month + day + " " + time;
+};
 // 当前日期
 const dates = () => {
   let date = {
@@ -293,4 +310,5 @@ module.exports = {
   formatAccountNo,
   formatPhoneNo,
   validatePhone,
+  getFullTimes,
 };

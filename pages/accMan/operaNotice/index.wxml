@@ -1,18 +1,25 @@
 <wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view>
   <view class="main-content">
-    <image class="img-avatar" src="{{ avatarUrl }}" />
-    <view class="word-name">{{name}}</view>
+    <image class="img-avatar" src="{{ shareAvatar }}" />
+    <view class="word-name">{{shareName}}</view>
     <view class="account-content">
       <image class="img-logo" src="/assets/bankicon.png" />
       <view class="account-block">
         <view>赣州银行</view>
-        <view>{{util.hiddenBankCard(account)}}</view>
+        <view>{{util.hiddenBankCard(shareAccount)}}</view>
       </view>
     </view>
   </view>
   <view class="input-block">
-    <my-field label="短信验证码" useSlot hideBorder>
+    <my-field label="请验证姓名" useSlot hideBorder>
+      <view class="verify-content">
+        <view class="verify-name">{{util.hiddenName(signeeName)}}</view>
+        <view class="mess-fen-ge"></view>
+        <view bindtap="verifyName" class="get-vercode">点此验证</view>
+      </view>
+    </my-field>
+    <my-field label="短信验证码" useSlot>
       <view class="verify-content">
         <input value="{{verifyCode}}" bindinput="bindPassword" maxlength="6" placeholder="请输入验证码" type="text" class="custom-input" placeholder-class="placehoder-color" />
         <view class="mess-fen-ge"></view>
@@ -21,5 +28,13 @@
       </view>
     </my-field>
   </view>
-  <view class="next-step-btn">确认动账通知</view>
+  <view class="next-step-btn" bindtap="onConfirm">确认动账通知</view>
 </view>
+<van-dialog use-slot custom-style="width: 630rpx;border-radius: 12rpx;" title="确认共享人身份" show="{{ showDialog }}" show-cancel-button bind:close="onDialogClose" bind:confirm="onDialogConfirm">
+  <view>
+    <view class="dialog-notice">请填写姓名末尾字，以确认你的身份信息</view>
+    <view>
+      <text>{{signeeNameFirst}}</text>
+    </view>
+  </view>
+</van-dialog>

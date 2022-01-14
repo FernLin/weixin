@@ -37,6 +37,7 @@ Page({
     }).then((res) => {
       if (res.userAccount) {
         wx.setStorageSync("bankCardList", res.userAccount);
+        wx.setStorageSync("currentDate", res.currDate);
         this.setData({
           bankCardList: res.userAccount,
         });

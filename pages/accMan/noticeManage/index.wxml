@@ -1,30 +1,30 @@
 <view>
-    <image class="noticeBg" src="/assets/mine/noticeBg.png" />
+    <image class="noticeBg" src="/pages/accMan/assets/noticeBg.png" />
     <view class="notice-content">
         <view class="notice-item" data-type="receive" bindtap="jumpTo">
             <view class="item-describe">
-                <image class="" src="/assets/mine/shareReceive.png" />
+                <image class="" src="/pages/accMan/assets/shareReceive.png" />
                 <text>接收共享管理</text>
             </view>
             <van-icon class="right-icon" name="arrow" />
         </view>
         <!-- <view class="notice-item" bindtap="goNoticeQuery">
             <view class="item-describe">
-                <image class="" src="/assets/mine/shareQuery.png" />
+                <image class="" src="/pages/accMan/assets/shareQuery.png" />
                 <text>动账通知分享查询</text>
             </view>
             <van-icon class="right-icon" name="arrow" />
         </view> -->
         <view class="notice-item" bindtap="goNoticeBind">
             <view class="item-describe">
-                <image class="" src="/assets/mine/shareBind.png" />
+                <image class="" src="/pages/accMan/assets/shareBind.png" />
                 <text>动账通知分享签约</text>
             </view>
             <van-icon class="right-icon" name="arrow" />
         </view>
         <view class="notice-item" bindtap="goNoticeUnbind">
             <view class="item-describe">
-                <image class="" src="/assets/mine/shareUnbind.png" />
+                <image class="" src="/pages/accMan/assets/shareUnbind.png" />
                 <text>动账通知分享解约</text>
             </view>
             <van-icon class="right-icon" name="arrow" />
