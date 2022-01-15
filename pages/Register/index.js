@@ -34,43 +34,40 @@ Page({
   },
   // 下一步 TODO: 注册完成进入绑定页面后点击返回键应该跳转到哪里？
   toNext() {
-    wx.reLaunch({
-      url: "/pages/accMan/bindCard/index?fromRegister=true",
+    const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxCifSign",
+      mobilePhone: this.data.mobile,
+    }).then((result) => {
+      if (result.authRes) {
+        const params = {
+          mobilePhone: this.data.mobile,
+          openid: openId,
+          unionId,
+        };
+        app.service.Global.wxCifSign(params)
+          .then((res) => {
+            if (res) {
+              wx.reLaunch({
+                url: "/pages/accMan/bindCard/index?fromRegister=true",
+              });
+            }
+          })
+          .catch((err) => {
+            this.setData({
+              countDownFlag: true,
+              countDownNum: 60,
+            });
+          });
+      } else {
+        this.setData({
+          showOfficial: true,
+        });
+      }
     });
-    // const openId = wx.getStorageSync("openid");
-    // const unionId = wx.getStorageSync("unionId");
-    // app.service.Global.wxAuthSmsNoLogin({
-    //   index: this.data.indexCode,
-    //   code: this.data.verifyCode,
-    //   transactionId: "wxCifSign",
-    //   mobilePhone: this.data.mobile,
-    // }).then((result) => {
-    //   if (result.authRes) {
-    //     const params = {
-    //       mobilePhone: this.data.mobile,
-    //       openid: openId,
-    //       unionId,
-    //     };
-    //     app.service.Global.wxCifSign(params)
-    //       .then((res) => {
-    //         if (res) {
-    //           wx.reLaunch({
-    //             url: "/pages/accMan/bindCard/index?fromRegister=true",
-    //           });
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         this.setData({
-    //           countDownFlag: true,
-    //           countDownNum: 60,
-    //         });
-    //       });
-    //   } else {
-    //     this.setData({
-    //       showOfficial: true,
-    //     });
-    //   }
-    // });
   },
   // 获取验证码
   getVercode() {

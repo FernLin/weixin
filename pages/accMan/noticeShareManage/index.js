@@ -22,7 +22,7 @@ Page({
     shareMyList: [],
   },
   onUnbind(e) {
-    // TODO：提示语
+    // TODO：二次确认提示语
     Dialog.confirm({
       title: "提示",
       message: "是否确认解除当前签约用户？",

@@ -89,3 +89,24 @@
   color: #666666;
   text-align: center;
 }
+.verify-block {
+  margin: 30rpx 0 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verify-block text {
+  font-size: 34rpx;
+  color: #333333;
+}
+.name-input {
+  width: 56rpx;
+  height: 80rpx;
+  background-color: #f7f7f7;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 12rpx;
+  margin-left: 24rpx;
+  font-size: 34rpx;
+  color: #333333;
+  padding-left: 20rpx;
+}

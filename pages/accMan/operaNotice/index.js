@@ -1,5 +1,6 @@
 // pages/accMan/operaNotice/index.js
 import Dialog from "@vant/weapp/dialog/dialog";
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 Page({
   /**
@@ -24,8 +25,19 @@ Page({
     hasUserInfo: false,
     userInfo: {},
     showDialog: false,
+    lastName: "",
+    nameVerified: false,
   },
   onConfirm() {
+    // TODO: 校验失败提示语
+    if (!this.data.nameVerified) {
+      Toast("姓名验证失败，请核验！");
+      return;
+    }
+    if (!this.data.verifyCode) {
+      Toast("请输入验证码！");
+      return;
+    }
     if (!this.data.hasUserInfo) {
       wx.getUserProfile({
         desc: "用于共享人识别用户", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
@@ -53,13 +65,26 @@ Page({
       headimgurl: avatarUrl,
       shareHeadimgurl: this.data.shareAvatar,
     };
-    app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
-      console.log(res);
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxNoticeClassShareSignIn",
+      mobilePhone: this.data.openMobile,
+    }).then((result) => {
+      app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
+        // TODO: 签约成功后跳转页面
+        console.log(res);
+      });
     });
   },
   verifyName() {
     this.setData({
       showDialog: true,
+    });
+  },
+  bindName(e) {
+    this.setData({
+      lastName: e.detail.value,
     });
   },
   onDialogClose() {
@@ -68,9 +93,15 @@ Page({
     });
   },
   onDialogConfirm() {
-    this.setData({
-      showDialog: false,
-    });
+    if (this.data.lastName === this.data.signeeNameLast) {
+      this.setData({
+        showDialog: false,
+        nameVerified: true,
+      });
+    } else {
+      // TODO: 确认提示语
+      Toast("姓名验证失败，请核验！");
+    }
   },
   // 输入验证码
   bindPassword(e) {
@@ -135,8 +166,8 @@ Page({
       shareDate: options.shareDate,
       shareOpenId: options.shareOpenId,
       shareAvatar: decodeURIComponent(options.shareAvatar),
-      // signeeNameFirst: options.signeeName,
-      // signeeNameLast: "",
+      signeeNameFirst: options.signeeName.substr(0, len - 1),
+      signeeNameLast: options.signeeName.substr(-1),
     });
     this.setData({
       openId: "1234567899",
