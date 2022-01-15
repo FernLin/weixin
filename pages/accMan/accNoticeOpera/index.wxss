@@ -46,3 +46,8 @@
 .count-down {
   width: 160rpx;
 }
+.dialog-notice {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: 500;
+}

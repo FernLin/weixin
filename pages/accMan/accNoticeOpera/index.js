@@ -16,6 +16,8 @@ Page({
     countDownFlag: true,
     indexCode: "",
     currTransactionId: "",
+    operaType: "",
+    showDialog: false,
   },
   goNext() {
     // 签约
@@ -25,8 +27,10 @@ Page({
         unionId,
         acNo: this.data.selectedAccount.acNo,
       }).then((res) => {
-        // TODO: 操作之后的交互
-        console.log(res);
+        this.setData({
+          showDialog: true,
+        });
+        this.getUserBankCardInfo(this.data.operaType);
       });
     } else {
       // 解约
@@ -35,8 +39,10 @@ Page({
         unionId,
         acNo: this.data.selectedAccount.acNo,
       }).then((res) => {
-        // TODO: 操作之后的交互
-        console.log(res);
+        this.setData({
+          showDialog: true,
+        });
+        this.getUserBankCardInfo(this.data.operaType);
       });
     }
   },
@@ -139,6 +145,9 @@ Page({
           columnsAccount: acList,
           selectedAccount: acList[0],
         });
+        if (acList.length === 0) {
+          Toast(`暂无可${this.data.operaType === '1' ? '签' : '解'}约账户`);
+        }
       }
     });
   },
@@ -149,6 +158,7 @@ Page({
    */
   onLoad: function (option) {
     this.setData({
+      operaType: option.type,
       operaName: option.type === "1" ? "签约" : "解约",
       currTransactionId:
         option.type === "1" ? "wxDycAcNoticeSign" : "wxDycAcNoticeRelSign",

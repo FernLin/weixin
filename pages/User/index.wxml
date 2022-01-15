@@ -20,10 +20,10 @@
                     <image src="/assets/mine/head.png" class="user-head-png" />
                     <view class="top-n" bindtap="toSetting"> {{util.hiddenPhone(bindMobile)}} </view>
                 </view>
-                <view class="flex-c ai-c" bindtap="downloadApp">
+                <!-- <view class="flex-c ai-c" bindtap="downloadApp">
                     <image src="/assets/mine/downicon.png" class="down-i" />
                     <view class="down-txt">手机银行下载</view>
-                </view>
+                </view> -->
             </view>
         </view>
     </view>

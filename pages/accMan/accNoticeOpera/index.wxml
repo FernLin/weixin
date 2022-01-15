@@ -18,6 +18,11 @@
 
 </view>
 <view class="next-step" bindtap="goNext">{{operaName}}</view>
+<van-dialog use-slot custom-style="width: 630rpx;border-radius: 12rpx;" title="签约结果" show="{{ showDialog }}">
+    <view>
+        <view class="dialog-notice">{{operaType === '1' ? '签约成功' : '解约成功'}}</view>
+    </view>
+</van-dialog>
 
 <my-picker show="{{ showPicker }}" columns="{{ columnsAccount }}" title="选择账户" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
 <van-toast id="van-toast" />
