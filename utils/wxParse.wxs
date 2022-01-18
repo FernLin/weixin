@@ -92,7 +92,7 @@ function hiddenName(name) {
 // 金额格式化 正则表达式为：\B(?=(?:\d{3})+$)（格式化可能会修改斜杠）
 function formatAmount(amount) {
   if (amount && amount.length > 0) {
-    var regexp = getRegExp("B(?=(?:d{3})+$)", "g");
+    var regexp = getRegExp("\B(?=(?:\d{3})+$)", "g");
     var strArr = parseFloat(amount).toFixed(2).toString().split(".");
     var hiddenNum = strArr[0].replace(regexp, ",") + "." + strArr[1];
     return hiddenNum;

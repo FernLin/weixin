@@ -26,10 +26,10 @@
   font-size: 30rpx;
   line-height: 44rpx;
   text-align: right;
-  width: 160rpx;
+  width: 170rpx;
 }
 .count-down {
-  width: 160rpx;
+  width: 170rpx;
 }
 
 .mess-input {

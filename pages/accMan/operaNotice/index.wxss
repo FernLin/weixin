@@ -64,10 +64,10 @@
   font-size: 30rpx;
   line-height: 44rpx;
   text-align: center;
-  width: 160rpx;
+  width: 170rpx;
 }
 .count-down {
-  width: 160rpx;
+  width: 170rpx;
 }
 .input-block {
   padding: 0 30rpx;

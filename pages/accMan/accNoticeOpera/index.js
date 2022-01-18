@@ -20,6 +20,10 @@ Page({
     showDialog: false,
   },
   goNext() {
+    if (this.data.selectedAccount.optionFlag === "0") {
+      Toast("该账户尚未开通动账通知功能！");
+      return;
+    }
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
@@ -149,13 +153,24 @@ Page({
             text: app.util.hiddenBankCard(item.acNo),
           };
         });
+        if (acList.length === 0) {
+          Toast(`暂无可${this.data.operaType === "1" ? "签" : "解"}约账户`);
+          this.setData({
+            columnsAccount: [],
+            selectedAccount: {},
+            countDownFlag: true,
+            countDownNum: 60,
+            verifyCode: "",
+          });
+          return;
+        }
         this.setData({
           columnsAccount: acList,
           selectedAccount: acList[0],
+          countDownFlag: true,
+          countDownNum: 60,
+          verifyCode: "",
         });
-        if (acList.length === 0) {
-          Toast(`暂无可${this.data.operaType === "1" ? "签" : "解"}约账户`);
-        }
       }
     });
   },

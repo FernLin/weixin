@@ -41,13 +41,20 @@
   font-size: 30rpx;
   line-height: 44rpx;
   text-align: right;
-  width: 160rpx;
+  width: 170rpx;
 }
 .count-down {
-  width: 160rpx;
+  width: 170rpx;
 }
 .dialog-notice {
   font-size: 32rpx;
   color: #333333;
   font-weight: 500;
+  text-align: center;
+  margin: 60rpx 0;
+}
+.dialog-notice image {
+  margin-bottom: 30rpx;
+  width: 118rpx;
+  height: 118rpx;
 }

@@ -43,7 +43,7 @@
   font-weight: 400;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .card-balance:first-child {
@@ -52,6 +52,7 @@
 
 .card-balance text:first-child {
   color: #646464;
+  min-width: 170rpx;
 }
 
 .fen-ge {
