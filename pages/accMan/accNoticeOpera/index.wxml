@@ -20,7 +20,7 @@
 <view class="next-step" bindtap="goNext">{{operaName}}</view>
 <van-dialog use-slot custom-style="width: 630rpx;border-radius: 12rpx;" title="签约结果" show="{{ showDialog }}">
     <view class="dialog-notice">
-        <image class="" src="/pages/accMan/assets/success.png" />
+        <image src="/pages/accMan/assets/success.png" />
         <view>{{operaType === '1' ? '签约成功' : '解约成功'}}</view>
     </view>
 </van-dialog>

@@ -110,3 +110,39 @@
   color: #333333;
   padding-left: 20rpx;
 }
+.popup-content {
+  width: 690rpx;
+  border-radius: 12rpx;
+  top: 40%;
+}
+.result-content {
+  padding: 30rpx 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  font-size: 32rpx;
+  color: #323232;
+  font-weight: 500;
+}
+.success-word {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+  margin: 0 0 60rpx;
+}
+.success-img {
+  margin: 60rpx 0 30rpx;
+  width: 118rpx;
+  height: 118rpx;
+}
+.back-btn {
+  width: 100%;
+  text-align: center;
+  padding: 30rpx 0;
+  border-top: 1rpx solid #e6e6e6;
+  color: #e43234;
+  font-size: 32rpx;
+}
