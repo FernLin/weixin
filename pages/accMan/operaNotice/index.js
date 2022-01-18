@@ -69,7 +69,7 @@ Page({
       index: this.data.indexCode,
       code: this.data.verifyCode,
       transactionId: "wxNoticeClassShareSignIn",
-      mobilePhone: this.data.openMobile,
+      mobilePhone: this.data.signeeMobile,
     }).then((result) => {
       app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
         this.setData({
