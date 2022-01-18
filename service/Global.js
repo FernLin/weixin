@@ -7,7 +7,7 @@ export default {
    * }
    */
   wxGetUserInfo(params) {
-    return post("wxGetUserInfo.do", params);
+    return post("wxGetUserInfo.do", params, false);
   },
   /**
    * 用户注册
@@ -102,5 +102,21 @@ export default {
    */
   wxRelBindUser(params) {
     return post("wxRelBindUser.do", params);
+  },
+  /**
+   * 验证用户信息
+   * @param {
+   * openid: 用户openid
+   * unionId: 用户unionId
+   * idType: "110001",
+   * cifName: 用户姓名,
+   * idNo: 用户身份证号,
+   * mobilePhone: 用户手机号,
+   * acNo: 用户卡号,
+   * thirdType: "gzwxapplet",
+   * }
+   */
+  wxBindRelationship(params) {
+    return post("wxBindRelationship.do", params);
   },
 };

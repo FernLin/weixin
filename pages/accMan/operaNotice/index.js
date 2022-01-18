@@ -29,7 +29,6 @@ Page({
     nameVerified: false,
   },
   onConfirm() {
-    // TODO: 校验失败提示语
     if (!this.data.nameVerified) {
       Toast("姓名验证失败，请核验！");
       return;
@@ -99,7 +98,6 @@ Page({
         nameVerified: true,
       });
     } else {
-      // TODO: 确认提示语
       Toast("姓名验证失败，请核验！");
     }
   },

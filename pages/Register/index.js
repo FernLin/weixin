@@ -32,7 +32,7 @@ Page({
       checked: event.detail,
     });
   },
-  // 下一步 TODO: 注册完成进入绑定页面后点击返回键应该跳转到哪里？
+
   toNext() {
     const openId = wx.getStorageSync("openid");
     const unionId = wx.getStorageSync("unionId");
@@ -50,9 +50,19 @@ Page({
         };
         app.service.Global.wxCifSign(params)
           .then((res) => {
-            if (res) {
+            // openFlag为true，新用户注册成功，跳转至绑卡页面，TODO:返回操作时跳转微服务页面
+            if (res.openFlag) {
               wx.reLaunch({
                 url: "/pages/accMan/bindCard/index?fromRegister=true",
+              });
+            } else {
+              // openFlag为false，跳转至用户信息验证页面，返回操作时跳转注册页面
+              wx.navigateTo({
+                url:
+                  "/pages/accMan/verifyCard/index?whetherVerifyCard=" +
+                  res.whetherVerifyCard +
+                  "&mobilePhone=" +
+                  this.data.mobile,
               });
             }
           })

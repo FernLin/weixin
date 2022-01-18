@@ -61,6 +61,7 @@
       "pages": [
         "index",
         "bindCard/index",
+        "verifyCard/index",
         "accNotice/index",
         "accNoticeOpera/index",
         "openAccount/index",

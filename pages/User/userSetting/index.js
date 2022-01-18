@@ -87,7 +87,7 @@ Page({
         .then((res) => {
           if (res) {
             Toast("解绑成功~");
-            // TODO：确认解绑微信后需要跳转的页面
+            // TODO：确认解绑微信后需要跳转的页面--最好退出小程序
             wx.reLaunch({
               url: "/pages/Register/index",
             });

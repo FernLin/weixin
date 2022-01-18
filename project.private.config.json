@@ -25,10 +25,11 @@
           "scene": null
         },
         {
-          "name": "pages/accountManage/electronicOpenAccount/index",
-          "pathName": "pages/accountManage/electronicOpenAccount/index",
-          "query": "",
-          "scene": null
+          "name": "校验用户",
+          "pathName": "pages/accMan/verifyCard/index",
+          "query": "whetherVerifyCard=true&mobilePhone=15779000892",
+          "scene": null,
+          "launchMode": "default"
         },
         {
           "name": "注册页面开发",

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "用户信息验证",
+    "usingComponents": {
+        "my-picker": "/components/myPicker/index"
+    }
+}

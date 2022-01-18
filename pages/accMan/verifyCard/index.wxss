@@ -1,0 +1,126 @@
+.bank-icon {
+  width: 132rpx;
+  height: 128rpx;
+  margin: 50rpx 0;
+}
+
+.card-info {
+  background: #fff;
+  font-family: PingFang SC;
+  color: #646464;
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.input1 {
+  border-bottom: solid 2rpx #eee;
+  height: 100rpx;
+  box-sizing: border-box;
+}
+
+.input1 > text {
+  color: #646464;
+}
+
+.input-saomiao {
+  width: calc(100% - 52rpx);
+}
+
+.saomiao-css {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+
+.id-card-icon {
+  margin-left: 20rpx;
+  height: 20rpx;
+  color: #c4c4c4;
+}
+
+.card-type {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.yzm-css {
+  width: 179rpx;
+  height: 56rpx;
+  border: 1rpx solid;
+  border-color: #979797;
+  margin-left: 39rpx;
+}
+
+.mess-fen-ge {
+  height: 51rpx;
+  border-right: 1rpx solid;
+  border-color: #e6e6e6;
+  margin: 0 30rpx;
+}
+
+.get-vercode {
+  color: #4a90e2;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  text-align: right;
+  width: 160rpx;
+}
+.count-down {
+  width: 160rpx;
+}
+
+.mess-input {
+  width: 240rpx;
+}
+
+.next-step {
+  margin: 64rpx 30rpx;
+  height: 90rpx;
+  background-color: #e43234;
+  border-radius: 45rpx;
+
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.unbind-popup > view {
+  padding-top: 60rpx;
+  margin-bottom: 40rpx;
+}
+
+.unbind-popup > input {
+  padding-bottom: 80rpx;
+}
+
+.van-popup-m .van-popup {
+  width: 80%;
+  border-radius: 20rpx;
+  top: 30% !important;
+}
+
+.closeBtn {
+  right: 0;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.placehoder-color {
+  color: #c4c4c4;
+}
+.jump {
+  margin-top: 64rpx;
+  font-size: 30rpx;
+  color: #3378f6;
+  text-align: center;
+}
