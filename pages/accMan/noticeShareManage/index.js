@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentAccount: wx.getStorageSync("currentAccount"),
+    currentAccount: wx.getStorage("currentAccount"),
     type: "",
     showDialog: false,
     signeeName: "",

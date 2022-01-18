@@ -19,7 +19,6 @@ Page({
   },
   // 下载或唤醒app
   downloadApp() {
-    console.log("跳转至下载app页面");
     const url = "http://115.150.104.8:8092/#/openBankApp";
     const navtitle = "手机银行下载";
     wx.navigateTo({
@@ -41,6 +40,7 @@ Page({
         this.setData({
           bankCardList: res.userAccount,
         });
+        if(res.userAccount.length > 0) this.getRecordList();
       }
     });
   },
@@ -127,7 +127,6 @@ Page({
   // 判断登录
   onShow: function () {
     this.getUserBankCardInfo();
-    this.getRecordList();
     this.setData({
       showService: true,
     });
