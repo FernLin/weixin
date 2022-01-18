@@ -44,8 +44,7 @@
                         <image src="/assets/mine/cardTag.png" />
                         <text class="b-c-num">{{ util.hiddenBankCard(item.acNo) }}</text>
                         <view class="flex b-c-t">
-                            <view>借记卡</view>
-                            <view>{{ item.bankAcTypeName }}</view>
+                            <view>{{ util.formatBankType(item.bankAcType) }}</view>
                         </view>
                         <view class="b-c-add">账户余额（元）</view>
                         <view class="b-c-m">{{util.formatAmount(item.accBal)}}</view>
@@ -59,8 +58,7 @@
                 <image src="/assets/mine/cardTag.png" />
                 <text class="b-c-num">{{ util.hiddenBankCard(bankCardList[0].acNo) }}</text>
                 <view class="flex b-c-t">
-                    <view>借记卡</view>
-                    <view>{{ bankCardList[0].bankAcTypeName }}</view>
+                    <view>{{ util.formatBankType(bankCardList[0].bankAcType) }}</view>
                 </view>
                 <view class="b-c-add">账户余额（元）</view>
                 <view class="b-c-m">{{util.formatAmount(bankCardList[0].accBal)}}</view>

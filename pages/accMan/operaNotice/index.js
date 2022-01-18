@@ -116,6 +116,7 @@ Page({
         let params = {
           mobilePhone: this.data.signeeMobile,
           transactionId: "wxNoticeClassShareSignIn",
+          templateId: "wxNoticeClassShareSignInTemplate",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({

@@ -1,5 +1,6 @@
 // pages/accMan/accDetail/index.js
 import Dialog from "@vant/weapp/dialog/dialog";
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 const openId = wx.getStorageSync("openid");
 const unionId = wx.getStorageSync("unionId");
@@ -8,9 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loading: false,
     accountDetail: "",
     noticeSwitch: false,
+    unbindPopup: false,
+    verifyCode: "",
+    countDownFlag: true,
+    countDownNum: 60,
+    status: "",
   },
 
   // 交易明细
@@ -21,9 +26,12 @@ Page({
   },
 
   onChange(data) {
-    let status = data.detail ? "1" : "0";
     if (data.detail) {
-      this.handleNoatice(status);
+      this.setData({
+        unbindPopup: true,
+        status: data.detail ? "1" : "0",
+      });
+      this.getVercode();
     } else {
       Dialog.confirm({
         title: "提示",
@@ -32,25 +40,40 @@ Page({
         cancelButtonText: "取消",
       })
         .then(() => {
-          this.handleNoatice(status);
-        })
-        .catch(() => {
-          console.log("暂不关闭");
+          this.setData({
+            unbindPopup: true,
+            status: data.detail ? "1" : "0",
+          });
+          this.getVercode();
         });
     }
   },
 
-  handleNoatice(status) {
+  handleNoatice() {
     app.service.AccountMan.wxMovingAccountNoticeOpenAndClose({
       cardNo: this.data.accountDetail.acNo,
       phoneNo: this.data.accountDetail.openMobilephone,
-      status,
+      status: this.data.status,
       openId,
       unionId,
     }).then((res) => {
       this.setData({
-        noticeSwitch: status === "1",
+        noticeSwitch: this.data.status === "1",
       });
+    });
+  },
+
+  onPopupConfirm() {
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxMovingAccountNoticeOpenAndClose",
+      mobilePhone: this.data.accountDetail.openMobilephone,
+    }).then((result) => {
+      this.setData({
+        unbindPopup: false,
+      });
+      this.handleNoatice();
     });
   },
 
@@ -61,6 +84,60 @@ Page({
         event.currentTarget.dataset.type,
     });
   },
+  // 发送解绑验证码
+  getVercode() {
+    if (app.util.validatePhone(this.data.accountDetail.openMobilephone)) {
+      app.service.Global.wxCommonConfirm({
+        transactionId: "wxMovingAccountNoticeOpenAndClose",
+      }).then((result) => {
+        let params = {
+          mobilePhone: this.data.accountDetail.openMobilephone,
+          transactionId: "wxMovingAccountNoticeOpenAndClose",
+        };
+        app.service.Global.wxSendSms(params).then((res) => {
+          this.setData({
+            indexCode: res.index,
+            verifyCode: "",
+          });
+          this.countDownF();
+          Toast("验证码已发送~！");
+        });
+      });
+    } else {
+      Toast("请输入正确格式的手机号！");
+    }
+  },
+  // 输入验证码
+  verifyInput(event) {
+    this.setData({
+      verifyCode: event.detail.value,
+    });
+  },
+  // 关闭弹框
+  closePopup() {
+    this.setData({
+      unbindPopup: false,
+    });
+  },
+  countDownF() {
+    let _this = this;
+    this.setData({
+      countDownFlag: false,
+      countDownNum: 60,
+    });
+    let timer = setInterval(function () {
+      if (_this.data.countDownNum != 0) {
+        _this.setData({
+          countDownNum: _this.data.countDownNum - 1,
+        });
+      } else {
+        clearInterval(timer);
+        _this.setData({
+          countDownFlag: true,
+        });
+      }
+    }, 1000);
+  },
 
   onShow: function () {},
 
@@ -70,7 +147,6 @@ Page({
   onLoad: function (options) {
     const currentAccount = JSON.parse(decodeURIComponent(options.obj));
     this.setData({
-      loading: false,
       accountDetail: currentAccount,
       noticeSwitch: currentAccount.optionFlag === "1",
     });

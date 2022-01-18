@@ -26,15 +26,9 @@
 }
 
 .card-type {
-  font-weight: 600;
   font-size: 28rpx;
   line-height: 44rpx;
   margin-right: 50rpx;
-}
-
-.card-type-1 {
-  font-size: 24rpx;
-  line-height: 36rpx;
 }
 
 .fen-ge {

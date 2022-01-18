@@ -5,12 +5,9 @@
             <view class="info" bindtap="goTransDetail">
                 <image src="/assets/bankicon.png" />
                 <view class="flex-c">
-                    <text class="bank-card-id">{{ currentAccount.acNo }}</text>
+                    <text class="bank-card-id">{{ util.hiddenBankCard(currentAccount.acNo) }}</text>
                     <view class="flex">
-                        <view class="card-type">借记卡</view>
-                        <view class="card-type-1">{{ currentAccount.bankAcTypeName }}</view>
-                        <view class="fen-ge"></view>
-                        <view class="card-type-1">工资卡</view>
+                        <view class="card-type">{{util.formatBankType(currentAccount.bankAcType)}}</view>
                     </view>
                 </view>
             </view>
@@ -23,7 +20,11 @@
         <viwe class="manage-title">
             {{type === "mine" ? "共享" : "接收"}}列表
         </viwe>
-        <view class="manage-list" wx:if="{{type === 'mine'}}">
+        <view class="manage-list {{myShareList.length === 0 ? 'empty-block' : ''}}" wx:if="{{type === 'mine'}}">
+            <view wx:if="{{myShareList.length === 0}}" class="empty-content">
+                <image src="/assets/empty.png" />
+                <view>暂无共享哦~</view>
+            </view>
             <view class="list-item" wx:for="{{myShareList}}" wx:key="index">
                 <view class="item-msg">
                     <image src="{{item.headimgurl}}" />
@@ -37,8 +38,11 @@
                 </view>
             </view>
         </view>
-        <view class="manage-list" wx:else>
-            <!-- <view class="manage-list"> -->
+        <view class="manage-list {{shareMyList.length === 0 ? 'empty-block' : ''}}" wx:else>
+            <view wx:if="{{shareMyList.length === 0}}" class="empty-content">
+                <image src="/assets/empty.png" />
+                <view>暂无共享哦~</view>
+            </view>
             <view class="list-item" wx:for="{{shareMyList}}" wx:key="index">
                 <view class="item-msg">
                     <image src="{{item.picId}}" />

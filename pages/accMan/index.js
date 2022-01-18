@@ -15,7 +15,6 @@ Page({
     bankCardArr: [],
     unbindPopup: false,
     verifyCode: "",
-    loading: false,
     countDownFlag: true,
     countDownNum: 60,
     unbindCardNo: "",

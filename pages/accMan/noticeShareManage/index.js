@@ -35,8 +35,8 @@ Page({
           shareOpenId: e.currentTarget.dataset.item.openid,
           unBindFlag: this.data.type === "mine" ? "0" : "1",
         }).then((res) => {
-          // TODO: 操作成功之后的跳转
-          console.log(res);
+          Toast("解除用户成功！");
+          this.getUserList();
         });
       })
       .catch(() => {
@@ -119,7 +119,6 @@ Page({
       openId,
       unionId,
     }).then((res) => {
-      // TODO: 数据为空时的显示
       this.setData({
         myShareList: res.myShareList,
         shareMyList: res.shareMyList,

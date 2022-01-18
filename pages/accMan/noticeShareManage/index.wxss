@@ -35,15 +35,9 @@
 }
 
 .card-type {
-  font-weight: 600;
   font-size: 28rpx;
   line-height: 44rpx;
   margin-right: 50rpx;
-}
-
-.card-type-1 {
-  font-size: 24rpx;
-  line-height: 36rpx;
 }
 
 .fen-ge {
@@ -91,6 +85,9 @@
 .manage-list {
   background-color: #fff;
   padding: 0 30rpx;
+}
+.empty-block {
+  background-color: unset;
 }
 .list-item {
   padding: 36rpx 0;
@@ -203,4 +200,19 @@
   font-size: 32rpx;
   color: #f51616;
   border-left: 1rpx solid #e6e6e6 !important;
+}
+.empty-content {
+  margin-top: 180rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.empty-content image {
+  width: 320rpx;
+  height: 230rpx;
+}
+.empty-content view {
+  margin-top: 30rpx;
+  color: #666666;
+  font-weight: 400;
 }

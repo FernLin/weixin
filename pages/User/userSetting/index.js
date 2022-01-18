@@ -11,13 +11,12 @@ Page({
   data: {
     unbindPopup: false,
     verifyCode: "",
-    loading: false,
     countDownFlag: true,
     countDownNum: 60,
     openMobile: wx.getStorageSync("mobilePhone"),
     indexCode: "",
   },
-  // 解绑银行卡校验
+  // 解绑
   onClick(e) {
     Dialog.confirm({
       title: "提示",

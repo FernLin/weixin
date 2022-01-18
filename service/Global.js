@@ -76,6 +76,7 @@ export default {
    * @param {
    * transactionId: 接口名称id
    * mobilePhone: 手机号码
+   * templateId: 短信模版Id
    * }
    */
   wxSendSms(params) {

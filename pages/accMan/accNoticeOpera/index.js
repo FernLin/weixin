@@ -88,6 +88,7 @@ Page({
         let params = {
           mobilePhone: this.data.selectedAccount.openMobilephone,
           transactionId: this.data.currTransactionId,
+          templateId: this.data.currTransactionId + "Template",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({
