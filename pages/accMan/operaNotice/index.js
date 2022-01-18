@@ -71,7 +71,7 @@ Page({
       mobilePhone: this.data.openMobile,
     }).then((result) => {
       app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
-        // TODO: 签约成功后跳转页面
+        // TODO: 签约成功后跳转页面--最好退出小程序
         console.log(res);
       });
     });

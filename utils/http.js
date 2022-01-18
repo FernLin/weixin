@@ -1,11 +1,11 @@
 // const baseUrl = "http://115.150.104.9:8091/xiaxinyang/wxmini/"; //夏新阳
-const baseUrl = "http://115.150.104.9:8091/chentianlong/wxmini/"; //陈天龙
+// const baseUrl = "http://115.150.104.9:8091/chentianlong/wxmini/"; //陈天龙
 // const baseUrl = "http://115.150.104.9:8091/jidenghui/wxmini/"; //吉登辉
 // const baseUrl = "http://115.150.104.9:8091/dangkui/wxmini/"; //党魁
 // const baseUrl = "http://115.150.104.9:8091/wangkangtao/wxmini/"; //王康桃
 // const baseUrl = "http://115.150.104.9:8091/lukuiyuan/wxmini/"; //禄魁圆
 // const baseUrl = "https://upecwxdevtest.bankgz.com/wxmini/"; //生产地址
-// const baseUrl = "http://115.150.104.8:8091/wxmini/"; //sit地址
+const baseUrl = "http://115.150.104.8:8091/wxmini/"; //sit地址
 
 const app = getApp();
 const http = (
