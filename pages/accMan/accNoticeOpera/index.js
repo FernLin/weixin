@@ -20,31 +20,38 @@ Page({
     showDialog: false,
   },
   goNext() {
-    // 签约
-    if (this.data.currTransactionId === "wxDycAcNoticeSign") {
-      app.service.AccountMan.wxDycAcNoticeSign({
-        openId,
-        unionId,
-        acNo: this.data.selectedAccount.acNo,
-      }).then((res) => {
-        this.setData({
-          showDialog: true,
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: this.data.currTransactionId,
+      mobilePhone: this.data.selectedAccount.openMobilephone,
+    }).then((result) => {
+      // 签约
+      if (this.data.currTransactionId === "wxDycAcNoticeSign") {
+        app.service.AccountMan.wxDycAcNoticeSign({
+          openId,
+          unionId,
+          acNo: this.data.selectedAccount.acNo,
+        }).then((res) => {
+          this.setData({
+            showDialog: true,
+          });
+          this.getUserBankCardInfo(this.data.operaType);
         });
-        this.getUserBankCardInfo(this.data.operaType);
-      });
-    } else {
-      // 解约
-      app.service.AccountMan.wxDycAcNoticeRelSign({
-        openId,
-        unionId,
-        acNo: this.data.selectedAccount.acNo,
-      }).then((res) => {
-        this.setData({
-          showDialog: true,
+      } else {
+        // 解约
+        app.service.AccountMan.wxDycAcNoticeRelSign({
+          openId,
+          unionId,
+          acNo: this.data.selectedAccount.acNo,
+        }).then((res) => {
+          this.setData({
+            showDialog: true,
+          });
+          this.getUserBankCardInfo(this.data.operaType);
         });
-        this.getUserBankCardInfo(this.data.operaType);
-      });
-    }
+      }
+    });
   },
   onAcClick() {
     this.setData({
@@ -147,7 +154,7 @@ Page({
           selectedAccount: acList[0],
         });
         if (acList.length === 0) {
-          Toast(`暂无可${this.data.operaType === '1' ? '签' : '解'}约账户`);
+          Toast(`暂无可${this.data.operaType === "1" ? "签" : "解"}约账户`);
         }
       }
     });

@@ -50,6 +50,7 @@ Page({
         };
         app.service.Global.wxCifSign(params)
           .then((res) => {
+            wx.setStorageSync("mobilePhone", this.data.mobile);
             // openFlag为true，新用户注册成功，跳转至绑卡页面，TODO:返回操作时跳转微服务页面
             if (res.openFlag) {
               wx.reLaunch({
