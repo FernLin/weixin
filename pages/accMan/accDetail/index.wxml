@@ -24,7 +24,7 @@
             </view>
             <view class="card-balance">
                 <text>开户日期</text>
-                <text>{{accountDetail.opdt}}</text>
+                <text>{{ util.formatDate(accountDetail.opdt) }}</text>
             </view>
             <view class="card-balance">
                 <text>开户行</text>
@@ -54,3 +54,4 @@
 <van-overlay show="{{ loading }}" class="loading">
     <van-loading type="spinner" color="#1989fa" />
 </van-overlay>
+<van-dialog id="van-dialog" />

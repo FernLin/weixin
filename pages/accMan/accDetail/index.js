@@ -1,5 +1,8 @@
 // pages/accMan/accDetail/index.js
+import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
+const openId = wx.getStorageSync("openid");
+const unionId = wx.getStorageSync("unionId");
 Page({
   /**
    * 页面的初始数据
@@ -18,8 +21,36 @@ Page({
   },
 
   onChange(data) {
-    this.setData({
-      noticeSwitch: data.detail,
+    let status = data.detail ? "1" : "0";
+    if (data.detail) {
+      this.handleNoatice(status);
+    } else {
+      Dialog.confirm({
+        title: "提示",
+        message: "是否确认关闭动账通知功能？",
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(() => {
+          this.handleNoatice(status);
+        })
+        .catch(() => {
+          console.log("暂不关闭");
+        });
+    }
+  },
+
+  handleNoatice(status) {
+    app.service.AccountMan.wxMovingAccountNoticeOpenAndClose({
+      cardNo: this.data.accountDetail.acNo,
+      phoneNo: this.data.accountDetail.openMobilephone,
+      status,
+      openId,
+      unionId,
+    }).then((res) => {
+      this.setData({
+        noticeSwitch: status === "1",
+      });
     });
   },
 
@@ -41,6 +72,7 @@ Page({
     this.setData({
       loading: false,
       accountDetail: currentAccount,
+      noticeSwitch: currentAccount.optionFlag === "1",
     });
     wx.setStorageSync("currentAccount", currentAccount);
   },

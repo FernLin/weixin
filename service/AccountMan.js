@@ -60,4 +60,17 @@ export default {
   wxNoticeClassShareQry(params) {
     return post("wxNoticeClassShareQry.do", params);
   },
+  /**
+   * 微信动账通知开关
+   * @param {
+   * cardNo: 卡号
+   * phoneNo: 预留手机号
+   * status: 状态（1：开，0：关）
+   * openId: 用户微信openid
+   * unionId: 用户微信unionId
+   * }
+   */
+  wxMovingAccountNoticeOpenAndClose(params) {
+    return post("wxMovingAccountNoticeOpenAndClose.do", params);
+  },
 };
