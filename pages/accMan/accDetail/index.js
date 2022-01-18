@@ -78,10 +78,12 @@ Page({
   },
 
   jumpTo(event) {
+    var currentData = JSON.stringify(this.data.accountDetail);
     wx.navigateTo({
       url:
         "/pages/accMan/noticeShareManage/index?type=" +
-        event.currentTarget.dataset.type,
+        event.currentTarget.dataset.type + 
+        "&currentData=" + currentData,
     });
   },
   // 发送解绑验证码
@@ -150,7 +152,6 @@ Page({
       accountDetail: currentAccount,
       noticeSwitch: currentAccount.optionFlag === "1",
     });
-    wx.setStorageSync("currentAccount", currentAccount);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

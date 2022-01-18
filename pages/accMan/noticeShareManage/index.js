@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentAccount: wx.getStorage("currentAccount"),
+    currentAccount: {},
     type: "",
     showDialog: false,
     signeeName: "",
@@ -140,6 +140,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
+    if (option.currentData) {
+      this.setData({
+        currentAccount: JSON.parse(option.currentData),
+      });
+    }
     this.setData({
       type: option.type,
     });
