@@ -170,31 +170,18 @@ Page({
       signeeNameFirst: options.signeeName.substr(0, len - 1),
       signeeNameLast: options.signeeName.substr(-1),
     });
-    this.setData({
-      openId: "1234567899",
-      unionId: "987654321",
+    wx.login({
+      success: (res) => {
+        app.service.Global.wxGetOpenIdByCode({
+          code: res.code,
+        }).then((result) => {
+          this.setData({
+            openId: result.openId,
+            unionId: result.unionId,
+          });
+        });
+      },
     });
-    // wx.login({
-    //   success: (res) => {
-    //     app.service.Global.wxGetOpenIdByCode({
-    //       code: res.code,
-    //     }).then((result) => {
-    //       this.setData({
-    //         openId: result.openId,
-    //         unionId: result.unionId,
-    //       });
-    //       wx.getUserProfile({
-    //         desc: "用于共享人识别用户", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-    //         success: (res) => {
-    //           this.setData({
-    //             userInfo: res.userInfo,
-    //             hasUserInfo: true,
-    //           });
-    //         },
-    //       });
-    //     });
-    //   },
-    // });
   },
 
   /**
