@@ -184,6 +184,7 @@ Page({
     this.setData({
       showDialog: false,
     });
+    const shareUrlId = app.util.randomString();
     return {
       title: "添加共享人",
       path:
@@ -200,7 +201,9 @@ Page({
         "&shareName=" +
         this.data.userInfo.nickName +
         "&shareAvatar=" +
-        encodeURIComponent(this.data.userInfo.avatarUrl),
+        encodeURIComponent(this.data.userInfo.avatarUrl) +
+        "&shareUrlId=" +
+        shareUrlId,
       imageUrl: "/pages/accMan/assets/share.png",
       success: function (res) {
         console.log("转发成功", res);

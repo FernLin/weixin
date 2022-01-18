@@ -122,10 +122,17 @@
   justify-content: center;
   align-items: center;
 }
+.main-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .title {
   font-size: 32rpx;
   color: #323232;
   font-weight: 500;
+  margin-bottom: 60rpx;
 }
 .success-word {
   font-size: 28rpx;
@@ -134,7 +141,7 @@
   margin: 0 0 60rpx;
 }
 .success-img {
-  margin: 60rpx 0 30rpx;
+  margin: 0 0 30rpx;
   width: 118rpx;
   height: 118rpx;
 }

@@ -28,6 +28,9 @@ Page({
     lastName: "",
     nameVerified: false,
     resultPopup: false,
+    shareUrlId: "",
+    hasSigned: false,
+    shareUrlIdList: [],
   },
   onConfirm() {
     if (!this.data.nameVerified) {
@@ -72,6 +75,9 @@ Page({
       mobilePhone: this.data.signeeMobile,
     }).then((result) => {
       app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
+        const temp = this.data.shareUrlIdList;
+        temp.push(this.data.shareUrlId);
+        wx.setStorageSync("shareUrlIdList", temp);
         this.setData({
           resultPopup: true,
         });
@@ -158,6 +164,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const shareUrlIdList = wx.getStorageSync("shareUrlIdList");
+    if (shareUrlIdList.includes(options.shareUrlId)) {
+      this.setData({
+        hasSigned: true,
+        resultPopup: true,
+      });
+    }
     let len = options.signeeName.length;
     this.setData({
       signeeMobile: options.signeeMobile,
@@ -169,6 +182,8 @@ Page({
       shareAvatar: decodeURIComponent(options.shareAvatar),
       signeeNameFirst: options.signeeName.substr(0, len - 1),
       signeeNameLast: options.signeeName.substr(-1),
+      shareUrlId: options.shareUrlId,
+      shareUrlIdList: shareUrlIdList,
     });
     wx.login({
       success: (res) => {

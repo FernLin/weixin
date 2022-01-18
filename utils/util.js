@@ -299,6 +299,17 @@ const validatePhone = (phone) => {
   return reg.test(phone);
 };
 
+const randomString = (length) => {
+  const len = length || 32;
+  let str = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
+    strLen = str.length,
+    res = "";
+  for (let i = 0; i < len; i++) {
+    res += str.charAt(Math.floor(Math.random() * strLen));
+  }
+  return res;
+};
+
 module.exports = {
   times,
   gologin,
@@ -311,4 +322,5 @@ module.exports = {
   formatPhoneNo,
   validatePhone,
   getFullTimes,
+  randomString,
 };
