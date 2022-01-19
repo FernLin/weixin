@@ -79,8 +79,10 @@ Page({
           idNo: this.data.idCard,
           acNo: this.data.bindCardId,
         };
+        console.log('#####bindBankCard', params);
         app.service.Global.wxAddAccount(params)
           .then((res) => {
+            console.log('*****************then');
             if (res) {
               Toast("绑卡成功~！");
               if (this.data.fromRegister) {
@@ -93,6 +95,7 @@ Page({
             }
           })
           .catch((err) => {
+            console.log('*****************catch');
             this.setData({
               countDownFlag: true,
               countDownNum: 60,

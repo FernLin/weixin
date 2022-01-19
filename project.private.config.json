@@ -28,8 +28,8 @@
           "name": "校验用户",
           "pathName": "pages/accMan/verifyCard/index",
           "query": "whetherVerifyCard=true&mobilePhone=15779000892",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "注册页面开发",
@@ -38,10 +38,14 @@
           "scene": null
         },
         {
-          "name": "pages/accountManage/electronicOpenAccount/index",
-          "pathName": "pages/accountManage/electronicOpenAccount/index",
+          "name": "公众号跳转我的账号",
+          "pathName": "pages/accMan/index",
           "query": "",
-          "scene": null
+          "scene": 1035,
+          "launchMode": "default",
+          "referrerInfo": {
+            "appId": "1234564564564"
+          }
         },
         {
           "name": "pages/login/index",

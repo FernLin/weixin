@@ -22,7 +22,7 @@
     <view class="flex input1 p-30 jc-sb">
         <text>证件号码</text>
         <view class="flex ta-r w-70">
-            <input type="number" value="{{ idCard }}" bindinput="bindIdCard" placeholder="请输入证件号码" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
+            <input type="idcard" value="{{ idCard }}" bindinput="bindIdCard" placeholder="请输入证件号码" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
             <ocr-navigator bind:onSuccess="success" certificateType="idCard" opposite="{{false}}" style="height: 32rpx">
                 <image class="saomiao-css" src="/assets/appInfo/saomiao.png" />
             </ocr-navigator>
