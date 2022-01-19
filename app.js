@@ -28,9 +28,12 @@ App({
 
   // 判断用户是否注册
   judgeRegister(openId) {
-    service.Global.wxGetUserInfo({
-      openid: openId,
-    }).then((result) => {
+    service.Global.wxGetUserInfo(
+      {
+        openid: openId,
+      },
+      false
+    ).then((result) => {
       if (!result.signFlag) {
         // 未注册用户跳转至注册页面
         wx.reLaunch({

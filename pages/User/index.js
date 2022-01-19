@@ -30,64 +30,89 @@ Page({
   getUserBankCardInfo() {
     const openId = wx.getStorageSync("openid");
     const unionId = wx.getStorageSync("unionId");
-    app.service.Global.wxAcListQry({
-      openid: openId,
-      unionId,
-    }).then((res) => {
-      if (res.userAccount) {
-        wx.setStorageSync("bankCardList", res.userAccount);
-        wx.setStorageSync("currentDate", res.currDate);
-        this.setData({
-          bankCardList: res.userAccount,
-        });
-        if(res.userAccount.length > 0) this.getRecordList();
-      }
+    wx.showLoading({
+      title: "请求中...",
+      mask: true,
     });
+    app.service.Global.wxAcListQry(
+      {
+        openid: openId,
+        unionId,
+      },
+      false
+    )
+      .then((res) => {
+        if (res.userAccount) {
+          wx.setStorageSync("bankCardList", res.userAccount);
+          wx.setStorageSync("currentDate", res.currDate);
+          this.setData({
+            bankCardList: res.userAccount,
+          });
+          if (res.userAccount.length > 0) {
+            this.getRecordList();
+          } else {
+            wx.hideLoading();
+          }
+        } else {
+          wx.hideLoading();
+        }
+      })
+      .catch((err) => {
+        wx.hideLoading();
+      });
   },
   // 获取预约记录
   getRecordList() {
     const openId = wx.getStorageSync("openid");
-    app.service.CashReserve.wxLargeCashBookQry({
-      FromUserName: openId,
-    }).then((res) => {
-      if (res) {
-        const { largeCashlist, smallChangeExchangelist } = res;
-        const largeList = largeCashlist.map((el) => {
-          return {
-            type: 1,
-            deptName: el.deptName,
-            deptAddr: el.deptAddr,
-            deptId: el.deptId,
-            name: el.largeList.name,
-            bankCardId: el.largeList.bankCardId,
-            bookTime: el.largeList.bookTime,
-            bookMoney: el.largeList.bookMoney,
-            bookDate: el.largeList.bookDate,
-          };
-        });
-        const smallList = smallChangeExchangelist.map((el) => {
-          let amounts = [];
-          el.list.forEach((li) => {
-            amounts.push(li.cyun + "元*" + li.nubr + "张");
+    app.service.CashReserve.wxLargeCashBookQry(
+      {
+        FromUserName: openId,
+      },
+      false
+    )
+      .then((res) => {
+        if (res) {
+          const { largeCashlist, smallChangeExchangelist } = res;
+          const largeList = largeCashlist.map((el) => {
+            return {
+              type: 1,
+              deptName: el.deptName,
+              deptAddr: el.deptAddr,
+              deptId: el.deptId,
+              name: el.largeList.name,
+              bankCardId: el.largeList.bankCardId,
+              bookTime: el.largeList.bookTime,
+              bookMoney: el.largeList.bookMoney,
+              bookDate: el.largeList.bookDate,
+            };
           });
-          return {
-            type: 2,
-            deptName: el.deptName,
-            deptAddr: el.bookAddr,
-            deptId: el.deptId,
-            name: el.name,
-            bankCardId: el.cardId,
-            bookTime: el.tradeTime,
-            bookDate: el.tradeDate,
-            amounts: amounts.join("; "),
-            count: el.bookNum,
-          };
-        });
-        this.setData({
-          recordList: [...largeList, ...smallList],
-        });
-      }
-    });
+          const smallList = smallChangeExchangelist.map((el) => {
+            let amounts = [];
+            el.list.forEach((li) => {
+              amounts.push(li.cyun + "元*" + li.nubr + "张");
+            });
+            return {
+              type: 2,
+              deptName: el.deptName,
+              deptAddr: el.bookAddr,
+              deptId: el.deptId,
+              name: el.name,
+              bankCardId: el.cardId,
+              bookTime: el.tradeTime,
+              bookDate: el.tradeDate,
+              amounts: amounts.join("; "),
+              count: el.bookNum,
+            };
+          });
+          this.setData({
+            recordList: [...largeList, ...smallList],
+          });
+        }
+        wx.hideLoading();
+      })
+      .catch((err) => {
+        wx.hideLoading();
+      });
   },
   // 获取用户贷款信息
   // getUserLoanInfo() {
@@ -124,12 +149,13 @@ Page({
       url: "/pages/User/userSetting/index",
     });
   },
-  // 判断登录
   onShow: function () {
-    this.getUserBankCardInfo();
-    this.setData({
-      showService: true,
-    });
+    setTimeout(() => {
+      this.getUserBankCardInfo();
+      this.setData({
+        showService: true,
+      });
+    }, 10);
   },
   /**
    * 生命周期函数--监听页面加载

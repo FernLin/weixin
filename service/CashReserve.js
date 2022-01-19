@@ -68,8 +68,8 @@ export default {
    * FromUserName: 微信openid
    * }
    */
-  wxLargeCashBookQry(params) {
-    return post("wxLargeCashBookQry.do", params);
+  wxLargeCashBookQry(params, isShowLoading = true) {
+    return post("wxLargeCashBookQry.do", params, isShowLoading);
   },
   /**
    * 取消预约操作

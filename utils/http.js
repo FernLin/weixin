@@ -8,6 +8,7 @@
 const baseUrl = "http://115.150.104.8:8091/wxmini/"; //sit地址
 
 const app = getApp();
+let requestTime = 0;
 const http = (
   {
     url = "",
@@ -30,7 +31,7 @@ const http = (
       mask: true,
     });
   }
-
+  requestTime++;
   return new Promise((resolve, reject) => {
     let cookieKey = wx.getStorageSync("cookieKey");
     let cookie;
@@ -50,31 +51,35 @@ const http = (
         ...header,
       },
       ...other,
-      complete: (res) => {
-        wx.hideLoading();
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          if (res.data.respCode === "00000000") {
-            resolve(res.data.data);
-            var coo = res.header["Set-Cookie"];
-            if (coo != undefined && coo != "") {
-              let arr = res.header["Set-Cookie"].split(",");
-              wx.setStorageSync("cookieKey", arr);
-            }
-          } else {
-            reject(res.data);
-            wx.showToast({
-              title: res.data.respMessage,
-              icon: "none",
-              duration: 3000,
-            });
+      success: (res) => {
+        if (res.data.respCode === "00000000") {
+          resolve(res.data.data);
+          var coo = res.header["Set-Cookie"];
+          if (coo != undefined && coo != "") {
+            let arr = res.header["Set-Cookie"].split(",");
+            wx.setStorageSync("cookieKey", arr);
           }
         } else {
-          reject(res);
+          reject(res.data);
           wx.showToast({
-            title: "获取数据失败！",
+            title: res.data.respMessage,
             icon: "none",
             duration: 3000,
           });
+        }
+      },
+      fail: (err) => {
+        reject(err);
+        wx.showToast({
+          title: "获取数据失败！",
+          icon: "none",
+          duration: 3000,
+        });
+      },
+      complete: (res) => {
+        requestTime--;
+        if (requestTime === 0) {
+          if (isShowLoading) wx.hideLoading();
         }
       },
     });

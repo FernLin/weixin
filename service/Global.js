@@ -6,8 +6,8 @@ export default {
    * openid: 用户openid
    * }
    */
-  wxGetUserInfo(params) {
-    return post("wxGetUserInfo.do", params, false);
+  wxGetUserInfo(params, isShowLoading = true) {
+    return post("wxGetUserInfo.do", params, isShowLoading);
   },
   /**
    * 用户注册
@@ -26,8 +26,8 @@ export default {
    * openid: 用户openid
    * }
    */
-  wxAcListQry(params) {
-    return post("wxAcListQry.do", params);
+  wxAcListQry(params, isShowLoading = true) {
+    return post("wxAcListQry.do", params, isShowLoading);
   },
   /**
    * 添加银行卡
