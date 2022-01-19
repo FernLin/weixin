@@ -31,10 +31,15 @@ Page({
     shareUrlId: "",
     hasSigned: false,
     shareUrlIdList: [],
+    hasGetVerifyCode: false,
   },
   onConfirm() {
     if (!this.data.nameVerified) {
       Toast("姓名验证失败，请核验！");
+      return;
+    }
+    if (!this.data.hasGetVerifyCode) {
+      Toast('请先获取短信验证码！');
       return;
     }
     if (!this.data.verifyCode) {
@@ -130,6 +135,7 @@ Page({
           this.setData({
             indexCode: res.index,
             verifyCode: "",
+            hasGetVerifyCode: true,
           });
           this.countDownF();
           Toast("验证码已发送~！");

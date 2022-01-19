@@ -41,9 +41,14 @@ Page({
     idcardPopup: false,
     countDownNum: 60,
     countDownFlag: true,
+    hasGetVerifyCode: false,
   },
   // 下一步
   goNext() {
+    if (!this.data.hasGetVerifyCode) {
+      Toast('请先获取短信验证码！');
+      return;
+    }
     if (
       this.data.bindCardId &&
       this.data.bindCardType.value &&
@@ -169,6 +174,7 @@ Page({
           this.setData({
             indexCode: res.index,
             verifyCode: "",
+            hasGetVerifyCode: true,
           });
           this.countDownF();
           Toast("验证码已发送~！");

@@ -18,8 +18,13 @@ Page({
     currTransactionId: "",
     operaType: "",
     showDialog: false,
+    hasGetVerifyCode: false,
   },
   goNext() {
+    if (!this.data.hasGetVerifyCode) {
+      Toast('请先获取短信验证码！');
+      return;
+    }
     if (this.data.selectedAccount.optionFlag === "0") {
       Toast("该账户尚未开通动账通知功能！");
       return;
@@ -105,6 +110,7 @@ Page({
           this.setData({
             indexCode: res.index,
             verifyCode: "",
+            hasGetVerifyCode: true,
           });
           this.countDownF();
           Toast("验证码已发送~！");

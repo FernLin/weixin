@@ -19,6 +19,7 @@ Page({
     countDownNum: 60,
     unbindCardNo: "",
     openMobile: "",
+    hasGetVerifyCode: false,
   },
   //跳转绑卡
   goBindCard() {
@@ -73,6 +74,7 @@ Page({
           this.setData({
             indexCode: res.index,
             verifyCode: "",
+            hasGetVerifyCode: true,
           });
           this.countDownF();
           Toast("验证码已发送~！");
@@ -95,6 +97,10 @@ Page({
     });
   },
   onPopupConfirm(e) {
+    if (!this.data.hasGetVerifyCode) {
+      Toast('请先获取短信验证码！');
+      return;
+    }
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,

@@ -13,6 +13,7 @@ Page({
     verifyCode: "",
     indexCode: "",
     showOfficial: false,
+    hasGetVerifyCode: false,
   },
   // 获取输入的手机号
   mobileInput(event) {
@@ -34,6 +35,10 @@ Page({
   },
 
   toNext() {
+    if (!this.data.hasGetVerifyCode) {
+      Toast('请先获取短信验证码！');
+      return;
+    }
     const openId = wx.getStorageSync("openid");
     const unionId = wx.getStorageSync("unionId");
     app.service.Global.wxAuthSmsNoLogin({
@@ -93,6 +98,7 @@ Page({
             this.setData({
               indexCode: res.index,
               verifyCode: "",
+              hasGetVerifyCode: true,
             });
             this.countDownF();
             Toast("验证码已发送~！");
