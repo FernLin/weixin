@@ -153,6 +153,14 @@ Page({
    */
   onShow: function () {
     wx.hideHomeButton();
+    this.setData({
+      countDownFlag: true,
+      countDownNum: 60,
+      checked: false,
+      verifyCode: "",
+      indexCode: "",
+      hasGetVerifyCode: false,
+    });
   },
 
   /**
