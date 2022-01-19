@@ -35,8 +35,16 @@ Page({
   },
 
   toNext() {
+    if (!app.util.validatePhone(this.data.mobile)) {
+      Toast("请输入正确格式的手机号！");
+      return;
+    }
     if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
+      Toast("请先获取短信验证码！");
+      return;
+    }
+    if (!this.data.checked) {
+      Toast("请先勾选相关协议！");
       return;
     }
     const openId = wx.getStorageSync("openid");
