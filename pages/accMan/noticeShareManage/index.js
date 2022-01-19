@@ -4,7 +4,7 @@ import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
 const openId = wx.getStorageSync("openid");
 const unionId = wx.getStorageSync("unionId");
-const currentDate = wx.getStorageSync("currentDate");
+
 Page({
   /**
    * 页面的初始数据
@@ -185,6 +185,7 @@ Page({
       showDialog: false,
     });
     const shareUrlId = app.util.randomString();
+    const currentDate = wx.getStorageSync("currentDate");
     return {
       title: "添加共享人",
       path:
@@ -206,7 +207,25 @@ Page({
         shareUrlId,
       imageUrl: "/pages/accMan/assets/share.png",
       success: function (res) {
-        console.log("转发成功", res);
+        console.log(
+          "转发成功",
+          "/pages/accMan/operaNotice/index?signeeMobile=" +
+            this.data.signeeMobile +
+            "&signeeName=" +
+            this.data.signeeName +
+            "&shareAccount=" +
+            this.data.currentAccount.acNo +
+            "&shareDate=" +
+            currentDate +
+            "&shareOpenId=" +
+            openId +
+            "&shareName=" +
+            this.data.userInfo.nickName +
+            "&shareAvatar=" +
+            encodeURIComponent(this.data.userInfo.avatarUrl) +
+            "&shareUrlId=" +
+            shareUrlId
+        );
       },
       fail: function (res) {
         // 转发失败

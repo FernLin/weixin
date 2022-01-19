@@ -9,7 +9,7 @@ Page({
     userName: "",
     bankCardList: [],
     recordList: [],
-    bindMobile: wx.getStorageSync("mobilePhone"),
+    bindMobile: "",
     // loanInfo: {
     //   loanName: "牛牛贷",
     //   loanStatus: "已放款",
@@ -160,7 +160,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
+  onLoad: function () {
+    this.setData({
+      bindMobile: wx.getStorageSync("mobilePhone"),
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
