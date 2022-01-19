@@ -82,7 +82,7 @@ Page({
       app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
         const temp = this.data.shareUrlIdList;
         temp.push(this.data.shareUrlId);
-        wx.setStorageSync("shareUrlIdList", temp);
+        wx.setStorageSync("shareUrlIdList", JSON.stringify(temp));
         this.setData({
           resultPopup: true,
         });
@@ -170,12 +170,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const shareUrlIdList = wx.getStorageSync("shareUrlIdList");
+    const shareUrlIdList = JSON.parse(wx.getStorageSync("shareUrlIdList")) || [];
     if (shareUrlIdList.includes(options.shareUrlId)) {
       this.setData({
         hasSigned: true,
         resultPopup: true,
       });
+      return;
     }
     let len = options.signeeName.length;
     this.setData({
