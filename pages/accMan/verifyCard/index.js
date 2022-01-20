@@ -70,12 +70,11 @@ Page({
   },
   // 识别身份证
   success(res) {
-    if (res.detail && res.detail.length > 0) {
+    if (res.detail) {
       let data = res.detail;
       this.setData({
         userName: data.name.text,
         idCard: data.id.text,
-        bindCardType: { text: "居民身份证", value: "101" },
       });
     } else {
       Toast("请重新上传~！");
@@ -83,7 +82,7 @@ Page({
   },
   // 银行卡识别
   bankSuccess(res) {
-    if (res.detail && res.detail.length > 0) {
+    if (res.detail) {
       let data = res.detail;
       this.setData({
         bindCardId: data.number.text,

@@ -3,7 +3,9 @@
   <van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="预约登记" custom-class="my-tab">
       <view class="search-content">
-        <van-search value="{{ searchVal }}" bind:search="onSearch" bind:clear="onClear" custom-class="search-field" shape="round" placeholder="请输入网点名称/街道名称" />
+        <van-search value="{{ searchVal }}" bind:search="onSearch" bind:clear="onClear" custom-class="search-field" shape="round" use-left-icon-slot placeholder="请输入网点名称/街道名称">
+          <van-icon slot="left-icon" size="40rpx" name="search" bind:click="onSearch" custom-class="icon-search" />
+        </van-search>
         <view class="flex-center" bindtap="openPicker">
           <text class="current-city">{{selectedCity}}</text>
           <van-icon name="arrow-down" custom-class="icon-arrow" />
@@ -17,7 +19,7 @@
                 <text class="dept-name">{{item.deptName}}</text>
                 <text class="recent-status" wx:if="{{item.recent}}">上次预约</text>
               </view>
-              <view class="bank-distance">
+              <view class="bank-distance" data-item="{{item}}" bindtap="jumpToMap">
                 <text>{{util.formatDistance(item.distance)}}</text>
                 <image src="/assets/cashReserve/position.png" />
               </view>

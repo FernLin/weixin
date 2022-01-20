@@ -25,7 +25,10 @@
   color: #c8c8c8;
   margin-left: 10rpx;
 }
-
+.icon-search {
+  color: #c8c8c8;
+  margin-right: 10rpx;
+}
 .bank-list {
   height: calc(100vh - 216rpx);
 }

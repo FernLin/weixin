@@ -82,7 +82,6 @@ Page({
         console.log('#####bindBankCard', params);
         app.service.Global.wxAddAccount(params)
           .then((res) => {
-            console.log('*****************then');
             if (res) {
               Toast("绑卡成功~！");
               if (this.data.fromRegister) {
@@ -95,7 +94,6 @@ Page({
             }
           })
           .catch((err) => {
-            console.log('*****************catch');
             this.setData({
               countDownFlag: true,
               countDownNum: 60,
@@ -209,12 +207,13 @@ Page({
   },
   // 识别身份证
   success(res) {
-    if (res.detail && res.detail.length > 0) {
+    Toast("只支持识别身份证~！");
+    if (res.detail) {
       let data = res.detail;
       this.setData({
         userName: data.name.text,
         idCard: data.id.text,
-        bindCardType: { text: "居民身份证", value: "101" },
+        bindCardType: { text: "居民身份证", value: "110001" },
       });
     } else {
       Toast("请重新上传~！");
@@ -222,7 +221,7 @@ Page({
   },
   // 银行卡识别
   bankSuccess(res) {
-    if (res.detail && res.detail.length > 0) {
+    if (res.detail) {
       let data = res.detail;
       this.setData({
         bindCardId: data.number.text,

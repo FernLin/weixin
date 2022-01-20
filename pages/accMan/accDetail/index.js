@@ -39,14 +39,13 @@ Page({
         message: "是否确认关闭动账通知功能？",
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-      })
-        .then(() => {
-          this.setData({
-            unbindPopup: true,
-            status: data.detail ? "1" : "0",
-          });
-          this.getVercode();
+      }).then(() => {
+        this.setData({
+          unbindPopup: true,
+          status: data.detail ? "1" : "0",
         });
+        this.getVercode();
+      });
     }
   },
 
@@ -60,13 +59,14 @@ Page({
     }).then((res) => {
       this.setData({
         noticeSwitch: this.data.status === "1",
+        ["accountDetail.optionFlag"]: this.data.status,
       });
     });
   },
 
   onPopupConfirm() {
     if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
+      Toast("请先获取短信验证码！");
       return;
     }
     app.service.Global.wxAuthSmsNoLogin({
@@ -87,8 +87,9 @@ Page({
     wx.navigateTo({
       url:
         "/pages/accMan/noticeShareManage/index?type=" +
-        event.currentTarget.dataset.type + 
-        "&currentData=" + currentData,
+        event.currentTarget.dataset.type +
+        "&currentData=" +
+        currentData,
     });
   },
   // 发送解绑验证码

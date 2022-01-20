@@ -6,7 +6,7 @@
         <text>账号</text>
         <view class="flex ta-r w-80">
             <input type="number" value="{{ bindCardId }}" bindinput="bindBankCardId" placeholder="请输入银行卡号" gesturetype="text" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
-            <ocr-navigator bind:onSuccess="bankSuccess" certificateType="bankCard" opposite="{{false}}" style="height: 32rpx">
+            <ocr-navigator bind:onSuccess="bankSuccess" certificateType="bankCard" style="height: 32rpx">
                 <image class="saomiao-css" src="/assets/appInfo/saomiao.png" />
             </ocr-navigator>
         </view>

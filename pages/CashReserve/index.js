@@ -232,6 +232,12 @@ Page({
       Toast("获取当前位置失败，请重新授权！");
     }
   },
+  jumpToMap(event) {
+    wx.openLocation({
+      latitude: parseFloat(event.currentTarget.dataset.item.lat),
+      longitude: parseFloat(event.currentTarget.dataset.item.lon),
+    })
+  },
   // 取消预约
   onCancel(event) {
     Dialog.confirm({
