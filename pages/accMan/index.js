@@ -151,11 +151,11 @@ Page({
       }
     }, 1000);
   },
-  // 银行卡转账查询
-  goTransDetail(e) {
-    var obj = JSON.stringify(e.currentTarget.dataset.item);
+
+  // 交易明细
+  toTranDetail(e) {
     wx.navigateTo({
-      url: "/pages/tranDetail/index?obj=" + encodeURIComponent(obj),
+      url: "/pages/tranDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
     });
   },
 

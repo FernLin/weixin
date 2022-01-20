@@ -3,7 +3,7 @@
     <!-- <van-tabs active="{{ active }}" bind:change="onChange">
         <van-tab title="银行卡"> -->
     <view class="bank-card posi-re" wx:for="{{ bankCardList }}" wx:key="item">
-        <view class="info" bindtap="goTransDetail" data-item="{{ item }}">
+        <view class="info" bindtap="toTranDetail" data-item="{{ item }}">
             <image src="{{ bankPng }}" />
             <view class="flex-c">
                 <text class="bank-card-id">{{ util.hiddenBankCard(item.acNo) }}</text>
