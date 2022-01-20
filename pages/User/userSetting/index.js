@@ -73,7 +73,7 @@ Page({
   },
   onPopupConfirm() {
     if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
+      Toast("请先获取短信验证码！");
       return;
     }
     app.service.Global.wxAuthSmsNoLogin({
@@ -86,16 +86,13 @@ Page({
         unbindPopup: false,
       });
       app.service.Global.wxRelBindUser({
-        unionId,
         openid: openId,
+        thirdType: "gzwxapplet",
       })
         .then((res) => {
           if (res) {
-            Toast("解绑成功~");
-            // TODO：确认解绑微信后需要跳转的页面--最好退出小程序
-            wx.reLaunch({
-              url: "/pages/Register/index",
-            });
+            // TODO: 显示退出小程序ui
+            console.log(res);
           }
         })
         .catch((err) => {

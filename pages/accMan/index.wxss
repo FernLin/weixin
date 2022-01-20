@@ -12,7 +12,7 @@
   display: flex;
 }
 
-.info > image {
+.bank-icon {
   width: 70rpx;
   height: 70rpx;
   margin-right: 35rpx;
@@ -27,8 +27,7 @@
 
 .card-type {
   font-size: 28rpx;
-  line-height: 44rpx;
-  margin-right: 50rpx;
+  color: #323232;
 }
 
 .fen-ge {
@@ -84,8 +83,8 @@
 .shui-yin {
   width: 214rpx;
   height: 138rpx;
-  top: -138rpx;
   right: 0;
+  top: 76rpx;
 }
 
 .add-card-btn {

@@ -25,6 +25,10 @@ Page({
       Toast('请先获取短信验证码！');
       return;
     }
+    if (!this.data.verifyCode) {
+      Toast('请正确输入短信验证码！');
+      return;
+    }
     if (this.data.selectedAccount.optionFlag === "0") {
       Toast("该账户尚未开通动账通知功能！");
       return;

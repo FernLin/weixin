@@ -98,7 +98,7 @@ Page({
   },
   onPopupConfirm(e) {
     if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
+      Toast("请先获取短信验证码！");
       return;
     }
     app.service.Global.wxAuthSmsNoLogin({
@@ -153,9 +153,10 @@ Page({
   },
 
   // 交易明细
-  toTranDetail(e) {
+  toAccountDetail(e) {
+    var obj = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: "/pages/tranDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
+      url: "/pages/accMan/accDetail/index?obj=" + encodeURIComponent(obj),
     });
   },
 

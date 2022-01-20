@@ -150,7 +150,7 @@ Page({
   },
   // 预约
   onReserve() {
-    if (!this.data.selectedDate) {
+    if (!this.data.selectedDate.value) {
       Toast("请选择取款日期");
       return;
     }

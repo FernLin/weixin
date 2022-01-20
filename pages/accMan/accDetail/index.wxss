@@ -32,8 +32,21 @@
 
 .card-type {
   font-size: 28rpx;
-  line-height: 44rpx;
-  margin-right: 50rpx;
+  color: #323232;
+}
+
+.check-card {
+  font-size: 28rpx;
+  color: #3378f6;
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.check-card > image {
+  margin-right: 10rpx;
+  width: 24rpx;
+  height: 24rpx;
 }
 
 .card-balance {

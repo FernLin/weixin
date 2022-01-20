@@ -6,9 +6,7 @@
                 <image src="/assets/bankicon.png" />
                 <view class="flex-c">
                     <text class="bank-card-id">{{ util.hiddenBankCard(currentAccount.acNo) }}</text>
-                    <view class="flex">
-                        <view class="card-type">{{util.formatBankType(currentAccount.bankAcType)}}</view>
-                    </view>
+                    <view class="card-type">{{util.formatBankType(currentAccount.bankAcType)}}</view>
                 </view>
             </view>
             <image class="shui-yin posi-ab" src="/assets/mine/cardTag.png" />

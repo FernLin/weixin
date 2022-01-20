@@ -17,6 +17,18 @@ Page({
     countDownNum: 60,
     status: "",
     hasGetVerifyCode: false,
+    checkCurrentAcNo: "",
+    currTransactionId: "",
+  },
+
+  // 查看卡号
+  checkAcNo(e) {
+    this.setData({
+      unbindPopup: true,
+      checkCurrentAcNo: this.data.accountDetail.acNo,
+      currTransactionId: "wxLookBankCardNum",
+    });
+    this.getVercode();
   },
 
   // 交易明细
@@ -31,6 +43,7 @@ Page({
       this.setData({
         unbindPopup: true,
         status: data.detail ? "1" : "0",
+        currTransactionId: "wxMovingAccountNoticeOpenAndClose",
       });
       this.getVercode();
     } else {
@@ -43,6 +56,7 @@ Page({
         this.setData({
           unbindPopup: true,
           status: data.detail ? "1" : "0",
+          currTransactionId: "wxMovingAccountNoticeOpenAndClose",
         });
         this.getVercode();
       });
@@ -72,13 +86,28 @@ Page({
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
-      transactionId: "wxMovingAccountNoticeOpenAndClose",
+      transactionId: this.data.currTransactionId,
       mobilePhone: this.data.accountDetail.openMobilephone,
     }).then((result) => {
-      this.setData({
-        unbindPopup: false,
-      });
-      this.handleNoatice();
+      if (this.data.currTransactionId === "wxMovingAccountNoticeOpenAndClose") {
+        this.setData({
+          unbindPopup: false,
+        });
+        this.handleNoatice();
+      } else {
+        Dialog.confirm({
+          title: "复制卡号",
+          message: "您的卡号为：\n" + this.data.accountDetail,
+          confirmButtonText: "复制卡号",
+          cancelButtonText: "取消",
+        })
+          .then(() => {
+            console.log("复制卡号");
+          })
+          .catch(() => {
+            console.log("取消");
+          });
+      }
     });
   },
 
@@ -95,12 +124,28 @@ Page({
   // 发送解绑验证码
   getVercode() {
     if (app.util.validatePhone(this.data.accountDetail.openMobilephone)) {
-      app.service.Global.wxCommonConfirm({
-        transactionId: "wxMovingAccountNoticeOpenAndClose",
-      }).then((result) => {
+      if (this.data.currTransactionId === "wxMovingAccountNoticeOpenAndClose") {
+        app.service.Global.wxCommonConfirm({
+          transactionId: this.data.currTransactionId,
+        }).then((result) => {
+          let params = {
+            mobilePhone: this.data.accountDetail.openMobilephone,
+            transactionId: this.data.currTransactionId,
+          };
+          app.service.Global.wxSendSms(params).then((res) => {
+            this.setData({
+              indexCode: res.index,
+              verifyCode: "",
+              hasGetVerifyCode: true,
+            });
+            this.countDownF();
+            Toast("验证码已发送~！");
+          });
+        });
+      } else {
         let params = {
           mobilePhone: this.data.accountDetail.openMobilephone,
-          transactionId: "wxMovingAccountNoticeOpenAndClose",
+          transactionId: this.data.currTransactionId,
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({
@@ -111,7 +156,7 @@ Page({
           this.countDownF();
           Toast("验证码已发送~！");
         });
-      });
+      }
     } else {
       Toast("请输入正确格式的手机号！");
     }
