@@ -124,25 +124,9 @@ Page({
   // 发送解绑验证码
   getVercode() {
     if (app.util.validatePhone(this.data.accountDetail.openMobilephone)) {
-      if (this.data.currTransactionId === "wxMovingAccountNoticeOpenAndClose") {
-        app.service.Global.wxCommonConfirm({
-          transactionId: this.data.currTransactionId,
-        }).then((result) => {
-          let params = {
-            mobilePhone: this.data.accountDetail.openMobilephone,
-            transactionId: this.data.currTransactionId,
-          };
-          app.service.Global.wxSendSms(params).then((res) => {
-            this.setData({
-              indexCode: res.index,
-              verifyCode: "",
-              hasGetVerifyCode: true,
-            });
-            this.countDownF();
-            Toast("验证码已发送~！");
-          });
-        });
-      } else {
+      app.service.Global.wxCommonConfirm({
+        transactionId: this.data.currTransactionId,
+      }).then((result) => {
         let params = {
           mobilePhone: this.data.accountDetail.openMobilephone,
           transactionId: this.data.currTransactionId,
@@ -156,7 +140,7 @@ Page({
           this.countDownF();
           Toast("验证码已发送~！");
         });
-      }
+      });
     } else {
       Toast("请输入正确格式的手机号！");
     }
