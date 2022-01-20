@@ -39,7 +39,7 @@ Page({
       return;
     }
     if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
+      Toast("请先获取短信验证码！");
       return;
     }
     if (!this.data.verifyCode) {
@@ -170,7 +170,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const shareUrlIdList = JSON.parse(wx.getStorageSync("shareUrlIdList")) || [];
+    const shareUrlIdList = !!wx.getStorageSync("shareUrlIdList")
+      ? JSON.parse(wx.getStorageSync("shareUrlIdList"))
+      : [];
     if (shareUrlIdList.includes(options.shareUrlId)) {
       this.setData({
         hasSigned: true,
