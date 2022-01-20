@@ -3,7 +3,6 @@
 <!-- <view style="width:100%">
  <official-account></official-account>
 </view> -->
-<wxs module="util" src="../../utils/wxParse.wxs"></wxs>
 <view class="user-page">
     <view class="online-service" style="display: {{ showService ? 'block' : 'none' }}">
         <view class="posi-re">
@@ -39,7 +38,7 @@
         </view>
         <view class="flex-c mt-30 txt-w" wx:if="{{ bankCardList.length > 1 }}">
             <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
-                <view class="scroll-view-item_H posi-re" wx:for="{{ bankCardList }}" wx:key="acNo" bindtap="goAccountDetail" data-item="{{ item }}">
+                <view class="card-content posi-re" wx:for="{{ bankCardList }}" wx:key="acNo" bindtap="goAccountDetail" data-item="{{ item }}">
                     <view class="flex-c">
                         <image src="/assets/mine/cardTag.png" />
                         <text class="b-c-num">{{ util.hiddenBankCard(item.acNo) }}</text>

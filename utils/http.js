@@ -53,7 +53,7 @@ const http = (
         console.log("-------------分割线--------------");
         if (isShowLoading) wx.hideLoading();
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          console.log("**********接口地址：：", url);
+          console.log("**********接口地址：：", baseUrl + url);
           console.log("**********接口请求参数：：", param);
           console.log("###########接口返回结果：：", res);
           if (res.data.respCode === "00000000") {

@@ -49,7 +49,7 @@ Page({
       return;
     }
     if (this.data.currentAccount.shareFlag === "C") {
-      Toast("该账户尚未开通动账通知分享签约功能！");
+      Toast("该账户尚未开通动账通知分享签约！");
       return;
     }
     if (!this.data.hasUserInfo) {
