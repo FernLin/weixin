@@ -310,6 +310,54 @@ const randomString = (length) => {
   return res;
 };
 
+const isRightName = (name) => {
+  var reg = /^[a-zA-Z\u4E00-\u9FA5\uF900-\uFA2D\u00B7\u2022\u0095\u0387]+$/;
+  var strRe = /[\u4E00-\u9FA5]/g;
+  var str = name.match(strRe);
+  var strlength;
+  if (str == null) {
+    strlength = name.length;
+  } else {
+    strlength = name.length + str.length * 2; // 汉字按三个字节
+  }
+  if (strlength <= 3 || strlength > 48) {
+    return false;
+  }
+  if (!name.match(reg)) {
+    return false;
+  } else {
+    var headExp = /^[\u00B7\u2022\u0095\u0387]+/;
+    var tailExp = /[\u00B7\u2022\u0095\u0387]+$/;
+    var zhExp = /[\u4E00-\u9FA5\uF900-\uFA2D]+[\s]+/;
+    var zhcharExp = /[\u4E00-\u9FA5\uF900-\uFA2D]+[u00B7\u2022\u0095\u0387]?[a-zA-Z]+/;
+    var charzhExp = /[a-zA-Z]+[u00B7\u2022\u0095\u0387]?[\u4E00-\u9FA5\uF900-\uFA2D]+/;
+    var emptyExp = /\s/g;
+    if (headExp.test(name)) {
+      return false;
+    }
+    if (tailExp.test(name)) {
+      return false;
+    }
+    if (zhExp.test(name)) {
+      return false;
+    }
+    if (zhcharExp.test(name)) {
+      return false;
+    }
+    if (charzhExp.test(name)) {
+      return false;
+    }
+    if (name.match(emptyExp).length > 1) {
+      return false;
+    }
+    return true;
+  }
+};
+
+const isNum = (str) => {
+  return /^\d+$/.test(str);
+};
+
 module.exports = {
   times,
   gologin,
@@ -323,4 +371,6 @@ module.exports = {
   validatePhone,
   getFullTimes,
   randomString,
+  isRightName,
+  isNum,
 };

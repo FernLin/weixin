@@ -16,6 +16,10 @@ Page({
   },
   // 下一步
   goNext() {
+    if (!app.util.isRightName(this.data.userName)) {
+      Toast("请输入有效的姓名！");
+      return;
+    }
     let params = {
       idType: "110001",
       cifName: this.data.userName,
@@ -26,6 +30,10 @@ Page({
       unionId,
     };
     if (this.data.whetherVerifyCard) {
+      if (!app.util.isNum(this.data.bindCardId)) {
+        Toast("请输入有效的银行卡号！");
+        return;
+      }
       if (this.data.bindCardId && this.data.idCard && this.data.userName) {
         params = {
           ...params,

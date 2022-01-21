@@ -45,12 +45,20 @@ Page({
   },
   // 下一步
   goNext() {
+    if (!app.util.isNum(this.data.bindCardId)) {
+      Toast("请输入有效的银行卡号！");
+      return;
+    }
+    if (!app.util.isRightName(this.data.userName)) {
+      Toast("请输入有效的姓名！");
+      return;
+    }
     if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
+      Toast("请先获取短信验证码！");
       return;
     }
     if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
+      Toast("请正确输入短信验证码！");
       return;
     }
     if (
@@ -67,7 +75,6 @@ Page({
     }
   },
   bindBankCard() {
-    // TODO: 校验证件号码格式
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
@@ -83,7 +90,6 @@ Page({
           idNo: this.data.idCard,
           acNo: this.data.bindCardId,
         };
-        console.log('#####bindBankCard', params);
         app.service.Global.wxAddAccount(params)
           .then((res) => {
             if (res) {
