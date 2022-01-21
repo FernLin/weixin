@@ -43,6 +43,10 @@ Page({
       Toast("请先获取短信验证码！");
       return;
     }
+    if (!this.data.verifyCode) {
+      Toast('请正确输入短信验证码！');
+      return;
+    }
     if (!this.data.checked) {
       Toast("请先勾选相关协议！");
       return;

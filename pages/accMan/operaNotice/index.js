@@ -43,7 +43,7 @@ Page({
       return;
     }
     if (!this.data.verifyCode) {
-      Toast("请输入验证码！");
+      Toast('请正确输入短信验证码！');
       return;
     }
     if (!this.data.hasUserInfo) {

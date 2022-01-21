@@ -49,6 +49,10 @@ Page({
       Toast('请先获取短信验证码！');
       return;
     }
+    if (!this.data.verifyCode) {
+      Toast('请正确输入短信验证码！');
+      return;
+    }
     if (
       this.data.bindCardId &&
       this.data.bindCardType.value &&
