@@ -16,6 +16,7 @@ Page({
     openMobile: wx.getStorageSync("mobilePhone"),
     indexCode: "",
     hasGetVerifyCode: false,
+    resultPopup: false,
   },
   // 解绑
   onClick(e) {
@@ -91,8 +92,9 @@ Page({
       })
         .then((res) => {
           if (res) {
-            // TODO: 显示退出小程序ui
-            console.log(res);
+            this.setData({
+              resultPopup: true,
+            });
           }
         })
         .catch((err) => {

@@ -96,3 +96,35 @@
   letter-spacing: -0.14rpx;
   font-weight: 500;
 }
+.result-content {
+  padding: 48rpx 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.back-title {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 500;
+}
+.success-word {
+  font-size: 30rpx;
+  color: #666666;
+  font-weight: 500;
+  margin: 40rpx 0 48rpx;
+}
+.back-btn {
+  width: 100%;
+  text-align: center;
+  padding: 30rpx 0;
+  border-top: 1rpx solid #e6e6e6;
+  color: #e43234;
+  font-size: 32rpx;
+}

@@ -95,14 +95,22 @@ Page({
         });
         this.handleNoatice();
       } else {
+        this.setData({
+          unbindPopup: false,
+        });
         Dialog.confirm({
           title: "复制卡号",
-          message: "您的卡号为：\n" + this.data.accountDetail,
+          message: "您的卡号为：\n" + this.data.accountDetail.acNo,
           confirmButtonText: "复制卡号",
           cancelButtonText: "取消",
         })
           .then(() => {
-            console.log("复制卡号");
+            wx.setClipboardData({
+              data: this.data.accountDetail.acNo,
+              success: function (res) {
+                wx.getClipboardData();
+              },
+            });
           })
           .catch(() => {
             console.log("取消");
