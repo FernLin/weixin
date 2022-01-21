@@ -120,4 +120,23 @@ export default {
   wxBindRelationship(params) {
     return post("wxBindRelationship.do", params);
   },
+  /**
+   * 银行卡ocr
+   * @param {
+   * bankCardImage: 银行卡正面
+   * }
+   */
+  wxBankCardOcr(params) {
+    return post("wxBankCardOcr.do", params);
+  },
+  /**
+   * 身份证ocr
+   * @param {
+    * frontImge: 身份证正面
+    * backImge: 身份证背面
+    * }
+    */
+   wxIdCardOcr(params) {
+     return post("wxIdCardOcr.do", params);
+   },
 };

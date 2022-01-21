@@ -347,7 +347,7 @@ const isRightName = (name) => {
     if (charzhExp.test(name)) {
       return false;
     }
-    if (name.match(emptyExp).length > 1) {
+    if (!!name.match(emptyExp) && name.match(emptyExp).length > 1) {
       return false;
     }
     return true;

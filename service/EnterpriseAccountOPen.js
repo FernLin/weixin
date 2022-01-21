@@ -24,8 +24,8 @@ export default {
    * 证件上传
    * @param {
     * license: 营业执照
-    * frontImage: 身份证面部
-    * backImage: 身份证国徽
+    * frontImge: 身份证面部
+    * backImge: 身份证国徽
     * }
     */
    wxAuthIdentity(params) {
