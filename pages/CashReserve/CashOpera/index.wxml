@@ -15,7 +15,7 @@
       <view class="input-label">取款金额</view>
       <view class="input-content">
         <text>￥</text>
-        <input value="{{amount}}" bindinput="changeAmount" type="number" placeholder="最低50,000.00元" maxlength="12" class="input" placeholder-class="placeholder" />
+        <input value="{{amount}}" bindinput="changeAmount" type="digit" placeholder="最低50,000.00元" maxlength="12" class="input" placeholder-class="placeholder" />
       </view>
     </view>
   </view>

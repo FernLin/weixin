@@ -1,6 +1,7 @@
 // pages/User/index.js
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
+const camera = wx.createCameraContext();
 const openId = wx.getStorageSync("openid");
 Page({
   /**
@@ -216,6 +217,41 @@ Page({
     }, 1000);
   },
   // 识别身份证
+  scanIdCard() {
+    wx.chooseMedia({
+      mediaType: ["image"],
+      sourceType: ["camera"],
+      camera: "back",
+      success(res) {
+        app.service.Global.wxIdCardOcr({
+          frontImge: wx
+            .getFileSystemManager()
+            .readFileSync(res.tempFiles[0].tempFilePath, "base64"),
+        }).then((result) => {
+          this.setData({
+            userName: result.ctfName,
+            idCard: result.ctfNo,
+            bindCardType: { text: "居民身份证", value: "110001" },
+          });
+        });
+      },
+    });
+    // camera.takePhoto({
+    //   quality: "high",
+    //   success: (res) => {
+    //     this.setData({
+    //       src: res.tempImagePath,
+    //     });
+    //     app.service.Global.wxIdCardOcr({
+    //       frontImge: wx
+    //         .getFileSystemManager()
+    //         .readFileSync(res.tempImagePath, "base64"),
+    //     }).then((res) => {
+    //       console.log("*****########*****", res);
+    //     });
+    //   },
+    // });
+  },
   success(res) {
     Toast("只支持识别身份证~！");
     if (res.detail) {
@@ -230,6 +266,40 @@ Page({
     }
   },
   // 银行卡识别
+  scanBankCard() {
+    wx.chooseMedia({
+      mediaType: ["image"],
+      sourceType: ["camera"],
+      camera: "back",
+      success(res) {
+        console.log(res.tempFiles[0]);
+        app.service.Global.wxBankCardOcr({
+          bankCardImage: wx
+            .getFileSystemManager()
+            .readFileSync(res.tempFiles[0].tempFilePath, "base64"),
+        }).then((result) => {
+          this.setData({
+            bindCardId: result.acNo,
+          });
+        });
+      },
+    });
+    // camera.takePhoto({
+    //   quality: "high",
+    //   success: (res) => {
+    //     this.setData({
+    //       src: res.tempImagePath,
+    //     });
+    //     app.service.Global.wxBankCardOcr({
+    //       bankCardImage: wx
+    //         .getFileSystemManager()
+    //         .readFileSync(res.tempImagePath, "base64"),
+    //     }).then((res) => {
+    //       console.log("*****########*****", res);
+    //     });
+    //   },
+    // });
+  },
   bankSuccess(res) {
     if (res.detail) {
       let data = res.detail;

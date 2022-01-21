@@ -25,6 +25,7 @@ Page({
     bankList: [],
     locationData: {},
     recordList: [],
+    canJumpMap: true,
   },
   // 银行预约操作类型
   goCashOpera(event) {
@@ -92,8 +93,13 @@ Page({
       }
     });
   },
+  getSearchVal(event) {
+    this.setData({
+      searchVal: event.detail,
+    });
+  },
   // 关键字搜索
-  onSearch(event) {
+  onSearch() {
     if (this.data.locationData) {
       app.service.CashReserve.wxQueryDeptListByDist({
         // distance: "米",
@@ -101,7 +107,7 @@ Page({
         latitude: this.data.locationData.latitude,
         cityCode: this.data.selectedCityCode,
         provCd: this.data.selectedProvCode,
-        deptName: event.detail,
+        deptName: this.data.searchVal,
         tradeFlag: 1,
       }).then((content) => {
         if (content.list) {
@@ -233,10 +239,23 @@ Page({
     }
   },
   jumpToMap(event) {
-    wx.openLocation({
-      latitude: parseFloat(event.currentTarget.dataset.item.lat),
-      longitude: parseFloat(event.currentTarget.dataset.item.lon),
-    })
+    const that = this;
+    if (that.data.canJumpMap) {
+      that.setData({
+        canJumpMap: false,
+      });
+      wx.openLocation({
+        latitude: parseFloat(event.currentTarget.dataset.item.lat),
+        longitude: parseFloat(event.currentTarget.dataset.item.lon),
+        complete: function () {
+          setTimeout(() => {
+            that.setData({
+              canJumpMap: true,
+            });
+          }, 1500);
+        },
+      });
+    }
   },
   // 取消预约
   onCancel(event) {
@@ -258,6 +277,7 @@ Page({
           FromUserName: openId,
         }).then((res) => {
           if (res) {
+            Toast("取消预约成功！");
             this.getRecordList();
           }
         });

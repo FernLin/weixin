@@ -43,15 +43,19 @@
 <van-popup show="{{resultPopup}}" custom-class="popup-content">
   <view class="result-content">
     <view class="main-block" wx:if="{{hasSigned}}">
-      <view class="title">注意</view>
+      <view class="title">温馨提示</view>
       <view class="success-word">当前分享账户已签约，请核验！</view>
+    </view>
+    <view class="main-block" wx:elif="{{isSamePerson}}">
+      <view class="title">温馨提示</view>
+      <view class="success-word">分享用户与签约用户相同，请核验！</view>
     </view>
     <view class="main-block" wx:else>
       <view class="title">动账通知签约结果</view>
       <image class="success-img" src="/pages/accMan/assets/success.png" />
       <view class="success-word">签约成功</view>
     </view>
-    <navigator class="back-btn" open-type="exit" target="miniProgram">确认并退出</navigator>
+    <navigator class="back-btn" open-type="exit" target="miniProgram">确认</navigator>
   </view>
 </van-popup>
 <van-toast id="van-toast" />

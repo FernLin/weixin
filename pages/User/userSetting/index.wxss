@@ -76,13 +76,13 @@
   color: #437edf;
   text-align: center;
   font-weight: 500;
-  width: 170rpx;
+  width: 190rpx;
 }
 .count-num {
   font-size: 26rpx;
   color: #646464;
   text-align: center;
-  width: 170rpx;
+  width: 190rpx;
 }
 .popup-btn {
   width: calc(100% - 60rpx);

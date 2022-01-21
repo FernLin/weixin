@@ -215,7 +215,9 @@ Page({
         Toast.success(
           `${this.data.reserveType === "1" ? "大额取款" : "零钱兑换"}预约成功！`
         );
-        wx.navigateBack();
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
       }
     });
   },

@@ -61,13 +61,16 @@
 
 .get-vercode {
   color: #4a90e2;
-  font-size: 30rpx;
+  font-size: 28rpx;
   line-height: 44rpx;
-  text-align: right;
-  width: 170rpx;
+  text-align: center;
+  width: 190rpx;
 }
 .count-down {
-  width: 170rpx;
+  width: 190rpx;
+  font-size: 28rpx;
+  color: #646464;
+  text-align: center;
 }
 
 .mess-input {

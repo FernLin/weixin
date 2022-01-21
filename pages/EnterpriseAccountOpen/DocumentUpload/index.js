@@ -41,38 +41,33 @@ Page({
   },
   toNext() {
     const res = { ...this.data.tempData, imageNo: "" };
-    wx.navigateTo({
-      url:
-        "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
-        JSON.stringify(res),
-    });
-    // if (
-    //   this.data.tempPath.license &&
-    //   this.data.tempPath.face &&
-    //   this.data.tempPath.emblem
-    // ) {
-    //   app.service.EnterpriseAccountOPen.wxAuthIdentity({
-    //     license: wx
-    //       .getFileSystemManager()
-    //       .readFileSync(this.data.tempPath.license, "base64"),
-    //     frontImage: wx
-    //       .getFileSystemManager()
-    //       .readFileSync(this.data.tempPath.face, "base64"),
-    //     backImage: wx
-    //       .getFileSystemManager()
-    //       .readFileSync(this.data.tempPath.emblem, "base64"),
-    //   }).then((res) => {
-    //     console.log(res);
-    //     const res = { ...this.data.tempData, imageNo: "" };
-    //     wx.navigateTo({
-    //       url:
-    //         "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
-    //         JSON.stringify(res),
-    //     });
-    //   });
-    // } else {
-    //   Toast("请完整上传所需证件！");
-    // }
+    if (
+      this.data.tempPath.license &&
+      this.data.tempPath.face &&
+      this.data.tempPath.emblem
+    ) {
+      app.service.EnterpriseAccountOPen.wxAuthIdentity({
+        license: wx
+          .getFileSystemManager()
+          .readFileSync(this.data.tempPath.license, "base64"),
+        frontImge: wx
+          .getFileSystemManager()
+          .readFileSync(this.data.tempPath.face, "base64"),
+        backImge: wx
+          .getFileSystemManager()
+          .readFileSync(this.data.tempPath.emblem, "base64"),
+      }).then((res) => {
+        console.log(res);
+        // const result = { ...this.data.tempData, imageNo: "" };
+        // wx.navigateTo({
+        //   url:
+        //     "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
+        //     JSON.stringify(result),
+        // });
+      });
+    } else {
+      Toast("请完整上传所需证件！");
+    }
   },
   /**
    * 生命周期函数--监听页面加载

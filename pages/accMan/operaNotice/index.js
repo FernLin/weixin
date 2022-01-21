@@ -32,6 +32,7 @@ Page({
     hasSigned: false,
     shareUrlIdList: [],
     hasGetVerifyCode: false,
+    isSamePerson: false,
   },
   onConfirm() {
     if (!this.data.nameVerified) {
@@ -43,7 +44,7 @@ Page({
       return;
     }
     if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
+      Toast("请正确输入短信验证码！");
       return;
     }
     if (!this.data.hasUserInfo) {
@@ -199,6 +200,12 @@ Page({
         app.service.Global.wxGetOpenIdByCode({
           code: res.code,
         }).then((result) => {
+          if (options.shareOpenId == result.openId) {
+            this.setData({
+              isSamePerson: true,
+              resultPopup: true,
+            });
+          }
           this.setData({
             openId: result.openId,
             unionId: result.unionId,
