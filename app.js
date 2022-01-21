@@ -50,7 +50,7 @@ App({
   getOpenId() {
     // TODO: console调试代码，注意发布时删除
     const openId = wx.getStorageSync("openid");
-    console.log('****storage', openId);
+    console.log("****storage", openId);
     if (openId == "" || openId == undefined) {
       wx.login({
         success: (res) => {
@@ -60,7 +60,7 @@ App({
             wx.setStorageSync("openid", result.openId);
             wx.setStorageSync("unionId", result.unionId);
             this.judgeRegister(result.openId);
-            console.log('****login', openId);
+            console.log("****login", openId);
           });
         },
       });

@@ -1,7 +1,7 @@
 <wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="main-content">
     <view class="main-block">
-        <my-field label="取款账户" value="{{util.hiddenBankCard(selectedAccount.text)}}" arrow hideBorder bind:click="onAcClick" />
+        <my-field label="取款账户" value="{{selectedAccount.text}}" arrow hideBorder bind:click="onAcClick" />
         <my-field label="手机号" value="{{util.hiddenPhone(selectedAccount.openMobilephone)}}" />
         <!-- <my-field label="手机号" useSlot>
             <input type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />

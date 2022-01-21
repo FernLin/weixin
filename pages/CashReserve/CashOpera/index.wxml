@@ -9,7 +9,7 @@
         <van-radio icon-size="30rpx" checked-color="#E43234" name="2">零钞兑换</van-radio>
       </van-radio-group>
     </my-field>
-    <my-field label="取款账户" value="{{util.hiddenBankCard(selectedAccount.text)}}" arrow bind:click="onAcClick" />
+    <my-field label="取款账户" value="{{selectedAccount.text}}" arrow bind:click="onAcClick" />
     <my-field label="取款日期" value="{{selectedDate.text}}" arrow bind:click="onDateClick" placeholder="请选择" />
     <view class="amount-content" wx:if="{{reserveType === '1'}}">
       <view class="input-label">取款金额</view>

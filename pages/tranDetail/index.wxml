@@ -1,7 +1,7 @@
 <wxs module="util" src="../../utils/wxParse.wxs"></wxs>
 <view>
     <view class="field-list">
-        <my-field label="账号" value="{{util.hiddenBankCard(selectedAccount.text)}}" arrow hideBorder bind:click="onAcClick" />
+        <my-field label="账号" value="{{selectedAccount.text}}" arrow hideBorder bind:click="onAcClick" />
         <my-field label="交易时间" useSlot>
             <view class="date-content" data-type="startDate" bindtap="onDateClick">
                 <view class="{{startDate ? 'content-color' : 'placeholder-color'}}">{{startDate ? startDate : '起始时间'}}</view>

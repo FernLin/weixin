@@ -235,11 +235,11 @@ const userComputed = (list) => {
 
 // 银行卡显示规则
 const hiddenBankCard = (bankNumber) => {
-  let l1 = bankNumber.length;
-  let s1 = bankNumber.substring(0, 6);
-  let s2 = bankNumber.substring(l1 - 4);
-  let s3 = bankNumber.substring(l1 - 10).replace(/[0-9]/gi, "*");
-  let hiddenNum = s1 + s3 + s2;
+  let len = bankNumber.length;
+  let strStart = bankNumber.substring(0, 6);
+  let strCenter = bankNumber.substring(6, len - 4).replace(/[0-9]/gi, "*");
+  let strEnd = bankNumber.substring(len - 4);
+  let hiddenNum = strStart + strCenter + strEnd;
   hiddenNum = hiddenNum.replace(/(.{4})/g, "$1 ");
   return hiddenNum;
 };

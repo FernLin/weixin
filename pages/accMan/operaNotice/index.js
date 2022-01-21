@@ -223,9 +223,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    wx.hideHomeButton();
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -59,11 +59,11 @@ function hiddenBankCard(bankNumber) {
   if (bankNumber && bankNumber.length > 0) {
     var regexp1 = getRegExp("[0-9]", "gi");
     var regexp2 = getRegExp("(.{4})", "g");
-    var l1 = bankNumber.length;
-    var s1 = bankNumber.substring(0, 6);
-    var s2 = bankNumber.substring(l1 - 4);
-    var s3 = bankNumber.substring(l1 - 10).replace(regexp1, "*");
-    var hiddenNum = s1 + s3 + s2;
+    var len = bankNumber.length;
+    var strStart = bankNumber.substring(0, 6);
+    var strCenter = bankNumber.substring(6, len - 4).replace(regexp1, "*");
+    var strEnd = bankNumber.substring(len - 4);
+    var hiddenNum = strStart + strCenter + strEnd;
     hiddenNum = hiddenNum.replace(regexp2, "$1 ");
     return hiddenNum;
   }
