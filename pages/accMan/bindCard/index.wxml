@@ -61,3 +61,14 @@
 <view class="next-step" bindtap="goNext">下一步</view>
 <view wx:if="{{fromRegister}}" class="jump" bindtap="onJump">跳过</view>
 <van-toast id="van-toast" />
+<van-popup show="{{resultPopup}}" custom-class="popup-content">
+    <view class="result-content">
+        <view class="main-block">
+            <view class="title">添加账户</view>
+            <image class="success-img" src="/pages/accMan/assets/success.png" />
+            <view class="success-word">添加成功</view>
+            <view class="notice-word">使用此卡交易，需进行“<text>非柜面转账签约</text>”</view>
+        </view>
+        <view class="back-btn" bindtap="toBack">确认</view>
+    </view>
+</van-popup>

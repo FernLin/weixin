@@ -43,6 +43,7 @@ Page({
     countDownNum: 60,
     countDownFlag: true,
     hasGetVerifyCode: false,
+    resultPopup: false,
   },
   // 下一步
   goNext() {
@@ -94,14 +95,9 @@ Page({
         app.service.Global.wxAddAccount(params)
           .then((res) => {
             if (res) {
-              Toast("绑卡成功~！");
-              if (this.data.fromRegister) {
-                wx.switchTab({
-                  url: "/pages/User/index",
-                });
-              } else {
-                wx.navigateBack();
-              }
+              this.setData({
+                resultPopup: true,
+              });
             }
           })
           .catch((err) => {
@@ -112,6 +108,15 @@ Page({
           });
       }
     });
+  },
+  toBack() {
+    if (this.data.fromRegister) {
+      wx.switchTab({
+        url: "/pages/User/index",
+      });
+    } else {
+      wx.navigateBack();
+    }
   },
   // 银行卡账号
   bindBankCardId(e) {
@@ -181,6 +186,7 @@ Page({
         let params = {
           mobilePhone: this.data.phoneNum,
           transactionId: "wxAddAccount",
+          templateId: "wxAddAccountTemplate",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({

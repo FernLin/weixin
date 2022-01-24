@@ -44,6 +44,10 @@ Page({
       });
   },
   onAdd() {
+    if (this.data.myShareList.length === 5) {
+      Toast("账户通知最多允许分享5位好友！");
+      return;
+    }
     if (this.data.currentAccount.optionFlag === "0") {
       Toast("该账户尚未开通动账通知功能！");
       return;

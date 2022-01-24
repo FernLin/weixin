@@ -22,7 +22,8 @@
           "name": "共享动账通知操作",
           "pathName": "pages/accMan/operaNotice/index",
           "query": "signeeMobile=15779000892&signeeName=张三丰&shareName=Lynn&shareAccount=6229676177000138824&shareDate=20220115&shareOpenId=ock4k5LMGkuXD-IAvQrSVylKLc3I&shareAvatar=https%3A%2F%2Fthirdwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTJb8FpYbLeI2WKhhb05WICGNibbPiblsFib8dz7mG51jl0PibjlFj3ergicTJMXhNlZQkDjib2Fh1icKDoEw%2F132",
-          "scene": null
+          "scene": 1007,
+          "launchMode": "default"
         },
         {
           "name": "校验用户",
@@ -41,8 +42,8 @@
           "name": "公众号跳转我的账号",
           "pathName": "pages/accMan/index",
           "query": "",
-          "scene": 1035,
           "launchMode": "default",
+          "scene": 1035,
           "referrerInfo": {
             "appId": "1234564564564"
           }

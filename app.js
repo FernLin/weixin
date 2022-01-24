@@ -68,9 +68,13 @@ App({
       this.judgeRegister(openId);
     }
   },
-  onLaunch() {
-    // 小程序加载时获取用户openid
-    this.getOpenId();
+  onShow() {
+    const res = wx.getLaunchOptionsSync();
+    console.log('微信小程序：', res);
+    if (res.scene != 1007) {
+      // 小程序加载时获取用户openid
+      this.getOpenId();
+    }
   },
   //初始化rsa加密对象
   initRsa: function () {
