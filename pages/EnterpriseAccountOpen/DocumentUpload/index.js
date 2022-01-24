@@ -57,13 +57,12 @@ Page({
           .getFileSystemManager()
           .readFileSync(this.data.tempPath.emblem, "base64"),
       }).then((res) => {
-        console.log(res);
-        // const result = { ...this.data.tempData, imageNo: "" };
-        // wx.navigateTo({
-        //   url:
-        //     "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
-        //     JSON.stringify(result),
-        // });
+        const result = { ...this.data.tempData, imageNo: res.contentId };
+        wx.navigateTo({
+          url:
+            "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
+            JSON.stringify(result),
+        });
       });
     } else {
       Toast("请完整上传所需证件！");

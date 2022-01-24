@@ -56,7 +56,7 @@ export default {
     * }
     */
    wxApplyOpenAct(params) {
-     return post("pweb/wxApplyOpenAct.do", params);
+     return post("wxApplyOpenAct.do", params);
    },
   /**
    * 企业预开户申请进度查询
@@ -64,11 +64,11 @@ export default {
    * applyNo: 申请码
    * startDate: 开始时间
    * endDate: 结束时间
-   * stateCode: 状态码
-   * flag: 标志
+   * openFlag: 状态码： 固定值 2
+   * flag: 标志 ：固定值 0
    * }
    */
   wxApplyOpenActQry(params) {
-    return post("pweb/perWxLoanPrdQry.do", params);
+    return post("wxApplyOpenActQry.do", params);
   },
 };

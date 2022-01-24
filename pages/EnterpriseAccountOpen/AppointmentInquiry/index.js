@@ -1,62 +1,52 @@
 // pages/User/index.js
-const app = getApp()
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
-  data: {
-    
-  },
+  data: {},
   goEnterAccOpen() {
     wx.navigateTo({
-      url: "/pages/EnterpriseAccountOpen/EnterpriseInformation/index"
-    })
+      url: "/pages/EnterpriseAccountOpen/EnterpriseInformation/index",
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    
+    app.service.EnterpriseAccountOPen.wxApplyOpenActQry({
+      openFlag: "2",
+      flag: "0",
+    }).then((res) => {
+      console.log(res);
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
-})
+  onShareAppMessage: function () {},
+});

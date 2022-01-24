@@ -39,6 +39,12 @@ App({
         wx.reLaunch({
           url: "/pages/Register/index",
         });
+      } else {
+        if (this.globalData.enterOptions.path.includes("operaNotice")) {
+          wx.switchTab({
+            url: "/pages/Microservice/index",
+          });
+        }
       }
       if (result.mobilePhone) {
         wx.setStorageSync("mobilePhone", result.mobilePhone);
@@ -69,9 +75,10 @@ App({
     }
   },
   onShow() {
-    const res = wx.getLaunchOptionsSync();
-    console.log('微信小程序：', res);
-    if (res.scene != 1007) {
+    this.globalData.enterOptions = wx.getEnterOptionsSync();
+    console.log("微信启动：：", this.globalData.enterOptions);
+    // 非单人会话场景，皆需要判断注册状态（TODO:群聊会话场景？）
+    if (this.globalData.enterOptions.scene != 1007) {
       // 小程序加载时获取用户openid
       this.getOpenId();
     }
@@ -88,5 +95,6 @@ App({
       "C4DFF3C3372E7DD217E22E6A44406E46760F58180440012CF819E25DEDADBEA48FF037D30E61E829BA0F36892D041DA64D320E3AE094C7D3DAF6AAB22B37DDC7",
     hexPublic: "10001",
     rsa: "",
+    enterOptions: {},
   },
 });

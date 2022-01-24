@@ -57,42 +57,71 @@ Page({
   },
   // 下一步
   toNext() {
-    if (!this.data.hasGetVerifyCode) {
-      Toast('请先获取短信验证码！');
-      return;
-    }
-    if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
-      return;
-    }
-    app.service.Global.wxAuthSmsNoLogin({
-      index: this.data.indexCode,
-      code: this.data.verifyCode,
-      transactionId: "wxApplyOpenAct",
-      mobilePhone: this.data.phoneNum,
-    }).then((result) => {
-      if (result.authRes) {
-        let params = {
-          ...this.data.tempData,
-          ...this.data.currentData,
-        };
-        app.service.EnterpriseAccountOPen.wxApplyOpenAct(params)
-          .then((res) => {
-            if (res) {
-              Toast("绑卡成功~！");
-              wx.reLaunch({
-                url: "/pages/EnterpriseAccountOpen/index",
-              });
-            }
-          })
-          .catch((err) => {
-            this.setData({
-              countDownFlag: true,
-              countDownNum: 60,
-            });
-          });
+    let params = {
+      bankCode: "000", // 固定值
+      openCity: "",
+      openBranch: "0000286800",
+      openDate: "20220428",
+      licenseNum: "666666666666668",
+      applyTrans: "微信", // 固定值
+      linkName: "从雁",
+      linkTel: "18970797082",
+      companyName: "陕西青丘麦可超声电",
+      bankAcctFlag: "0", // 固定值
+      prov: "JX",
+      city: "FUZ",
+      dist: "361002", // TODO: 待交互确认
+      address: "赣江源大道84号XXX",
+      legalName: "从雁",
+      legalTel: "18970797082",
+      financeName: "从雁",
+      financeTel: "18970797082",
+      imageNo: "20220124_1643013060517",
+    };
+    app.service.EnterpriseAccountOPen.wxApplyOpenAct(params).then((res) => {
+      if (res) {
+        Toast("绑卡成功~！");
+        // wx.reLaunch({
+        //   url: "/pages/EnterpriseAccountOpen/index",
+        // });
       }
     });
+    // if (!this.data.hasGetVerifyCode) {
+    //   Toast('请先获取短信验证码！');
+    //   return;
+    // }
+    // if (!this.data.verifyCode) {
+    //   Toast('请正确输入短信验证码！');
+    //   return;
+    // }
+    // app.service.Global.wxAuthSmsNoLogin({
+    //   index: this.data.indexCode,
+    //   code: this.data.verifyCode,
+    //   transactionId: "wxApplyOpenAct",
+    //   mobilePhone: this.data.phoneNum,
+    // }).then((result) => {
+    //   if (result.authRes) {
+    //     let params = {
+    //       ...this.data.tempData,
+    //       ...this.data.currentData,
+    //     };
+    //     app.service.EnterpriseAccountOPen.wxApplyOpenAct(params)
+    //       .then((res) => {
+    //         if (res) {
+    //           Toast("绑卡成功~！");
+    //           wx.reLaunch({
+    //             url: "/pages/EnterpriseAccountOpen/index",
+    //           });
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         this.setData({
+    //           countDownFlag: true,
+    //           countDownNum: 60,
+    //         });
+    //       });
+    //   }
+    // });
   },
   // 联系人
   onLinkInput(e) {
@@ -258,9 +287,9 @@ Page({
    */
   onLoad: function (options) {
     this.getCityData();
-    // this.setData({
-    //   tempData: JSON.parse(options.enterpriseInfo),
-    // });
+    this.setData({
+      tempData: JSON.parse(options.enterpriseInfo),
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -71,18 +71,18 @@ const w = () => {
   var day = end.getDate();
   var dateObj = {};
   dateObj.end = year + "-" + jia(month) + "-" + jia(day);
-  if (day - 7 <= 0) {
+  if (day - 6 <= 0) {
     //如果在当月7日之前
     var startMonthDay = new Date(year, parseInt(month) - 1, 0).getDate(); //1周前所在月的总天数
     if (month - 1 <= 0) {
       //如果在当年的1月份
-      dateObj.start = year - 1 + "-" + 12 + "-" + jia(31 - (7 - day));
+      dateObj.start = year - 1 + "-" + 12 + "-" + jia(31 - (6 - day));
     } else {
       dateObj.start =
-        year + "-" + jia(month - 1) + "-" + jia(startMonthDay - (7 - day));
+        year + "-" + jia(month - 1) + "-" + jia(startMonthDay - (6 - day));
     }
   } else {
-    dateObj.start = year + "-" + jia(month) + "-" + jia(day - 7);
+    dateObj.start = year + "-" + jia(month) + "-" + jia(day - 6);
   }
   return dateObj;
 };

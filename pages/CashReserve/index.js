@@ -112,6 +112,7 @@ Page({
       }).then((content) => {
         if (content.list) {
           ctx.splice(0, this.data.bankList.length, content.list);
+          ctx.forceUpdate();
           this.setData({
             bankList: content.list,
           });
@@ -155,6 +156,7 @@ Page({
                 });
               }
               ctx.splice(0, this.data.bankList.length, list);
+              ctx.forceUpdate();
               this.setData({
                 bankList: list,
               });
@@ -227,6 +229,7 @@ Page({
                 });
               }
               ctx.splice(0, this.data.bankList.length, list);
+              ctx.forceUpdate();
               this.setData({
                 bankList: list,
               });
@@ -391,6 +394,7 @@ Page({
                   });
                 }
                 ctx.append(list);
+                ctx.forceUpdate();
                 that.setData({
                   bankList: list,
                 });
