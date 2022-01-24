@@ -43,10 +43,19 @@ Page({
     )
       .then((res) => {
         if (res.userAccount) {
-          wx.setStorageSync("bankCardList", res.userAccount);
+          const defaultData = res.userAccount.find(
+            (item) => item.majorCardFlag === "1"
+          );
+          let otherData = res.userAccount.filter(
+            (item) => item.majorCardFlag != "1"
+          );
+          if (defaultData) {
+            otherData.unshift(defaultData);
+          }
+          wx.setStorageSync("bankCardList", otherData);
           wx.setStorageSync("currentDate", res.currDate);
           this.setData({
-            bankCardList: res.userAccount,
+            bankCardList: otherData,
           });
           if (res.userAccount.length > 0) {
             this.getRecordList();

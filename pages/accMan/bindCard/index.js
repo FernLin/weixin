@@ -218,6 +218,7 @@ Page({
   },
   // 识别身份证
   scanIdCard() {
+    const _this = this;
     wx.chooseMedia({
       mediaType: ["image"],
       sourceType: ["camera"],
@@ -228,7 +229,7 @@ Page({
             .getFileSystemManager()
             .readFileSync(res.tempFiles[0].tempFilePath, "base64"),
         }).then((result) => {
-          this.setData({
+          _this.setData({
             userName: result.ctfName,
             idCard: result.ctfNo,
             bindCardType: { text: "居民身份证", value: "110001" },
@@ -267,20 +268,22 @@ Page({
   },
   // 银行卡识别
   scanBankCard() {
+    const _this = this;
     wx.chooseMedia({
       mediaType: ["image"],
       sourceType: ["camera"],
       camera: "back",
       success(res) {
-        console.log(res.tempFiles[0]);
         app.service.Global.wxBankCardOcr({
           bankCardImage: wx
             .getFileSystemManager()
             .readFileSync(res.tempFiles[0].tempFilePath, "base64"),
         }).then((result) => {
-          this.setData({
-            bindCardId: result.acNo,
-          });
+          if (result.acNo) {
+            _this.setData({
+              bindCardId: result.acNo,
+            });
+          }
         });
       },
     });

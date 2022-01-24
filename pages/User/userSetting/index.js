@@ -2,8 +2,6 @@
 import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
-const openId = wx.getStorageSync("openid");
-const unionId = wx.getStorageSync("unionId");
 Page({
   /**
    * 页面的初始数据
@@ -13,7 +11,7 @@ Page({
     verifyCode: "",
     countDownFlag: true,
     countDownNum: 60,
-    openMobile: wx.getStorageSync("mobilePhone"),
+    openMobile: "",
     indexCode: "",
     hasGetVerifyCode: false,
     resultPopup: false,
@@ -73,12 +71,13 @@ Page({
     });
   },
   onPopupConfirm() {
+    const openId = wx.getStorageSync("openid");
     if (!this.data.hasGetVerifyCode) {
       Toast("请先获取短信验证码！");
       return;
     }
     if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
+      Toast("请正确输入短信验证码！");
       return;
     }
     app.service.Global.wxAuthSmsNoLogin({
@@ -131,7 +130,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.setData({
+      openMobile: wx.getStorageSync("mobilePhone"),
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

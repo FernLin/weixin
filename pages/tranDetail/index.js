@@ -39,6 +39,7 @@ Page({
       endDate,
     }).then((res) => {
       if (res.list) {
+        // TODO:虚拟列表
         this.setData({
           transInfoList: res.list,
         });
@@ -91,13 +92,13 @@ Page({
   onLoad: function (options) {
     const timeSlotN = app.util.dates();
     this.setData({
-      startDate: timeSlotN.m.start,
-      endDate: timeSlotN.m.end,
+      startDate: timeSlotN.w.start,
+      endDate: timeSlotN.w.end,
     });
     this.getTransInfoList(
       options.acNo,
-      timeSlotN.m.start.replace(/-/g, ""),
-      timeSlotN.m.end.replace(/-/g, "")
+      timeSlotN.w.start.replace(/-/g, ""),
+      timeSlotN.w.end.replace(/-/g, "")
     );
     app.service.Global.wxAcListQry({
       openid: openId,

@@ -102,7 +102,7 @@ Page({
       return;
     }
     if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
+      Toast("请正确输入短信验证码！");
       return;
     }
     app.service.Global.wxAuthSmsNoLogin({
@@ -171,9 +171,18 @@ Page({
       unionId,
     }).then((res) => {
       if (res.userAccount) {
-        wx.setStorageSync("bankCardList", res.userAccount);
+        const defaultData = res.userAccount.find(
+          (item) => item.majorCardFlag === "1"
+        );
+        let otherData = res.userAccount.filter(
+          (item) => item.majorCardFlag != "1"
+        );
+        if (defaultData) {
+          otherData.unshift(defaultData);
+        }
+        wx.setStorageSync("bankCardList", otherData);
         this.setData({
-          bankCardList: res.userAccount,
+          bankCardList: otherData,
         });
       }
     });

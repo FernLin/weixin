@@ -52,7 +52,7 @@
     </view>
     <view wx:else class="empty-content">
         <image src="/assets/empty.png" />
-        <view>暂无记录哦~</view>
+        <view>指定的时间段内无交易明细</view>
     </view>
     <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择账号" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
     <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />
