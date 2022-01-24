@@ -1,3 +1,5 @@
+var http = require("./http");
+
 // 获取时间
 const getDay = (day) => {
   var today = new Date();
@@ -358,6 +360,17 @@ const isNum = (str) => {
   return /^\d+$/.test(str);
 };
 
+const judgeAgreePath = () => {
+  const agreePath = [
+    { name: "DEV", value: "http://115.150.104.8:8091" },
+    { name: "SIT", value: "http://115.150.104.8:8091" },
+    { name: "UAT", value: "http://115.150.104.7:8091" },
+    { name: "EXC", value: "https://upectest.bankgz.com:8091" },
+    { name: "PRD", value: "https://upec.bankgz.com" },
+  ];
+  return agreePath.find((res) => res.name === http.baseUrl.name);
+};
+
 module.exports = {
   times,
   gologin,
@@ -373,4 +386,5 @@ module.exports = {
   randomString,
   isRightName,
   isNum,
+  judgeAgreePath,
 };

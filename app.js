@@ -1,6 +1,6 @@
 // app.js
 var util = require("./utils/util");
-var api = require("./utils/http");
+var http = require("./utils/http");
 var tiny = require("./tiny/tiny.js");
 var Rsa = require("./lib/rsa.js");
 var service = require("./service/index");
@@ -18,11 +18,7 @@ var service = require("./service/index");
 App({
   tiny: tiny,
   //配置方法
-  api: {
-    get: api.get,
-    post: api.post,
-    put: api.put,
-  },
+  http: http,
   util: util,
   service: service,
 
@@ -76,7 +72,6 @@ App({
   },
   onShow() {
     this.globalData.enterOptions = wx.getEnterOptionsSync();
-    console.log("微信启动：：", this.globalData.enterOptions);
     // 非单人会话场景，皆需要判断注册状态（TODO:群聊会话场景？）
     if (this.globalData.enterOptions.scene != 1007) {
       // 小程序加载时获取用户openid

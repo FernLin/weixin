@@ -1,11 +1,14 @@
 // const baseUrl = "http://115.150.104.9:8091/xiaxinyang/wxmini/"; //夏新阳
 // const baseUrl = "http://115.150.104.9:8091/chentianlong/wxmini/"; //陈天龙
-const baseUrl = "http://115.150.104.9:8091/jidenghui/wxmini/"; //吉登辉
+// const baseUrl = "http://115.150.104.9:8091/jidenghui/wxmini/"; //吉登辉
 // const baseUrl = "http://115.150.104.9:8091/dangkui/wxmini/"; //党魁
 // const baseUrl = "http://115.150.104.9:8091/wangkangtao/wxmini/"; //王康桃
 // const baseUrl = "http://115.150.104.9:8091/lukuiyuan/wxmini/"; //禄魁圆
 // const baseUrl = "https://upecwxdevtest.bankgz.com/wxmini/"; //生产地址
-// const baseUrl = "http://115.150.104.8:8091/wxmini/"; //sit地址
+const baseUrl = {
+  name: "SIT",
+  value: "http://115.150.104.8:8091/wxmini/",
+}; //sit地址
 
 const http = (
   {
@@ -23,6 +26,8 @@ const http = (
     isShowLoading,
   }
 ) => {
+  // TODO: 将后面的值转为PRD地址
+  const currentUrl = baseUrl.value || 'http://115.150.104.8:8091/wxmini/';
   if (isShowLoading) {
     wx.showLoading({
       title: "请求中...",
@@ -36,7 +41,7 @@ const http = (
       cookie = getCookieByArray(cookieKey);
     }
     wx.request({
-      url: baseUrl + url,
+      url: currentUrl + url,
       data: {
         ...param,
       },
@@ -53,7 +58,7 @@ const http = (
         console.log("-------------分割线--------------");
         if (isShowLoading) wx.hideLoading();
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          console.log("**********接口地址：：", baseUrl + url);
+          console.log("**********接口地址：：", currentUrl + url);
           console.log("**********接口请求参数：：", param);
           console.log("###########接口返回结果：：", res);
           if (res.data.respCode === "00000000") {
@@ -130,4 +135,5 @@ module.exports = {
   get,
   post,
   put,
+  baseUrl,
 };

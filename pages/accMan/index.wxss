@@ -30,6 +30,23 @@
   color: #323232;
 }
 
+.account-type {
+  display: flex;
+  align-items: center;
+}
+
+.account-type > text:first-child {
+  font-size: 26rpx;
+  color: #323232;
+  margin-right: 15rpx;
+}
+
+.account-type > text:last-child {
+  font-size: 32rpx;
+  color: #323232;
+  font-weight: 600;
+}
+
 .fen-ge {
   width: 1rpx;
   height: 19rpx;
@@ -78,6 +95,11 @@
   font-size: 30rpx;
   line-height: 44rpx;
   text-align: center;
+}
+
+.center-css {
+  border-left: 1rpx solid #e6e6e6;
+  border-right: 1rpx solid #e6e6e6;
 }
 
 .shui-yin {

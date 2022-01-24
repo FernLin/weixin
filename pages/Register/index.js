@@ -34,6 +34,27 @@ Page({
     });
   },
 
+  checkFile(e) {
+    app.service.Global.wxProtocolExhibition({
+      protocolType: e.currentTarget.dataset.id,
+    }).then((result) => {
+      const currUrlData = app.util.judgeAgreePath();
+      wx.downloadFile({
+        url: currUrlData.value + result.protocolUrl[0].fileName, //要预览的PDF的地址
+        success: function (res) {
+          console.log("下载协议成功", res);
+          if (res.statusCode === 200) {
+            //成功
+            var Path = res.tempFilePath; //返回的文件临时地址，用于后面打开本地预览所用
+            wx.openDocument({
+              filePath: Path,
+            });
+          }
+        },
+      });
+    });
+  },
+
   toNext() {
     if (!app.util.validatePhone(this.data.mobile)) {
       Toast("请输入正确格式的手机号！");
@@ -44,7 +65,7 @@ Page({
       return;
     }
     if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
+      Toast("请正确输入短信验证码！");
       return;
     }
     if (!this.data.checked) {

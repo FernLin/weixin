@@ -1,5 +1,6 @@
 // index.js
 // 获取应用实例
+import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
 
 Page({
@@ -46,7 +47,8 @@ Page({
       listData: options.currentTarget.dataset.list,
     };
     wx.navigateTo({
-      url: "/pages/Deposit/depositProducts/productDetails/index" +
+      url:
+        "/pages/Deposit/depositProducts/productDetails/index" +
         "?prama=" +
         encodeURIComponent(JSON.stringify(prama)),
     });
@@ -174,8 +176,32 @@ Page({
   },
   // 网点预约
   goCashReserve() {
-    wx.navigateTo({
-      url: "/pages/CashReserve/index",
+    const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
+    app.service.Global.wxAcListQry({
+      openid: openId,
+      unionId,
+    }).then((res) => {
+      if (res.userAccount && res.userAccount.length > 0) {
+        wx.navigateTo({
+          url: "/pages/CashReserve/index",
+        });
+      } else {
+        Dialog.confirm({
+          title: "温馨提示",
+          message: "当前操作需要先进行绑卡操作！",
+          confirmButtonText: "立刻绑卡",
+          cancelButtonText: "暂不绑卡",
+        })
+          .then(() => {
+            wx.navigateTo({
+              url: "/pages/accMan/bindCard/index",
+            });
+          })
+          .catch(() => {
+            console.log("暂不取消");
+          });
+      }
     });
   },
   // 联系客户经理
@@ -197,7 +223,8 @@ Page({
       return;
     }
     wx.navigateTo({
-      url: "/pages/Loan/apply/index" +
+      url:
+        "/pages/Loan/apply/index" +
         "?prama=" +
         encodeURIComponent(JSON.stringify(item)),
     });

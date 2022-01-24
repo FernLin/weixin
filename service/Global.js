@@ -132,11 +132,20 @@ export default {
   /**
    * 身份证ocr
    * @param {
-    * frontImge: 身份证正面
-    * backImge: 身份证背面
-    * }
-    */
-   wxIdCardOcr(params) {
-     return post("wxIdCardOcr.do", params);
-   },
+   * frontImge: 身份证正面
+   * backImge: 身份证背面
+   * }
+   */
+  wxIdCardOcr(params) {
+    return post("wxIdCardOcr.do", params);
+  },
+  /**
+   * 获取协议路径
+   * @param {
+   * protocolType: 协议id
+   * }
+   */
+  wxProtocolExhibition(params) {
+    return post("wxProtocolExhibition.do", params);
+  },
 };

@@ -2,7 +2,7 @@
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 const camera = wx.createCameraContext();
-const openId = wx.getStorageSync("openid");
+
 Page({
   /**
    * 页面的初始数据
@@ -44,6 +44,7 @@ Page({
     countDownFlag: true,
     hasGetVerifyCode: false,
     resultPopup: false,
+    hasBind: false,
   },
   // 下一步
   goNext() {
@@ -77,6 +78,7 @@ Page({
     }
   },
   bindBankCard() {
+    const openId = wx.getStorageSync("openid");
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
@@ -224,6 +226,7 @@ Page({
   },
   // 识别身份证
   scanIdCard() {
+    if (this.data.hasBind) return;
     const _this = this;
     wx.chooseMedia({
       mediaType: ["image"],
@@ -243,34 +246,6 @@ Page({
         });
       },
     });
-    // camera.takePhoto({
-    //   quality: "high",
-    //   success: (res) => {
-    //     this.setData({
-    //       src: res.tempImagePath,
-    //     });
-    //     app.service.Global.wxIdCardOcr({
-    //       frontImge: wx
-    //         .getFileSystemManager()
-    //         .readFileSync(res.tempImagePath, "base64"),
-    //     }).then((res) => {
-    //       console.log("*****########*****", res);
-    //     });
-    //   },
-    // });
-  },
-  success(res) {
-    Toast("只支持识别身份证~！");
-    if (res.detail) {
-      let data = res.detail;
-      this.setData({
-        userName: data.name.text,
-        idCard: data.id.text,
-        bindCardType: { text: "居民身份证", value: "110001" },
-      });
-    } else {
-      Toast("请重新上传~！");
-    }
   },
   // 银行卡识别
   scanBankCard() {
@@ -293,31 +268,6 @@ Page({
         });
       },
     });
-    // camera.takePhoto({
-    //   quality: "high",
-    //   success: (res) => {
-    //     this.setData({
-    //       src: res.tempImagePath,
-    //     });
-    //     app.service.Global.wxBankCardOcr({
-    //       bankCardImage: wx
-    //         .getFileSystemManager()
-    //         .readFileSync(res.tempImagePath, "base64"),
-    //     }).then((res) => {
-    //       console.log("*****########*****", res);
-    //     });
-    //   },
-    // });
-  },
-  bankSuccess(res) {
-    if (res.detail) {
-      let data = res.detail;
-      this.setData({
-        bindCardId: data.number.text,
-      });
-    } else {
-      Toast("请重新上传~！");
-    }
   },
   // 跳过绑定
   onJump() {
@@ -332,6 +282,25 @@ Page({
     if (options.fromRegister) {
       this.setData({
         fromRegister: true,
+      });
+    }
+    // 如果已经绑卡，就回显部分数据 TODO: 待测试，手机号要显示加密，回显要disabled
+    const bankCardList = wx.getStorageSync("bankCardList");
+    if (bankCardList && bankCardList.length > 0) {
+      const openId = wx.getStorageSync("openid");
+      app.service.Global.wxGetUserInfo({
+        openid: openId,
+      }).then((res) => {
+        const type = this.data.columns[0].values.find(
+          (item) => item.value == res.idType
+        );
+        this.setData({
+          hasBind: true,
+          bindCardType: type,
+          idCard: res.idNo,
+          userName: res.cifName,
+          phoneNum: res.mobilePhone,
+        });
       });
     }
   },

@@ -1,5 +1,5 @@
 <view wx:if="showOfficial" style="width:100%">
- <official-account></official-account>
+  <official-account></official-account>
 </view>
 <view class="register-content">
   <view class="title">自助注册</view>
@@ -15,9 +15,9 @@
       <van-checkbox value="{{ checked }}" bind:change="onChange" custom-class="check-box-content" checked-color="#F4333C" icon-size="30rpx" />
       <view class="text-content">
         已阅读并同意
-        <text>《赣州银行电子渠道服务协议》</text>
+        <text data-id="1002" bindtap="checkFile">《赣州银行电子渠道服务协议》</text>
         、
-        <text>《赣州银行用户隐私政策》</text>
+        <text data-id="1005" bindtap="checkFile">《赣州银行用户隐私政策》</text>
       </view>
     </view>
   </view>
