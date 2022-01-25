@@ -48,6 +48,12 @@ Page({
         this.setData({
           transInfoList: res.list,
         });
+      } else {
+        ctx.splice(0, ctx.getList().length - 1, []);
+        ctx.forceUpdate();
+        this.setData({
+          transInfoList: res.list,
+        });
       }
     });
   },
