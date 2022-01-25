@@ -5,7 +5,10 @@
             <image src="/assets/bankicon.png" />
             <view class="flex-c">
                 <text class="bank-card-id">{{ util.hiddenBankCard(accountDetail.acNo) }}</text>
-                <view class="card-type">{{util.formatBankType(accountDetail.bankAcType)}}</view>
+                <view class="card-type">
+                    <text>{{util.formatAccountType(accountDetail.bankAcType)}}</text>
+                    <text>{{util.formatBankType(accountDetail.bankAcType)}}</text>
+                </view>
                 <view class="check-card" bindtap="checkAcNo">
                     <image src="/pages/accMan/assets/seeCard.png" />
                     <text>查看卡号</text>

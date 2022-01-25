@@ -135,100 +135,37 @@ function getTime(time) {
 function formatBankType(type) {
   if (type && type.length > 0) {
     switch (type) {
-      case "ESAV":
-        return "企业基本户";
-      case "ERMY":
-        return "企业一般户";
-      case "ESPL":
-        return "企业专用账户";
-      case "ETMP":
-        return "企业临时户";
-      case "EOFT":
-        return "外币-经常项目";
-      case "EPIT":
-        return "外币-资本项目";
-      case "EWBH":
-        return "企业外币活期账户";
-      case "EMCS":
-        return "企业多币种活期账户";
-      case "ELOA":
-        return "贷款户";
-      case "EINS":
-        return "内部户";
-      case "ETIM":
-        return "单位定期账户";
-      case "ENDA":
-        return "企业通知存款账户";
-      case "EAGE":
-        return "企业协议存款";
-      case "ENRA":
-        return "NRA账户";
-      case "ECER":
-        return "企业保证金";
-      case "EYAN":
-        return "企业验资户";
-      case "ESDC":
-        return "公司借记卡";
-      case "ECAV":
-        return "同业活期账户";
-      case "EFAV":
-        return "财付通账户";
-      case "EZBA":
-        return "零余额账户";
-      case "EPSA":
-        return "房产监管账户";
-      case "ECSA":
-        return "房产监管账户";
-      case "EIDA":
-        return "同业定期账户";
-      case "EWBD":
-        return "单位定期外汇账户";
-      case "ETDA":
-        return "单位定期保证金账户";
-      case "ECDA":
-        return "单位大额存单";
-      case "ESDA":
-        return "单位结构性存款";
-      case "PDBC":
-        return "一卡通";
-      case "PSAV":
-        return "活期账户";
-      case "PSDC":
-        return "借记卡";
-      case "PSDP":
-        return "存折";
-      case "PTIM":
-        return "定期存单";
-      case "PMCS":
-        return "活期一本通";
-      case "PMCT":
-        return "定期一本通";
       case "PCRC":
-        return "公务卡";
-      case "OTH":
-        return "其他";
-      case "PPDC":
-        return "活期单账号";
-      case "PTOL":
-        return "零整存折";
-      case "PTDD":
-        return "定活两便";
-      case "PNDA":
-        return "利生利";
-      case "PNDB":
-        return "国债存单";
-      case "SAT":
-        return "储蓄";
-      case "PEBC":
+        return "信用卡";
+      case "PSAV":
+        return "I类户";
+      case "PSA2":
+        return "II类户";
+      case "PEA2":
+        return "II类电子账户";
+      case "PEA3":
+        return "III类电子账户";
+      case "PDPB":
+        return "存折";
+    }
+  }
+}
+//账户类型
+function formatAccountType(type) {
+  if (type && type.length > 0) {
+    switch (type) {
+      case "PCRC":
+        return "贷记卡";
+      case "PSAV":
+        return "借记卡";
+      case "PSA2":
+        return "借记卡";
+      case "PEA2":
         return "电子账户";
-      case "VCAD":
-        return "直销账户类型";
-      case "XFZF":
-        return "先锋电子账户";
-      case "PIC":
-        return "IC卡";
-      case "MSC":
-        return "磁条卡";
+      case "PEA3":
+        return "电子账户";
+      case "PDPB":
+        return "存折";
     }
   }
 }
@@ -246,4 +183,5 @@ module.exports = {
   tailNumber: tailNumber,
   getTime: getTime,
   formatBankType: formatBankType,
+  formatAccountType: formatAccountType,
 };

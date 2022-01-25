@@ -5,7 +5,10 @@
             <image class="bank-icon" src="{{ bankPng }}" />
             <view class="flex-c">
                 <text class="bank-card-id">{{ util.hiddenBankCard(item.acNo) }}</text>
-                <view class="card-type">{{util.formatBankType(item.bankAcType)}}</view>
+                <view class="card-type">
+                    <text>{{util.formatAccountType(item.bankAcType)}}</text>
+                    <text>{{util.formatBankType(item.bankAcType)}}</text>
+                </view>
                 <view class="account-type">
                     <text>账户余额（元）</text>
                     <text>￥{{util.formatAmount(item.accBal)}}</text>

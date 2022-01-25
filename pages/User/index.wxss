@@ -409,17 +409,30 @@
 
 .card-content {
   display: inline-block;
-  margin: 30rpx 30rpx 0;
+  margin: 30rpx 10rpx 0;
   border-radius: 20rpx;
-  padding: 40rpx 0 40rpx 30rpx;
+  padding: 40rpx 30rpx;
   background-color: #ffffff;
   position: relative;
-  width: calc(100% - 90rpx);
+  width: 576rpx;
 }
+
+.card-content:first-child {
+  margin-left: 30rpx;
+}
+
+.card-content:last-child {
+  margin-right: 30rpx;
+}
+
 .card-content image {
   position: absolute;
   width: 278rpx;
   height: 234rpx;
   bottom: 0;
   right: 0;
+}
+
+.only-one {
+  width: calc(100% - 90rpx);
 }

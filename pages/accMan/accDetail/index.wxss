@@ -33,6 +33,14 @@
 .card-type {
   font-size: 28rpx;
   color: #323232;
+  font-weight: 500;
+}
+.card-type > text:first-child {
+  margin-right: 50rpx;
+}
+.card-type > text:last-child {
+  font-size: 26rpx;
+  font-weight: 400;
 }
 
 .check-card {

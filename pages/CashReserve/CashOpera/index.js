@@ -253,15 +253,22 @@ Page({
       unionId,
     }).then((res) => {
       if (res.userAccount) {
-        const acList = res.userAccount.map((el) => {
-          return {
-            ...el,
-            text: app.util.hiddenBankCard(el.acNo),
-          };
-        });
+        const acList = res.userAccount
+          .map((el) => {
+            return {
+              ...el,
+              text: app.util.hiddenBankCard(el.acNo),
+            };
+          })
+          .filter((item) => item.bankAcType === "PSAV");
+        const defaultData = acList.find((item) => item.majorCardFlag === "1");
+        let otherData = acList.filter((item) => item.majorCardFlag != "1");
+        if (defaultData) {
+          otherData.unshift(defaultData);
+        }
         this.setData({
-          columnsAccount: acList,
-          selectedAccount: acList[0],
+          columnsAccount: otherData,
+          selectedAccount: otherData[0],
         });
       }
     });
