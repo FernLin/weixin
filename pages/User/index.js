@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     showService: true,
     userName: "",
     bankCardList: [],
@@ -172,6 +173,7 @@ Page({
   onLoad: function () {
     this.setData({
       bindMobile: wx.getStorageSync("mobilePhone"),
+      userInfo: wx.getStorageSync("USERINFO"),
     });
   },
   /**

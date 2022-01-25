@@ -53,8 +53,17 @@ Page({
   },
   verifyCard(params) {
     app.service.Global.wxBindRelationship(params).then((res) => {
-      wx.switchTab({
-        url: "/pages/User/index",
+      // 用户校验卡片信息后，获取用户信息
+      app.service.Global.wxGetUserInfo(
+        {
+          openid: openId,
+        },
+        false
+      ).then((result) => {
+        wx.setStorageSync("USERINFO", result);
+        wx.switchTab({
+          url: "/pages/User/index",
+        });
       });
     });
   },

@@ -17,7 +17,10 @@
             <view class="flex jc-sb">
                 <view class="flex">
                     <image src="/assets/mine/head.png" class="user-head-png" />
-                    <view class="top-n" bindtap="toSetting"> {{util.hiddenPhone(bindMobile)}} </view>
+                    <view class="top-n" bindtap="toSetting">
+                        <text wx:if="{{!!userInfo.cifName}}">{{util.formatName(userInfo.cifName)}}，您好~！</text>
+                        <text wx:else>{{util.hiddenPhone(bindMobile)}}</text>
+                    </view>
                 </view>
                 <!-- <view class="flex-c ai-c" bindtap="downloadApp">
                     <image src="/assets/mine/downicon.png" class="down-i" />

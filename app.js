@@ -32,9 +32,11 @@ App({
     ).then((result) => {
       if (!result.signFlag) {
         // 未注册用户跳转至注册页面
-        wx.reLaunch({
-          url: "/pages/Register/index",
-        });
+        if (!this.globalData.enterOptions.path.includes("Register")) {
+          wx.reLaunch({
+            url: "/pages/Register/index",
+          });
+        }
       } else {
         if (this.globalData.enterOptions.path.includes("operaNotice")) {
           wx.switchTab({
@@ -44,6 +46,7 @@ App({
       }
       if (result.mobilePhone) {
         wx.setStorageSync("mobilePhone", result.mobilePhone);
+        wx.setStorageSync("USERINFO", result);
       }
     });
   },
@@ -71,7 +74,8 @@ App({
     }
   },
   // onLaunch() {
-  //   wx.clearStorageSync();
+  //   // wx.clearStorageSync();
+  //   this.getOpenId();
   // },
   onShow() {
     this.globalData.enterOptions = wx.getEnterOptionsSync();

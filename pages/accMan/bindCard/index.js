@@ -113,8 +113,14 @@ Page({
   },
   toBack() {
     if (this.data.fromRegister) {
-      wx.switchTab({
-        url: "/pages/User/index",
+      // 新注册用户绑卡完成后获取用户信息
+      app.service.Global.wxGetUserInfo({
+        openid: openId,
+      }).then((result) => {
+        wx.setStorageSync("USERINFO", result);
+        wx.switchTab({
+          url: "/pages/User/index",
+        });
       });
     } else {
       wx.navigateBack();
@@ -286,7 +292,7 @@ Page({
         fromRegister: true,
       });
     }
-    // 如果已经绑卡，就回显部分数据 TODO: 待测试，手机号要显示加密，回显要disabled
+    // 如果已经绑卡，就回显部分数据
     const bankCardList = wx.getStorageSync("bankCardList");
     if (bankCardList && bankCardList.length > 0) {
       const openId = wx.getStorageSync("openid");

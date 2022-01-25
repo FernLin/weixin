@@ -88,6 +88,14 @@ Page({
         };
         app.service.Global.wxCifSign(params)
           .then((res) => {
+            this.setData({
+              countDownFlag: true,
+              countDownNum: 60,
+              checked: false,
+              verifyCode: "",
+              indexCode: "",
+              hasGetVerifyCode: false,
+            });
             wx.setStorageSync("mobilePhone", this.data.mobile);
             // openFlag为true，新用户注册成功，跳转至绑卡页面
             if (res.openFlag) {
@@ -178,14 +186,6 @@ Page({
    */
   onShow: function () {
     wx.hideHomeButton();
-    this.setData({
-      countDownFlag: true,
-      countDownNum: 60,
-      checked: false,
-      verifyCode: "",
-      indexCode: "",
-      hasGetVerifyCode: false,
-    });
   },
 
   /**
