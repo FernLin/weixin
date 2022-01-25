@@ -1,13 +1,13 @@
 // pages/User/index.js
 const app = getApp();
-const openId = wx.getStorageSync("openid");
-const unionId = wx.getStorageSync("unionId");
+const createRecycleContext = require("miniprogram-recycle-view");
+var ctx;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    bankPng: "/assets/bankicon.png",
+    viewHeight: 0,
     startDate: "",
     endDate: "",
     transInfoList: [],
@@ -39,7 +39,12 @@ Page({
       endDate,
     }).then((res) => {
       if (res.list) {
-        // TODO:虚拟列表
+        if (ctx.getList().length > 0) {
+          ctx.splice(0, ctx.getList().length - 1, res.list);
+        } else {
+          ctx.append(res.list);
+        }
+        ctx.forceUpdate();
         this.setData({
           transInfoList: res.list,
         });
@@ -90,6 +95,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const currAccountList = wx.getStorageSync("bankCardList");
+    const acList = currAccountList.map((el) => {
+      return {
+        ...el,
+        text: app.util.hiddenBankCard(el.acNo),
+      };
+    });
+    const currentAccount = acList.find((item) => {
+      return item.acNo === options.acNo;
+    });
+    this.setData({
+      columns: acList,
+      selectedAccount: currentAccount,
+    });
     const timeSlotN = app.util.dates();
     this.setData({
       startDate: timeSlotN.w.start,
@@ -100,31 +119,28 @@ Page({
       timeSlotN.w.start.replace(/-/g, ""),
       timeSlotN.w.end.replace(/-/g, "")
     );
-    app.service.Global.wxAcListQry({
-      openid: openId,
-      unionId,
-    }).then((res) => {
-      if (res.userAccount) {
-        const acList = res.userAccount.map((el) => {
-          return {
-            ...el,
-            text: app.util.hiddenBankCard(el.acNo),
-          };
-        });
-        const currentAccount = acList.find((item) => {
-          return item.acNo === options.acNo;
-        });
-        this.setData({
-          columns: acList,
-          selectedAccount: currentAccount,
-        });
-      }
-    });
+  },
+
+  itemSizeFunc: function (item, idx) {
+    return {
+      width: ctx.transformRpx(750),
+      height: ctx.transformRpx(200),
+    };
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+    ctx = createRecycleContext({
+      id: "detailRecycleId",
+      dataKey: "transInfoList",
+      page: this,
+      itemSize: this.itemSizeFunc,
+    });
+    this.setData({
+      viewHeight: wx.getSystemInfoSync().windowHeight - 157,
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

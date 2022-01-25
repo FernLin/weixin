@@ -3,6 +3,8 @@
     "usingComponents": {
         "my-date-picker": "/components/myDatePicker/index",
         "my-picker": "/components/myPicker/index",
-        "my-field": "/components/myField/index"
+        "my-field": "/components/myField/index",
+        "recycle-view": "miniprogram-recycle-view/recycle-view",
+        "recycle-item": "miniprogram-recycle-view/recycle-item"
     }
 }

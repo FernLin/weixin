@@ -111,7 +111,7 @@ Page({
         tradeFlag: 1,
       }).then((content) => {
         if (content.list) {
-          ctx.splice(0, this.data.bankList.length, content.list);
+          ctx.splice(0, ctx.getList().length - 1, content.list);
           ctx.forceUpdate();
           this.setData({
             bankList: content.list,
@@ -155,7 +155,7 @@ Page({
                   onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
                 });
               }
-              ctx.splice(0, this.data.bankList.length, list);
+              ctx.splice(0, ctx.getList().length - 1, list);
               ctx.forceUpdate();
               this.setData({
                 bankList: list,
@@ -228,7 +228,7 @@ Page({
                   onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
                 });
               }
-              ctx.splice(0, this.data.bankList.length, list);
+              ctx.splice(0, ctx.getList().length - 1, list);
               ctx.forceUpdate();
               this.setData({
                 bankList: list,

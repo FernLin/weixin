@@ -13,47 +13,49 @@
         </my-field>
     </view>
     <view class="search" bindtap="onSearch">搜索</view>
-    <view class="list-content" wx:if="{{transInfoList.length > 0}}">
-        <view class="bg-w p-30 mb-30 tran-card" wx:for="{{ transInfoList }}" wx:key="item">
-            <view class="ta-c flex jc-c money-num {{item.borrowLoanFlag == 0 ? '' : 'text-red'}}">
-                <view wx:if="{{ item.borrowLoanFlag == 0 }}">-</view>
-                <view wx:else>+</view>
-                ￥{{ util.formatAmount(item.amount)}}
-            </view>
-            <view class="ta-c tran-date">{{util.formatDate(item.transDate)}} {{util.formatTimeSingal(item.transTime)}}</view>
-            <view class="flex jc-sb mt-30">
-                <view>
-                    <view class="bank-name">赣州银行</view>
-                    <view class="bank-card">尾号{{util.tailNumber(item.acNo)}}</view>
+    <recycle-view batch="{{batchSetRecycleData}}" height="{{viewHeight}}" class="list-content" id="detailRecycleId">
+        <recycle-item wx:for="{{transInfoList}}" wx:key="item" style="width: calc(100% - 60rpx); margin-left: 30rpx;">
+            <view class="bg-w p-30 mb-30 tran-card">
+                <view class="ta-c flex jc-c money-num {{item.borrowLoanFlag == 0 ? '' : 'text-red'}}">
+                    <view wx:if="{{ item.borrowLoanFlag == 0 }}">-</view>
+                    <view wx:else>+</view>
+                    ￥{{ util.formatAmount(item.amount)}}
                 </view>
-                <image class="direct-icon" src="/assets/direct.png" />
-                <view>
-                    <view class="bank-name ta-r">
-                        {{item.appBankName ? item.appBankName : '赣州银行'}}
+                <view class="ta-c tran-date">{{util.formatDate(item.transDate)}} {{util.formatTimeSingal(item.transTime)}}</view>
+                <view class="flex jc-sb mt-30">
+                    <view>
+                        <view class="bank-name">赣州银行</view>
+                        <view class="bank-card">尾号{{util.tailNumber(item.acNo)}}</view>
                     </view>
-                    <view class="bank-card ta-r">
-                        尾号{{util.tailNumber(item.transAcNo ? item.transAcNo : item.acNo)}}
+                    <image class="direct-icon" src="/assets/direct.png" />
+                    <view>
+                        <view class="bank-name ta-r">
+                            {{item.appBankName ? item.appBankName : '赣州银行'}}
+                        </view>
+                        <view class="bank-card ta-r">
+                            尾号{{util.tailNumber(item.transAcNo ? item.transAcNo : item.acNo)}}
+                        </view>
                     </view>
                 </view>
+                <view class="flex jc-sb mt-30">
+                    <view class="tran-l">余额</view>
+                    <view class="tran-r">￥{{util.formatAmount(item.accBalance)}}</view>
+                </view>
+                <view class="flex jc-sb mt-16">
+                    <view class="tran-l">摘要</view>
+                    <view class="tran-r">{{item.brief ? item.brief : '无'}}</view>
+                </view>
+                <view class="flex jc-sb mt-16">
+                    <view class="tran-l">附言</view>
+                    <view class="tran-r">{{item.remark ? item.remark : '无'}}</view>
+                </view>
             </view>
-            <view class="flex jc-sb mt-30">
-                <view class="tran-l">余额</view>
-                <view class="tran-r">￥{{util.formatAmount(item.accBalance)}}</view>
-            </view>
-            <view class="flex jc-sb mt-16">
-                <view class="tran-l">摘要</view>
-                <view class="tran-r">{{item.brief ? item.brief : '无'}}</view>
-            </view>
-            <view class="flex jc-sb mt-16">
-                <view class="tran-l">附言</view>
-                <view class="tran-r">{{item.remark ? item.remark : '无'}}</view>
-            </view>
-        </view>
-    </view>
-    <view wx:else class="empty-content">
+        </recycle-item>
+    </recycle-view>
+    <!-- <view wx:else class="empty-content">
         <image src="/assets/empty.png" />
         <view>指定的时间段内无交易明细</view>
-    </view>
+    </view> -->
     <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择账号" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
     <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />
 </view>

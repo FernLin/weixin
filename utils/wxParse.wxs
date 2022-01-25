@@ -80,12 +80,23 @@ function hiddenPhone(phone) {
   }
 }
 
-// 姓名脱敏
+// 验证姓名脱敏
 function hiddenName(name) {
   if (name && name.length > 0) {
     var len = name.length;
     var first = name.substring(0, len - 1);
     return first + "*";
+  }
+}
+
+// 姓名脱敏
+function formatName(name) {
+  if (name && name.length > 0) {
+    var regexp = getRegExp("[\u4e00-\u9fa5]", "g");
+    var len = name.length;
+    var start = name.substring(0, len - 1).replace(regexp, "*");
+    var end = name.substring(len - 1);
+    return start + end;
   }
 }
 
@@ -229,6 +240,7 @@ module.exports = {
   hiddenBankCard: hiddenBankCard,
   hiddenPhone: hiddenPhone,
   hiddenName: hiddenName,
+  formatName: formatName,
   formatAmount: formatAmount,
   formatTimeSingal: formatTimeSingal,
   tailNumber: tailNumber,

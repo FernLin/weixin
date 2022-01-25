@@ -1,7 +1,7 @@
 <wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="opera-content">
   <view class="field-list">
-    <my-field label="姓名" value="{{selectedAccount.acName}}" hideBorder />
+    <my-field label="姓名" value="{{util.formatName(selectedAccount.acName)}}" hideBorder />
     <my-field label="网点名称" value="{{bankName}}" />
     <my-field label="业务种类" useSlot>
       <van-radio-group value="{{ reserveType }}" bind:change="onTypeChange" class="radio-group">

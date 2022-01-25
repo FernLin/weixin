@@ -39,9 +39,7 @@
   color: #e43234;
 }
 .list-content {
-  padding: 0 30rpx;
-  height: calc(100vh - 404rpx);
-  overflow-y: scroll;
+  height: calc(100vh - 410rpx);
 }
 .list-content > view:last-child {
   margin-bottom: unset;

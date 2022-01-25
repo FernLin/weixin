@@ -294,6 +294,7 @@ const cnMoneyFormat = (money) => {
   return cnMoney;
 };
 
+// 校验手机号
 const validatePhone = (phone) => {
   //校验手机号，号段主要有(不包括上网卡)：130~139、150~153，155~159，180~189、170~171、176~178。14号段为上网卡专属号段
   const reg = /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/;
@@ -301,6 +302,7 @@ const validatePhone = (phone) => {
   return reg.test(phone);
 };
 
+// 创建随机数
 const randomString = (length) => {
   const len = length || 32;
   let str = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
@@ -312,6 +314,7 @@ const randomString = (length) => {
   return res;
 };
 
+// 判断姓名有效性
 const isRightName = (name) => {
   var reg = /^[a-zA-Z\u4E00-\u9FA5\uF900-\uFA2D\u00B7\u2022\u0095\u0387]+$/;
   var strRe = /[\u4E00-\u9FA5]/g;
@@ -356,8 +359,14 @@ const isRightName = (name) => {
   }
 };
 
+// 判断是否喂数字
 const isNum = (str) => {
   return /^\d+$/.test(str);
+};
+
+// 名字脱敏
+const formatName = (name) => {
+  return new Array(name.length).join("*") + str.substr(-1);
 };
 
 const judgeAgreePath = () => {
@@ -387,4 +396,5 @@ module.exports = {
   isRightName,
   isNum,
   judgeAgreePath,
+  formatName,
 };
