@@ -70,6 +70,9 @@ App({
       this.judgeRegister(openId);
     }
   },
+  onLaunch() {
+    wx.clearStorageSync();
+  },
   onShow() {
     this.globalData.enterOptions = wx.getEnterOptionsSync();
     // 非单人会话场景，皆需要判断注册状态（TODO:群聊会话场景？）

@@ -128,9 +128,11 @@ Page({
   },
   // 证件类型
   onBindCardType() {
-    this.setData({
-      idcardPopup: true,
-    });
+    if (!this.data.hasBind) {
+      this.setData({
+        idcardPopup: true,
+      });
+    }
   },
   // 身份Id
   bindIdCard(e) {

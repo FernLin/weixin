@@ -1,3 +1,4 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="ta-c">
     <image class="bank-icon" src="/assets/bankicon.png" />
 </view>
@@ -20,17 +21,17 @@
     <view class="flex input1 p-30 jc-sb">
         <text>证件号码</text>
         <view class="flex ta-r w-70">
-            <input type="{{bindCardType.value === '110001' ? 'idcard' : 'text'}}" value="{{ idCard }}" bindinput="bindIdCard" placeholder="请输入证件号码" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
+            <input type="{{bindCardType.value === '110001' ? 'idcard' : 'text'}}" disabled="{{hasBind}}" value="{{ idCard }}" bindinput="bindIdCard" placeholder="请输入证件号码" class="ta-r input-saomiao" placeholder-class="placehoder-color" />
             <image class="saomiao-css" bindtap="scanIdCard" src="/assets/appInfo/saomiao.png" />
         </view>
     </view>
     <view class="flex input1 p-30 jc-sb">
         <text>姓名</text>
-        <input value="{{ userName }}" bindinput="bindUserName" placeholder="请输入姓名" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
+        <input value="{{ userName }}" disabled="{{hasBind}}" bindinput="bindUserName" placeholder="请输入姓名" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
     </view>
     <view class="flex input1 p-30 jc-sb">
         <text>手机号</text>
-        <input type="number" value="{{ phoneNum }}" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
+        <input type="number" value="{{ hasBind ? util.hiddenPhone(phoneNum) : phoneNum }}" disabled="{{hasBind}}" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
     </view>
     <!-- <view class="flex input1 p-30 jc-sb">
         <text>图形验证码</text>

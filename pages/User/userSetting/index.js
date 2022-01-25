@@ -98,6 +98,7 @@ Page({
             this.setData({
               resultPopup: true,
             });
+            wx.clearStorageSync();
           }
         })
         .catch((err) => {
