@@ -40,7 +40,7 @@ Page({
     }).then((res) => {
       if (res.list) {
         if (ctx.getList().length > 0) {
-          ctx.splice(0, ctx.getList().length - 1, res.list);
+          ctx.splice(0, ctx.getList().length, res.list);
         } else {
           ctx.append(res.list);
         }
@@ -49,7 +49,7 @@ Page({
           transInfoList: res.list,
         });
       } else {
-        ctx.splice(0, ctx.getList().length - 1, []);
+        ctx.splice(0, ctx.getList().length, []);
         ctx.forceUpdate();
         this.setData({
           transInfoList: res.list,

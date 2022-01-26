@@ -46,5 +46,5 @@
 .notice {
   color: #969696;
   font-size: 24rpx;
-  margin: 60rpx 30rpx 0;
+  margin: 60rpx 30rpx 60rpx;
 }

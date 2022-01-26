@@ -53,7 +53,8 @@
         "EnterpriseAccountOpening/index",
         "AppointmentInquiry/index",
         "DocumentUpload/index",
-        "EnterpriseInformation/index"
+        "EnterpriseInformation/index",
+        "SelectNet/index"
       ]
     },
     {

@@ -1,0 +1,22 @@
+.search-field {
+  padding: 20rpx 30rpx !important;
+}
+.icon-search {
+  color: #c8c8c8;
+  margin-right: 10rpx;
+}
+.list-content {
+  margin-top: 20rpx;
+  height: calc(100vh - 128rpx);
+  background-color: #fff;
+}
+.list-content > view:last-child {
+  margin-bottom: unset;
+}
+.dept-content {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #333333;
+  border-bottom: 1rpx solid #ededed;
+}

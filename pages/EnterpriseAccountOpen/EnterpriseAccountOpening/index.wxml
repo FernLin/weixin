@@ -4,10 +4,10 @@
         <my-field label="省" value="{{selectedProv.text}}" placeholder="请选择省" arrow bind:click="onProvClick" />
         <my-field label="市" value="{{selectedCity.text}}" placeholder="请选择市" arrow bind:click="onCityClick" />
         <my-field label="区" value="{{selectedDist.text}}" placeholder="请选择区" arrow bind:click="onDistClick" />
-        <my-field label="网点" value="{{selectedNet.text}}" placeholder="请选择网点" arrow bind:click="onNetClick" />
+        <my-field label="网点" value="{{selectedNet.deptName}}" placeholder="请选择网点" arrow bind:click="onNetClick" />
     </view>
     <view class="content">
-        <my-field label="预约开户时间" value="{{selectedDate.text}}" placeholder="请选择时间" arrow bind:click="onDateClick" hideBorder />
+        <my-field label="预约开户时间" value="{{selectedDate}}" placeholder="请选择时间" arrow bind:click="onDateClick" hideBorder />
     </view>
     <view class="content">
         <my-field label="经办人" useSlot hideBorder>

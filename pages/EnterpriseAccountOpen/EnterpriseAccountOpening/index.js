@@ -6,23 +6,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mobilePhone: "",
     verifyCode: "",
     countDownNum: 60,
     countDownFlag: true,
     indexCode: "",
     tempData: {},
     currentData: {
-      bankCode: "000", // 银行编号
-      openCity: "", // 开户城市
-      openBranch: "", // 开户网点
+      bankCode: "000", // 银行编号*固定值
+      openCity: "", // 开户城市*为空
+      openBranch: "", // 开户网点*
       openDate: "", // 预约开户日期*
-      applyTrans: "微信", // 申请渠道
+      applyTrans: "微信", // 申请渠道*
+      bankAcctFlag: "0", // 固定值*
       linkName: "", // 联系人姓名*
       linkTel: "", // 联系人电话*
-      prov: "", // 省
-      city: "", // 市
-      dist: "", // 区
+      prov: "", // 省*
+      city: "", // 市*
+      dist: "", // 区*
     },
     showPicker: false,
     title: "",
@@ -31,15 +31,34 @@ Page({
     columnsProv: [],
     columnsCity: [],
     columnsDist: [],
-    columnsNets: [],
+    columnsDate: [],
     selectedProv: {},
     selectedCity: {},
     selectedDist: {},
-    selectedNet: {},
-    citys: {},
+    selectedDate: "",
+    selectedNet: {
+      addr: "",
+      depId: "",
+      deptName: "",
+    },
+    deptList: [],
     hasGetVerifyCode: false,
   },
+  // 选择省份
+  onProvClick() {
+    this.setData({
+      pickerType: "prov",
+      showPicker: true,
+      title: "选择省份",
+      columns: this.data.columnsProv,
+    });
+  },
+  // 选择城市
   onCityClick() {
+    if (!this.data.selectedProv.text) {
+      Toast("请先选择省份！");
+      return;
+    }
     this.setData({
       pickerType: "city",
       showPicker: true,
@@ -47,85 +66,75 @@ Page({
       columns: this.data.columnsCity,
     });
   },
-  onNetClick() {
-    if (Object.keys(this.data.selectedCity).length === 0) {
-      Toast("请先选择城市");
-    } else {
-      this.setData({
-        pickerType: "net",
-        showPicker: true,
-        title: "选择网点",
-        columns: this.data.columnsNets,
-      });
+  // 选择区县
+  onDistClick() {
+    if (!this.data.selectedProv.text) {
+      Toast("请先选择省份！");
+      return;
     }
+    if (!this.data.selectedCity.text) {
+      Toast("请先选择城市！");
+      return;
+    }
+    this.setData({
+      pickerType: "dist",
+      showPicker: true,
+      title: "选择区县",
+      columns: this.data.columnsDist,
+    });
+  },
+  // 选择预约开户时间
+  onDateClick() {
+    this.setData({
+      pickerType: "date",
+      showPicker: true,
+      title: "选择预约时间",
+      columns: this.data.columnsDate,
+    });
+  },
+  onNetClick() {
+    wx.navigateTo({
+      url: "/pages/EnterpriseAccountOpen/SelectNet/index",
+    });
   },
   // 下一步
   toNext() {
-    let params = {
-      bankCode: "000", // 固定值
-      openCity: "", // 为空
-      openBranch: "0000286800", // TODO: 当前获取 -- 网点
-      openDate: "20220428", // TODO: 当前获取 -- 开户时间
-      licenseNum: "666666666666668", // 第一步获取
-      applyTrans: "微信", // 固定值
-      linkName: "从雁", // TODO: 当前获取 -- 经办人
-      linkTel: "18970797082", // TODO: 当前获取 -- 手机号
-      companyName: "陕西青丘麦可超声电", // 第一步获取
-      bankAcctFlag: "0", // 固定值
-      prov: "JX", // TODO: 当前获取 -- 省
-      city: "FUZ", // TODO: 当前获取 -- 市
-      dist: "361002", // 待交互确认 -- 区
-      address: "赣江源大道84号XXX", // 第一步获取
-      legalName: "从雁", // 第一步获取
-      legalTel: "18970797082", // 第一步获取
-      financeName: "从雁", // 第一步获取
-      financeTel: "18970797082", // 第一步获取
-      imageNo: "20220124_1643013060517", // 第二步获取
-    };
-    app.service.EnterpriseAccountOPen.wxApplyOpenAct(params).then((res) => {
-      if (res) {
-        Toast("绑卡成功~！");
-        // wx.reLaunch({
-        //   url: "/pages/EnterpriseAccountOpen/index",
-        // });
+    if (!this.data.hasGetVerifyCode) {
+      Toast("请先获取短信验证码！");
+      return;
+    }
+    if (!this.data.verifyCode) {
+      Toast("请正确输入短信验证码！");
+      return;
+    }
+    app.service.Global.wxAuthSmsNoLogin({
+      index: this.data.indexCode,
+      code: this.data.verifyCode,
+      transactionId: "wxApplyOpenAct",
+      mobilePhone: this.data.currentData.linkTel,
+    }).then((result) => {
+      if (result.authRes) {
+        let params = {
+          ...this.data.tempData,
+          ...this.data.currentData,
+        };
+        app.service.EnterpriseAccountOPen.wxApplyOpenAct(params)
+          .then((res) => {
+            if (res) {
+              wx.removeStorageSync("deptList");
+              wx.reLaunch({
+                url: "/pages/EnterpriseAccountOpen/ApplyResult/index",
+              });
+            }
+          })
+          .catch((err) => {
+            this.setData({
+              countDownFlag: true,
+              countDownNum: 60,
+            });
+          });
       }
     });
-    // if (!this.data.hasGetVerifyCode) {
-    //   Toast('请先获取短信验证码！');
-    //   return;
-    // }
-    // if (!this.data.verifyCode) {
-    //   Toast('请正确输入短信验证码！');
-    //   return;
-    // }
-    // app.service.Global.wxAuthSmsNoLogin({
-    //   index: this.data.indexCode,
-    //   code: this.data.verifyCode,
-    //   transactionId: "wxApplyOpenAct",
-    //   mobilePhone: this.data.phoneNum,
-    // }).then((result) => {
-    //   if (result.authRes) {
-    //     let params = {
-    //       ...this.data.tempData,
-    //       ...this.data.currentData,
-    //     };
-    //     app.service.EnterpriseAccountOPen.wxApplyOpenAct(params)
-    //       .then((res) => {
-    //         if (res) {
-    //           Toast("绑卡成功~！");
-    //           wx.reLaunch({
-    //             url: "/pages/EnterpriseAccountOpen/index",
-    //           });
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         this.setData({
-    //           countDownFlag: true,
-    //           countDownNum: 60,
-    //         });
-    //       });
-    //   }
-    // });
   },
   // 联系人
   onLinkInput(e) {
@@ -147,12 +156,12 @@ Page({
   },
   // 获取验证码
   getVercode() {
-    if (app.util.validatePhone(this.data.phoneNum)) {
+    if (app.util.validatePhone(this.data.currentData.linkTel)) {
       app.service.Global.wxCommonConfirm({
         transactionId: "wxApplyOpenAct",
       }).then((result) => {
         let params = {
-          mobilePhone: this.data.phoneNum,
+          mobilePhone: this.data.currentData.linkTel,
           transactionId: "wxApplyOpenAct",
         };
         app.service.Global.wxSendSms(params).then((res) => {
@@ -205,39 +214,85 @@ Page({
     this.setData({
       showPicker: false,
     });
-    const { picker, value, index } = event.detail;
-    this.data.pickerType === "city"
-      ? this.setData({
-          selectedCity: value,
-        })
-      : this.setData({
-          selectedNet: value,
+    const { value } = event.detail;
+    // 选择省份后请求接口获取城市数据
+    if (this.data.pickerType === "prov") {
+      this.getCityData("cityList", "cityName", "columnsCity", {
+        provCode: value.provCd,
+      });
+      this.setData({
+        selectedProv: value,
+        "currentData.prov": value.provCd,
+      });
+    }
+    // 选择城市后请求接口获取区县数据
+    if (this.data.pickerType === "city") {
+      this.getCityData("districtList", "areaName", "columnsDist", {
+        cityCode: value.cityCode,
+      });
+      this.setData({
+        selectedCity: value,
+        "currentData.city": value.cityCode,
+      });
+    }
+    if (this.data.pickerType === "dist") {
+      this.setData({
+        selectedDist: value,
+        "currentData.dist": value.areaCode,
+      });
+    }
+    if (this.data.pickerType === "date") {
+      this.setData({
+        selectedDate: value,
+        "currentData.openDate": value.replace(/-/g, ""),
+      });
+    }
+  },
+  // 获取城市数据
+  getCityData(
+    listName = "provList",
+    label = "provName",
+    columsName = "columnsProv",
+    params = {}
+  ) {
+    app.service.EnterpriseAccountOPen.wxDeptCityQry(params).then((res) => {
+      if (res[listName] && res[listName].length > 0) {
+        const list = res[listName].map((el) => {
+          return {
+            ...el,
+            text: el[label],
+          };
         });
-  },
-  // 获取省数据
-  getProvData() {
-    app.service.EnterpriseAccountOPen.wxDeptCityQry().then((res) => {
-      if (res.provList && res.provList.length > 0) {
-        this.setData({});
+        this.setData({
+          [columsName]: list,
+        });
       }
-    });
-  },
-  // 获取银行网点
-  getBankList(provCode, cityCode) {
-    app.service.EnterpriseAccountOPen.wxOutletsDeptQry({
-      deptType: "2",
-      bankName: "赣州",
-    }).then((res) => {
-      conmsole.log(res);
     });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getProvData();
+    this.getCityData();
+    // TODO: 正式测试时打开
     this.setData({
-      tempData: JSON.parse(options.enterpriseInfo),
+      // tempData: JSON.parse(options.enterpriseInfo),
+      tempData: {
+        licenseNum: "666666666666668", // 第一步获取
+        companyName: "陕西青丘麦可超声电", // 第一步获取
+        address: "赣江源大道84号XXX", // 第一步获取
+        legalName: "从雁", // 第一步获取
+        legalTel: "18970797082", // 第一步获取
+        financeName: "从雁", // 第一步获取
+        financeTel: "18970797082", // 第一步获取
+        imageNo: "20220124_1643013060517", // 第二步获取
+      },
+      columnsDate: [
+        app.util.getDay(1),
+        app.util.getDay(2),
+        app.util.getDay(3),
+        app.util.getDay(4),
+      ],
     });
   },
   /**
