@@ -24,12 +24,17 @@ App({
 
   // 判断用户是否注册
   judgeRegister(openId) {
+    wx.showLoading({
+      title: "请求中...",
+      mask: true,
+    });
     service.Global.wxGetUserInfo(
       {
         openid: openId,
       },
       false
     ).then((result) => {
+      wx.hideLoading();
       if (!result.signFlag) {
         // 未注册用户跳转至注册页面
         if (!this.globalData.enterOptions.path.includes("Register")) {

@@ -1,7 +1,9 @@
 <view class="opera-content">
     <view class="content">
         <my-field label="机构" value="赣州银行" hideBorder />
-        <my-field label="城市" value="{{selectedCity.text}}" placeholder="请选择城市" arrow bind:click="onCityClick" />
+        <my-field label="省" value="{{selectedProv.text}}" placeholder="请选择省" arrow bind:click="onProvClick" />
+        <my-field label="市" value="{{selectedCity.text}}" placeholder="请选择市" arrow bind:click="onCityClick" />
+        <my-field label="区" value="{{selectedDist.text}}" placeholder="请选择区" arrow bind:click="onDistClick" />
         <my-field label="网点" value="{{selectedNet.text}}" placeholder="请选择网点" arrow bind:click="onNetClick" />
     </view>
     <view class="content">

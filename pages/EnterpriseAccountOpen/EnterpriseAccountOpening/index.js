@@ -28,9 +28,13 @@ Page({
     title: "",
     pickerType: "",
     columns: [],
+    columnsProv: [],
     columnsCity: [],
+    columnsDist: [],
     columnsNets: [],
+    selectedProv: {},
     selectedCity: {},
+    selectedDist: {},
     selectedNet: {},
     citys: {},
     hasGetVerifyCode: false,
@@ -210,66 +214,11 @@ Page({
           selectedNet: value,
         });
   },
-  // 获取城市数据
-  getCityData() {
-    let cityData = {};
-    let columnData = [];
-    let provList = [];
-    let promiseList = [];
-    // 获取省数据
+  // 获取省数据
+  getProvData() {
     app.service.EnterpriseAccountOPen.wxDeptCityQry().then((res) => {
       if (res.provList && res.provList.length > 0) {
-        res.provList.forEach((prov) => {
-          provList.push({
-            text: prov.provName,
-            value: prov.provCd,
-          });
-          // 获取市数据
-          promiseList.push(
-            new Promise((resolve, reject) => {
-              app.service.EnterpriseAccountOPen.wxDeptCityQry({
-                provCode: prov.provCd,
-              }).then((result) => {
-                if (result.cityList) {
-                  // 市数据格式化
-                  const temp = result.cityList.map((city) => {
-                    return {
-                      text: city.cityName,
-                      value: city.cityCode,
-                    };
-                  });
-                  resolve({
-                    key: prov.provName,
-                    value: temp,
-                  });
-                }
-              });
-            })
-          );
-        });
-        Promise.all(promiseList).then((rspList) => {
-          rspList.map((res) => {
-            cityData[res.key] = res.value;
-          });
-          columnData = [
-            {
-              values: provList,
-            },
-            {
-              values: cityData[provList[0].text],
-              defaultIndex: 0,
-            },
-          ];
-          this.getBankList(
-            provList[0].value,
-            cityData[provList[0].text][0].value
-          );
-          this.setData({
-            citys: cityData,
-            columnsCity: columnData,
-            selectedCity: cityData[provList[0].text][0],
-          });
-        });
+        this.setData({});
       }
     });
   },
@@ -286,7 +235,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCityData();
+    this.getProvData();
     this.setData({
       tempData: JSON.parse(options.enterpriseInfo),
     });

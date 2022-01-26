@@ -95,10 +95,10 @@ Page({
       })
         .then((res) => {
           if (res) {
+            wx.clearStorageSync();
             this.setData({
               resultPopup: true,
             });
-            wx.clearStorageSync();
           }
         })
         .catch((err) => {
