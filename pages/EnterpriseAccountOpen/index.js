@@ -15,7 +15,7 @@ Page({
   },
   goEnterAccOpenQuery() {
     wx.navigateTo({
-      url: "/pages/EnterpriseAccountOpen/AppointmentInquiry/index"
+      url: "/pages/EnterpriseAccountOpen/AppointmentSerach/index"
     })
   },
   /**

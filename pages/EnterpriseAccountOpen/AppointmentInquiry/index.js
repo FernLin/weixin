@@ -13,13 +13,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    app.service.EnterpriseAccountOPen.wxApplyOpenActQry({
-      openFlag: "2",
-      flag: "0",
-    }).then((res) => {
-      console.log(res);
-    });
+  onLoad: function (option) {
+    // TODO: 获取手机号查询记录
+    console.log(option.mobilePhone);
+    // app.service.EnterpriseAccountOPen.wxApplyOpenActQry({
+    //   openFlag: "2",
+    //   flag: "0",
+    // }).then((res) => {
+    //   console.log(res);
+    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

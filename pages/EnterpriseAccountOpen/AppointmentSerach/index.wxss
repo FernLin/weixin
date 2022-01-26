@@ -1,0 +1,38 @@
+.main-block {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+.verify-content {
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+.custom-input {
+  font-size: 30rpx;
+  color: #323232;
+  text-align: right;
+  width: 240rpx;
+}
+.placehoder-color {
+  color: #c4c4c4;
+}
+.mess-fen-ge {
+  height: 51rpx;
+  border-right: 1rpx solid;
+  border-color: #e6e6e6;
+  margin: 0 30rpx;
+}
+.get-vercode {
+  color: #4a90e2;
+  font-size: 30rpx;
+  line-height: 44rpx;
+  text-align: center;
+  width: 190rpx;
+}
+.count-down {
+  width: 190rpx;
+  font-size: 30rpx;
+  color: #646464;
+  text-align: center;
+}

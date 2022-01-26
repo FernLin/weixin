@@ -54,7 +54,8 @@
         "AppointmentInquiry/index",
         "DocumentUpload/index",
         "EnterpriseInformation/index",
-        "SelectNet/index"
+        "SelectNet/index",
+        "AppointmentSerach/index"
       ]
     },
     {

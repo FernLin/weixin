@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "申请进度查询",
+  "usingComponents": {
+    "my-field": "/components/myField/index"
+  }
+}
