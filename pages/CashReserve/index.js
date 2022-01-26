@@ -141,8 +141,9 @@ Page({
             FromUserName: openId,
           }).then((result) => {
             if (result) {
-              const list = content.list;
+              let list = content.list;
               if (result.deptId) {
+                list = list.filter((el) => el.deptId != result.deptId);
                 list.unshift({
                   recent: true,
                   addr: result.deptAddr,
@@ -214,8 +215,9 @@ Page({
             FromUserName: openId,
           }).then((result) => {
             if (result) {
-              const list = content.list;
+              let list = content.list;
               if (result.deptId) {
+                list = list.filter((el) => el.deptId != result.deptId);
                 list.unshift({
                   recent: true,
                   addr: result.deptAddr,
@@ -379,8 +381,9 @@ Page({
               FromUserName: openId,
             }).then((result) => {
               if (result) {
-                const list = content.list;
+                let list = content.list;
                 if (result.deptId) {
+                  list = list.filter((el) => el.deptId != result.deptId);
                   list.unshift({
                     recent: true,
                     addr: result.deptAddr,

@@ -59,24 +59,24 @@ Page({
   toNext() {
     let params = {
       bankCode: "000", // 固定值
-      openCity: "",
-      openBranch: "0000286800",
-      openDate: "20220428",
-      licenseNum: "666666666666668",
+      openCity: "", // 为空
+      openBranch: "0000286800", // TODO: 当前获取 -- 网点
+      openDate: "20220428", // TODO: 当前获取 -- 开户时间
+      licenseNum: "666666666666668", // 第一步获取
       applyTrans: "微信", // 固定值
-      linkName: "从雁",
-      linkTel: "18970797082",
-      companyName: "陕西青丘麦可超声电",
+      linkName: "从雁", // TODO: 当前获取 -- 经办人
+      linkTel: "18970797082", // TODO: 当前获取 -- 手机号
+      companyName: "陕西青丘麦可超声电", // 第一步获取
       bankAcctFlag: "0", // 固定值
-      prov: "JX",
-      city: "FUZ",
-      dist: "361002", // TODO: 待交互确认
-      address: "赣江源大道84号XXX",
-      legalName: "从雁",
-      legalTel: "18970797082",
-      financeName: "从雁",
-      financeTel: "18970797082",
-      imageNo: "20220124_1643013060517",
+      prov: "JX", // TODO: 当前获取 -- 省
+      city: "FUZ", // TODO: 当前获取 -- 市
+      dist: "361002", // 待交互确认 -- 区
+      address: "赣江源大道84号XXX", // 第一步获取
+      legalName: "从雁", // 第一步获取
+      legalTel: "18970797082", // 第一步获取
+      financeName: "从雁", // 第一步获取
+      financeTel: "18970797082", // 第一步获取
+      imageNo: "20220124_1643013060517", // 第二步获取
     };
     app.service.EnterpriseAccountOPen.wxApplyOpenAct(params).then((res) => {
       if (res) {
