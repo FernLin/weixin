@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    minDate: new Date(app.util.getDay(3)).getTime(),
     verifyCode: "",
     countDownNum: 60,
     countDownFlag: true,
@@ -23,6 +24,7 @@ Page({
       city: "", // 市*
       dist: "", // 区*
     },
+    showDatePopup: false,
     showPicker: false,
     title: "",
     pickerType: "",
@@ -30,7 +32,6 @@ Page({
     columnsProv: [],
     columnsCity: [],
     columnsDist: [],
-    columnsDate: [],
     selectedProv: {},
     selectedCity: {},
     selectedDist: {},
@@ -85,12 +86,21 @@ Page({
   // 选择预约开户时间
   onDateClick() {
     this.setData({
-      pickerType: "date",
-      showPicker: true,
-      title: "选择预约时间",
-      columns: this.data.columnsDate,
+      showDatePopup: true,
     });
   },
+  onDateClose() {
+    this.setData({
+      showDatePopup: false,
+    });
+  },
+  onDateConfirm(event) {
+    this.setData({
+      showDatePopup: false,
+      selectedDate: app.util.times(event.detail),
+    });
+  },
+  // 选择网点
   onNetClick() {
     wx.navigateTo({
       url: "/pages/EnterpriseAccountOpen/SelectNet/index",
@@ -122,7 +132,9 @@ Page({
             if (res) {
               wx.removeStorageSync("deptList");
               wx.reLaunch({
-                url: "/pages/EnterpriseAccountOpen/ApplyResult/index?applyNo=" + res.applyNo,
+                url:
+                  "/pages/EnterpriseAccountOpen/ApplyResult/index?applyNo=" +
+                  res.applyNo,
               });
             }
           })
@@ -240,12 +252,6 @@ Page({
         "currentData.dist": value.areaCode,
       });
     }
-    if (this.data.pickerType === "date") {
-      this.setData({
-        selectedDate: value,
-        "currentData.openDate": value.replace(/-/g, ""),
-      });
-    }
   },
   // 获取城市数据
   getCityData(
@@ -275,13 +281,6 @@ Page({
     this.getCityData();
     this.setData({
       tempData: JSON.parse(options.enterpriseInfo),
-      columnsDate: [
-        app.util.getDay(3),
-        app.util.getDay(4),
-        app.util.getDay(5),
-        app.util.getDay(6),
-        app.util.getDay(7),
-      ],
     });
   },
   /**

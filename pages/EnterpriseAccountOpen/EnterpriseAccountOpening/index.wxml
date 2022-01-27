@@ -33,3 +33,4 @@
     <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="{{title}}" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
 </view>
 <van-toast id="van-toast" />
+<van-calendar show="{{ showDatePopup }}" min-date="{{ minDate }}" show-confirm="{{ false }}" bind:close="onDateClose" bind:confirm="onDateConfirm" />
