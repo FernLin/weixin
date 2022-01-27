@@ -237,10 +237,10 @@ Page({
       FromUserName: openId,
     }).then((res) => {
       if (res.list) {
-        const dateList = res.list.map((date) => {
+        const dateList = res.list.map((el) => {
           return {
-            text: date + " 10:00-16:00",
-            value: date,
+            text: el.date + " 10:00-16:00",
+            value: el.date,
           };
         });
         this.setData({
