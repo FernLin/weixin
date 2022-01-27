@@ -26,7 +26,7 @@ Page({
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
-      transactionId: "",
+      transactionId: "wxApplyOpenActQry",
       mobilePhone: this.data.mobilePhone,
     }).then((result) => {
       wx.navigateTo({
@@ -50,14 +50,13 @@ Page({
   },
   // 获取验证码
   getVercode() {
-    // TODO: transactionId
     if (app.util.validatePhone(this.data.mobilePhone)) {
       app.service.Global.wxCommonConfirm({
-        transactionId: "",
+        transactionId: "wxApplyOpenActQry",
       }).then((result) => {
         let params = {
           mobilePhone: this.data.mobilePhone,
-          transactionId: "",
+          transactionId: "wxApplyOpenActQry",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({
@@ -107,7 +106,16 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.setData({
+      mobilePhone: "",
+      verifyCode: "",
+      countDownNum: 60,
+      countDownFlag: true,
+      indexCode: "",
+      hasGetVerifyCode: false,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

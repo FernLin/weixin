@@ -1,10 +1,10 @@
 <!--pages/Loan/applyResult/index.wxml-->
 <view class="container">
   <view class="result-panel">
-    <image src="{{ result.iconUrl }}" class="result-icon" />
-    <text class="result-title">{{ result.title }}</text>
-    <text class="result-id">受理编号：{{ result.id }}</text>
-    <text class="result-content">{{ result.content }}</text>
+    <image src="../../../assets/LoanApplyResult/success.png" class="result-icon" />
+    <text class="result-title">提交成功</text>
+    <text class="result-id">受理编号：{{ applyNo }}</text>
+    <text class="result-content">您的开户申请已受理，我们将在2个工作日内通过电话/短信通知您审核结果。</text>
   </view>
   <view class="back-btn" bindtap="handleBack">完成</view>
 </view>

@@ -123,7 +123,7 @@ Page({
             if (res) {
               wx.removeStorageSync("deptList");
               wx.reLaunch({
-                url: "/pages/EnterpriseAccountOpen/ApplyResult/index",
+                url: "/pages/EnterpriseAccountOpen/ApplyResult/index?applyNo=" + res.applyNo,
               });
             }
           })
@@ -274,24 +274,14 @@ Page({
    */
   onLoad: function (options) {
     this.getCityData();
-    // TODO: 正式测试时打开
     this.setData({
-      // tempData: JSON.parse(options.enterpriseInfo),
-      tempData: {
-        licenseNum: "666666666666668", // 第一步获取
-        companyName: "陕西青丘麦可超声电", // 第一步获取
-        address: "赣江源大道84号XXX", // 第一步获取
-        legalName: "从雁", // 第一步获取
-        legalTel: "18970797082", // 第一步获取
-        financeName: "从雁", // 第一步获取
-        financeTel: "18970797082", // 第一步获取
-        imageNo: "20220124_1643013060517", // 第二步获取
-      },
+      tempData: JSON.parse(options.enterpriseInfo),
       columnsDate: [
-        app.util.getDay(1),
-        app.util.getDay(2),
-        app.util.getDay(3),
-        app.util.getDay(4),
+        app.util.getDay(103),
+        app.util.getDay(104),
+        app.util.getDay(105),
+        app.util.getDay(106),
+        app.util.getDay(107),
       ],
     });
   },

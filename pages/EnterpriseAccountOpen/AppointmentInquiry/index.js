@@ -4,24 +4,61 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    applyList: [],
+  },
   goEnterAccOpen() {
     wx.navigateTo({
       url: "/pages/EnterpriseAccountOpen/EnterpriseInformation/index",
     });
   },
+  getStatus(code) {
+    if (code === "0") {
+      return "审核通过";
+    }
+    if (code === "1") {
+      return "审核不通过";
+    }
+    if (code === "9") {
+      return "待审核";
+    }
+  },
+  getFlag(flag) {
+    switch (flag) {
+      case "0":
+        return "基本账户";
+      case "1":
+        return "一般账户";
+      case "2":
+        return "专用账户";
+      case "3":
+        return "临时账户";
+      case "4":
+        return "NRA账户";
+      case "5":
+        return "验资户";
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
-    // TODO: 获取手机号查询记录
-    console.log(option.mobilePhone);
-    // app.service.EnterpriseAccountOPen.wxApplyOpenActQry({
-    //   openFlag: "2",
-    //   flag: "0",
-    // }).then((res) => {
-    //   console.log(res);
-    // });
+    app.service.EnterpriseAccountOPen.wxApplyOpenActQry({
+      telNum: option.mobilePhone,
+    }).then((res) => {
+      if (res.list && res.list.length > 0) {
+        const list = res.list.map((el) => {
+          return {
+            ...el,
+            status: this.getStatus(el.stateCode),
+            flag: this.getFlag(el.bankAcctFlag),
+          };
+        });
+        this.setData({
+          applyList: list,
+        });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

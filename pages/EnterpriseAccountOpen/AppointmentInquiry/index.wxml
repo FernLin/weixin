@@ -1,47 +1,18 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="m-30">
-    <view class="my-notice-info">
+    <view class="my-notice-info" wx:for="{{applyList}}" wx:key="item">
         <view class="flex jc-sb">
-            <view class="card-l-t">测试公司1</view>
-            <view class="card-r-t card-r-t-b">待审核</view>
+            <view class="card-l-t">{{item.companyName}}</view>
+            <view class="card-r-t card-r-t-b">{{item.status}}</view>
         </view>
         <view class="fen-ge"></view>
         <view class="flex jc-sb">
             <view class="card-l">账户类型</view>
-            <view class="card-r">基本户</view>
+            <view class="card-r">{{item.flag}}</view>
         </view>
         <view class="flex jc-sb">
             <view class="card-l">预约开户日期</view>
-            <view class="card-r">2021-12-12</view>
-        </view>
-    </view>
-    <view class="my-notice-info">
-        <view class="flex jc-sb">
-            <view class="card-l-t">测试公司1</view>
-            <view class="card-r-t card-r-t-r">审核未通过</view>
-        </view>
-        <view class="fen-ge"></view>
-        <view class="flex jc-sb">
-            <view class="card-l">账户类型</view>
-            <view class="card-r">基本户</view>
-        </view>
-        <view class="flex jc-sb">
-            <view class="card-l">预约开户日期</view>
-            <view class="card-r">2021-12-12</view>
-        </view>
-    </view>
-    <view class="my-notice-info">
-        <view class="flex jc-sb">
-            <view class="card-l-t">测试公司1</view>
-            <view class="card-r-t">审核已通过</view>
-        </view>
-        <view class="fen-ge"></view>
-        <view class="flex jc-sb">
-            <view class="card-l">账户类型</view>
-            <view class="card-r">基本户</view>
-        </view>
-        <view class="flex jc-sb">
-            <view class="card-l">预约开户日期</view>
-            <view class="card-r">2021-12-12</view>
+            <view class="card-r">{{util.formatDate(item.openDate)}}</view>
         </view>
     </view>
 </view>

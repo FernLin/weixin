@@ -1,6 +1,6 @@
 <view class="main-block">
   <my-field label="手机号码" useSlot hideBorder>
-    <input type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
+    <input value="{{mobilePhone}}" type="number" bindinput="bindPhoneNum" maxlength="11" placeholder="请输入手机号" gesturetype="text" class="ta-r" placeholder-class="placehoder-color" />
   </my-field>
   <my-field label="短信验证码" useSlot>
     <view class="verify-content">

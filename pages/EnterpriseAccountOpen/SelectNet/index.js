@@ -66,7 +66,7 @@ Page({
   itemSizeFunc: function (item, idx) {
     return {
       width: ctx.transformRpx(750),
-      height: ctx.transformRpx(100),
+      height: ctx.transformRpx(150),
     };
   },
   /**

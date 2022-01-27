@@ -14,9 +14,26 @@
   margin-bottom: unset;
 }
 .dept-content {
-  height: 100rpx;
-  line-height: 100rpx;
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 1rpx solid #ededed;
+}
+.dept-content > view:first-child {
   font-size: 30rpx;
   color: #333333;
-  border-bottom: 1rpx solid #ededed;
+  width: 690rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dept-content > view:last-child {
+  font-size: 26rpx;
+  color: #999999;
+  margin-top: 24rpx;
+  width: 690rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

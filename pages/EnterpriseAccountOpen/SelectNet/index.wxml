@@ -4,7 +4,10 @@
   </van-search>
   <recycle-view batch="{{batchSetRecycleData}}" height="{{viewHeight}}" class="list-content" id="netRecycleId">
     <recycle-item wx:for="{{deptList}}" wx:key="item" style="width: calc(100% - 60rpx); margin-left: 30rpx;">
-      <view class="dept-content" data-item="{{item}}" bindtap="onSelect">{{item.deptName}}</view>
+      <view class="dept-content" data-item="{{item}}" bindtap="onSelect">
+        <view>{{item.deptName}}</view>
+        <view>{{item.addr}}</view>
+      </view>
     </recycle-item>
   </recycle-view>
 </view>
