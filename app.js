@@ -84,8 +84,10 @@ App({
   // },
   onShow() {
     this.globalData.enterOptions = wx.getEnterOptionsSync();
+    console.log(wx.getEnterOptionsSync());
     // 非单人会话场景，皆需要判断注册状态（TODO:群聊会话场景？）
     if (this.globalData.enterOptions.scene != 1007) {
+      if (this.globalData.enterOptions.path.includes("DocumentUpload")) return;
       // 小程序加载时获取用户openid
       this.getOpenId();
     }

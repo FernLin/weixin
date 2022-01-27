@@ -19,7 +19,7 @@ Page({
     accountInfo: {
       companyName: "", // 企业名称
       licenseNum: "", // 营业执照号码
-      bankAcctFlag: "2", // 账户类型
+      bankAcctFlag: "1", // 账户类型
       address: "", // 企业地址
       legalName: "", // 法人姓名
       legalTel: "", // 法人电话

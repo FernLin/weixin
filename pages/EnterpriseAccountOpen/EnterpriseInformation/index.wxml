@@ -5,8 +5,8 @@
     <van-field label="营业执照号码" value="{{ accountInfo.licenseNum }}" bindinput="paramChange" data-name="licenseNum" maxlength="18" placeholder="请输入" error-message="{{errorMsg.licenseNum}}" input-align="right" error-message-align="right" />
     <van-cell title="账户类型">
         <van-radio-group value="{{ accountInfo.bankAcctFlag }}" bindchange="paramChange" data-name="bankAcctFlag" class="radio-content">
-            <van-radio icon-size="30rpx" name="1" checked-color="#f4333c">基本户</van-radio>
-            <van-radio icon-size="30rpx" name="2" checked-color="#f4333c">一般户</van-radio>
+            <van-radio icon-size="30rpx" name="0" checked-color="#f4333c">基本户</van-radio>
+            <van-radio icon-size="30rpx" name="1" checked-color="#f4333c">一般户</van-radio>
         </van-radio-group>
     </van-cell>
     <van-field label="办公地址" value="{{ accountInfo.address }}" bindinput="paramChange" data-name="address" placeholder="请输入" error-message="{{errorMsg.address}}" input-align="right" error-message-align="right" border="{{false}}" />

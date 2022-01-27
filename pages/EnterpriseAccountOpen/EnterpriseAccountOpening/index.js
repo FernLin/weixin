@@ -17,7 +17,6 @@ Page({
       openBranch: "", // 开户网点*
       openDate: "", // 预约开户日期*
       applyTrans: "微信", // 申请渠道*
-      bankAcctFlag: "0", // 固定值*
       linkName: "", // 联系人姓名*
       linkTel: "", // 联系人电话*
       prov: "", // 省*
@@ -277,11 +276,11 @@ Page({
     this.setData({
       tempData: JSON.parse(options.enterpriseInfo),
       columnsDate: [
-        app.util.getDay(103),
-        app.util.getDay(104),
-        app.util.getDay(105),
-        app.util.getDay(106),
-        app.util.getDay(107),
+        app.util.getDay(3),
+        app.util.getDay(4),
+        app.util.getDay(5),
+        app.util.getDay(6),
+        app.util.getDay(7),
       ],
     });
   },

@@ -5,7 +5,9 @@ Page({
   },
 
   handleBack: function () {
-    wx.navigateBack();
+    wx.switchTab({
+      url: "/pages/Microservice/index",
+    });
   },
 
   /**
