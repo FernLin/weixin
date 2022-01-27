@@ -19,7 +19,6 @@ Page({
   },
   // 关键字搜索
   onSearch() {
-    // TODO: 建议将地址也显示在页面上
     const tempList = wx.getStorageSync("deptList") || [];
     const list = tempList.filter(
       (el) =>

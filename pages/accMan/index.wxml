@@ -10,8 +10,8 @@
                     <text>{{util.formatBankType(item.bankAcType)}}</text>
                 </view>
                 <view class="account-type">
-                    <text>账户余额（元）</text>
-                    <text>￥{{util.formatAmount(item.accBal)}}</text>
+                    <text>{{item.bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}（元）</text>
+                    <text>￥{{util.formatAmount(item.bankAcType === 'PCRC' ? item.surPayedAmt : item.accBal)}}</text>
                 </view>
             </view>
             <image class="shui-yin posi-ab" src="/assets/appInfo/whiteicon.png" data-item="{{ item }}" />

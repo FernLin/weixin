@@ -49,8 +49,8 @@
                             <view>{{ util.formatAccountType(item.bankAcType) }}</view>
                             <view>{{ util.formatBankType(item.bankAcType) }}</view>
                         </view>
-                        <view class="b-c-add">账户余额（元）</view>
-                        <view class="b-c-m">{{util.formatAmount(item.accBal)}}</view>
+                        <view class="b-c-add">{{item.bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}（元）</view>
+                        <view class="b-c-m">{{util.formatAmount(item.bankAcType === 'PCRC' ? item.surPayedAmt : item.accBal)}}</view>
                         <view class="b-c-bank">开户行：{{ item.openBank }}</view>
                     </view>
                 </view>
@@ -64,8 +64,8 @@
                     <view>{{ util.formatAccountType(bankCardList[0].bankAcType) }}</view>
                     <view>{{ util.formatBankType(bankCardList[0].bankAcType) }}</view>
                 </view>
-                <view class="b-c-add">账户余额（元）</view>
-                <view class="b-c-m">{{util.formatAmount(bankCardList[0].accBal)}}</view>
+                <view class="b-c-add">{{bankCardList[0].bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}（元）</view>
+                <view class="b-c-m">{{util.formatAmount(bankCardList[0].bankAcType === 'PCRC' ? bankCardList[0].surPayedAmt : bankCardList[0].accBal)}}</view>
                 <view class="b-c-bank">开户行：{{ bankCardList[0].openBank }}</view>
             </view>
         </view>
