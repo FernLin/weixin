@@ -98,6 +98,7 @@ Page({
     this.setData({
       showDatePopup: false,
       selectedDate: app.util.times(event.detail),
+      "currentData.openDate": app.util.times(event.detail).replace(/-/g, ""),
     });
   },
   // 选择网点
