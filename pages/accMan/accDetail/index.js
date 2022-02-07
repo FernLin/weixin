@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indexCode: "",
     accountDetail: "",
     noticeSwitch: false,
     unbindPopup: false,
@@ -23,12 +24,20 @@ Page({
 
   // 查看卡号
   checkAcNo(e) {
+    if (this.data.currTransactionId != "wxLookBankCardNum") {
+      this.setData({
+        indexCode: "",
+        verifyCode: "",
+        hasGetVerifyCode: false,
+        countDownFlag: true,
+        countDownNum: 60,
+        currTransactionId: "wxLookBankCardNum",
+      });
+    }
     this.setData({
       unbindPopup: true,
       checkCurrentAcNo: this.data.accountDetail.acNo,
-      currTransactionId: "wxLookBankCardNum",
     });
-    this.getVercode();
   },
 
   // 交易明细
@@ -40,12 +49,20 @@ Page({
 
   onChange(data) {
     if (data.detail) {
+      if (this.data.currTransactionId != "wxMovingAccountNoticeOpenAndClose") {
+        this.setData({
+          indexCode: "",
+          verifyCode: "",
+          hasGetVerifyCode: false,
+          countDownFlag: true,
+          countDownNum: 60,
+          currTransactionId: "wxMovingAccountNoticeOpenAndClose",
+        });
+      }
       this.setData({
         unbindPopup: true,
         status: data.detail ? "1" : "0",
-        currTransactionId: "wxMovingAccountNoticeOpenAndClose",
       });
-      this.getVercode();
     } else {
       Dialog.confirm({
         title: "提示",
@@ -57,6 +74,9 @@ Page({
           unbindPopup: true,
           status: data.detail ? "1" : "0",
           currTransactionId: "wxMovingAccountNoticeOpenAndClose",
+          indexCode: "",
+          verifyCode: "",
+          hasGetVerifyCode: false,
         });
         this.getVercode();
       });
@@ -84,7 +104,7 @@ Page({
       return;
     }
     if (!this.data.verifyCode) {
-      Toast('请正确输入短信验证码！');
+      Toast("请正确输入短信验证码！");
       return;
     }
     app.service.Global.wxAuthSmsNoLogin({
