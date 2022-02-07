@@ -28,7 +28,7 @@ const http = (
   }
 ) => {
   // TODO: 将后面的值转为PRD地址
-  const currentUrl = baseUrl.value || 'http://115.150.104.8:8091/wxmini/';
+  const currentUrl = baseUrl.value || "http://115.150.104.8:8091/wxmini/";
   if (isShowLoading) {
     wx.showLoading({
       title: "请求中...",
@@ -73,8 +73,12 @@ const http = (
           } else {
             console.log("###########接口调用失败！！！");
             reject(res.data);
+            let errorMsg = res.data.respMessage;
+            if (res.data.respCode === "30101960") {
+              errorMsg = "用户信息输入有误！";
+            }
             wx.showToast({
-              title: res.data.respMessage,
+              title: errorMsg,
               icon: "none",
               duration: 3000,
             });
