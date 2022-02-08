@@ -6,6 +6,7 @@
 //   value: "http://115.150.104.9:8091/xiaolele/wxmini/", // 白泰旭
 // }; //dev地址
 
+// name: 服务器名称（DEV、SIT、UAT、EXC、PRD）
 const baseUrl = {
   name: "SIT",
   value: "http://115.150.104.8:8091/wxmini/",
