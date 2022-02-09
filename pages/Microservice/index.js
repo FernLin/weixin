@@ -53,11 +53,14 @@ Page({
         encodeURIComponent(JSON.stringify(prama)),
     });
   },
-  //基金
+  //跳转基金H5页面
   goFoud() {
-    // wx.navigateTo({
-    //   url: "/pages/fund/index/index",
-    // });
+    const url = "https://dt9pvuv0g.lightyy.com/index.html?p=hsjy_1227";
+    const navtitle = "基金推荐";
+    wx.navigateTo({
+      // 跳转到webview页面
+      url: `/pages/Webview/index?url=${url}&nav=${navtitle}`,
+    });
   },
   // goDeposit() {
   //   wx.navigateTo({

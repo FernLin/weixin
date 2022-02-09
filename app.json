@@ -24,6 +24,12 @@
       ]
     },
     {
+      "root": "pages/TransactionDetail/",
+      "pages": [
+        "index"
+      ]
+    },
+    {
       "root": "pages/CashReserve/",
       "pages": [
         "index",

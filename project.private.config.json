@@ -16,8 +16,8 @@
           "name": "企业预开户",
           "pathName": "pages/EnterpriseAccountOpen/AppointmentInquiry/index",
           "query": "mobilePhone=18970797083",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "共享动账通知操作",
@@ -50,11 +50,11 @@
           }
         },
         {
-          "name": "企业预开户",
-          "pathName": "pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index",
+          "name": "交易明细",
+          "pathName": "pages/TransactionDetail/index",
           "query": "",
-          "launchMode": "default",
-          "scene": null
+          "scene": null,
+          "launchMode": "default"
         },
         {
           "name": "pages/fund/fundBuy/index",

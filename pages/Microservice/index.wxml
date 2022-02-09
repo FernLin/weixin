@@ -74,11 +74,11 @@
 		<view class="flex jc-sb">
 			<view class="txt-32">基金推荐</view>
 			<view style="height:40rpx" class="flex">
-				<image src="{{ morePng }}" class="more-css" bindtap="goFoud" />
+				<image src="{{ morePng }}" class="more-css" />
 			</view>
 		</view>
 		<view class="bg-w p-30 mt-30" style="border-radius: 20rpx">
-			<view class="flex">
+			<view class="flex" bindtap="goFoud">
 				<view class="flex-c mr-60">
 					<view class="txt-42">4.53%</view>
 					<view class="txt-26">近一年收益率</view>
@@ -88,7 +88,7 @@
 					<text class="txt-26 flex mt-10">298天 | 5万起购 | <text class="c-d7"> 稳健又灵活</text></text>
 				</view>
 			</view>
-			<view class="flex mt-48">
+			<view class="flex mt-48" bindtap="goFoud">
 				<view class="flex-c mr-60">
 					<view class="txt-42">4.53%</view>
 					<view class="txt-26">近一年收益率</view>
