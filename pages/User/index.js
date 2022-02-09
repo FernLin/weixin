@@ -44,19 +44,46 @@ Page({
     )
       .then((res) => {
         if (res.userAccount) {
-          const defaultData = res.userAccount.find(
-            (item) => item.majorCardFlag === "1"
+          let arrMain = [],
+            arrPSAV = [],
+            arrPSA2 = [],
+            arrPEA2 = [],
+            arrPEA3 = [],
+            arrPCRC = [],
+            arrPDPB = [],
+            arrOther = [];
+          res.userAccount.forEach((account) => {
+            if (account.majorCardFlag === "1") {
+              arrMain.push(account);
+            } else if (account.bankAcType === "PSAV") {
+              arrPSAV.push(account);
+            } else if (account.bankAcType === "PSA2") {
+              arrPSA2.push(account);
+            } else if (account.bankAcType === "PEA2") {
+              arrPEA2.push(account);
+            } else if (account.bankAcType === "PEA3") {
+              arrPEA3.push(account);
+            } else if (account.bankAcType === "PCRC") {
+              arrPCRC.push(account);
+            } else if (account.bankAcType === "PDPB") {
+              arrPDPB.push(account);
+            } else {
+              arrOther.push(account);
+            }
+          });
+          const finalList = arrMain.concat(
+            arrPSAV,
+            arrPSA2,
+            arrPEA2,
+            arrPEA3,
+            arrPCRC,
+            arrPDPB,
+            arrOther
           );
-          let otherData = res.userAccount.filter(
-            (item) => item.majorCardFlag != "1"
-          );
-          if (defaultData) {
-            otherData.unshift(defaultData);
-          }
-          wx.setStorageSync("bankCardList", otherData);
+          wx.setStorageSync("bankCardList", finalList);
           wx.setStorageSync("currentDate", res.currDate);
           this.setData({
-            bankCardList: otherData,
+            bankCardList: finalList,
           });
           if (res.userAccount.length > 0) {
             this.getRecordList();
