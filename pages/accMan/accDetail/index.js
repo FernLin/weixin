@@ -24,19 +24,10 @@ Page({
 
   // 查看卡号
   checkAcNo(e) {
-    if (this.data.currTransactionId != "wxLookBankCardNum") {
-      this.setData({
-        indexCode: "",
-        verifyCode: "",
-        hasGetVerifyCode: false,
-        countDownFlag: true,
-        countDownNum: 60,
-        currTransactionId: "wxLookBankCardNum",
-      });
-    }
     this.setData({
       unbindPopup: true,
       checkCurrentAcNo: this.data.accountDetail.acNo,
+      currTransactionId: "wxLookBankCardNum",
     });
   },
 
@@ -49,19 +40,10 @@ Page({
 
   onChange(data) {
     if (data.detail) {
-      if (this.data.currTransactionId != "wxMovingAccountNoticeOpenAndClose") {
-        this.setData({
-          indexCode: "",
-          verifyCode: "",
-          hasGetVerifyCode: false,
-          countDownFlag: true,
-          countDownNum: 60,
-          currTransactionId: "wxMovingAccountNoticeOpenAndClose",
-        });
-      }
       this.setData({
         unbindPopup: true,
         status: data.detail ? "1" : "0",
+        currTransactionId: "wxMovingAccountNoticeOpenAndClose",
       });
     } else {
       Dialog.confirm({
@@ -91,9 +73,15 @@ Page({
       openId,
       unionId,
     }).then((res) => {
+      // 操作完成后需要清空验证码数据
       this.setData({
         noticeSwitch: this.data.status === "1",
         ["accountDetail.optionFlag"]: this.data.status,
+        indexCode: "",
+        verifyCode: "",
+        hasGetVerifyCode: false,
+        countDownFlag: true,
+        countDownNum: 60,
       });
     });
   },
@@ -129,6 +117,14 @@ Page({
           cancelButtonText: "取消",
         })
           .then(() => {
+            // 操作完成后需要清空验证码数据
+            this.setData({
+              indexCode: "",
+              verifyCode: "",
+              hasGetVerifyCode: false,
+              countDownFlag: true,
+              countDownNum: 60,
+            });
             wx.setClipboardData({
               data: this.data.accountDetail.acNo,
               success: function (res) {
@@ -138,6 +134,14 @@ Page({
           })
           .catch(() => {
             console.log("取消");
+            // 操作完成后需要清空验证码数据
+            this.setData({
+              indexCode: "",
+              verifyCode: "",
+              hasGetVerifyCode: false,
+              countDownFlag: true,
+              countDownNum: 60,
+            });
           });
       }
     });
@@ -185,8 +189,14 @@ Page({
   },
   // 关闭弹框
   closePopup() {
+    // 关闭弹窗时清空当前数据
     this.setData({
       unbindPopup: false,
+      indexCode: "",
+      verifyCode: "",
+      hasGetVerifyCode: false,
+      countDownFlag: true,
+      countDownNum: 60,
     });
   },
   countDownF() {
