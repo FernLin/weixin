@@ -44,7 +44,7 @@ Page({
   unBindBankCard(e) {
     Dialog.confirm({
       title: "提示",
-      message: "是否确认解绑账户？",
+      message: `是否确认解绑账户\n${app.util.hiddenBankCard(e.currentTarget.dataset.item.acNo)}？`,
       confirmButtonText: "确定",
       cancelButtonText: "取消",
     })

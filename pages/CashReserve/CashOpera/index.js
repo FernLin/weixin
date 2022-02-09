@@ -260,7 +260,7 @@ Page({
               text: app.util.hiddenBankCard(el.acNo),
             };
           })
-          .filter((item) => item.bankAcType === "PSAV");
+          .filter((item) => ["PSAV", "PSA2", "PDPB"].includes(item.bankAcType));
         const defaultData = acList.find((item) => item.majorCardFlag === "1");
         let otherData = acList.filter((item) => item.majorCardFlag != "1");
         if (defaultData) {
