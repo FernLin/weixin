@@ -170,6 +170,13 @@ function formatAccountType(type) {
   }
 }
 
+//开户行名称
+function formatBankName(name) {
+  if (name && name.length > 0) {
+    return name.replace("股份有限公司", "");
+  }
+}
+
 module.exports = {
   formatDistance: formatDistance,
   formatDate: formatDate,
@@ -184,4 +191,5 @@ module.exports = {
   getTime: getTime,
   formatBankType: formatBankType,
   formatAccountType: formatAccountType,
+  formatBankName: formatBankName,
 };

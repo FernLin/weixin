@@ -70,7 +70,7 @@ App({
             wx.setStorageSync("openid", result.openId);
             wx.setStorageSync("unionId", result.unionId);
             this.judgeRegister(result.openId);
-            console.log("****login", openId);
+            console.log("****loginResult", result);
           });
         },
       });

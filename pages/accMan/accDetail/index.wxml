@@ -30,7 +30,7 @@
             </view>
             <view class="card-balance">
                 <text>开户行</text>
-                <text>{{accountDetail.openBank}}</text>
+                <text>{{ util.formatBankName(accountDetail.openBank) }}</text>
             </view>
         </view>
         <view class="btn-css" bindtap="toTranDetail">

@@ -51,7 +51,7 @@
                         </view>
                         <view class="b-c-add">{{item.bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}（元）</view>
                         <view class="b-c-m">{{util.formatAmount(item.bankAcType === 'PCRC' ? item.surPayedAmt : item.accBal)}}</view>
-                        <view class="b-c-bank">开户行：{{ item.openBank }}</view>
+                        <view class="b-c-bank">开户行：{{ util.formatBankName(item.openBank) }}</view>
                     </view>
                 </view>
             </scroll-view>
@@ -66,7 +66,7 @@
                 </view>
                 <view class="b-c-add">{{bankCardList[0].bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}（元）</view>
                 <view class="b-c-m">{{util.formatAmount(bankCardList[0].bankAcType === 'PCRC' ? bankCardList[0].surPayedAmt : bankCardList[0].accBal)}}</view>
-                <view class="b-c-bank">开户行：{{ bankCardList[0].openBank }}</view>
+                <view class="b-c-bank">开户行：{{ util.formatBankName(bankCardList[0].openBank) }}</view>
             </view>
         </view>
         <view class="no-card m-30 ta-c" wx:else>
