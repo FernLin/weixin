@@ -1,8 +1,5 @@
-<view style="height:20rpx;background:#f8f8f8"></view>
-
-<view class="bg-w">
+<view class="trans-content bottom-safe">
   <van-dropdown-menu>
-    <van-dropdown-item value="{{value1}}" options="{{option1}}" bind:change="filterType" />
     <van-dropdown-item title="{{cardIdEnd}}" value="{{value2}}" options="{{option2}}" bind:change="changeCard" />
     <van-dropdown-item title="{{timeSlot}}" id="dropdown1">
       <view class="m-30">筛选时间</view>
@@ -26,38 +23,9 @@
         <van-button type="danger" block class="btn-sty" bindtap="goSearch">确定</van-button>
       </view>
     </van-dropdown-item>
+    <van-dropdown-item value="{{value1}}" options="{{option1}}" bind:change="filterType" />
   </van-dropdown-menu>
-</view>
-<view class="m-30 bottom-safe">
-  <view class="bg-w p-30 mb-30 tran-card" wx:for="{{ transInfoList }}" wx:key="item">
-    <view class="ta-c flex jc-c money-num {{item.transAmt<0 ? '' : 'text-red'}}">
-      <view wx:if="{{ item.transAmt<0 }}">-</view>
-      <view wx:else>+</view>
-      ￥{{ item.transAmt}}
-    </view>
-    <view class="ta-c tran-date">{{item.transTime}}</view>
-    <view class="flex jc-sb mt-30">
-      <view>
-        <view class="bank-name">{{item.oppositeAcctName}}</view>
-        <view class="bank-card">尾号{{item.endCardNo}}</view>
-      </view>
-      <image class="direct-icon" src="/assets/direct.png" />
-      <view>
-        <view class="bank-name ta-r">{{item.oppositeBankName}}</view>
-        <view class="bank-card ta-r">尾号{{item.endOppositeAcct}}</view>
-      </view>
-    </view>
-    <view class="flex jc-sb mt-30">
-      <view class="tran-l">余额</view>
-      <view class="tran-r">￥23,000.00</view>
-    </view>
-    <view class="flex jc-sb mt-16">
-      <view class="tran-l">摘要</view>
-      <view class="tran-r">无</view>
-    </view>
-    <view class="flex jc-sb mt-16">
-      <view class="tran-l">附言</view>
-      <view class="tran-r">{{item.addWord}}</view>
-    </view>
+  <view class="main-body">
+    明细
   </view>
 </view>

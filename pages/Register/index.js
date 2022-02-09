@@ -134,6 +134,7 @@ Page({
           let params = {
             mobilePhone: this.data.mobile,
             transactionId: "wxCifSign",
+            templateId: "wxCifSignTemplate",
           };
           app.service.Global.wxSendSms(params).then((res) => {
             this.setData({

@@ -1,3 +1,9 @@
+.trans-content {
+  margin-top: 20rpx;
+}
+
+
+
 .l-t {
   font-family: PingFang SC;
   color: #646464;

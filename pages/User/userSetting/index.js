@@ -43,6 +43,7 @@ Page({
         let params = {
           mobilePhone: this.data.openMobile,
           transactionId: "wxRelBindUser",
+          templateId: "wxRelBindUserTemplate",
         };
         app.service.Global.wxSendSms(params).then((res) => {
           this.setData({

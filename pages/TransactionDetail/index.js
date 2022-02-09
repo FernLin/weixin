@@ -25,7 +25,10 @@ Page({
       { text: "收入", value: 1 },
       { text: "支出", value: 2 },
     ],
-    option2: [],
+    option2: [
+      { text: "尾号0323", value: 0 },
+      { text: "尾号5698", value: 1 },
+    ],
   },
   /**
    * 生命周期函数--监听页面加载
