@@ -78,6 +78,9 @@ const http = (
             if (res.data.respCode === "30101960") {
               errorMsg = "用户信息输入有误！";
             }
+            if (res.data.respCode === "30101958") {
+              errorMsg = "长按关注赣州银行公众号";
+            }
             wx.showToast({
               title: errorMsg,
               icon: "none",
