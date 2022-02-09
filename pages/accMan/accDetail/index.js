@@ -73,15 +73,9 @@ Page({
       openId,
       unionId,
     }).then((res) => {
-      // 操作完成后需要清空验证码数据
       this.setData({
         noticeSwitch: this.data.status === "1",
         ["accountDetail.optionFlag"]: this.data.status,
-        indexCode: "",
-        verifyCode: "",
-        hasGetVerifyCode: false,
-        countDownFlag: true,
-        countDownNum: 60,
       });
     });
   },
@@ -101,15 +95,18 @@ Page({
       transactionId: this.data.currTransactionId,
       mobilePhone: this.data.accountDetail.openMobilephone,
     }).then((result) => {
+      // 操作完成后需要清空验证码数据
+      this.setData({
+        unbindPopup: false,
+        indexCode: "",
+        verifyCode: "",
+        hasGetVerifyCode: false,
+        countDownFlag: true,
+        countDownNum: 60,
+      });
       if (this.data.currTransactionId === "wxMovingAccountNoticeOpenAndClose") {
-        this.setData({
-          unbindPopup: false,
-        });
         this.handleNoatice();
       } else {
-        this.setData({
-          unbindPopup: false,
-        });
         Dialog.confirm({
           title: "复制卡号",
           message: "您的卡号为：\n" + this.data.accountDetail.acNo,
@@ -117,14 +114,6 @@ Page({
           cancelButtonText: "取消",
         })
           .then(() => {
-            // 操作完成后需要清空验证码数据
-            this.setData({
-              indexCode: "",
-              verifyCode: "",
-              hasGetVerifyCode: false,
-              countDownFlag: true,
-              countDownNum: 60,
-            });
             wx.setClipboardData({
               data: this.data.accountDetail.acNo,
               success: function (res) {
@@ -134,14 +123,6 @@ Page({
           })
           .catch(() => {
             console.log("取消");
-            // 操作完成后需要清空验证码数据
-            this.setData({
-              indexCode: "",
-              verifyCode: "",
-              hasGetVerifyCode: false,
-              countDownFlag: true,
-              countDownNum: 60,
-            });
           });
       }
     });
