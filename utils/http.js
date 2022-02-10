@@ -79,7 +79,19 @@ const http = (
               errorMsg = "用户信息输入有误！";
             }
             if (res.data.respCode === "30101958") {
-              errorMsg = "长按关注赣州银行公众号";
+              wx.showToast({
+                title: "长按关注赣州银行公众号",
+                icon: "none",
+                duration: 3000,
+              });
+              setTimeout(() => {
+                wx.previewImage({
+                  urls: [
+                    "http://115.150.104.8:8091/download/image/gzBankwyh.jpg",
+                  ], // 需要预览的图片http链接列表
+                });
+              }, 2000);
+              return;
             }
             wx.showToast({
               title: errorMsg,

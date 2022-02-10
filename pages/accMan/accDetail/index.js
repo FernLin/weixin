@@ -81,13 +81,7 @@ Page({
         });
       })
       .catch((err) => {
-        if (err.respCode == "30101958") {
-          setTimeout(() => {
-            wx.previewImage({
-              urls: ["http://115.150.104.8:8091/download/image/gzBankwyh.jpg"], // 需要预览的图片http链接列表
-            });
-          }, 2000);
-        }
+        console.log('失败');
       });
   },
 
