@@ -2,6 +2,7 @@
 import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
+let timer;
 Page({
   /**
    * 页面的初始数据
@@ -111,12 +112,13 @@ Page({
     });
   },
   countDownF() {
+    if (!!timer) clearInterval(timer);
     let _this = this;
     this.setData({
       countDownFlag: false,
       countDownNum: 60,
     });
-    let timer = setInterval(function () {
+    timer = setInterval(function () {
       if (_this.data.countDownNum != 0) {
         _this.setData({
           countDownNum: _this.data.countDownNum - 1,
