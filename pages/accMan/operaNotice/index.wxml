@@ -1,4 +1,7 @@
 <wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
+<view wx:if="showOfficial" style="width:100%">
+  <official-account></official-account>
+</view>
 <view>
   <view class="main-content">
     <image class="img-avatar" src="{{ shareAvatar }}" />

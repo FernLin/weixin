@@ -20,6 +20,7 @@ Page({
     operaType: "",
     showDialog: false,
     hasGetVerifyCode: false,
+    userInfo: wx.getStorageSync("USERINFO"),
   },
   goNext() {
     if (!this.data.hasGetVerifyCode) {

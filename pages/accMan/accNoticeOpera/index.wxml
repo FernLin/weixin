@@ -21,7 +21,7 @@
 <van-dialog use-slot custom-style="width: 630rpx;border-radius: 12rpx;" title="签约结果" show="{{ showDialog }}">
     <view class="dialog-notice">
         <image src="/pages/accMan/assets/success.png" />
-        <view>{{operaType === '1' ? '签约成功' : '解约成功'}}</view>
+        <view>{{userInfo.cifName}}动账通知{{operaType === '1' ? '签约' : '解约'}}成功</view>
     </view>
 </van-dialog>
 

@@ -34,6 +34,7 @@ Page({
     shareUrlIdList: [],
     hasGetVerifyCode: false,
     isSamePerson: false,
+    showOfficial: false,
   },
   onConfirm() {
     if (!this.data.nameVerified) {
@@ -217,6 +218,16 @@ Page({
               resultPopup: true,
             });
           }
+          app.service.Global.wxGetUserInfo({
+            openid: result.openId,
+            unionId: result.unionId,
+          }).then((resu) => {
+            if (!resu.subscribe) {
+              this.setData({
+                showOfficial: true,
+              });
+            }
+          });
           this.setData({
             openId: result.openId,
             unionId: result.unionId,
