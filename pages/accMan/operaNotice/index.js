@@ -34,7 +34,6 @@ Page({
     shareUrlIdList: [],
     hasGetVerifyCode: false,
     isSamePerson: false,
-    showOfficial: false,
   },
   onConfirm() {
     if (!this.data.nameVerified) {
@@ -183,58 +182,88 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let defaultData = JSON.parse(options.defaultData);
     const shareUrlIdList = !!wx.getStorageSync("shareUrlIdList")
       ? JSON.parse(wx.getStorageSync("shareUrlIdList"))
       : [];
-    if (shareUrlIdList.includes(options.shareUrlId)) {
+    if (shareUrlIdList.includes(defaultData.shareUrlId)) {
       this.setData({
         hasSigned: true,
         resultPopup: true,
       });
       return;
     }
-    let len = options.signeeName.length;
+    let len = defaultData.signeeName.length;
     this.setData({
-      signeeMobile: options.signeeMobile,
-      signeeName: options.signeeName,
-      shareName: options.shareName,
-      shareAccount: options.shareAccount,
-      shareDate: options.shareDate,
-      shareOpenId: options.shareOpenId,
-      shareAvatar: decodeURIComponent(options.shareAvatar),
-      signeeNameFirst: options.signeeName.substr(0, len - 1),
-      signeeNameLast: options.signeeName.substr(-1),
-      shareUrlId: options.shareUrlId,
+      signeeMobile: defaultData.signeeMobile,
+      signeeName: defaultData.signeeName,
+      shareName: defaultData.shareName,
+      shareAccount: defaultData.shareAccount,
+      shareDate: defaultData.shareDate,
+      shareOpenId: defaultData.shareOpenId,
+      shareAvatar: decodeURIComponent(defaultData.shareAvatar),
+      signeeNameFirst: defaultData.signeeName.substr(0, len - 1),
+      signeeNameLast: defaultData.signeeName.substr(-1),
+      shareUrlId: defaultData.shareUrlId,
       shareUrlIdList: shareUrlIdList,
     });
-    wx.login({
-      success: (res) => {
-        app.service.Global.wxGetOpenIdByCode({
-          code: res.code,
-        }).then((result) => {
-          if (options.shareOpenId == result.openId) {
-            this.setData({
-              isSamePerson: true,
-              resultPopup: true,
-            });
-          }
-          app.service.Global.wxGetUserInfo({
-            openid: result.openId,
-            unionId: result.unionId,
-          }).then((resu) => {
-            if (!resu.subscribe) {
+    const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
+    if (!!openId && !!unionId) {
+      if (defaultData.shareOpenId == openId) {
+        this.setData({
+          isSamePerson: true,
+          resultPopup: true,
+        });
+      }
+      app.service.Global.wxGetUserInfo({
+        openid: openId,
+        unionId: unionId,
+      }).then((resu) => {
+        if (!resu.subscribe) {
+          const temp = JSON.stringify(defaultData);
+          wx.reLaunch({
+            url: "/pages/SubscribeOfficial/index?defaultData=" + temp,
+          });
+        }
+      });
+      this.setData({
+        openId: result.openId,
+        unionId: result.unionId,
+      });
+    } else {
+      wx.login({
+        success: (res) => {
+          app.service.Global.wxGetOpenIdByCode({
+            code: res.code,
+          }).then((result) => {
+            wx.setStorageSync("openid", result.openId);
+            wx.setStorageSync("unionId", result.unionId);
+            if (defaultData.shareOpenId == result.openId) {
               this.setData({
-                showOfficial: true,
+                isSamePerson: true,
+                resultPopup: true,
               });
             }
+            app.service.Global.wxGetUserInfo({
+              openid: result.openId,
+              unionId: result.unionId,
+            }).then((resu) => {
+              if (!resu.subscribe) {
+                const temp = JSON.stringify(defaultData);
+                wx.reLaunch({
+                  url: "/pages/SubscribeOfficial/index?defaultData=" + temp,
+                });
+              }
+            });
+            this.setData({
+              openId: result.openId,
+              unionId: result.unionId,
+            });
           });
-          this.setData({
-            openId: result.openId,
-            unionId: result.unionId,
-          });
-        });
-      },
-    });
+        },
+      });
+    }
   },
 
   /**

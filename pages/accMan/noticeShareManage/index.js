@@ -193,25 +193,21 @@ Page({
     });
     const shareUrlId = app.util.randomString();
     const currentDate = wx.getStorageSync("currentDate");
+    let defaultData = {
+      signeeMobile: this.data.signeeMobile,
+      signeeName: this.data.signeeName,
+      shareAccount: this.data.currentAccount.acNo,
+      shareDate: currentDate,
+      shareOpenId: openId,
+      shareName: this.data.userInfo.nickName,
+      shareAvatar: encodeURIComponent(this.data.userInfo.avatarUrl),
+      shareUrlId: shareUrlId,
+    };
     return {
       title: "添加共享人",
       path:
-        "/pages/accMan/operaNotice/index?signeeMobile=" +
-        this.data.signeeMobile +
-        "&signeeName=" +
-        this.data.signeeName +
-        "&shareAccount=" +
-        this.data.currentAccount.acNo +
-        "&shareDate=" +
-        currentDate +
-        "&shareOpenId=" +
-        openId +
-        "&shareName=" +
-        this.data.userInfo.nickName +
-        "&shareAvatar=" +
-        encodeURIComponent(this.data.userInfo.avatarUrl) +
-        "&shareUrlId=" +
-        shareUrlId,
+        "/pages/accMan/operaNotice/index?defaultData=" +
+        JSON.stringify(defaultData),
       imageUrl: "/pages/accMan/assets/share.png",
       success: function (res) {
         console.log(

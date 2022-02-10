@@ -18,6 +18,12 @@
   ],
   "subPackages": [
     {
+      "root": "pages/SubscribeOfficial/",
+      "pages": [
+        "index"
+      ]
+    },
+    {
       "root": "pages/tranDetail/",
       "pages": [
         "index"

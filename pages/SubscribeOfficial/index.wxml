@@ -1,0 +1,5 @@
+<view class="content">
+  <image class="image" src="http://115.150.104.8:8091/download/image/gzBankwyh.jpg" show-menu-by-longpress />
+  <view class="text">长按关注赣州银行公众号</view>
+  <view class="add-card-btn" bindtap="toBack">已关注，返回上一页</view>
+</view>
