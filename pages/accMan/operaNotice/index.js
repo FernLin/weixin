@@ -81,14 +81,22 @@ Page({
       transactionId: "wxNoticeClassShareSignIn",
       mobilePhone: this.data.signeeMobile,
     }).then((result) => {
-      app.service.AccountMan.wxNoticeClassShareSignIn(params).then((res) => {
-        const temp = this.data.shareUrlIdList;
-        temp.push(this.data.shareUrlId);
-        wx.setStorageSync("shareUrlIdList", JSON.stringify(temp));
-        this.setData({
-          resultPopup: true,
+      app.service.AccountMan.wxNoticeClassShareSignIn(params)
+        .then((res) => {
+          const temp = this.data.shareUrlIdList;
+          temp.push(this.data.shareUrlId);
+          wx.setStorageSync("shareUrlIdList", JSON.stringify(temp));
+          this.setData({
+            resultPopup: true,
+          });
+        })
+        .catch((err) => {
+          this.setData({
+            verifyCode: "",
+            countDownNum: 60,
+            countDownFlag: true,
+          });
         });
-      });
     });
   },
   verifyName() {
