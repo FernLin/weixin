@@ -36,7 +36,7 @@
     <view class="dialog-notice">请填写姓名末尾字，以确认你的身份信息</view>
     <view class="verify-block">
       <text>{{signeeNameFirst}}</text>
-      <input value="{{lastName}}" bindinput="bindName" maxlength="1" class="name-input" />
+      <input value="{{lastName}}" bindinput="bindName" class="name-input" />
     </view>
   </view>
 </van-dialog>

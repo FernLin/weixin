@@ -106,8 +106,9 @@ Page({
   },
   bindName(e) {
     this.setData({
-      lastName: e.detail.value,
+      lastName: e.detail.value.substr(0, 1),
     });
+    return e.detail.value.substr(0, 1);
   },
   onDialogClose() {
     this.setData({
