@@ -82,9 +82,7 @@ Page({
       .catch((err) => {
         if (err.respCode == "30101958") {
           wx.previewImage({
-            urls: [
-              "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.lurenjiafood.com%2Flurenjia%2Fwp-content%2Fuploads%2F2018%2F12%2Fweixin-qr.gif&refer=http%3A%2F%2Fwww.lurenjiafood.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1646988060&t=6671a1695222d640696b1fa0ee57e841",
-            ], // 需要预览的图片http链接列表
+            urls: ["http://115.150.104.8:8091/download/image/gzBankwyh.jpg"], // 需要预览的图片http链接列表
           });
         }
       });
