@@ -114,8 +114,11 @@ Page({
   toBack() {
     if (this.data.fromRegister) {
       // 新注册用户绑卡完成后获取用户信息
+      const openId = wx.getStorageSync("openid");
+      const unionId = wx.getStorageSync("unionId");
       app.service.Global.wxGetUserInfo({
         openid: openId,
+        unionId,
       }).then((result) => {
         wx.setStorageSync("USERINFO", result);
         wx.switchTab({
@@ -297,8 +300,10 @@ Page({
     const bankCardList = wx.getStorageSync("bankCardList");
     if (bankCardList && bankCardList.length > 0) {
       const openId = wx.getStorageSync("openid");
+      const unionId = wx.getStorageSync("unionId");
       app.service.Global.wxGetUserInfo({
         openid: openId,
+        unionId,
       }).then((res) => {
         const type = this.data.columns[0].values.find(
           (item) => item.value == res.idType

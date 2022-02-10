@@ -4,6 +4,7 @@ export default {
    * 获取用户是否注册
    * @param {
    * openid: 用户openid
+   * unionId: 用户unionId
    * }
    */
   wxGetUserInfo(params, isShowLoading = true) {

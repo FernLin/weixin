@@ -57,6 +57,7 @@ Page({
       app.service.Global.wxGetUserInfo(
         {
           openid: openId,
+          unionId,
         },
         false
       ).then((result) => {

@@ -23,7 +23,7 @@ App({
   service: service,
 
   // 判断用户是否注册
-  judgeRegister(openId) {
+  judgeRegister(openId, unionId) {
     wx.showLoading({
       title: "请求中...",
       mask: true,
@@ -31,6 +31,7 @@ App({
     service.Global.wxGetUserInfo(
       {
         openid: openId,
+        unionId,
       },
       false
     ).then((result) => {
@@ -60,6 +61,7 @@ App({
   getOpenId() {
     // TODO: console调试代码，注意发布时删除
     const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
     console.log("****storage", openId);
     if (openId == "" || openId == undefined) {
       wx.login({
@@ -69,13 +71,13 @@ App({
           }).then((result) => {
             wx.setStorageSync("openid", result.openId);
             wx.setStorageSync("unionId", result.unionId);
-            this.judgeRegister(result.openId);
+            this.judgeRegister(result.openId, result.unionId);
             console.log("****loginResult", result);
           });
         },
       });
     } else {
-      this.judgeRegister(openId);
+      this.judgeRegister(openId, unionId);
     }
   },
   // onLaunch() {
