@@ -21,6 +21,9 @@ Page({
     hasGetVerifyCode: false,
     checkCurrentAcNo: "",
     currTransactionId: "",
+    noticePopup: false,
+    shareListLen: 0,
+    noticeMsg: "",
   },
 
   // 查看卡号
@@ -39,6 +42,12 @@ Page({
     });
   },
 
+  closeNotice() {
+    this.setData({
+      noticePopup: false,
+    });
+  },
+
   onChange(data) {
     if (data.detail) {
       this.setData({
@@ -47,23 +56,48 @@ Page({
         currTransactionId: "wxMovingAccountNoticeOpenAndClose",
       });
     } else {
-      Dialog.confirm({
-        title: "提示",
-        message: "是否确认关闭动账通知功能？",
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      }).then(() => {
+      app.service.AccountMan.wxNoticeClassShareQry({
+        openId,
+        unionId,
+      }).then((res) => {
+        const currentMyShareList = res.myShareList.filter(
+          (el) => el.acNo === this.data.accountDetail.acNo
+        );
         this.setData({
-          unbindPopup: true,
-          status: data.detail ? "1" : "0",
-          currTransactionId: "wxMovingAccountNoticeOpenAndClose",
-          indexCode: "",
-          verifyCode: "",
-          hasGetVerifyCode: false,
+          shareListLen: currentMyShareList.length,
+          noticePopup: true,
+          noticeMsg:
+            currentMyShareList.length > 0
+              ? `当前账户已共享 ${currentMyShareList.length} 位好友，`
+              : "",
         });
-        this.getVercode();
       });
     }
+  },
+  bindCheck() {
+    if (this.data.shareListLen > 0) {
+      var currentData = JSON.stringify(this.data.accountDetail);
+      wx.navigateTo({
+        url:
+          "/pages/accMan/noticeShareManage/index?type=mine" +
+          "&currentData=" +
+          currentData,
+      });
+    } else {
+      this.closeNotice();
+    }
+  },
+  bindConfirm() {
+    this.setData({
+      unbindPopup: true,
+      noticePopup: false,
+      status: this.data.status === '0' ? "1" : "0",
+      currTransactionId: "wxMovingAccountNoticeOpenAndClose",
+      indexCode: "",
+      verifyCode: "",
+      hasGetVerifyCode: false,
+    });
+    this.getVercode();
   },
 
   handleNoatice() {
@@ -81,7 +115,7 @@ Page({
         });
       })
       .catch((err) => {
-        console.log('失败');
+        console.log("失败");
       });
   },
 

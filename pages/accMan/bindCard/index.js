@@ -79,6 +79,7 @@ Page({
   },
   bindBankCard() {
     const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
     app.service.Global.wxAuthSmsNoLogin({
       index: this.data.indexCode,
       code: this.data.verifyCode,
@@ -93,6 +94,8 @@ Page({
           idType: this.data.bindCardType.value,
           idNo: this.data.idCard,
           acNo: this.data.bindCardId,
+          unionId,
+          thirdType: "gzwxapplet",
         };
         app.service.Global.wxAddAccount(params)
           .then((res) => {

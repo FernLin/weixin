@@ -66,5 +66,18 @@
         <view class="popup-btn" bindtap="onPopupConfirm">确认</view>
     </view>
 </van-popup>
+<van-popup show="{{noticePopup}}" custom-class="popup-content" closeable bind:close="closeNotice">
+    <view class="notice-content">
+        <view class="notice-title">温馨提示</view>
+        <view class="notice-text">
+            {{noticeMsg}}
+            是否确认关闭动账通知功能？
+        </view>
+        <view class="btn-content">
+            <view bindtap="bindCheck">{{shareListLen > 0 ? "去查看" : "取消"}}</view>
+            <view bindtap="bindConfirm">确定</view>
+        </view>
+    </view>
+</van-popup>
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />

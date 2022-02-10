@@ -123,8 +123,11 @@ Page({
       openId,
       unionId,
     }).then((res) => {
+      const currentMyShareList = res.myShareList.filter(
+        (el) => el.acNo === this.data.currentAccount.acNo
+      );
       this.setData({
-        myShareList: res.myShareList,
+        myShareList: currentMyShareList,
         shareMyList: res.shareMyList,
       });
     });
