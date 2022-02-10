@@ -92,3 +92,15 @@
 </view>
 <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="{{title}}" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
 <van-toast id="van-toast" />
+<van-popup show="{{noticePopup}}" custom-class="popup-content">
+    <view class="notice-content">
+        <view class="notice-title">温馨提示</view>
+        <view class="notice-text">
+            预约成功
+        </view>
+        <view class="btn-content">
+            <view bindtap="bindCheck">我的预约</view>
+            <view bindtap="bindConfirm">完成</view>
+        </view>
+    </view>
+</van-popup>

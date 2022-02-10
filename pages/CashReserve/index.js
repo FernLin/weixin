@@ -46,6 +46,9 @@ Page({
   },
   // tab切换
   onChange(event) {
+    this.setData({
+      active: event.detail.name,
+    });
     if (event.detail.name === 1) {
       this.getRecordList();
     }

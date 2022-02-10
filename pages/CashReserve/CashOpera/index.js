@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    noticePopup: false,
     addr: "",
     deptName: "",
     deptId: "",
@@ -212,14 +213,24 @@ Page({
     }
     app.service.CashReserve.wxLargeCashBook(params).then((res) => {
       if (res) {
-        Toast.success(
-          `${this.data.reserveType === "1" ? "大额取款" : "零钱兑换"}预约成功！`
-        );
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
+        this.setData({
+          noticePopup: true,
+        });
       }
     });
+  },
+
+  bindCheck() {
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2]; //上一个页面
+    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      active: 1,
+    });
+    wx.navigateBack();
+  },
+  bindConfirm() {
+    wx.navigateBack();
   },
 
   /**
