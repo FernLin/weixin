@@ -26,6 +26,7 @@ Page({
     locationData: {},
     recordList: [],
     canJumpMap: true,
+    noLocation: true,
   },
   // 银行预约操作类型
   goCashOpera(event) {
@@ -100,74 +101,66 @@ Page({
   },
   // 关键字搜索
   onSearch() {
-    if (this.data.locationData) {
-      app.service.CashReserve.wxQueryDeptListByDist({
-        // distance: "米",
-        longitude: this.data.locationData.longitude,
-        latitude: this.data.locationData.latitude,
-        cityCode: this.data.selectedCityCode,
-        provCd: this.data.selectedProvCode,
-        deptName: this.data.searchVal,
-        tradeFlag: 1,
-      }).then((content) => {
-        if (content.list) {
-          ctx.splice(0, ctx.getList().length, content.list);
-          ctx.forceUpdate();
-          this.setData({
-            bankList: content.list,
-          });
-        }
-      });
-    } else {
-      Toast("获取当前位置失败，请重新授权！");
-    }
+    app.service.CashReserve.wxQueryDeptListByDist({
+      // distance: "米",
+      longitude: this.data.locationData.longitude,
+      latitude: this.data.locationData.latitude,
+      cityCode: this.data.selectedCityCode,
+      provCd: this.data.selectedProvCode,
+      deptName: this.data.searchVal,
+      tradeFlag: 1,
+    }).then((content) => {
+      if (content.list) {
+        ctx.splice(0, ctx.getList().length, content.list);
+        ctx.forceUpdate();
+        this.setData({
+          bankList: content.list,
+        });
+      }
+    });
   },
   // 关键字输入框清空
   onClear() {
-    if (this.data.locationData) {
-      app.service.CashReserve.wxQueryDeptListByDist({
-        // distance: "米",
-        longitude: this.data.locationData.longitude,
-        latitude: this.data.locationData.latitude,
-        cityCode: this.data.selectedCityCode,
-        provCd: this.data.selectedProvCode,
-        deptName: "",
-        tradeFlag: 1,
-      }).then((content) => {
-        if (content.list) {
-          app.service.CashReserve.wxLatelyBookDeptQry({
-            longitude: this.data.locationData.longitude,
-            latitude: this.data.locationData.latitude,
-            FromUserName: openId,
-          }).then((result) => {
-            if (result) {
-              let list = content.list;
-              if (result.deptId) {
-                list = list.filter((el) => el.deptId != result.deptId);
-                list.unshift({
-                  recent: true,
-                  addr: result.deptAddr,
-                  deptId: result.deptId,
-                  deptName: result.deptName,
-                  distance: result.distance,
-                  lat: result.lat,
-                  lon: result.lon,
-                  moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
-                  onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
-                });
-              }
-              ctx.splice(0, ctx.getList().length, list);
-              ctx.forceUpdate();
-              this.setData({
-                bankList: list,
+    app.service.CashReserve.wxQueryDeptListByDist({
+      // distance: "米",
+      longitude: this.data.locationData.longitude,
+      latitude: this.data.locationData.latitude,
+      cityCode: this.data.selectedCityCode,
+      provCd: this.data.selectedProvCode,
+      deptName: "",
+      tradeFlag: 1,
+    }).then((content) => {
+      if (content.list) {
+        app.service.CashReserve.wxLatelyBookDeptQry({
+          longitude: this.data.locationData.longitude,
+          latitude: this.data.locationData.latitude,
+          FromUserName: openId,
+        }).then((result) => {
+          if (result) {
+            let list = content.list;
+            if (result.deptId) {
+              list = list.filter((el) => el.deptId != result.deptId);
+              list.unshift({
+                recent: true,
+                addr: result.deptAddr,
+                deptId: result.deptId,
+                deptName: result.deptName,
+                distance: result.distance,
+                lat: result.lat,
+                lon: result.lon,
+                moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
+                onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
               });
             }
-          });
-        }
-      });
-    } else {
-      Toast("获取当前位置失败，请重新授权！");
-    }
+            ctx.splice(0, ctx.getList().length, list);
+            ctx.forceUpdate();
+            this.setData({
+              bankList: list,
+            });
+          }
+        });
+      }
+    });
   },
   // 展示城市选择
   openPicker() {
@@ -198,50 +191,46 @@ Page({
       selectedProvCode: value[0].value,
       selectedCityCode: value[1].value,
     });
-    if (this.data.locationData) {
-      app.service.CashReserve.wxQueryDeptListByDist({
-        // distance: "米",
-        longitude: this.data.locationData.longitude,
-        latitude: this.data.locationData.latitude,
-        cityCode: value[1].value,
-        provCd: value[0].value,
-        deptName: "",
-        tradeFlag: 1,
-      }).then((content) => {
-        if (content.list) {
-          app.service.CashReserve.wxLatelyBookDeptQry({
-            longitude: this.data.locationData.longitude,
-            latitude: this.data.locationData.latitude,
-            FromUserName: openId,
-          }).then((result) => {
-            if (result) {
-              let list = content.list;
-              if (result.deptId) {
-                list = list.filter((el) => el.deptId != result.deptId);
-                list.unshift({
-                  recent: true,
-                  addr: result.deptAddr,
-                  deptId: result.deptId,
-                  deptName: result.deptName,
-                  distance: result.distance,
-                  lat: result.lat,
-                  lon: result.lon,
-                  moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
-                  onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
-                });
-              }
-              ctx.splice(0, ctx.getList().length, list);
-              ctx.forceUpdate();
-              this.setData({
-                bankList: list,
+    app.service.CashReserve.wxQueryDeptListByDist({
+      // distance: "米",
+      longitude: this.data.locationData.longitude,
+      latitude: this.data.locationData.latitude,
+      cityCode: value[1].value,
+      provCd: value[0].value,
+      deptName: "",
+      tradeFlag: 1,
+    }).then((content) => {
+      if (content.list) {
+        app.service.CashReserve.wxLatelyBookDeptQry({
+          longitude: this.data.locationData.longitude,
+          latitude: this.data.locationData.latitude,
+          FromUserName: openId,
+        }).then((result) => {
+          if (result) {
+            let list = content.list;
+            if (result.deptId) {
+              list = list.filter((el) => el.deptId != result.deptId);
+              list.unshift({
+                recent: true,
+                addr: result.deptAddr,
+                deptId: result.deptId,
+                deptName: result.deptName,
+                distance: result.distance,
+                lat: result.lat,
+                lon: result.lon,
+                moneyChangeScheduleFlag: result.moneyChangeScheduleFlag,
+                onlineLargeCashBookFlag: result.onlineLargeCashBookFlag,
               });
             }
-          });
-        }
-      });
-    } else {
-      Toast("获取当前位置失败，请重新授权！");
-    }
+            ctx.splice(0, ctx.getList().length, list);
+            ctx.forceUpdate();
+            this.setData({
+              bankList: list,
+            });
+          }
+        });
+      }
+    });
   },
   jumpToMap(event) {
     const that = this;
@@ -359,16 +348,58 @@ Page({
   // 获取银行网点
   getBankList(provCode, cityCode, deptName = "") {
     const that = this;
+    // 1.请求获取用户位置信息
     wx.getLocation({
       type: "wgs84",
+      // 成功
       success(res) {
         that.setData({
           locationData: res,
+          noLocation: false,
         });
+      },
+      // 失败
+      fail() {
+        that.setData({
+          noLocation: true,
+        });
+        // 判断用户是否授权位置信息
+        wx.getSetting({
+          success(res) {
+            // 如果已授权则可能是手机未打开定位功能
+            if (res.authSetting.userLocation) {
+              Toast(
+                "地理位置获取失败，将影响功能使用，请打开手机定位功能后重新进入页面"
+              );
+            } else {
+              // 如果未授权，则引导用户进入授权页面
+              Dialog.confirm({
+                title: "温馨提示",
+                message: "地理位置获取失败，将影响功能使用，请前往设置",
+                confirmButtonText: "设置",
+                cancelButtonText: "取消",
+              })
+                .then(() => {
+                  // 进入授权页面，无论用户是否重新授权都重新请求方法
+                  wx.openSetting({
+                    success() {
+                      that.getBankList(provCode, cityCode, deptName);
+                    },
+                  });
+                })
+                .catch(() => {
+                  console.log("暂不取消");
+                });
+            }
+          },
+        });
+      },
+      // 无论是否成功获取位置，都请求并数据
+      complete() {
         app.service.CashReserve.wxQueryDeptListByDist({
           // distance: "米",
-          longitude: res.longitude,
-          latitude: res.latitude,
+          longitude: that.data.locationData.longitude,
+          latitude: that.data.locationData.latitude,
           cityCode: cityCode,
           provCd: provCode,
           deptName: deptName,
@@ -376,8 +407,8 @@ Page({
         }).then((content) => {
           if (content.list) {
             app.service.CashReserve.wxLatelyBookDeptQry({
-              longitude: res.longitude,
-              latitude: res.latitude,
+              longitude: that.data.locationData.longitude,
+              latitude: that.data.locationData.latitude,
               FromUserName: openId,
             }).then((result) => {
               if (result) {
@@ -405,9 +436,6 @@ Page({
             });
           }
         });
-      },
-      fail() {
-        Toast("获取当前位置失败，请重新授权！");
       },
     });
   },

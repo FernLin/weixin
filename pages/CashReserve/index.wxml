@@ -19,7 +19,7 @@
                 <text class="dept-name">{{item.deptName}}</text>
                 <text class="recent-status" wx:if="{{item.recent}}">上次预约</text>
               </view>
-              <view class="bank-distance" data-item="{{item}}" bindtap="jumpToMap">
+              <view wx:if="{{!noLocation}}" class="bank-distance" data-item="{{item}}" bindtap="jumpToMap">
                 <text>{{util.formatDistance(item.distance)}}</text>
                 <image src="/assets/cashReserve/position.png" />
               </view>
