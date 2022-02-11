@@ -33,7 +33,7 @@ export default {
   /**
    * 添加银行卡
    * @param {
-   * openid: 用户openid
+   * openId: 用户openId
    * mobilePhone: 手机号
    * cifName: 用户名
    * idType: 证件类型

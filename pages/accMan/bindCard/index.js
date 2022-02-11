@@ -88,7 +88,7 @@ Page({
     }).then((result) => {
       if (result.authRes) {
         let params = {
-          openid: openId,
+          openId,
           mobilePhone: this.data.phoneNum,
           cifName: this.data.userName,
           idType: this.data.bindCardType.value,
