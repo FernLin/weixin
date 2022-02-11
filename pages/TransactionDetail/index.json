@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "交易明细"
+  "navigationBarTitleText": "交易明细",
+  "usingComponents": {
+    "my-date-picker": "/components/myDatePicker/index",
+    "recycle-view": "miniprogram-recycle-view/recycle-view",
+    "recycle-item": "miniprogram-recycle-view/recycle-item"
+  }
 }

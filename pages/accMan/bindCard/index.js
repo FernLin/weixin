@@ -115,22 +115,22 @@ Page({
     });
   },
   toBack() {
-    if (this.data.fromRegister) {
-      // 新注册用户绑卡完成后获取用户信息
-      const openId = wx.getStorageSync("openid");
-      const unionId = wx.getStorageSync("unionId");
-      app.service.Global.wxGetUserInfo({
-        openid: openId,
-        unionId,
-      }).then((result) => {
-        wx.setStorageSync("USERINFO", result);
+    const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
+    app.service.Global.wxGetUserInfo({
+      openid: openId,
+      unionId,
+    }).then((result) => {
+      wx.setStorageSync("USERINFO", result);
+      if (this.data.fromRegister) {
+        // 新注册用户绑卡完成后跳转用户页面
         wx.switchTab({
           url: "/pages/User/index",
         });
-      });
-    } else {
-      wx.navigateBack();
-    }
+      } else {
+        wx.navigateBack();
+      }
+    });
   },
   // 银行卡账号
   bindBankCardId(e) {

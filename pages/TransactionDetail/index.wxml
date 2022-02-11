@@ -1,31 +1,32 @@
 <view class="trans-content bottom-safe">
   <van-dropdown-menu>
-    <van-dropdown-item title="{{cardIdEnd}}" value="{{value2}}" options="{{option2}}" bind:change="changeCard" />
+    <van-dropdown-item value="{{selectedAccount.acNo}}" options="{{accountList}}" bind:change="changeCard" />
     <van-dropdown-item title="{{timeSlot}}" id="dropdown1">
       <view class="m-30">筛选时间</view>
       <view class="flex jc-sb m-30">
-        <view class="set-css {{timeDote=='1'?'active': ''}}" bindtap="doTimeSearch" data-time="1">近一周</view>
-        <view class="set-css {{timeDote=='2'?'active': ''}}" bindtap="doTimeSearch" data-time="2">近一月</view>
-        <view class="set-css {{timeDote=='3'?'active': ''}}" bindtap="doTimeSearch" data-time="3">近三月</view>
-        <view class="set-css {{timeDote=='4'?'active': ''}}" bindtap="doTimeSearch" data-time="4">自定义</view>
+        <view class="set-css {{timeDote=='1'?'active': ''}}" bindtap="doTimeSelect" data-time="1">近一周</view>
+        <view class="set-css {{timeDote=='2'?'active': ''}}" bindtap="doTimeSelect" data-time="2">近一月</view>
+        <view class="set-css {{timeDote=='3'?'active': ''}}" bindtap="doTimeSelect" data-time="3">近三月</view>
+        <view class="set-css {{timeDote=='4'?'active': ''}}" bindtap="doTimeSelect" data-time="4">自定义</view>
       </view>
       <view class="flex jc-sb m-30" wx:if="{{timeDote=='4'}}">
-        <picker mode="date" value="{{beginTime}}" start="{{startTime}}" end="{{nowTime}}" bindchange="onConfirmBT">
-          <view class="time-pick">{{beginTime}}</view>
-        </picker>
-        <view class="time-fen-ge">-</view>
-        <picker mode="date" value="{{endTime}}" start="{{startTime}}" end="{{nowTime}}" bindchange="onConfirmET">
-          <view class="time-pick">{{endTime}}</view>
-        </picker>
+        <view class="date-content" data-type="startDate" bindtap="onDateClick">
+          <view class="{{startDate ? 'content-color' : 'placeholder-color'}}">{{startDate ? startDate : '起始时间'}}</view>
+        </view>
+        <text class="split-line">-</text>
+        <view class="date-content" data-type="endDate" bindtap="onDateClick">
+          <view class="{{endDate ? 'content-color' : 'placeholder-color'}}">{{endDate ? endDate : '结束时间'}}</view>
+        </view>
       </view>
       <view class="flex">
         <van-button type="default" block class="btn-sty" bindtap="restSearch">重置</van-button>
         <van-button type="danger" block class="btn-sty" bindtap="goSearch">确定</van-button>
       </view>
     </van-dropdown-item>
-    <van-dropdown-item value="{{value1}}" options="{{option1}}" bind:change="filterType" />
+    <van-dropdown-item value="{{selectedType}}" options="{{typeList}}" bind:change="changeType" />
   </van-dropdown-menu>
   <view class="main-body">
     明细
   </view>
 </view>
+<my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />

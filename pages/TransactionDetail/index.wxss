@@ -1,8 +1,31 @@
 .trans-content {
   margin-top: 20rpx;
 }
-
-
+.date-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date-content view {
+  width: 246rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background-color: #f7f7f7;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+}
+.split-line {
+  color: #646464;
+  font-size: 30rpx;
+  margin: 0 8rpx;
+}
+.content-color {
+  color: #323232;
+}
+.placeholder-color {
+  color: #c4c4c4;
+}
 
 .l-t {
   font-family: PingFang SC;
