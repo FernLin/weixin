@@ -4,6 +4,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inSumBal: 0, // 收入总金额
+    outSumBal: 0, // 支出总金额
+    dateList: [], // 交易月份列表
     transInfoList: [], // 交易明细列表
     showDatePicker: false, // 是否展示日期选择器
     accountList: [], // 账户列表
@@ -20,18 +23,21 @@ Page({
       { text: "支出", value: 2 },
     ], // 收入支出类型列表
     selectedType: 0, // 已选类型
-    total: 0,
+    recordNumber: 0, // 交易明细总条数
+    pageNo: 1, // 当前页数
   },
   // 获取明细列表
   getTransInfoList(paramsIn = {}) {
+    const openId = wx.getStorageSync("openid");
     let params = {
-      recordNumber: this.data.total, // 总条数（第二页开始上送）
-      pageNo: "1", // 页码
-      pageSize: "10", // 每页数量
+      openId,
+      recordNumber: this.data.recordNumber, // 总条数（第二页开始上送）
+      pageNo: this.data.pageNo, // 页码
+      pageSize: "20", // 每页数量
       sonAcNo: this.data.selectedAccount.subAcNo, // 子账户
       curryType: this.data.selectedAccount.currency, // 币种
-      payOrIncome: this.data.selectedType, // 收支类型（0：全部；1：收入；2：支出）
-      defaultTime: this.data.timeDote, // 默认时间（1：一周；2：一月；3：三月；4：自定义）
+      payOrIncome: parseInt(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
+      defaultTime: parseInt(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
       acNo: this.data.selectedAccount.acNo, // 账户号
       startDate: this.data.timeDote === "4" ? this.data.startDate : "", // 开始时间
       endDate: this.data.timeDote === "4" ? this.data.endDate : "", // 结束时间
@@ -40,6 +46,10 @@ Page({
     app.service.Transaction.wxAcctDetailQry(params).then((res) => {
       this.setData({
         transInfoList: res.list,
+        inSumBal: res.inSumBal,
+        outSumBal: res.outSumBal,
+        recordNumber: res.recordNumber,
+        dateList: res.dateList,
       });
       // if (res.list) {
       //   if (ctx.getList().length > 0) {
@@ -73,9 +83,7 @@ Page({
       };
     });
     const currentAccount = acList.find((item) => {
-      // TODO：记得打开
-      // return item.acNo === options.acNo;
-      return item.acNo === "6231276091000053497";
+      return item.acNo === options.acNo;
     });
     this.setData({
       accountList: acList,

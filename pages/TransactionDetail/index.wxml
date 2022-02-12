@@ -1,3 +1,4 @@
+<wxs module="util" src="../../utils/wxParse.wxs"></wxs>
 <view class="trans-content bottom-safe">
   <van-dropdown-menu>
     <van-dropdown-item value="{{selectedAccount.acNo}}" options="{{accountList}}" bind:change="changeCard" />
@@ -26,7 +27,10 @@
     <van-dropdown-item value="{{selectedType}}" options="{{typeList}}" bind:change="changeType" />
   </van-dropdown-menu>
   <view class="main-body">
-    明细
+    <view wx:if="{{dateList && dateList.length > 0}}" class="amount-detail">
+      <text>收入￥{{selectedType === '2' ? '0.00' : util.formatAmount(inSumbal)}}</text>
+      <text>支出￥{{selectedType === '1' ? '0.00' : util.formatAmount(outSumbal)}}</text>
+    </view>
   </view>
 </view>
 <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />

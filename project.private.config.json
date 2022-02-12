@@ -23,8 +23,8 @@
           "name": "共享动账通知操作",
           "pathName": "pages/accMan/operaNotice/index",
           "query": "defaultData=\"{\"signeeMobile\":\"15011110000\",\"signeeName\":\"方蓉\",\"shareAccount\":\"6229676102114820323\",\"shareDate\":\"20220210\",\"shareOpenId\":\"ock4k5Hp9HRm1Hnh_YLV0w3rw9L0\",\"shareName\":\"hilary\",\"shareAvatar\":\"https%3A%2F%2Fthirdwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTJkQXoMolPPP2vf35IIUib1Rtvkn1icOJDSARk1SbB8ZTNwz4Ey5OqLibtubDIXx6TLaK5PwXkLIYBUg%2F132\",\"shareUrlId\":\"Ce4mZK8ssdmwTK3Q5yM5dCHAnkw44bK3\"}\"",
-          "scene": 1007,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": 1007
         },
         {
           "name": "校验用户",
@@ -52,9 +52,9 @@
         {
           "name": "交易明细",
           "pathName": "pages/TransactionDetail/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
+          "query": "acNo=6229676101055971434",
+          "scene": null,
+          "launchMode": "default"
         },
         {
           "name": "关注公众号",

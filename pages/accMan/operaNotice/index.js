@@ -228,8 +228,8 @@ Page({
         }
       });
       this.setData({
-        openId: result.openId,
-        unionId: result.unionId,
+        openId: openId,
+        unionId: unionId,
       });
     } else {
       wx.login({
