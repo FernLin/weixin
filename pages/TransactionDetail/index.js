@@ -23,51 +23,27 @@ Page({
       { text: "支出", value: 2 },
     ], // 收入支出类型列表
     selectedType: 0, // 已选类型
-    recordNumber: 0, // 交易明细总条数
-    pageNo: 1, // 当前页数
   },
   // 获取明细列表
-  getTransInfoList(paramsIn = {}) {
+  getTransInfoList() {
     const openId = wx.getStorageSync("openid");
     let params = {
       openId,
-      recordNumber: this.data.recordNumber, // 总条数（第二页开始上送）
-      pageNo: this.data.pageNo, // 页码
-      pageSize: "20", // 每页数量
+      acNo: this.data.selectedAccount.acNo, // 账户号
       sonAcNo: this.data.selectedAccount.subAcNo, // 子账户
       curryType: this.data.selectedAccount.currency, // 币种
-      payOrIncome: parseInt(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
-      defaultTime: parseInt(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
-      acNo: this.data.selectedAccount.acNo, // 账户号
+      payOrIncome: String(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
+      defaultTime: String(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
       startDate: this.data.timeDote === "4" ? this.data.startDate : "", // 开始时间
       endDate: this.data.timeDote === "4" ? this.data.endDate : "", // 结束时间
-      ...paramsIn,
     };
     app.service.Transaction.wxAcctDetailQry(params).then((res) => {
       this.setData({
         transInfoList: res.list,
         inSumBal: res.inSumBal,
         outSumBal: res.outSumBal,
-        recordNumber: res.recordNumber,
         dateList: res.dateList,
       });
-      // if (res.list) {
-      //   if (ctx.getList().length > 0) {
-      //     ctx.splice(0, ctx.getList().length, res.list);
-      //   } else {
-      //     ctx.append(res.list);
-      //   }
-      //   ctx.forceUpdate();
-      //   this.setData({
-      //     transInfoList: res.list,
-      //   });
-      // } else {
-      //   ctx.splice(0, ctx.getList().length, []);
-      //   ctx.forceUpdate();
-      //   this.setData({
-      //     transInfoList: res.list,
-      //   });
-      // }
     });
   },
   /**
@@ -89,18 +65,14 @@ Page({
       accountList: acList,
       selectedAccount: currentAccount,
     });
-    let params = {
-      recordNumber: "", // 总条数（第二页开始上送）
-      pageNo: "1", // 页码
-    };
-    this.getTransInfoList(params);
+    this.getTransInfoList();
   },
   // 时间段选择
   doTimeSelect(item) {
     this.setData({
       timeDote: item.target.dataset.time,
     });
-    // let t = item.target.dataset.time;
+    let t = item.target.dataset.time;
     // let timeSlotN = app.util.dates();
     if (t == "1") {
       this.setData({
@@ -185,6 +157,7 @@ Page({
     });
     this.getTransInfoList();
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

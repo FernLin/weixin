@@ -52,7 +52,7 @@
         {
           "name": "交易明细",
           "pathName": "pages/TransactionDetail/index",
-          "query": "acNo=6229676101055971434",
+          "query": "acNo=6229676102114820323",
           "scene": null,
           "launchMode": "default"
         },

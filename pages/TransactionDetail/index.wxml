@@ -28,8 +28,41 @@
   </van-dropdown-menu>
   <view class="main-body">
     <view wx:if="{{dateList && dateList.length > 0}}" class="amount-detail">
-      <text>收入￥{{selectedType === '2' ? '0.00' : util.formatAmount(inSumbal)}}</text>
-      <text>支出￥{{selectedType === '1' ? '0.00' : util.formatAmount(outSumbal)}}</text>
+      <text>收入￥{{selectedType === '2' ? '0.00' : util.formatAmount(inSumBal)}}</text>
+      <text>支出￥{{selectedType === '1' ? '0.00' : util.formatAmount(outSumBal)}}</text>
+    </view>
+    <view class="list-content {{dateList.length > 0 ? '' : 'empty-list'}}" id="transRecycleId">
+      <view wx:if="{{dateList.length > 0}}">
+        <view wx:for="{{dateList}}" wx:key="index" class="date-item">
+          <view class="detail-month">
+            {{util.getTransDate(item)}}
+          </view>
+          <view wx:for="{{transInfoList}}" wx:key="index" wx:for-item="info" class="detail-content">
+            <view wx:if="{{info.transDate && util.judgeTransDate(info.transDate, item)}}">
+              <view class="detail-item-tab">
+                <view>{{util.getTransDay(info.transDate)}}</view>
+                <text>{{util.getTransWeek(info.transDate)}}</text>
+              </view>
+              <view class="detail-item-tab">
+                <view>{{info.transAcName || info.brief || '' }}</view>
+                <text>{{util.getAccountName(info.transAcNo)}}</text>
+              </view>
+              <view class="detail-item-tab">
+                <view class="{{info.borrowLoanFlag == 0 ? 'outlay' : 'income'}}">
+                  <text wx:if="{{ info.borrowLoanFlag == 0 }}">-</text>
+                  <text wx:else>+</text>
+                  ￥{{ util.formatAmount(info.amount)}}
+                </view>
+                <text>余额￥{{util.formatAmount(info.accBalance)}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="empty-content">
+        <image src="/assets/empty.png" />
+        <view>指定的时间段内无交易明细</view>
+      </view>
     </view>
   </view>
 </view>

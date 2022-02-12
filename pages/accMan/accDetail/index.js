@@ -38,7 +38,7 @@ Page({
   // 交易明细
   toTranDetail() {
     wx.navigateTo({
-      url: "/pages/tranDetail/index?acNo=" + this.data.accountDetail.acNo,
+      url: "/pages/TransactionDetail/index?acNo=" + this.data.accountDetail.acNo,
     });
   },
 

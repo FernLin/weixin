@@ -177,6 +177,39 @@ function formatBankName(name) {
   }
 }
 
+// 交易明细日期
+function getTransDate(date) {
+  if (date && date.length > 0) {
+    return date.substring(0, 4) + "年" + date.substring(4, 6) + "月";
+  }
+}
+// 交易明细日期
+function judgeTransDate(date1, date2) {
+  if (date1 && date1.length > 0) {
+    return date1.substring(0, 6) === date2;
+  }
+}
+// 获取交易日期
+function getTransDay(date) {
+  if (date && date.length > 0) {
+    return date.substring(6, 8);
+  }
+}
+// 获取交易星期
+function getTransWeek(dateStr) {
+  if (dateStr && dateStr.length > 0) {
+    var temp = formatDate(dateStr);
+    var dateArr = temp.split("-");
+    var date = getDate(dateArr[0], dateArr[1] - 1, dateArr[2]);
+    return "周" + "日一二三四五六".charAt(date.getDay());
+  }
+}
+function getAccountName(acNo) {
+  if (acNo && acNo.length > 0) {
+    return "尾号" + acNo.slice(-4);
+  }
+}
+
 module.exports = {
   formatDistance: formatDistance,
   formatDate: formatDate,
@@ -192,4 +225,9 @@ module.exports = {
   formatBankType: formatBankType,
   formatAccountType: formatAccountType,
   formatBankName: formatBankName,
+  getTransDate: getTransDate,
+  judgeTransDate: judgeTransDate,
+  getTransDay: getTransDay,
+  getTransWeek: getTransWeek,
+  getAccountName: getAccountName,
 };

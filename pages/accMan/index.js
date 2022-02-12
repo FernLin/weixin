@@ -171,7 +171,7 @@ Page({
   // 交易明细
   toTranDetail(e) {
     wx.navigateTo({
-      url: "/pages/tranDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
+      url: "/pages/TransactionDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
     });
   },
 
