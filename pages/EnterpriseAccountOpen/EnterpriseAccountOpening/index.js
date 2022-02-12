@@ -41,7 +41,6 @@ Page({
       depId: "",
       deptName: "",
     },
-    deptList: [],
     hasGetVerifyCode: false,
   },
   // 选择省份
@@ -103,12 +102,30 @@ Page({
   },
   // 选择网点
   onNetClick() {
+    if (!this.data.selectedProv.text) {
+      Toast("请先选择省份！");
+      return;
+    }
+    if (!this.data.selectedCity.text) {
+      Toast("请先选择城市！");
+      return;
+    }
     wx.navigateTo({
-      url: "/pages/EnterpriseAccountOpen/SelectNet/index",
+      url:
+        "/pages/EnterpriseAccountOpen/SelectNet/index?cityCode=" +
+        this.data.selectedCity.cityCode,
     });
   },
   // 下一步
   toNext() {
+    if (!this.data.currentData.linkName) {
+      Toast("请先输入经办人信息！");
+      return;
+    }
+    if (!this.data.currentData.linkTel) {
+      Toast("请输入正确格式的手机号！");
+      return;
+    }
     if (!this.data.hasGetVerifyCode) {
       Toast("请先获取短信验证码！");
       return;
@@ -124,7 +141,6 @@ Page({
       mobilePhone: this.data.currentData.linkTel,
     }).then((result) => {
       if (result.authRes) {
-        wx.removeStorageSync("deptList");
         wx.navigateTo({
           url:
             "/pages/EnterpriseAccountOpen/EnterpriseInformation/index?enterpriseInfo=" +

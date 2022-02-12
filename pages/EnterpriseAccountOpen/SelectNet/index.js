@@ -10,6 +10,7 @@ Page({
     viewHeight: 0,
     deptList: [],
     searchVal: "",
+    cityCode: "",
   },
   // 获取输入的值
   getSearchVal(event) {
@@ -19,8 +20,7 @@ Page({
   },
   // 关键字搜索
   onSearch() {
-    const tempList = wx.getStorageSync("deptList") || [];
-    const list = tempList.filter(
+    const list = this.data.deptList.filter(
       (el) =>
         el.addr.includes(this.data.searchVal) ||
         el.deptName.includes(this.data.searchVal)
@@ -30,8 +30,7 @@ Page({
   },
   // 关键字输入框清空
   onClear() {
-    const tempList = wx.getStorageSync("deptList") || [];
-    ctx.splice(0, ctx.getList().length, tempList);
+    ctx.splice(0, ctx.getList().length, this.data.deptList);
     ctx.forceUpdate();
   },
   // 点击选择网点
@@ -49,8 +48,8 @@ Page({
   getBankList() {
     app.service.EnterpriseAccountOPen.wxOutletsDeptQry({
       deptType: "2",
+      cityCode: this.data.cityCode
     }).then((res) => {
-      wx.setStorageSync("deptList", res.list);
       if (ctx.getList().length > 0) {
         ctx.splice(0, ctx.getList().length, res.list);
       } else {
@@ -71,7 +70,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    this.setData({
+      cityCode: this.options.cityCode,
+    });
     ctx = createRecycleContext({
       id: "netRecycleId",
       dataKey: "deptList",
@@ -81,15 +83,7 @@ Page({
     this.setData({
       viewHeight: wx.getSystemInfoSync().windowHeight - 65,
     });
-    const list = wx.getStorageSync("deptList") || [];
-    if (list.length > 0) {
-      ctx.append(list);
-      this.setData({
-        deptList: list,
-      });
-    } else {
-      this.getBankList();
-    }
+    this.getBankList();
   },
 
   /**
