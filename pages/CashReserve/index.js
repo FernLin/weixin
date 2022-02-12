@@ -370,10 +370,11 @@ Page({
         wx.getSetting({
           success(res) {
             // 如果已授权则可能是手机未打开定位功能
-            if (res.authSetting.userLocation) {
-              Toast(
-                "地理位置获取失败，将影响功能使用，请打开手机定位功能后重新进入页面"
-              );
+            if (res.authSetting["scope.userLocation"]) {
+              Dialog.alert({
+                message:
+                  "地理位置获取失败，将影响功能使用，请打开手机定位功能后重新进入页面",
+              });
             } else {
               // 如果未授权，则引导用户进入授权页面
               Dialog.confirm({
