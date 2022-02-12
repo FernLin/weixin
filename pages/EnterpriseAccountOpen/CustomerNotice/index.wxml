@@ -1,0 +1,11 @@
+<view>
+  <view class="block">
+    <view>请准备以下资料原件</view>
+    <view>1.营业执照正本</view>
+    <view>2.法人或负责人有效身份证原件</view>
+    <view>3.基本账户开户许可证原件（一般户）</view>
+    <view>4.开户经办人有效身份证原件</view>
+    <view>5.单位公章、财务专章、法人章或单位负责人章</view>
+  </view>
+  <view class="next-step-btn" bindtap="toNext">知道了</view>
+</view>

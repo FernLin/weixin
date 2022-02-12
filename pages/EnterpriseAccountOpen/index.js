@@ -10,7 +10,7 @@ Page({
   },
   goEnterAccOpen() {
     wx.navigateTo({
-      url: "/pages/EnterpriseAccountOpen/EnterpriseInformation/index"
+      url: "/pages/EnterpriseAccountOpen/CustomerNotice/index"
     })
   },
   goEnterAccOpenQuery() {

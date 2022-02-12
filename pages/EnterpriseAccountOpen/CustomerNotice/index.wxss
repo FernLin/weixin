@@ -1,0 +1,17 @@
+.block {
+  margin-top: 20rpx;
+  background-color: #ffffff;
+  padding: 30rpx;
+}
+.block > view {
+  font-size: 30rpx;
+  color: #666666;
+  line-height: 52rpx;
+}
+.block > view:first-child {
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 32rpx;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+}

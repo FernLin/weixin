@@ -1,0 +1,15 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
+<view class="main-content">
+  <view class="block">
+    <my-field label="开户机构" value="赣州银行" hideBorder />
+    <my-field label="开户城市" value="{{selectedCity.cityName}}" />
+    <my-field label="开户网点" value="{{util.formatBankName(selectedNet.deptName)}}" />
+    <my-field label="企业名称" value="{{tempData.companyName}}" />
+    <my-field label="营业执照号码" value="{{tempData.licenseNum}}" />
+    <my-field label="账户类型" value="{{tempData.bankAcctFlag === '1' ? '一般户' : '基本户'}}" />
+    <my-field label="预约开户日期" value="{{util.formatDate(tempData.openDate)}}" />
+    <my-field label="经办人" value="{{tempData.linkName}}" />
+    <my-field label="手机号" value="{{tempData.linkTel}}" />
+  </view>
+  <view class="next-step-btn" bindtap="toConfirm">确认</view>
+</view>

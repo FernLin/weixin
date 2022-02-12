@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "开户确认",
+  "usingComponents": {
+    "my-field": "/components/myField/index"
+  }
+}

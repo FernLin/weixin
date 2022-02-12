@@ -67,7 +67,9 @@
         "DocumentUpload/index",
         "EnterpriseInformation/index",
         "SelectNet/index",
-        "AppointmentSerach/index"
+        "AppointmentSerach/index",
+        "CustomerNotice/index",
+        "ApplyConfirm/index"
       ]
     },
     {

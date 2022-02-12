@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tempData: {},
     isSame: false,
     canNext: false,
     errorMsg: {
@@ -97,17 +98,25 @@ Page({
       }
     }
     if (this.data.canNext) {
+      const res = {
+        ...this.data.tempData,
+        ...this.data.accountInfo,
+      };
       wx.navigateTo({
         url:
           "/pages/EnterpriseAccountOpen/DocumentUpload/index?enterpriseInfo=" +
-          JSON.stringify(this.data.accountInfo),
+          JSON.stringify(res),
       });
     }
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
+  onLoad: function (options) {
+    this.setData({
+      tempData: JSON.parse(options.enterpriseInfo),
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

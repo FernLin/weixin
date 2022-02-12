@@ -12,7 +12,6 @@ Page({
     countDownNum: 60,
     countDownFlag: true,
     indexCode: "",
-    tempData: {},
     currentData: {
       bankCode: "000", // 银行编号*固定值
       openCity: "", // 开户城市*为空
@@ -125,27 +124,12 @@ Page({
       mobilePhone: this.data.currentData.linkTel,
     }).then((result) => {
       if (result.authRes) {
-        let params = {
-          ...this.data.tempData,
-          ...this.data.currentData,
-        };
-        app.service.EnterpriseAccountOPen.wxApplyOpenAct(params)
-          .then((res) => {
-            if (res) {
-              wx.removeStorageSync("deptList");
-              wx.reLaunch({
-                url:
-                  "/pages/EnterpriseAccountOpen/ApplyResult/index?applyNo=" +
-                  res.applyNo,
-              });
-            }
-          })
-          .catch((err) => {
-            this.setData({
-              countDownFlag: true,
-              countDownNum: 60,
-            });
-          });
+        wx.removeStorageSync("deptList");
+        wx.navigateTo({
+          url:
+            "/pages/EnterpriseAccountOpen/EnterpriseInformation/index?enterpriseInfo=" +
+            JSON.stringify(this.data.currentData),
+        });
       }
     });
   },
@@ -282,9 +266,6 @@ Page({
    */
   onLoad: function (options) {
     this.getCityData();
-    this.setData({
-      tempData: JSON.parse(options.enterpriseInfo),
-    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

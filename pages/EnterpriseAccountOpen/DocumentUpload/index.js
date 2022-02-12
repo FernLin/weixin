@@ -60,7 +60,7 @@ Page({
         const result = { ...this.data.tempData, imageNo: res.contentId };
         wx.navigateTo({
           url:
-            "/pages/EnterpriseAccountOpen/EnterpriseAccountOpening/index?enterpriseInfo=" +
+            "/pages/EnterpriseAccountOpen/ApplyConfirm/index?enterpriseInfo=" +
             JSON.stringify(result),
         });
       });
