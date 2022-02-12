@@ -1,18 +1,24 @@
 <wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="m-30">
-    <view class="my-notice-info" wx:for="{{applyList}}" wx:key="item">
-        <view class="flex jc-sb">
-            <view class="card-l-t">{{item.companyName}}</view>
-            <view class="card-r-t card-r-t-b">{{item.status}}</view>
+    <view wx:if="{{applyList && applyList.length > 0}}">
+        <view class="my-notice-info" wx:for="{{applyList}}" wx:key="item">
+            <view class="flex jc-sb">
+                <view class="card-l-t">{{item.companyName}}</view>
+                <view class="card-r-t card-r-t-b">{{item.status}}</view>
+            </view>
+            <view class="fen-ge"></view>
+            <view class="flex jc-sb">
+                <view class="card-l">账户类型</view>
+                <view class="card-r">{{item.flag}}</view>
+            </view>
+            <view class="flex jc-sb">
+                <view class="card-l">预约开户日期</view>
+                <view class="card-r">{{util.formatDate(item.openDate)}}</view>
+            </view>
         </view>
-        <view class="fen-ge"></view>
-        <view class="flex jc-sb">
-            <view class="card-l">账户类型</view>
-            <view class="card-r">{{item.flag}}</view>
-        </view>
-        <view class="flex jc-sb">
-            <view class="card-l">预约开户日期</view>
-            <view class="card-r">{{util.formatDate(item.openDate)}}</view>
-        </view>
+    </view>
+    <view wx:else class="empty-content">
+        <image src="/assets/empty.png" />
+        <view>暂无预约记录哦~</view>
     </view>
 </view>

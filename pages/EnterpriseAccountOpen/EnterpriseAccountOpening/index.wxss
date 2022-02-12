@@ -7,7 +7,13 @@
   background-color: #fff;
   margin-bottom: 20rpx;
 }
-
+.content-title {
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 48rpx;
+  font-weight: 500;
+  padding: 26rpx 0 12rpx;
+}
 .custom-input {
   font-size: 30rpx;
   color: #323232;
