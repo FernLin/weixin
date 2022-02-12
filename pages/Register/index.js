@@ -98,21 +98,26 @@ Page({
               hasGetVerifyCode: false,
             });
             wx.setStorageSync("mobilePhone", this.data.mobile);
-            // openFlag为true，新用户注册成功，跳转至绑卡页面
-            if (res.openFlag) {
-              wx.reLaunch({
-                url: "/pages/accMan/bindCard/index?fromRegister=true",
-              });
-            } else {
-              // openFlag为false，跳转至用户信息验证页面，返回操作时跳转注册页面
-              wx.navigateTo({
-                url:
-                  "/pages/accMan/verifyCard/index?whetherVerifyCard=" +
-                  res.whetherVerifyCard +
-                  "&mobilePhone=" +
-                  this.data.mobile,
-              });
-            }
+            // 注册成功后调用发送通知接口
+            app.service.Global.wxMsgTradingToRemindWx({
+              unionId,
+            }).then((msg) => {
+              // openFlag为true，新用户注册成功，跳转至绑卡页面
+              if (res.openFlag) {
+                wx.reLaunch({
+                  url: "/pages/accMan/bindCard/index?fromRegister=true",
+                });
+              } else {
+                // openFlag为false，跳转至用户信息验证页面，返回操作时跳转注册页面
+                wx.navigateTo({
+                  url:
+                    "/pages/accMan/verifyCard/index?whetherVerifyCard=" +
+                    res.whetherVerifyCard +
+                    "&mobilePhone=" +
+                    this.data.mobile,
+                });
+              }
+            });
           })
           .catch((err) => {
             this.setData({

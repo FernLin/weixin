@@ -149,4 +149,13 @@ export default {
   wxProtocolExhibition(params) {
     return post("wxProtocolExhibition.do", params);
   },
+  /**
+   * 发送通知
+   * @param {
+   * unionId: 用户unionId
+   * }
+   */
+  wxMsgTradingToRemindWx(params) {
+    return post("wxMsgTradingToRemindWx.do", params);
+  },
 };
