@@ -2,6 +2,7 @@
 import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
+const unionId = wx.getStorageSync("unionId");
 let timer;
 Page({
   /**
@@ -97,6 +98,10 @@ Page({
       })
         .then((res) => {
           if (res) {
+            app.service.Global.wxMsgTradingToRemindWx({
+              unionId,
+              type: "2",
+            });
             wx.clearStorageSync();
             this.setData({
               resultPopup: true,

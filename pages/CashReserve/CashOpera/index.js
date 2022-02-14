@@ -214,11 +214,6 @@ Page({
     }
     app.service.CashReserve.wxLargeCashBook(params).then((res) => {
       if (res) {
-        app.service.Global.wxMsgTradingToRemindWx({
-          unionId,
-          type: "3",
-          mobilePhone,
-        });
         this.setData({
           noticePopup: true,
         });
