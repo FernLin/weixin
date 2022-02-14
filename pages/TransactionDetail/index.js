@@ -73,8 +73,8 @@ Page({
       curryType: this.data.selectedAccount.currency, // 币种
       payOrIncome: String(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
       defaultTime: String(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
-      startDate: this.data.timeDote === "4" ? this.data.startDate : "", // 开始时间
-      endDate: this.data.timeDote === "4" ? this.data.endDate : "", // 结束时间
+      startDate: this.data.timeDote === "4" ? this.data.startDate.replace(/-/g, "") : "", // 开始时间
+      endDate: this.data.timeDote === "4" ? this.data.endDate.replace(/-/g, "") : "", // 结束时间
     };
     app.service.Transaction.wxAcctDetailQry(params).then((res) => {
       this.setData({
@@ -159,13 +159,16 @@ Page({
   },
   // 开始时间查询
   goSearch() {
-    if (!this.data.startDate || !this.data.startDate || startTime >= endTime) {
+    if (
+      this.data.timeDote === "4" &&
+      (!this.data.startDate || !this.data.startDate)
+    ) {
       Toast("请选择正确的时间区间！");
       return;
     }
     const startTime = new Date(this.data.startDate).getTime();
     const endTime = new Date(this.data.endDate).getTime();
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
       Toast("开始时间不能大于结束时间");
       return;
     }
