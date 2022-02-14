@@ -161,3 +161,9 @@
 .outlay {
   color: #5cc383;
 }
+.no-more {
+  text-align: center;
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #25ce66;
+}

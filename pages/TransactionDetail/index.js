@@ -45,9 +45,6 @@ Page({
         currentPage: this.data.currentPage + 1, // 当前页数
         noMore: true, // 无更多数据
       };
-      if (this.data.transInfoList.length > 0) {
-        Toast("全部已加载");
-      }
     } else {
       // 仍有剩余数据待获取
       tempParam = {
@@ -73,8 +70,10 @@ Page({
       curryType: this.data.selectedAccount.currency, // 币种
       payOrIncome: String(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
       defaultTime: String(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
-      startDate: this.data.timeDote === "4" ? this.data.startDate.replace(/-/g, "") : "", // 开始时间
-      endDate: this.data.timeDote === "4" ? this.data.endDate.replace(/-/g, "") : "", // 结束时间
+      startDate:
+        this.data.timeDote === "4" ? this.data.startDate.replace(/-/g, "") : "", // 开始时间
+      endDate:
+        this.data.timeDote === "4" ? this.data.endDate.replace(/-/g, "") : "", // 结束时间
     };
     app.service.Transaction.wxAcctDetailQry(params).then((res) => {
       this.setData({

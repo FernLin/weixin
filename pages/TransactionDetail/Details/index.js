@@ -12,7 +12,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      tempData: JSON.parse(options.details),
+      details: JSON.parse(options.details),
     });
   },
 

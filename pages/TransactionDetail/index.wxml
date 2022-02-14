@@ -58,6 +58,7 @@
             </view>
           </view>
         </view>
+        <view wx:if="{{noMore}}" class="no-more">全部已加载</view>
       </view>
       <view wx:else class="empty-content">
         <image src="/assets/empty.png" />
