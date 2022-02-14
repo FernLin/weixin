@@ -38,7 +38,7 @@
             {{util.getTransDate(item)}}
           </view>
           <view wx:for="{{pageList}}" wx:key="index" wx:for-item="info" class="detail-content">
-            <view wx:if="{{info.transDate && util.judgeTransDate(info.transDate, item)}}">
+            <view wx:if="{{info.transDate && util.judgeTransDate(info.transDate, item)}}" data-info="{{info}}" bindtap="toDetail">
               <view class="detail-item-tab">
                 <view>{{util.getTransDay(info.transDate)}}</view>
                 <text>{{util.getTransWeek(info.transDate)}}</text>
@@ -67,3 +67,4 @@
   </view>
 </view>
 <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />
+<van-toast id="van-toast" />

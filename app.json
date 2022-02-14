@@ -32,7 +32,8 @@
     {
       "root": "pages/TransactionDetail/",
       "pages": [
-        "index"
+        "index",
+        "Details/index"
       ]
     },
     {

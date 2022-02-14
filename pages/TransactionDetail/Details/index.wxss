@@ -1,0 +1,9 @@
+.main-content {
+  margin-top: 20rpx;
+}
+
+.block {
+  padding: 0 30rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}

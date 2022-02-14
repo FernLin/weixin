@@ -1,3 +1,4 @@
+import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
 Page({
   /**
@@ -44,6 +45,9 @@ Page({
         currentPage: this.data.currentPage + 1, // 当前页数
         noMore: true, // 无更多数据
       };
+      if (this.data.transInfoList.length > 0) {
+        Toast("全部已加载");
+      }
     } else {
       // 仍有剩余数据待获取
       tempParam = {
@@ -155,6 +159,16 @@ Page({
   },
   // 开始时间查询
   goSearch() {
+    if (!this.data.startDate || !this.data.startDate || startTime >= endTime) {
+      Toast("请选择正确的时间区间！");
+      return;
+    }
+    const startTime = new Date(this.data.startDate).getTime();
+    const endTime = new Date(this.data.endDate).getTime();
+    if (startTime >= endTime) {
+      Toast("开始时间不能大于结束时间");
+      return;
+    }
     this.selectComponent("#dropdown1").toggle();
     this.getTransInfoList();
   },
@@ -212,7 +226,13 @@ Page({
     });
     this.getTransInfoList();
   },
-
+  toDetail(e) {
+    wx.navigateTo({
+      url:
+        "/pages/TransactionDetail/Details/index?details=" +
+        JSON.stringify(e.currentTarget.dataset.info),
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

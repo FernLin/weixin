@@ -171,7 +171,9 @@ Page({
   // 交易明细
   toTranDetail(e) {
     wx.navigateTo({
-      url: "/pages/TransactionDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
+      url:
+        "/pages/TransactionDetail/index?acNo=" +
+        e.currentTarget.dataset.item.acNo,
     });
   },
 
@@ -222,6 +224,23 @@ Page({
         this.setData({
           bankCardList: finalList,
         });
+        if (finalList.length == 0) {
+          Dialog.confirm({
+            title: "温馨提示",
+            message: "当前无可用账户，是否进行绑卡操作？",
+            confirmButtonText: "立刻绑卡",
+            cancelButtonText: "暂不绑卡",
+          })
+            .then(() => {
+              wx.navigateTo({
+                url: "/pages/accMan/bindCard/index",
+              });
+            })
+            .catch(() => {
+              console.log("暂不取消");
+              wx.navigateBack();
+            });
+        }
       }
     });
   },
