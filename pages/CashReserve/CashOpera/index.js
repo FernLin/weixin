@@ -155,6 +155,7 @@ Page({
       Toast("请选择取款日期");
       return;
     }
+    const mobilePhone = wx.getStorageSync('mobilePhone');
     let params = {
       addr: this.data.addr,
       deptName: this.data.deptName,
@@ -213,6 +214,11 @@ Page({
     }
     app.service.CashReserve.wxLargeCashBook(params).then((res) => {
       if (res) {
+        app.service.Global.wxMsgTradingToRemindWx({
+          unionId,
+          type: "3",
+          mobilePhone,
+        });
         this.setData({
           noticePopup: true,
         });

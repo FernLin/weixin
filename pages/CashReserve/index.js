@@ -4,6 +4,8 @@ import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const createRecycleContext = require("miniprogram-recycle-view");
 const openId = wx.getStorageSync("openid");
+const unionId = wx.getStorageSync("unionId");
+const mobilePhone = wx.getStorageSync('mobilePhone');
 var ctx;
 // 获取应用实例
 const app = getApp();
@@ -274,6 +276,11 @@ Page({
           FromUserName: openId,
         }).then((res) => {
           if (res) {
+            app.service.Global.wxMsgTradingToRemindWx({
+              unionId,
+              type: "4",
+              mobilePhone,
+            });
             Toast("取消预约成功！");
             this.getRecordList();
           }

@@ -101,6 +101,7 @@ Page({
             // 注册成功后调用发送通知接口
             app.service.Global.wxMsgTradingToRemindWx({
               unionId,
+              type: res.openFlag ? "0" : "1",
             }).then((msg) => {
               // openFlag为true，新用户注册成功，跳转至绑卡页面
               if (res.openFlag) {
