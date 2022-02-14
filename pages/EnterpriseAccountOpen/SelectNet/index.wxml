@@ -1,3 +1,4 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view>
   <van-search value="{{ searchVal }}" bind:change="getSearchVal" bind:search="onSearch" bind:clear="onClear" custom-class="search-field" shape="round" use-left-icon-slot placeholder="请输入网点名称/街道名称">
     <van-icon slot="left-icon" size="40rpx" name="search" bind:click="onSearch" custom-class="icon-search" />
@@ -5,7 +6,7 @@
   <recycle-view batch="{{batchSetRecycleData}}" height="{{viewHeight}}" class="list-content" id="netRecycleId">
     <recycle-item wx:for="{{deptList}}" wx:key="item" style="width: calc(100% - 60rpx); margin-left: 30rpx;">
       <view class="dept-content" data-item="{{item}}" bindtap="onSelect">
-        <view>{{item.deptName}}</view>
+        <view>{{util.formatBankName(item.deptName)}}</view>
         <view>{{item.addr}}</view>
       </view>
     </recycle-item>

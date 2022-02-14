@@ -28,13 +28,10 @@ Page({
     showPicker: false,
     title: "",
     pickerType: "",
+    citys: {},
     columns: [],
-    columnsProv: [],
     columnsCity: [],
-    columnsDist: [],
-    selectedProv: {},
     selectedCity: {},
-    selectedDist: {},
     selectedDate: "",
     selectedNet: {
       addr: "",
@@ -43,43 +40,68 @@ Page({
     },
     hasGetVerifyCode: false,
   },
-  // 选择省份
-  onProvClick() {
-    this.setData({
-      pickerType: "prov",
-      showPicker: true,
-      title: "选择省份",
-      columns: this.data.columnsProv,
+  // 获取城市数据
+  getCityData() {
+    let cityData = {};
+    let columnData = [];
+    let provList = [];
+    let promiseList = [];
+    // 获取省数据
+    app.service.CashReserve.wxDeptProvAndCityQry().then((res) => {
+      if (res.provList && res.provList.length > 0) {
+        res.provList.forEach((prov) => {
+          provList.push({
+            text: prov.provName,
+            value: prov.provCd,
+          });
+          // 获取市数据
+          promiseList.push(
+            new Promise((resolve, reject) => {
+              app.service.CashReserve.wxDeptProvAndCityQry({
+                provCode: prov.provCd,
+              }).then((result) => {
+                if (result.cityList) {
+                  // 市数据格式化
+                  const temp = result.cityList.map((city) => {
+                    return {
+                      text: city.cityName,
+                      value: city.cityCode,
+                    };
+                  });
+                  resolve({
+                    key: prov.provName,
+                    value: temp,
+                  });
+                }
+              });
+            })
+          );
+        });
+        Promise.all(promiseList).then((rspList) => {
+          rspList.map((res) => {
+            cityData[res.key] = res.value;
+          });
+          columnData = [
+            {
+              values: provList,
+            },
+            {
+              values: cityData[provList[0].text],
+              defaultIndex: 0,
+            },
+          ];
+          this.setData({
+            citys: cityData,
+            columns: columnData,
+          });
+        });
+      }
     });
   },
   // 选择城市
   onCityClick() {
-    if (!this.data.selectedProv.text) {
-      Toast("请先选择省份！");
-      return;
-    }
     this.setData({
-      pickerType: "city",
       showPicker: true,
-      title: "选择城市",
-      columns: this.data.columnsCity,
-    });
-  },
-  // 选择区县
-  onDistClick() {
-    if (!this.data.selectedProv.text) {
-      Toast("请先选择省份！");
-      return;
-    }
-    if (!this.data.selectedCity.text) {
-      Toast("请先选择城市！");
-      return;
-    }
-    this.setData({
-      pickerType: "dist",
-      showPicker: true,
-      title: "选择区县",
-      columns: this.data.columnsDist,
     });
   },
   // 选择预约开户时间
@@ -102,10 +124,6 @@ Page({
   },
   // 选择网点
   onNetClick() {
-    if (!this.data.selectedProv.text) {
-      Toast("请先选择省份！");
-      return;
-    }
     if (!this.data.selectedCity.text) {
       Toast("请先选择城市！");
       return;
@@ -113,7 +131,7 @@ Page({
     wx.navigateTo({
       url:
         "/pages/EnterpriseAccountOpen/SelectNet/index?cityCode=" +
-        this.data.selectedCity.cityCode,
+        this.data.selectedCity.value,
     });
   },
   // 下一步
@@ -214,8 +232,8 @@ Page({
   },
   // 选择账户
   handlePicker(event) {
-    const { picker, value, index } = event.detail;
-    console.log("选择", value);
+    const { picker, value } = event.detail;
+    picker.setColumnValues(1, this.data.citys[value[0].text]);
   },
   // 选择器取消
   onPickerCancel() {
@@ -229,52 +247,8 @@ Page({
       showPicker: false,
     });
     const { value } = event.detail;
-    // 选择省份后请求接口获取城市数据
-    if (this.data.pickerType === "prov") {
-      this.getCityData("cityList", "cityName", "columnsCity", {
-        provCode: value.provCd,
-      });
-      this.setData({
-        selectedProv: value,
-        "currentData.prov": value.provCd,
-      });
-    }
-    // 选择城市后请求接口获取区县数据
-    if (this.data.pickerType === "city") {
-      this.getCityData("districtList", "areaName", "columnsDist", {
-        cityCode: value.cityCode,
-      });
-      this.setData({
-        selectedCity: value,
-        "currentData.city": value.cityCode,
-      });
-    }
-    if (this.data.pickerType === "dist") {
-      this.setData({
-        selectedDist: value,
-        "currentData.dist": value.areaCode,
-      });
-    }
-  },
-  // 获取城市数据
-  getCityData(
-    listName = "provList",
-    label = "provName",
-    columsName = "columnsProv",
-    params = {}
-  ) {
-    app.service.EnterpriseAccountOPen.wxDeptCityQry(params).then((res) => {
-      if (res[listName] && res[listName].length > 0) {
-        const list = res[listName].map((el) => {
-          return {
-            ...el,
-            text: el[label],
-          };
-        });
-        this.setData({
-          [columsName]: list,
-        });
-      }
+    this.setData({
+      selectedCity: value[1],
     });
   },
   /**

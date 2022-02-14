@@ -1,11 +1,10 @@
+<wxs module="util" src="../../../utils/wxParse.wxs"></wxs>
 <view class="opera-content">
     <view class="content">
         <view class="content-title">开户行预约</view>
         <my-field label="机构" value="赣州银行" hideBorder />
-        <my-field label="省" value="{{selectedProv.text}}" placeholder="请选择省" arrow bind:click="onProvClick" />
-        <my-field label="市" value="{{selectedCity.text}}" placeholder="请选择市" arrow bind:click="onCityClick" />
-        <my-field label="区" value="{{selectedDist.text}}" placeholder="请选择区" arrow bind:click="onDistClick" />
-        <my-field label="网点" value="{{selectedNet.deptName}}" placeholder="请选择网点" arrow bind:click="onNetClick" />
+        <my-field label="城市" value="{{selectedCity.text}}" placeholder="请选择市" arrow bind:click="onCityClick" />
+        <my-field label="网点" value="{{util.formatBankName(selectedNet.deptName)}}" placeholder="请选择网点" arrow bind:click="onNetClick" />
         <my-field label="预约开户时间" value="{{selectedDate}}" placeholder="请选择时间" arrow bind:click="onDateClick" />
     </view>
     <view class="content">
@@ -30,7 +29,7 @@
         下一步
     </view>
     <view class="notice">温馨提示：如遇周末或节假日则顺延至节后第一个工作日办理。</view>
-    <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="{{title}}" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
+    <my-picker show="{{ showPicker }}" columns="{{ columns }}" title="选择城市" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
 </view>
 <van-toast id="van-toast" />
 <van-calendar show="{{ showDatePopup }}" min-date="{{ minDate }}" show-confirm="{{ false }}" bind:close="onDateClose" bind:confirm="onDateConfirm" />
