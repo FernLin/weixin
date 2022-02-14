@@ -69,7 +69,6 @@
 .list-content {
   background-color: #ffffff;
   height: calc(100vh - 214rpx);
-  overflow: scroll;
 }
 .list-content > view:last-child {
   margin-bottom: unset;

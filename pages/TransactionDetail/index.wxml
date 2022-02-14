@@ -19,7 +19,7 @@
           <view class="{{endDate ? 'content-color' : 'placeholder-color'}}">{{endDate ? endDate : '结束时间'}}</view>
         </view>
       </view>
-      <view class="flex">
+      <view class="flex" wx:if="{{timeDote=='4'}}">
         <van-button type="default" block class="btn-sty" bindtap="restSearch">重置</van-button>
         <van-button type="danger" block class="btn-sty" bindtap="goSearch">确定</van-button>
       </view>
@@ -31,13 +31,13 @@
       <text>收入￥{{selectedType === '2' ? '0.00' : util.formatAmount(inSumBal)}}</text>
       <text>支出￥{{selectedType === '1' ? '0.00' : util.formatAmount(outSumBal)}}</text>
     </view>
-    <view class="list-content {{dateList.length > 0 ? '' : 'empty-list'}}" id="transRecycleId">
+    <scroll-view class="list-content {{dateList.length > 0 ? '' : 'empty-list'}}" id="screenSee" scroll-y bindscrolltolower="bindscrolltolower">
       <view wx:if="{{dateList.length > 0}}">
         <view wx:for="{{dateList}}" wx:key="index" class="date-item">
           <view class="detail-month">
             {{util.getTransDate(item)}}
           </view>
-          <view wx:for="{{transInfoList}}" wx:key="index" wx:for-item="info" class="detail-content">
+          <view wx:for="{{pageList}}" wx:key="index" wx:for-item="info" class="detail-content">
             <view wx:if="{{info.transDate && util.judgeTransDate(info.transDate, item)}}">
               <view class="detail-item-tab">
                 <view>{{util.getTransDay(info.transDate)}}</view>
@@ -63,7 +63,7 @@
         <image src="/assets/empty.png" />
         <view>指定的时间段内无交易明细</view>
       </view>
-    </view>
+    </scroll-view>
   </view>
 </view>
 <my-date-picker show="{{ showDatePicker }}" title="选择日期" value="{{ selectedDate }}" dateKey="{{dateKey}}" bind:cancel="onDatePickerCancel" bind:confirm="onDatePickerConfirm" />

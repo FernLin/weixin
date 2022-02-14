@@ -23,9 +23,44 @@ Page({
       { text: "支出", value: 2 },
     ], // 收入支出类型列表
     selectedType: 0, // 已选类型
+    currentPage: 1, // 当前页数
+    pageSize: 20, // 每次获取的数据条数
+    noMore: false, // 没有更多
+    pageList: [],
+  },
+  // 获取更多数据
+  getMoreTransInfo() {
+    // 分页加载数据
+    const listData = this.data.transInfoList.filter((el, index) => {
+      return (
+        index < this.data.currentPage * this.data.pageSize &&
+        index >= (this.data.currentPage - 1) * this.data.pageSize
+      );
+    });
+    let tempParam = {};
+    // 1.每次获取的数据跟设定的数据大小比较，如果小于设定大小说明后续没有数据了
+    if (listData.length < this.data.pageSize) {
+      tempParam = {
+        currentPage: this.data.currentPage + 1, // 当前页数
+        noMore: true, // 无更多数据
+      };
+    } else {
+      // 仍有剩余数据待获取
+      tempParam = {
+        noMore: false, // 无更多数据
+        currentPage: this.data.currentPage + 1, // 当前页数
+      };
+    }
+    // 判断当前新获取数据是否为空，不为空时赋值
+    if (listData.length > 0) {
+      let pageList = this.data.pageList;
+      tempParam.pageList = pageList.concat(listData);
+    }
+    this.setData(tempParam);
   },
   // 获取明细列表
   getTransInfoList() {
+    this.reset();
     const openId = wx.getStorageSync("openid");
     let params = {
       openId,
@@ -44,6 +79,21 @@ Page({
         outSumBal: res.outSumBal,
         dateList: res.dateList,
       });
+      this.getMoreTransInfo();
+    });
+  },
+  // 滚动触底
+  bindscrolltolower() {
+    if (!this.data.noMore) {
+      this.getMoreTransInfo();
+    }
+  },
+  // 重置数据
+  reset() {
+    this.setData({
+      currentPage: 1,
+      noMore: false,
+      pageList: [],
     });
   },
   /**
@@ -65,7 +115,9 @@ Page({
       accountList: acList,
       selectedAccount: currentAccount,
     });
-    this.getTransInfoList();
+    if (!!currentAccount) {
+      this.getTransInfoList();
+    }
   },
   // 时间段选择
   doTimeSelect(item) {
@@ -96,6 +148,9 @@ Page({
       this.setData({
         timeSlot: "自定义",
       });
+    }
+    if (t !== "4") {
+      this.goSearch();
     }
   },
   // 开始时间查询
