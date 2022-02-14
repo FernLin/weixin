@@ -238,7 +238,7 @@ Page({
             })
             .catch(() => {
               console.log("暂不取消");
-              wx.navigateBack();
+              wx.exitMiniProgram();
             });
         }
       }
