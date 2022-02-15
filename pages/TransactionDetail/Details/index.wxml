@@ -3,7 +3,7 @@
   <view class="block">
     <my-field label="交易日期" value="{{util.formatDate(details.transDate)}} {{util.formatTimeSingal(details.transTime)}}" hideBorder />
     <my-field label="交易金额" value="{{util.formatAmount(details.amount)}}" />
-    <my-field label="交易币种" value="{{details.money}}" />
+    <my-field label="交易币种" value="{{details.curryType}}" />
     <my-field label="交易账号" value="{{util.hiddenBankCard(details.acNo)}}" />
     <my-field label="账户余额" value="{{util.formatAmount(details.accBalance)}}" />
     <my-field label="对方账号" value="{{util.hiddenBankCard(details.transAcNo)}}" />

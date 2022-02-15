@@ -2,6 +2,7 @@
 <view class="trans-content bottom-safe">
   <van-dropdown-menu>
     <van-dropdown-item value="{{selectedAccount.acNo}}" options="{{accountList}}" bind:change="changeCard" />
+    <van-dropdown-item value="{{selectedSubAccount.sonAccNo}}" options="{{subAcccountList}}" bind:change="changeSubCard" wx:if="{{subAcccountList.length > 1}}" />
     <van-dropdown-item title="{{timeSlot}}" id="dropdown1">
       <view class="m-30">筛选时间</view>
       <view class="flex jc-sb m-30">

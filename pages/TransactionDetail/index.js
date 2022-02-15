@@ -12,10 +12,12 @@ Page({
     showDatePicker: false, // 是否展示日期选择器
     accountList: [], // 账户列表
     selectedAccount: {}, // 已选账户
+    subAcccountList: [], // 子账户列表
+    selectedSubAccount: {}, // 已选子账户
     selectedDate: new Date().getTime(), // 已选时间
     dateKey: "", // 时间类型（开始、结束）
-    startDate: "", // 开始时间
-    endDate: "", // 结束时间
+    startDate: app.util.dates().w.start, // 开始时间
+    endDate: app.util.dates().w.end, // 结束时间
     timeSlot: "近一周", // 筛选时间文字显示
     timeDote: "1", // 筛选时间值
     typeList: [
@@ -67,7 +69,7 @@ Page({
       openId,
       acNo: this.data.selectedAccount.acNo, // 账户号
       sonAcNo: this.data.selectedAccount.subAcNo, // 子账户
-      curryType: this.data.selectedAccount.currency, // 币种
+      curryType: this.data.selectedSubAccount.curryType, // 币种
       payOrIncome: String(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
       defaultTime: String(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
       startDate:
@@ -103,24 +105,81 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const currAccountList = wx.getStorageSync("bankCardList");
-    const acList = currAccountList.map((el) => {
-      return {
-        ...el,
-        text: "尾号" + el.acNo.substr(-4),
-        value: el.acNo,
-      };
+    const openid = wx.getStorageSync("openid");
+    app.service.Transaction.wxSubListQry({
+      openid,
+    }).then((res) => {
+      if (res.userAccount && res.userAccount.length > 0) {
+        const acList = res.userAccount.map((el) => {
+          return {
+            ...el,
+            text: "尾号" + el.acNo.substr(-4),
+            value: el.acNo,
+          };
+        });
+        const currentAccount = acList.find((item) => {
+          return item.acNo === options.acNo;
+        });
+        this.setData({
+          accountList: acList,
+          selectedAccount: currentAccount,
+        });
+        if (!!currentAccount) {
+          let arr = [],
+            arr1 = [],
+            arr2 = [],
+            arr3 = [],
+            arr4 = [],
+            arr5 = [],
+            arr6 = [],
+            arr7 = [];
+          currentAccount.subAcctlist.forEach((el) => {
+            let element = {
+              ...el,
+              text:
+                el.sonAccNo.slice(-4) +
+                "/" +
+                app.util.transCurryType(el.curryType),
+              value: el.sonAccNo,
+            };
+            if (element.curryType === "CNY") {
+              arr.push(element);
+            } else if (element.curryType === "USD") {
+              arr1.push(element);
+            } else if (element.curryType === "HKD") {
+              arr2.push(element);
+            } else if (element.curryType === "GBP") {
+              arr3.push(element);
+            } else if (element.curryType === "AUD") {
+              arr4.push(element);
+            } else if (element.curryType === "CAD") {
+              arr5.push(element);
+            } else if (element.curryType === "EUR") {
+              arr6.push(element);
+            } else if (element.curryType === "JPY") {
+              arr7.push(element);
+            }
+          });
+          const subAcList = arr.concat(
+            arr1,
+            arr2,
+            arr3,
+            arr4,
+            arr5,
+            arr6,
+            arr7
+          );
+          const currentSubAccount = subAcList.find(
+            (el) => el.curryType === "CNY"
+          );
+          this.setData({
+            subAcccountList: subAcList,
+            selectedSubAccount: currentSubAccount,
+          });
+          this.getTransInfoList();
+        }
+      }
     });
-    const currentAccount = acList.find((item) => {
-      return item.acNo === options.acNo;
-    });
-    this.setData({
-      accountList: acList,
-      selectedAccount: currentAccount,
-    });
-    if (!!currentAccount) {
-      this.getTransInfoList();
-    }
   },
   // 时间段选择
   doTimeSelect(item) {
@@ -128,23 +187,23 @@ Page({
       timeDote: item.target.dataset.time,
     });
     let t = item.target.dataset.time;
-    // let timeSlotN = app.util.dates();
+    let timeSlotN = app.util.dates();
     if (t == "1") {
       this.setData({
-        // startDate: timeSlotN.w.start,
-        // endDate: timeSlotN.w.end,
+        startDate: timeSlotN.w.start,
+        endDate: timeSlotN.w.end,
         timeSlot: "近一周",
       });
     } else if (t == "2") {
       this.setData({
-        // startDate: timeSlotN.m.start,
-        // endDate: timeSlotN.m.end,
+        startDate: timeSlotN.m.start,
+        endDate: timeSlotN.m.end,
         timeSlot: "近一月",
       });
     } else if (t == "3") {
       this.setData({
-        // startDate: timeSlotN.tm.start,
-        // endDate: timeSlotN.tm.end,
+        startDate: timeSlotN.tm.start,
+        endDate: timeSlotN.tm.end,
         timeSlot: "近三月",
       });
     } else if (t == "4") {
@@ -218,6 +277,16 @@ Page({
     });
     this.getTransInfoList();
   },
+  //切换子账号查询
+  changeSubCard(e) {
+    const currentSubAccount = this.data.subAcccountList.find((item) => {
+      return item.sonAccNo === e.detail;
+    });
+    this.setData({
+      selectedSubAccount: currentSubAccount,
+    });
+    this.getTransInfoList();
+  },
   //切换银行卡查询
   changeCard(e) {
     const currentAccount = this.data.accountList.find((item) => {
@@ -229,6 +298,12 @@ Page({
     this.getTransInfoList();
   },
   toDetail(e) {
+    consttemp = {
+      ...e.currentTarget.dataset.info,
+      curryType: app.util.transCurryType(
+        this.data.selectedSubAccount.curryType
+      ),
+    };
     wx.navigateTo({
       url:
         "/pages/TransactionDetail/Details/index?details=" +

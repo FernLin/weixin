@@ -380,6 +380,29 @@ const judgeAgreePath = () => {
   return agreePath.find((res) => res.name === http.baseUrl.name);
 };
 
+const transCurryType = (curryType) => {
+  switch (curryType) {
+    case "CNY":
+      return "人民币";
+    case "USD":
+      return "美元";
+    case "GBP":
+      return "英镑";
+    case "CAD":
+      return "加拿大元";
+    case "HKD":
+      return "港币";
+    case "EUR":
+      return "欧元";
+    case "AUD":
+      return "澳元";
+    case "JPY":
+      return "日元";
+    default:
+      return "人民币";
+  }
+};
+
 module.exports = {
   times,
   gologin,
@@ -397,4 +420,5 @@ module.exports = {
   isNum,
   judgeAgreePath,
   formatName,
+  transCurryType,
 };
