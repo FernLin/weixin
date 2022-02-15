@@ -30,36 +30,51 @@ Page({
     pageSize: 20, // 每次获取的数据条数
     noMore: false, // 没有更多
     pageList: [],
+    isLoading: false,
   },
   // 获取更多数据
   getMoreTransInfo() {
-    // 分页加载数据
-    const listData = this.data.transInfoList.filter((el, index) => {
-      return (
-        index < this.data.currentPage * this.data.pageSize &&
-        index >= (this.data.currentPage - 1) * this.data.pageSize
-      );
+    wx.showLoading({
+      title: "加载中...",
+      mask: true,
     });
-    let tempParam = {};
-    // 1.每次获取的数据跟设定的数据大小比较，如果小于设定大小说明后续没有数据了
-    if (listData.length < this.data.pageSize) {
-      tempParam = {
-        currentPage: this.data.currentPage + 1, // 当前页数
-        noMore: true, // 无更多数据
-      };
-    } else {
-      // 仍有剩余数据待获取
-      tempParam = {
-        noMore: false, // 无更多数据
-        currentPage: this.data.currentPage + 1, // 当前页数
-      };
-    }
-    // 判断当前新获取数据是否为空，不为空时赋值
-    if (listData.length > 0) {
-      let pageList = this.data.pageList;
-      tempParam.pageList = pageList.concat(listData);
-    }
-    this.setData(tempParam);
+    setTimeout(() => {
+      // 分页加载数据
+      const listData = this.data.transInfoList.filter((el, index) => {
+        return (
+          index < this.data.currentPage * this.data.pageSize &&
+          index >= (this.data.currentPage - 1) * this.data.pageSize
+        );
+      });
+      let tempParam = {};
+      // 1.每次获取的数据跟设定的数据大小比较，如果小于设定大小说明后续没有数据了
+      if (listData.length < this.data.pageSize) {
+        tempParam = {
+          currentPage: this.data.currentPage + 1, // 当前页数
+          noMore: true, // 无更多数据
+        };
+      } else {
+        // 仍有剩余数据待获取
+        tempParam = {
+          noMore: false, // 无更多数据
+          currentPage: this.data.currentPage + 1, // 当前页数
+        };
+      }
+      // 判断当前新获取数据是否为空，不为空时赋值
+      if (listData.length > 0) {
+        let pageList = this.data.pageList;
+        let dateList = this.data.dateList;
+        tempParam.pageList = pageList.concat(listData);
+        listData.forEach((el) => {
+          if (!dateList.includes(el.transDate.substr(0, 6))) {
+            dateList.push(el.transDate.substr(0, 6));
+          }
+        });
+        tempParam.dateList = dateList;
+      }
+      this.setData(tempParam);
+      wx.hideLoading();
+    }, 1000);
   },
   // 获取明细列表
   getTransInfoList() {
@@ -82,7 +97,6 @@ Page({
         transInfoList: res.list,
         inSumBal: res.inSumBal,
         outSumBal: res.outSumBal,
-        dateList: res.dateList,
       });
       this.getMoreTransInfo();
     });
@@ -298,7 +312,7 @@ Page({
     this.getTransInfoList();
   },
   toDetail(e) {
-    consttemp = {
+    const temp = {
       ...e.currentTarget.dataset.info,
       curryType: app.util.transCurryType(
         this.data.selectedSubAccount.curryType
@@ -307,7 +321,7 @@ Page({
     wx.navigateTo({
       url:
         "/pages/TransactionDetail/Details/index?details=" +
-        JSON.stringify(e.currentTarget.dataset.info),
+        JSON.stringify(temp),
     });
   },
   /**
