@@ -83,7 +83,7 @@ Page({
     let params = {
       openId,
       acNo: this.data.selectedAccount.acNo, // 账户号
-      sonAcNo: this.data.selectedAccount.subAcNo, // 子账户
+      sonAcNo: this.data.selectedSubAccount.sonAccNo, // 子账户
       curryType: this.data.selectedSubAccount.curryType, // 币种
       payOrIncome: String(this.data.selectedType), // 收支类型（0：全部；1：收入；2：支出）
       defaultTime: String(this.data.timeDote), // 默认时间（1：一周；2：一月；3：三月；4：自定义）
@@ -113,6 +113,10 @@ Page({
       currentPage: 1,
       noMore: false,
       pageList: [],
+      dateList: [],
+      inSumBal: 0,
+      outSumBal: 0,
+      transInfoList: [],
     });
   },
   // 根据主账号获取子账户数据

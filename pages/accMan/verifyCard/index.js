@@ -61,9 +61,14 @@ Page({
         },
         false
       ).then((result) => {
-        wx.setStorageSync("USERINFO", result);
-        wx.switchTab({
-          url: "/pages/User/index",
+        app.service.Global.wxMsgTradingToRemindWx({
+          unionId,
+          type: "1",
+        }).then(() => {
+          wx.setStorageSync("USERINFO", result);
+          wx.switchTab({
+            url: "/pages/User/index",
+          });
         });
       });
     });
