@@ -4,6 +4,7 @@ import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const createRecycleContext = require("miniprogram-recycle-view");
 const openId = wx.getStorageSync("openid");
+const unionId = wx.getStorageSync("unionId");
 var ctx;
 // 获取应用实例
 const app = getApp();
@@ -272,6 +273,7 @@ Page({
           widtdrawTime: item.bookTime,
           deptId: item.deptId,
           FromUserName: openId,
+          unionId,
         }).then((res) => {
           if (res) {
             Toast("取消预约成功！");

@@ -165,6 +165,7 @@ Page({
       amcr: this.data.selectedAccount.acNo,
       wdsn: this.data.deptId,
       FromUserName: openId,
+      unionId,
     };
     // 大额预约
     if (this.data.reserveType === "1") {
