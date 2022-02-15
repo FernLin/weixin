@@ -2,7 +2,6 @@
 import Toast from "@vant/weapp/toast/toast";
 import Dialog from "@vant/weapp/dialog/dialog";
 const app = getApp();
-const unionId = wx.getStorageSync("unionId");
 let timer;
 Page({
   /**
@@ -17,6 +16,7 @@ Page({
     indexCode: "",
     hasGetVerifyCode: false,
     resultPopup: false,
+    unionId: "",
   },
   // 解绑
   onClick(e) {
@@ -99,7 +99,7 @@ Page({
         .then((res) => {
           if (res) {
             app.service.Global.wxMsgTradingToRemindWx({
-              unionId,
+              unionId: this.data.unionId,
               type: "2",
             });
             wx.clearStorageSync();
@@ -142,6 +142,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       openMobile: wx.getStorageSync("mobilePhone"),
+      unionId: wx.getStorageSync("unionId"),
     });
   },
 
