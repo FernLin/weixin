@@ -115,6 +115,49 @@ Page({
       pageList: [],
     });
   },
+  // 根据主账号获取子账户数据
+  getSubAcList(currentAccount) {
+    let arr = [],
+      arr1 = [],
+      arr2 = [],
+      arr3 = [],
+      arr4 = [],
+      arr5 = [],
+      arr6 = [],
+      arr7 = [];
+    currentAccount.subAcctlist.forEach((el) => {
+      let element = {
+        ...el,
+        text:
+          el.sonAccNo.slice(-4) + "/" + app.util.transCurryType(el.curryType),
+        value: el.sonAccNo,
+      };
+      if (element.curryType === "CNY") {
+        arr.push(element);
+      } else if (element.curryType === "USD") {
+        arr1.push(element);
+      } else if (element.curryType === "HKD") {
+        arr2.push(element);
+      } else if (element.curryType === "GBP") {
+        arr3.push(element);
+      } else if (element.curryType === "AUD") {
+        arr4.push(element);
+      } else if (element.curryType === "CAD") {
+        arr5.push(element);
+      } else if (element.curryType === "EUR") {
+        arr6.push(element);
+      } else if (element.curryType === "JPY") {
+        arr7.push(element);
+      }
+    });
+    const subAcList = arr.concat(arr1, arr2, arr3, arr4, arr5, arr6, arr7);
+    const currentSubAccount = subAcList[0];
+    this.setData({
+      subAcccountList: subAcList,
+      selectedSubAccount: currentSubAccount,
+    });
+    this.getTransInfoList();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -139,58 +182,7 @@ Page({
           selectedAccount: currentAccount,
         });
         if (!!currentAccount) {
-          let arr = [],
-            arr1 = [],
-            arr2 = [],
-            arr3 = [],
-            arr4 = [],
-            arr5 = [],
-            arr6 = [],
-            arr7 = [];
-          currentAccount.subAcctlist.forEach((el) => {
-            let element = {
-              ...el,
-              text:
-                el.sonAccNo.slice(-4) +
-                "/" +
-                app.util.transCurryType(el.curryType),
-              value: el.sonAccNo,
-            };
-            if (element.curryType === "CNY") {
-              arr.push(element);
-            } else if (element.curryType === "USD") {
-              arr1.push(element);
-            } else if (element.curryType === "HKD") {
-              arr2.push(element);
-            } else if (element.curryType === "GBP") {
-              arr3.push(element);
-            } else if (element.curryType === "AUD") {
-              arr4.push(element);
-            } else if (element.curryType === "CAD") {
-              arr5.push(element);
-            } else if (element.curryType === "EUR") {
-              arr6.push(element);
-            } else if (element.curryType === "JPY") {
-              arr7.push(element);
-            }
-          });
-          const subAcList = arr.concat(
-            arr1,
-            arr2,
-            arr3,
-            arr4,
-            arr5,
-            arr6,
-            arr7
-          );
-          const currentSubAccount = subAcList.find(
-            (el) => el.curryType === "CNY"
-          );
-          this.setData({
-            subAcccountList: subAcList,
-            selectedSubAccount: currentSubAccount,
-          });
-          this.getTransInfoList();
+          this.getSubAcList(currentAccount);
         }
       }
     });
@@ -309,7 +301,7 @@ Page({
     this.setData({
       selectedAccount: currentAccount,
     });
-    this.getTransInfoList();
+    this.getSubAcList(currentAccount);
   },
   toDetail(e) {
     const temp = {
