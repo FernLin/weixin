@@ -187,12 +187,20 @@ Page({
     });
   },
   onShow: function () {
-    setTimeout(() => {
-      this.getUserBankCardInfo();
-      this.setData({
-        showService: true,
+    const userInfo = wx.getStorageSync("USERINFO");
+    if (!userInfo.signFlag) {
+      // 未注册用户跳转至注册页面
+      wx.reLaunch({
+        url: "/pages/Register/index",
       });
-    }, 10);
+    } else {
+      setTimeout(() => {
+        this.getUserBankCardInfo();
+        this.setData({
+          showService: true,
+        });
+      }, 10);
+    }
   },
   /**
    * 生命周期函数--监听页面加载

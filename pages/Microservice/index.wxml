@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="microservice-content">
+<view class="microservice-content" wx:if="{{isShow}}">
 	<!-- 专属客户经理 -->
 	<view class="flex1 bg-w p-30">
 		<view class="txt-32">专属客户经理</view>

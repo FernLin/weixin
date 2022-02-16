@@ -2,19 +2,9 @@
   "pages": [
     "pages/Microservice/index",
     "pages/User/index",
-    "pages/User/finance/index",
-    "pages/User/notLogin/index",
-    "pages/User/setting/index",
-    "pages/User/setting/originalpwd/index",
-    "pages/User/setting/newpwd/index",
-    "pages/User/setting/newpwdConfirm/index",
-    "pages/User/setting/updateResult/index",
-    "pages/User/setting/logout/index",
-    "pages/User/setting/eAccount/index",
-    "pages/User/setting/eAccount/large/index",
+    "pages/User/userSetting/index",
     "pages/Register/index",
-    "pages/Webview/index",
-    "pages/User/userSetting/index"
+    "pages/Webview/index"
   ],
   "subPackages": [
     {

@@ -85,10 +85,12 @@ App({
   //   this.getOpenId();
   // },
   onShow() {
+    // 获取场景值
     this.globalData.enterOptions = wx.getEnterOptionsSync();
     console.log(wx.getEnterOptionsSync());
     // 非单人会话场景，皆需要判断注册状态（TODO:群聊会话场景？）
     if (this.globalData.enterOptions.scene != 1007) {
+      // 因为每次选择文件返回时都会触发该方法，所以这种情况不需要再判断注册状态
       if (this.globalData.enterOptions.path.includes("DocumentUpload")) return;
       // 小程序加载时获取用户openid
       this.getOpenId();
