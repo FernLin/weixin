@@ -16,13 +16,20 @@
             </view>
         </view>
         <view class="info-detail">
+            <view class="card-balance" bindtap="selectSubAccount" wx:if="{{subAcccountList.length > 1}}">
+                <text class="ac-label">子账户</text>
+                <view class="ac-value">
+                    <text>{{ selectSubAccount.text }}</text>
+                    <van-icon name="arrow" class="right-icon-ac" />
+                </view>
+            </view>
             <view class="card-balance">
                 <text>{{accountDetail.bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}</text>
-                <text>{{ util.formatAmount(accountDetail.bankAcType === 'PCRC' ? accountDetail.surPayedAmt : accountDetail.accBal) }}{{accountDetail.currency === 'CNY' ? '/人民币' : ''}}</text>
+                <text>{{ util.formatAmount(accountDetail.bankAcType === 'PCRC' ? accountDetail.surPayedAmt : selectSubAccount.accBalance) }}{{selectSubAccount.curryType === 'CNY' ? '/人民币' : ''}}</text>
             </view>
             <view class="card-balance">
                 <text>可用余额</text>
-                <text>{{ util.formatAmount(accountDetail.availBal) }}{{accountDetail.currency === 'CNY' ? '/人民币' : ''}}</text>
+                <text>{{ util.formatAmount(selectSubAccount.avaBalance) }}{{selectSubAccount.curryType === 'CNY' ? '/人民币' : ''}}</text>
             </view>
             <view class="card-balance">
                 <text>开户日期</text>
@@ -79,5 +86,6 @@
         </view>
     </view>
 </van-popup>
+<my-picker show="{{ showPicker }}" columns="{{ subAcccountList }}" title="选择子账户" bind:change="handlePicker" bind:cancel="onPickerCancel" bind:confirm="onPickerConfirm" />
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />

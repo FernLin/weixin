@@ -169,9 +169,8 @@ Page({
   },
   // 跳转至账户详细页面
   goAccountDetail(e) {
-    var obj = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: "/pages/accMan/accDetail/index?obj=" + encodeURIComponent(obj),
+      url: "/pages/accMan/accDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
     });
   },
   // 关闭在线客服

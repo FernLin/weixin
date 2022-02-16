@@ -31,6 +31,15 @@ export default {
     return post("wxAcListQry.do", params, isShowLoading);
   },
   /**
+   * 获取带下挂子账户的账号列表
+   * @param {
+    * openid: 用户openId
+    * }
+    */
+   wxSubListQry(params) {
+     return post("wxSubListQry.do", params);
+   },
+  /**
    * 添加银行卡
    * @param {
    * openId: 用户openId

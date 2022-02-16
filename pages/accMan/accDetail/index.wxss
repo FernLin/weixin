@@ -76,6 +76,14 @@
   min-width: 170rpx;
 }
 
+.ac-label {
+  min-width: unset !important;
+}
+.ac-value {
+  display: flex;
+  align-items: center;
+}
+
 .fen-ge {
   width: 1rpx;
   height: 19rpx;
@@ -273,4 +281,10 @@
   color: #ffffff;
   letter-spacing: -0.14rpx;
   font-weight: 500;
+}
+.right-icon-ac {
+  height: 32rpx;
+  width: 32rpx;
+  color: #c8c8c8;
+  margin-left: 10rpx;
 }

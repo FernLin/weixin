@@ -18,13 +18,4 @@ export default {
   wxAcctDetailQry(params) {
     return post("wxAcctDetailQry.do", params);
   },
-  /**
-   * 获取带下挂子账户的账号列表
-   * @param {
-   * openid: 用户openId
-   * } params 
-   */
-  wxSubListQry(params) {
-    return post("wxSubListQry.do", params);
-  },
 };

@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "账户详情"
+    "navigationBarTitleText": "账户详情",
+    "usingComponents": {
+        "my-picker": "/components/myPicker/index"
+    }
 }

@@ -1,4 +1,3 @@
-// pages/accMan/accDetail/index.js
 const app = getApp()
 Page({
 

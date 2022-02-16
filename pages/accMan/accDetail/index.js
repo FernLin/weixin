@@ -1,4 +1,3 @@
-// pages/accMan/accDetail/index.js
 import Dialog from "@vant/weapp/dialog/dialog";
 import Toast from "@vant/weapp/toast/toast";
 const app = getApp();
@@ -24,6 +23,9 @@ Page({
     noticePopup: false,
     shareListLen: 0,
     noticeMsg: "",
+    subAcccountList: [],
+    selectSubAccount: {},
+    showPicker: false,
   },
 
   // 查看卡号
@@ -38,7 +40,11 @@ Page({
   // 交易明细
   toTranDetail() {
     wx.navigateTo({
-      url: "/pages/TransactionDetail/index?acNo=" + this.data.accountDetail.acNo,
+      url:
+        "/pages/TransactionDetail/index?acNo=" +
+        this.data.accountDetail.acNo +
+        "&subAcNo=" +
+        this.data.selectSubAccount.sonAccNo,
     });
   },
 
@@ -91,7 +97,7 @@ Page({
     this.setData({
       unbindPopup: true,
       noticePopup: false,
-      status: this.data.status === '0' ? "1" : "0",
+      status: this.data.status === "0" ? "1" : "0",
       currTransactionId: "wxMovingAccountNoticeOpenAndClose",
       indexCode: "",
       verifyCode: "",
@@ -240,16 +246,90 @@ Page({
     }, 1000);
   },
 
+  selectSubAccount() {
+    this.setData({
+      showPicker: true,
+    });
+  },
+
   onShow: function () {},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const currentAccount = JSON.parse(decodeURIComponent(options.obj));
+    const openid = wx.getStorageSync("openid");
+    app.service.Global.wxSubListQry({
+      openid,
+    }).then((res) => {
+      if (res.userAccount && res.userAccount.length > 0) {
+        const currentAccount = res.userAccount.find(
+          (el) => el.acNo === options.acNo
+        );
+        let arr = [],
+          arr1 = [],
+          arr2 = [],
+          arr3 = [],
+          arr4 = [],
+          arr5 = [],
+          arr6 = [],
+          arr7 = [];
+        currentAccount.subAcctlist.forEach((el) => {
+          let element = {
+            ...el,
+            text:
+              app.util.hiddenBankCard(el.sonAccNo) +
+              "/" +
+              app.util.transCurryType(el.curryType),
+          };
+          if (element.curryType === "CNY") {
+            arr.push(element);
+          } else if (element.curryType === "USD") {
+            arr1.push(element);
+          } else if (element.curryType === "HKD") {
+            arr2.push(element);
+          } else if (element.curryType === "GBP") {
+            arr3.push(element);
+          } else if (element.curryType === "AUD") {
+            arr4.push(element);
+          } else if (element.curryType === "CAD") {
+            arr5.push(element);
+          } else if (element.curryType === "EUR") {
+            arr6.push(element);
+          } else if (element.curryType === "JPY") {
+            arr7.push(element);
+          }
+        });
+        const subAcList = arr.concat(arr1, arr2, arr3, arr4, arr5, arr6, arr7);
+        const currentSubAccount = subAcList[0];
+        this.setData({
+          subAcccountList: subAcList,
+          selectSubAccount: currentSubAccount,
+          accountDetail: currentAccount,
+          noticeSwitch: currentAccount.optionFlag === "1",
+        });
+      }
+    });
+  },
+  // 选择账户
+  handlePicker(event) {
+    const { value } = event.detail;
+    console.log("选择", value);
+  },
+  // 选择器取消
+  onPickerCancel() {
     this.setData({
-      accountDetail: currentAccount,
-      noticeSwitch: currentAccount.optionFlag === "1",
+      showPicker: false,
+    });
+  },
+  // 选择器确认
+  onPickerConfirm(event) {
+    this.setData({
+      showPicker: false,
+    });
+    const { value } = event.detail;
+    this.setData({
+      selectSubAccount: value,
     });
   },
   /**

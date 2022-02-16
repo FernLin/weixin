@@ -120,7 +120,7 @@ Page({
     });
   },
   // 根据主账号获取子账户数据
-  getSubAcList(currentAccount) {
+  getSubAcList(currentAccount, subAcNo = "") {
     let arr = [],
       arr1 = [],
       arr2 = [],
@@ -155,7 +155,9 @@ Page({
       }
     });
     const subAcList = arr.concat(arr1, arr2, arr3, arr4, arr5, arr6, arr7);
-    const currentSubAccount = subAcList[0];
+    const currentSubAccount = !!subAcNo
+      ? subAcList.find((el) => el.sonAccNo === subAcNo)
+      : subAcList[0];
     this.setData({
       subAcccountList: subAcList,
       selectedSubAccount: currentSubAccount,
@@ -167,7 +169,8 @@ Page({
    */
   onLoad: function (options) {
     const openid = wx.getStorageSync("openid");
-    app.service.Transaction.wxSubListQry({
+    const subAcNo = options.subAcNo || "";
+    app.service.Global.wxSubListQry({
       openid,
     }).then((res) => {
       if (res.userAccount && res.userAccount.length > 0) {
@@ -186,7 +189,7 @@ Page({
           selectedAccount: currentAccount,
         });
         if (!!currentAccount) {
-          this.getSubAcList(currentAccount);
+          this.getSubAcList(currentAccount, subAcNo);
         }
       }
     });

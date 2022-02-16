@@ -162,9 +162,8 @@ Page({
 
   // 账户详情
   toAccountDetail(e) {
-    var obj = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: "/pages/accMan/accDetail/index?obj=" + encodeURIComponent(obj),
+      url: "/pages/accMan/accDetail/index?acNo=" + e.currentTarget.dataset.item.acNo,
     });
   },
 
