@@ -3,3 +3,4 @@
   <view class="text">长按关注赣州银行公众号</view>
   <view class="add-card-btn" bindtap="toBack">已关注，返回上一页</view>
 </view>
+<van-toast id="van-toast" />

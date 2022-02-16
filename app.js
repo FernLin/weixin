@@ -41,7 +41,7 @@ App({
         wx.setStorageSync("mobilePhone", result.mobilePhone);
       }
       if (!result.subscribe) {
-        const backUrl = encodeURIComponent(this.globalData.enterOptions.path);
+        const backUrl = encodeURIComponent("/" + this.globalData.enterOptions.path);
         wx.reLaunch({
           url: "/pages/SubscribeOfficial/index?backUrl=" + backUrl,
         });

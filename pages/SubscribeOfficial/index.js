@@ -1,4 +1,6 @@
 // pages/SubscribeOfficial/index.js
+import Toast from "@vant/weapp/toast/toast";
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -9,15 +11,26 @@ Page({
   },
 
   toBack() {
-    const url =
-      this.data.backUrl +
-      `${
-        !!this.data.defaultData
-          ? "?defaultData=" + JSON.stringify(this.data.defaultData)
-          : ""
-      }`;
-    wx.reLaunch({
-      url,
+    const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
+    app.service.Global.wxGetUserInfo({
+      openid: openId,
+      unionId,
+    }).then((res) => {
+      if (res.subscribe) {
+        const url =
+          this.data.backUrl +
+          `${
+            !!this.data.defaultData
+              ? "?defaultData=" + JSON.stringify(this.data.defaultData)
+              : ""
+          }`;
+        wx.reLaunch({
+          url,
+        });
+      } else {
+        Toast('请先关注赣州银行公众号！');
+      }
     });
   },
 
