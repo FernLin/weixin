@@ -11,10 +11,12 @@ Page({
   },
   onLoad() {},
   onShow() {
-    const userInfo = wx.getStorageSync("USERINFO");
-    this.setData({
-      isShow: userInfo.signFlag,
-    });
+    let userInfo = wx.getStorageSync("USERINFO");
+    if (userInfo) {
+      this.setData({
+        isShow: userInfo.signFlag,
+      });
+    }
   },
   //跳转基金H5页面
   goFoud() {

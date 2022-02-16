@@ -115,6 +115,7 @@ Page({
     });
   },
   toBack() {
+    // 绑卡完成/跳过绑卡操作后，需要更新用户信息
     const openId = wx.getStorageSync("openid");
     const unionId = wx.getStorageSync("unionId");
     app.service.Global.wxGetUserInfo({
@@ -286,8 +287,16 @@ Page({
   },
   // 跳过绑定
   onJump() {
-    wx.switchTab({
-      url: "/pages/Microservice/index",
+    const openId = wx.getStorageSync("openid");
+    const unionId = wx.getStorageSync("unionId");
+    app.service.Global.wxGetUserInfo({
+      openid: openId,
+      unionId,
+    }).then((res) => {
+      wx.setStorageSync("USERINFO", res);
+      wx.switchTab({
+        url: "/pages/Microservice/index",
+      });
     });
   },
   /**
