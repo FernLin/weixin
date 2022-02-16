@@ -104,10 +104,9 @@ Page({
               app.service.Global.wxMsgTradingToRemindWx({
                 unionId,
                 type: "0",
-              }).then(() => {
-                wx.reLaunch({
-                  url: "/pages/accMan/bindCard/index?fromRegister=true",
-                });
+              });
+              wx.reLaunch({
+                url: "/pages/accMan/bindCard/index?fromRegister=true",
               });
             } else {
               // openFlag为false，跳转至用户信息验证页面，返回操作时跳转注册页面

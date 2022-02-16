@@ -64,11 +64,10 @@ Page({
         app.service.Global.wxMsgTradingToRemindWx({
           unionId,
           type: "1",
-        }).then(() => {
-          wx.setStorageSync("USERINFO", result);
-          wx.switchTab({
-            url: "/pages/User/index",
-          });
+        });
+        wx.setStorageSync("USERINFO", result);
+        wx.switchTab({
+          url: "/pages/User/index",
         });
       });
     });

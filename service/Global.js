@@ -165,6 +165,6 @@ export default {
    * }
    */
   wxMsgTradingToRemindWx(params) {
-    return post("wxMsgTradingToRemindWx.do", params);
+    return post("wxMsgTradingToRemindWx.do", params, false);
   },
 };
