@@ -18,11 +18,11 @@
         <view class="info-detail">
             <view class="card-balance">
                 <text>{{accountDetail.bankAcType === 'PCRC' ? '剩余应还' : '账户余额'}}</text>
-                <text>￥{{ util.formatAmount(accountDetail.bankAcType === 'PCRC' ? accountDetail.surPayedAmt : accountDetail.accBal) }}</text>
+                <text>{{ util.formatAmount(accountDetail.bankAcType === 'PCRC' ? accountDetail.surPayedAmt : accountDetail.accBal) }}{{accountDetail.currency === 'CNY' ? '/人民币' : ''}}</text>
             </view>
             <view class="card-balance">
                 <text>可用余额</text>
-                <text>￥{{ util.formatAmount(accountDetail.availBal) }}</text>
+                <text>{{ util.formatAmount(accountDetail.availBal) }}{{accountDetail.currency === 'CNY' ? '/人民币' : ''}}</text>
             </view>
             <view class="card-balance">
                 <text>开户日期</text>
