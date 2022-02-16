@@ -36,29 +36,30 @@ App({
       false
     ).then((result) => {
       wx.hideLoading();
-      // tab页面不在此处进行校验
-      if (
-        !this.globalData.enterOptions.path.includes("Microservice") &&
-        !this.globalData.enterOptions.path.includes("User/index")
-      ) {
-        if (!result.signFlag) {
-          // 未注册用户跳转至注册页面
-          if (!this.globalData.enterOptions.path.includes("Register")) {
-            wx.reLaunch({
-              url: "/pages/Register/index",
-            });
-          }
-        } else {
-          if (this.globalData.enterOptions.path.includes("operaNotice")) {
-            wx.switchTab({
-              url: "/pages/Microservice/index",
-            });
-          }
-        }
-      }
+      wx.setStorageSync("USERINFO", result);
       if (result.mobilePhone) {
         wx.setStorageSync("mobilePhone", result.mobilePhone);
-        wx.setStorageSync("USERINFO", result);
+      }
+      if (!result.subscribe) {
+        const backUrl = encodeURIComponent(this.globalData.enterOptions.path);
+        wx.reLaunch({
+          url: "/pages/SubscribeOfficial/index?backUrl=" + backUrl,
+        });
+        return;
+      }
+      if (!result.signFlag) {
+        // 未注册用户跳转至注册页面
+        if (!this.globalData.enterOptions.path.includes("Register")) {
+          wx.reLaunch({
+            url: "/pages/Register/index",
+          });
+        }
+      } else {
+        if (this.globalData.enterOptions.path.includes("operaNotice")) {
+          wx.switchTab({
+            url: "/pages/Microservice/index",
+          });
+        }
       }
     });
   },

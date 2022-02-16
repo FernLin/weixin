@@ -7,18 +7,11 @@ Page({
   data: {
     list: [],
     morePng: "../../assets/mainPage/more.png",
-    userInfo: "",
     isShow: false,
   },
   onLoad() {},
   onShow() {
     const userInfo = wx.getStorageSync("USERINFO");
-    if (!userInfo.signFlag) {
-      // 未注册用户跳转至注册页面
-      wx.reLaunch({
-        url: "/pages/Register/index",
-      });
-    }
     this.setData({
       isShow: userInfo.signFlag,
     });

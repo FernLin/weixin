@@ -222,8 +222,13 @@ Page({
       }).then((resu) => {
         if (!resu.subscribe) {
           const temp = JSON.stringify(defaultData);
+          const backUrl = encodeURIComponent("/pages/accMan/operaNotice/index");
           wx.reLaunch({
-            url: "/pages/SubscribeOfficial/index?defaultData=" + temp,
+            url:
+              "/pages/SubscribeOfficial/index?backUrl=" +
+              backUrl +
+              "&defaultData=" +
+              temp,
           });
         }
       });

@@ -5,13 +5,19 @@ Page({
    */
   data: {
     defaultData: "",
+    backUrl: "",
   },
 
   toBack() {
+    const url =
+      this.data.backUrl +
+      `${
+        !!this.data.defaultData
+          ? "?defaultData=" + JSON.stringify(this.data.defaultData)
+          : ""
+      }`;
     wx.reLaunch({
-      url:
-        "/pages/accMan/operaNotice/index?hasGet=true&defaultData=" +
-        JSON.stringify(this.data.defaultData),
+      url,
     });
   },
 
@@ -20,7 +26,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      defaultData: JSON.parse(options.defaultData),
+      defaultData: !!options.defaultData ? JSON.parse(options.defaultData) : "",
+      backUrl: decodeURIComponent(options.backUrl),
     });
   },
 
